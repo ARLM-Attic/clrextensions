@@ -392,4 +392,53 @@
 		Return Security.Cryptography.MD5CryptoServiceProvider.Create().ComputeHash(Text.Encoding.UTF8.GetBytes(this)).ToString("x2")
 	End Function
 
+	<Extension()> Function Reverse(ByVal this As String) As String
+		If this Is Nothing Then Return Nothing
+
+		Dim result = this.ToCharArray
+
+		For i = 0 To result.Length \ 2 - 1
+			Dim c = result(i)
+			result(i) = result(result.Length - i - 1)
+			result(result.Length - i - 1) = c
+		Next
+
+		Return New String(result)
+	End Function
+
+
+	<Extension()> Public Function Format(ByVal this As String, ByVal ParamArray args() As Object) As String
+		Return String.Format(this, args)
+	End Function
+
+	''' <summary>
+	''' 
+	''' </summary>
+	''' <param name="this"></param>
+	''' <returns></returns>
+	''' <remarks>Not really needed for VB, but C# programmers seem to like it</remarks>
+	<Extension()> Public Function IsNullOrEmpty(ByVal this As String) As Boolean
+		Return this = ""
+	End Function
+
+	<Extension()> Public Function ToMemoryStream(ByVal this As String, ByVal encoding As Text.Encoding) As IO.MemoryStream
+
+		Dim bytes = this.ToByteArray(encoding)
+		Dim stream = New IO.MemoryStream(this.Length)
+		stream.Write(bytes, 0, bytes.Length)
+		stream.Position = 0
+
+		Return stream
+	End Function
+
+	<Extension()> Public Function ToByteArray(ByVal this As String, ByVal encoding As Text.Encoding) As Byte()
+		Return encoding.GetBytes(this)
+	End Function
+
 End Module
+
+
+
+
+
+

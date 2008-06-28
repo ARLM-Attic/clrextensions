@@ -20,4 +20,8 @@ Module ByteExtension
 		Return result.ToString
 	End Function
 
+	<Extension()> Function ToString(ByVal this As Byte(), ByVal encoding As Text.Encoding) As String
+		Return encoding.GetString(this)
+	End Function
+
 End Module

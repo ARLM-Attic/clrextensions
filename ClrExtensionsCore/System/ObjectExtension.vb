@@ -111,13 +111,57 @@ Public Module ObjectExtension
 		Dim binaryFormatter = New Runtime.Serialization.Formatters.Binary.BinaryFormatter()
 
 		binaryFormatter.Serialize(memoryStream, this)
-		memoryStream.Seek(0, IO.SeekOrigin.Begin)
+		memoryStream.Position = 0
 
 		Return DirectCast(binaryFormatter.Deserialize(memoryStream), T)
 	End Function
 
+	<Extension()> Public Function IsIn(Of T)(ByVal this As T, ByVal ParamArray list() As T) As Boolean
+		Return list.Contains(this)
+	End Function
+
+	<Extension()> Public Function IsIn(Of T)(ByVal this As T, ByVal list As IList(Of T)) As Boolean
+		Return list.Contains(this)
+	End Function
+
+
 	'TODO - Convert the object to XML using an XML Serializer
 	'<Extension()> Public Function ToXDocument(ByVal this As Object) As XDocument
 
+	<Extension()> Public Function Cast(Of T)(ByVal this As Object) As T
+		Return CType(this, T)
+	End Function
+
+	<Extension()> Public Function [TryCast](Of T As Class)(ByVal this As Object) As T
+		Return TryCast(this, T)
+	End Function
+
+	<Extension()> Public Function [TryCast](Of T As Class)(ByVal this As Object, ByVal [default] As T) As T
+		Dim result = TryCast(this, T)
+		Return If(result, [default])
+	End Function
+
+	<Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal this As Object) As Nullable(Of T)
+		If this Is Nothing Then Return Nothing
+
+		'todo, find a way to do this that won't throw an exception or require a double cast
+		If TypeOf this Is Nullable(Of T) Then
+			Return CType(this, Nullable(Of T))
+		Else
+			Return Nothing
+		End If
+	End Function
+
+	<Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal this As Object, ByVal [default] As Nullable(Of T)) As Nullable(Of T)
+		If this Is Nothing Then Return [default]
+
+		'todo, find a way to do this that won't throw an exception or require a double cast
+		If TypeOf this Is Nullable(Of T) Then
+			Return CType(this, Nullable(Of T))
+		Else
+			Return [default]
+		End If
+	End Function
 
 End Module
+

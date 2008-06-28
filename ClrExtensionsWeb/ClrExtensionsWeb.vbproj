@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C1918938-E4B5-444E-89DB-6739D7B48C90}</ProjectGuid>
+    <ProjectGuid>{37B441E0-2CED-40A6-AC75-A267CCBAFCE4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ClrExtensions</RootNamespace>
-    <AssemblyName>ClrExtensions</AssemblyName>
+    <RootNamespace>ClrExtensionsWeb</RootNamespace>
+    <AssemblyName>ClrExtensionsWeb</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -27,9 +27,8 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>ClrExtensions.xml</DocumentationFile>
+    <DocumentationFile>ClrExtensionsWeb.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,14 +36,13 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>ClrExtensions.xml</DocumentationFile>
+    <DocumentationFile>ClrExtensionsWeb.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -83,6 +81,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="System\Web\Caching\CacheExtension.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -102,22 +101,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <Compile Include="System\ByteExtension.vb" />
-    <Compile Include="System\Collections\IDictionaryEnumeratorExtension.vb" />
-    <Compile Include="System\Collections\IDictionaryExtension.vb" />
-    <Compile Include="System\Collections\IEnumerableExtension.vb" />
-    <Compile Include="System\Collections\IListExtension.vb" />
-    <Compile Include="System\Collections\ObjectEnumerable.vb" />
-    <Compile Include="System\Collections\ObjectEnumerator.vb" />
-    <Compile Include="System\Collections\TypeEnumerable.vb" />
-    <Compile Include="System\Collections\TypeEnumerator.vb" />
-    <Compile Include="System\Data\IDataReaderExtensions.vb" />
-    <Compile Include="System\DateTimeExtension.vb" />
-    <Compile Include="System\DecimalExtension.vb" />
-    <Compile Include="System\IntegerExtension.vb" />
-    <Compile Include="System\ObjectExtension.vb" />
-    <Compile Include="System\StringExtension.vb" />
-    <Compile Include="System\TypeExtension.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClrExtensionsCore\ClrExtensionsCore.vbproj">
+      <Project>{C1918938-E4B5-444E-89DB-6739D7B48C90}</Project>
+      <Name>ClrExtensionsCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
