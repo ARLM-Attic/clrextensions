@@ -29,6 +29,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>ClrExtensions.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,6 +39,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>ClrExtensions.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,6 +63,7 @@
     <Import Include="System.Data" />
     <Import Include="System.Diagnostics" />
     <Import Include="System.Linq" />
+    <Import Include="System.Runtime.CompilerServices" />
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +101,13 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Compile Include="System\ByteExtension.vb" />
+    <Compile Include="System\DateTimeExtension.vb" />
+    <Compile Include="System\DecimalExtension.vb" />
+    <Compile Include="System\ObjectExtension.vb" />
+    <Compile Include="System\StringExtension.vb" />
+    <Compile Include="System\TypeExtension.vb" />
+    <Compile Include="System\Web\Caching\CacheExtension.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
