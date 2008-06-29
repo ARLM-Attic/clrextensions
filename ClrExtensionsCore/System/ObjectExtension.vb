@@ -163,5 +163,13 @@ Public Module ObjectExtension
 		End If
 	End Function
 
+
+	Public Function ToNullableString(Of T As Structure)(ByVal this As Nullable(Of T)) As String
+		Return If(this.HasValue, this.ToString, "")
+	End Function
 End Module
+
+
+
+
 

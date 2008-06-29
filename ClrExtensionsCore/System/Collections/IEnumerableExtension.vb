@@ -63,6 +63,17 @@
 		Return result
 	End Function
 
+	<Extension()> Public Sub ForEach(Of T)(ByVal this As IEnumerable(Of T), ByVal action As Action(Of T))
+		For Each item In this
+			action(item)
+		Next
+	End Sub
+
+	<Extension()> Public Sub ForEach(ByVal this As IEnumerable, ByVal action As Action(Of Object))
+		For Each item In this
+			action(item)
+		Next
+	End Sub
 
 End Module
 

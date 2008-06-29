@@ -30,4 +30,29 @@ Public Module IListExtension
 		Return temp.Join(separator)
 	End Function
 
+
+	<Extension()> Public Function Chunk(Of T)(ByVal this As List(Of T), ByVal size As Integer) As List(Of List(Of T))
+		Dim result As New List(Of List(Of T))
+		For i = 0 To CInt(Math.Ceiling(this.Count / size)) - 1
+			result.Add(New List(Of T)(this.GetRange(i * size, Math.Min(size, this.Count - (i * size)))))
+		Next
+		Return result
+	End Function
+
+	<Extension()> Public Function GetRange(Of T)(ByVal this As IList(Of T), ByVal index As Integer, ByVal count As Integer) As List(Of T)
+		Dim result As New List(Of T)(count)
+		For i = index To Math.Min(index + count, this.Count) - 1
+			result.Add(this(i))
+		Next
+		Return result
+	End Function
+
+
+
 End Module
+
+
+
+
+
+

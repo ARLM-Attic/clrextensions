@@ -422,18 +422,47 @@
 	End Function
 
 	<Extension()> Public Function ToMemoryStream(ByVal this As String, ByVal encoding As Text.Encoding) As IO.MemoryStream
-
-		Dim bytes = this.ToByteArray(encoding)
-		Dim stream = New IO.MemoryStream(this.Length)
-		stream.Write(bytes, 0, bytes.Length)
-		stream.Position = 0
-
-		Return stream
+		Return New IO.MemoryStream(this.ToByteArray(encoding))
 	End Function
 
 	<Extension()> Public Function ToByteArray(ByVal this As String, ByVal encoding As Text.Encoding) As Byte()
 		Return encoding.GetBytes(this)
 	End Function
+
+	<Extension()> Public Function ToEnum(Of T As Structure)(ByVal this As String) As T
+		Return CType([Enum].Parse(GetType(T), this, True), T)
+	End Function
+
+
+	<Extension()> Public Function ToTitleCase(ByVal this As String) As String
+		Return Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(this)
+	End Function
+
+	<Extension()> Public Function Truncate(ByVal this As String, ByVal maxLength As Integer) As String
+		If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
+
+		If this = "" Then Return ""
+		If this.Length < maxLength Then Return this
+		Return this.Substring(0, maxLength - 3) & "..."
+	End Function
+
+	<Extension()> Public Function TruncateStart(ByVal this As String, ByVal maxLength As Integer) As String
+		If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
+
+		If this = "" Then Return ""
+		If this.Length < maxLength Then Return this
+		Return "..." & this.Right(maxLength - 3)
+	End Function
+
+
+	<Extension()> Public Function IsNumeric(ByVal this As String) As Boolean
+		Return Microsoft.VisualBasic.IsNumeric(this)
+	End Function
+
+
+	'TODO - Add the method for turning formatted strings like 12.3MB into longs
+
+
 
 End Module
 

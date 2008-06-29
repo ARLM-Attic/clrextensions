@@ -1,4 +1,4 @@
-﻿Public Module IDataReaderExtensions
+﻿Public Module IDataReaderExtension
 
 	<Extension()> Public Function ToEnumerable(ByVal this As IDataReader) As IEnumerable(Of IDataRecord)
 		Return New DataReaderEnumerable(this)
@@ -12,6 +12,27 @@
 		Next
 		Return result
 	End Function
+
+	<Extension()> Public Function ToDictionaryList(ByVal this As IDataReader) As List(Of Dictionary(Of String, Object))
+		Dim result As New List(Of Dictionary(Of String, Object))
+		For Each record In this.ToEnumerable
+			result.Add(record.ToDictionary)
+		Next
+		Return result
+	End Function
+
+	<Extension()> Public Function ToDictionary(ByVal this As IDataRecord) As Dictionary(Of String, Object)
+		Dim result As New Dictionary(Of String, Object)
+		For i = 0 To this.FieldCount - 1
+			If this.IsDBNull(i) Then
+				result.Add(this.GetName(i), Nothing)
+			Else
+				result.Add(this.GetName(i), this.GetValue(i))
+			End If
+		Next
+		Return result
+	End Function
+
 
 
 #Region "Old methods by name"

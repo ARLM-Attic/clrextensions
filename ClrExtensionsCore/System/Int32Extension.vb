@@ -1,6 +1,6 @@
 
 
-Public Module IntegerExtension
+Public Module Int32Extension
 	''' <summary>
 	''' Determines if a certain Enumeration Flag is set in a value. Both the value and the flag should be of the same enumeration type, but this isn't enforced.
 	''' </summary>
@@ -43,5 +43,12 @@ Public Module IntegerExtension
 
 		Return result.ToString
 	End Function
+
+
+	<Extension()> Public Function Pow(ByVal this As Integer, ByVal exponent As Integer) As Integer
+		Return CInt(this ^ exponent)
+	End Function
+
+
 
 End Module
