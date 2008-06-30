@@ -31,7 +31,7 @@ Public Module IListExtension
 	End Function
 
 
-	<Extension()> Public Function Chunk(Of T)(ByVal this As List(Of T), ByVal size As Integer) As List(Of List(Of T))
+	<Extension()> Public Function Chunk(Of T)(ByVal this As IList(Of T), ByVal size As Integer) As List(Of List(Of T))
 		Dim result As New List(Of List(Of T))
 		For i = 0 To CInt(Math.Ceiling(this.Count / size)) - 1
 			result.Add(New List(Of T)(this.GetRange(i * size, Math.Min(size, this.Count - (i * size)))))

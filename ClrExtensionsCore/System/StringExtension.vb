@@ -425,9 +425,6 @@
 		Return New IO.MemoryStream(this.ToByteArray(encoding))
 	End Function
 
-	<Extension()> Public Function ToByteArray(ByVal this As String, ByVal encoding As Text.Encoding) As Byte()
-		Return encoding.GetBytes(this)
-	End Function
 
 	<Extension()> Public Function ToEnum(Of T As Structure)(ByVal this As String) As T
 		Return CType([Enum].Parse(GetType(T), this, True), T)

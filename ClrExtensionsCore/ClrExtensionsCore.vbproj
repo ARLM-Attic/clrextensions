@@ -102,6 +102,11 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Compile Include="System\DoubleExtension.vb" />
+    <Compile Include="System\EnumExtension.vb" />
+    <Compile Include="System\EventHandlerExtension.vb" />
+    <Compile Include="System\ExceptionExtension.vb" />
+    <Compile Include="System\LongExtension.vb" />
     <Compile Include="System\ByteExtension.vb" />
     <Compile Include="System\Drawing\ColorExtension.vb" />
     <Compile Include="System\Collections\IDictionaryEnumeratorExtension.vb" />
@@ -117,9 +122,12 @@
     <Compile Include="System\DecimalExtension.vb" />
     <Compile Include="System\Int32Extension.vb" />
     <Compile Include="System\ObjectExtension.vb" />
-    <Compile Include="Scratch.vb" />
+    <Compile Include="System\Threading\ThreadingExtension.vb" />
     <Compile Include="System\StringExtension.vb" />
     <Compile Include="System\TypeExtension.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Guidelines.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

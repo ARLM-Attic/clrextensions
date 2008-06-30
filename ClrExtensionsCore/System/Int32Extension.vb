@@ -1,6 +1,12 @@
 
 
 Public Module Int32Extension
+
+	<Extension()> Public Function IsBetween(ByVal this As Integer, ByVal lowValue As Integer, ByVal highValue As Integer) As Boolean
+		Return lowValue <= this And this <= highValue
+	End Function
+
+
 	''' <summary>
 	''' Determines if a certain Enumeration Flag is set in a value. Both the value and the flag should be of the same enumeration type, but this isn't enforced.
 	''' </summary>

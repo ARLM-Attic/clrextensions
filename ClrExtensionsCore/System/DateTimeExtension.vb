@@ -124,8 +124,8 @@ Public Module DateTimeExtension
 	'Todo: Look up how to create this date string. It is used for RSS feeds
 	'<Extension()> Public Function ToRfc822DateString(ByVal this As Date) As String
 
-	<Extension()> Public Function Between(ByVal this As Date, ByVal start As Date, ByVal [end] As Date) As Boolean
-		Return start < this And this < [end]
+	<Extension()> Public Function IsBetween(ByVal this As Date, ByVal start As Date, ByVal [end] As Date) As Boolean
+		Return start <= this And this <= [end]
 	End Function
 
 End Module

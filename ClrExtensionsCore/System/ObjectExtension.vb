@@ -168,8 +168,3 @@ Public Module ObjectExtension
 		Return If(this.HasValue, this.ToString, "")
 	End Function
 End Module
-
-
-
-
-
