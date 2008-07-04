@@ -106,6 +106,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Compile Include="Scratch.vb" />
     <Compile Include="System\ByteFormat.vb" />
     <Compile Include="System\Collections\QuickEqualityComparer.vb" />
     <Compile Include="System\DoubleExtension.vb" />
