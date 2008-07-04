@@ -1,6 +1,4 @@
-
-
-Friend Class TypeEnumerable(Of T)
+<Obsolete("Untested")> Friend Class TypeEnumerable(Of T)
 	Implements IEnumerable(Of T)
 
 	Private m_Source As IEnumerable

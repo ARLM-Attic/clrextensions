@@ -1,5 +1,4 @@
-
-Public Module ObjectExtension
+<Obsolete("Untested")> Public Module ObjectExtension
 
 	''' <summary>
 	''' Creates a text dump of the object and its properties to an unlimited depth.

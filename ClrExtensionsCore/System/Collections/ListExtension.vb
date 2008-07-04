@@ -1,6 +1,4 @@
-
-
-Public Module ListExtension
+<Obsolete("Untested")> Public Module ListExtension
 
 	''' <summary>
 	''' This attempts to create a new list of the indicated type. This may fail due to casting.
@@ -182,5 +180,21 @@ Public Module ListExtension
 	End Function
 
 
-End Module
+	<Extension()> Public Function IndexesWhere(Of T)(ByVal source As IList(Of T), ByVal where As Func(Of T, Boolean)) As List(Of Integer)
+		Dim result As New List(Of Integer)
+		For i = 0 To source.Count - 1
+			If where(source(i)) Then result.Add(i)
+		Next
+		Return result
+	End Function
 
+	<Extension()> Public Function TakeEvery(Of T)(ByVal source As IList(Of T), ByVal startIndex As Integer, ByVal skip As Integer) As List(Of T)
+		Dim result As New List(Of T)
+		For i = startIndex To source.Count - 1 Step skip
+			result.Add(source(i))
+		Next
+		Return result
+	End Function
+
+
+End Module

@@ -1,5 +1,4 @@
-
-Friend Class ObjectEnumerator
+<Obsolete("Untested")> Friend Class ObjectEnumerator
 	Implements IEnumerator(Of Object)
 
 	Private m_Source As IEnumerator

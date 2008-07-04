@@ -68,7 +68,7 @@ Public Module DateTimeExtension
 	''' <param name="milliseconds">0 to 999</param>
 	''' <returns></returns>
 	''' <remarks>Technically speaking there are 61 seconds in a minute every few years, but it looks like the .NET framework doesn't support it</remarks>
-	<Extension()> Public Function SetTime(ByVal this As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer, ByVal milliseconds As Integer) As Date
+	<Obsolete("Untested")> <Extension()> Public Function SetTime(ByVal this As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer, ByVal milliseconds As Integer) As Date
 		If hours < 0 Or hours > 23 Then Throw New ArgumentOutOfRangeException("hours")
 		If minutes < 0 Or minutes > 59 Then Throw New ArgumentOutOfRangeException("minutes")
 		If seconds < 0 Or seconds > 59 Then Throw New ArgumentOutOfRangeException("seconds")
@@ -86,7 +86,7 @@ Public Module DateTimeExtension
 	''' <param name="seconds">0 to 59</param>
 	''' <returns></returns>
 	''' <remarks>Technically speaking there are 61 seconds in a minute every few years, but it looks like the .NET framework doesn't support it</remarks>
-	<Extension()> Public Function SetTime(ByVal this As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As Date
+	<Obsolete("Untested")> <Extension()> Public Function SetTime(ByVal this As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As Date
 		If hours < 0 Or hours > 23 Then Throw New ArgumentOutOfRangeException("hours")
 		If minutes < 0 Or minutes > 59 Then Throw New ArgumentOutOfRangeException("minutes")
 		If seconds < 0 Or seconds > 59 Then Throw New ArgumentOutOfRangeException("seconds")

@@ -2,7 +2,7 @@ Imports ClrExtensions
 
 
 
-Public Module ListControlExtension
+<Obsolete("Untested")> Public Module ListControlExtension
 	'TODO Maybe the AddItem methods should return the newly created item
 
 	<Extension()> Public Sub AddItem(ByVal this As Web.UI.WebControls.ListItemCollection, ByVal text As String, ByVal value As String)

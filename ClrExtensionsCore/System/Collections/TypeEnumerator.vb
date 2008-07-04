@@ -1,5 +1,4 @@
-
-Friend Class TypeEnumerator(Of T)
+<Obsolete("Untested")> Friend Class TypeEnumerator(Of T)
 	Implements IEnumerator(Of T)
 
 	Private m_Source As IEnumerator

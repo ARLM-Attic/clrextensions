@@ -354,14 +354,9 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub ToBitStringTest()
-		Assert.Inconclusive("To short to bother testing as this time.")
-
-		'Dim this As Byte = 0 ' TODO: Initialize to an appropriate value
-		'Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
-		'Dim actual As String
-		'actual = ByteExtension.ToBitString(this)
-		'Assert.AreEqual(expected, actual)
-		'Assert.Inconclusive("Verify the correctness of this test method.")
+		For i = 0 To bArray.Length - 1
+			Assert.AreEqual(BitStrings(i), bArray(i).ToBitString)
+		Next
 	End Sub
 
 	'''<summary>

@@ -28,4 +28,18 @@ Parameter Validation:
 	All methods should be as permissive as possible, especially with parameters that may be passed in from the user. In general, null strings/collections should be treated as empty strings/collections.
 	
 
+Parameter Names:
+
+	Name parameters as if they were normal functions. Don't use "this" for a parameter name.
+	
+	The names "value" and "source" are good for scalars and collections respectively.
+	
+Testing:
+
+	Anything that has not been tested should be marked as "Obsolete" either directly or at the module level.
+	
+Lists and Enumerables:
+
+	Functions that take lists should return lists.
+	Functions that take enumerables should return enumerables
 	

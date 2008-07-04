@@ -1,4 +1,4 @@
-﻿Public Module IDataReaderExtension
+﻿<Obsolete("Untested")> Public Module IDataReaderExtension
 
 	<Extension()> Public Function ToEnumerable(ByVal this As IDataReader) As IEnumerable(Of IDataRecord)
 		Return New DataReaderEnumerable(this)
