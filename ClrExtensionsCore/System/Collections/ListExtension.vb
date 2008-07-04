@@ -1,6 +1,6 @@
 
 
-Public Module IListExtension
+Public Module ListExtension
 
 	''' <summary>
 	''' This attempts to create a new list of the indicated type. This may fail due to casting.

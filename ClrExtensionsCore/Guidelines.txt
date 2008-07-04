@@ -9,8 +9,10 @@ Basic Organization:
 	Extension methods will be contained in modules names "xxxExtension" where xxx is the class being extended.
 
 	Extensions for arrays will be in the parent class's module.
+	
+	No module name may start with the interface prefix I. For example, extension methods for IList go in the ListExtension module. Likewise, IDictionary methods go in DictionaryExtension.
 
-	Exension methods that don't take an instance method sill follow the "xxxExtension" patther. For example, ThreadExtension.Sleep(minutes, seconds) will go there.
+	Exension methods that don't take an instance method sill follow the "xxxExtension" pattern. For example, ThreadExtension.Sleep(minutes, seconds) will go there.
 
 Special rule for Strings:
 	Methods that extend String, but don't return a string, are not in the StringExtension module. Rather, they are with the returned type. For example, String.ToByteArray(encoding) is with Byte().ToString in ByteExtension.

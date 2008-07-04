@@ -33,10 +33,10 @@ Public Module DateTimeExtension
 
 	<Extension()> Public Function Previous(ByVal this As Date, ByVal dayofWeek As DayOfWeek) As Date
 		Dim temp = this.DayOfWeek - dayofWeek
-		If temp < 0 Then
-			Return this.Date.AddDays(temp)
+		If temp > 0 Then
+			Return this.Date.AddDays(-temp)
 		Else
-			Return this.Date.AddDays(temp - 7)
+			Return this.Date.AddDays(-7 - temp)
 		End If
 	End Function
 
@@ -45,7 +45,7 @@ Public Module DateTimeExtension
 		If result.DayOfWeek = dayofWeek Then
 			Return result
 		Else
-			result.Next(dayofWeek)
+			Return result.Next(dayofWeek)
 		End If
 	End Function
 
@@ -54,7 +54,7 @@ Public Module DateTimeExtension
 		If result.DayOfWeek = dayofWeek Then
 			Return result
 		Else
-			result.Previous(dayofWeek)
+			Return result.Previous(dayofWeek)
 		End If
 	End Function
 

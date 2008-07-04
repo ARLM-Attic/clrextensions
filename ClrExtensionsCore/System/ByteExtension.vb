@@ -11,8 +11,7 @@ Public Module ByteExtension
 	''' <remarks></remarks>
 	''' <exception cref="System.FormatException">Thrown if the format string is malformed.</exception>
 	<Extension()> Public Function ToString(ByVal this As IEnumerable(Of Byte), ByVal format As String) As String
-		Dim groupSize As Integer = 0
-		Return ToString(this, format, groupSize)
+		Return ToString(this, format, 0)
 	End Function
 
 	''' <summary>
@@ -20,13 +19,13 @@ Public Module ByteExtension
 	''' </summary>
 	''' <param name="this"></param>
 	''' <param name="format">Null, "", or a valid string for Byte.ToString</param>
-	''' <param name="groupSize">Amount of bytes to group together. Each group is separated by a space.</param>
+	''' <param name="groupingSize">Amount of bytes to group together. Each group is separated by a space.</param>
 	''' <returns>An empty string if this is empty/null</returns>
 	''' <remarks></remarks>
 	''' <exception cref="System.FormatException">Thrown if the format string is malformed.</exception>
-	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is groupSize &lt; 0.</exception>
-	<Extension()> Function ToString(ByVal this As IEnumerable(Of Byte), ByVal format As String, ByVal groupSize As Integer) As String
-		If groupSize < 0 Then Throw New ArgumentOutOfRangeException("groupSize")
+	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
+	<Extension()> Function ToString(ByVal this As IEnumerable(Of Byte), ByVal format As String, ByVal groupingSize As Integer) As String
+		If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
 
 		If this Is Nothing Then Return ""
 
@@ -37,7 +36,7 @@ Public Module ByteExtension
 		For Each b In this
 			result.Append(b.ToString(format))
 			count += 1
-			If groupSize > 0 AndAlso count Mod groupSize = 0 Then result.Append(" ")
+			If groupingSize > 0 AndAlso count Mod groupingSize = 0 Then result.Append(" ")
 		Next
 		Return result.ToString.Trim
 	End Function
@@ -48,11 +47,13 @@ Public Module ByteExtension
 	''' <param name="this"></param>
 	''' <param name="format">Must be a defined value</param>
 	''' <returns>An empty string if this is empty/null</returns>
-	''' <remarks></remarks>
+	''' <remarks>The grouping size is 0, except for Bits which is 1</remarks>
 	''' <exception cref="System.ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
 	Public Function ToString(ByVal this As IEnumerable(Of Byte), ByVal format As ByteFormat) As String
-		Dim groupSize As Integer = 0
-		Return ToString(this, format, groupSize)
+		Dim groupingSize = 0
+		If format = ByteFormat.Bits Then groupingSize = 1
+
+		Return ToString(this, format, groupingSize)
 	End Function
 
 	''' <summary>
@@ -60,15 +61,15 @@ Public Module ByteExtension
 	''' </summary>
 	''' <param name="this"></param>
 	''' <param name="format">Must be a defined value. If set to Bits, the group-size is limited to 0 or 1.</param>
-	''' <param name="groupSize">Amount of bytes to group together. Each group is separated by a space.</param>
+	''' <param name="groupingSize">Amount of bytes to group together. Each group is separated by a space.</param>
 	''' <returns>An empty string if this is empty/null</returns>
 	''' <remarks></remarks>
 	''' <exception cref="System.ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
-	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is groupSize &lt; 0.</exception>
-	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is format is Bit and groupSize &gt; 1.</exception>
-	<Extension()> Function ToString(ByVal this As IEnumerable(Of Byte), ByVal format As ByteFormat, ByVal groupSize As Integer) As String
-		If groupSize < 0 Then Throw New ArgumentOutOfRangeException("groupSize")
-		If groupSize > 1 And format = ByteFormat.Bits Then Throw New ArgumentOutOfRangeException("groupSize", "The group size cannot be greater than 1 for the format mode Bit")
+	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
+	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is format is Bit and groupingSize &gt; 1.</exception>
+	<Extension()> Function ToString(ByVal this As IEnumerable(Of Byte), ByVal format As ByteFormat, ByVal groupingSize As Integer) As String
+		If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
+		If groupingSize > 1 And format = ByteFormat.Bits Then Throw New ArgumentOutOfRangeException("groupingSize", "The group size cannot be greater than 1 for the format mode Bit")
 		If Not IsDefined(format) Then Throw New ArgumentOutOfRangeException("format")
 
 		If this Is Nothing Then Return ""
@@ -82,13 +83,13 @@ Public Module ByteExtension
 				For Each b In this
 					result.Add(b.ToBitString)
 				Next
-				If groupSize = 0 Then Return result.Join("") Else Return result.Join(" ")
+				If groupingSize = 0 Then Return result.Join("") Else Return result.Join(" ")
 
 			Case ByteFormat.LowerCaseHex
-				Return this.ToString("x2", groupSize)
+				Return this.ToString("x2", groupingSize)
 
 			Case ByteFormat.UpperCaseHex
-				Return this.ToString("X2", groupSize)
+				Return this.ToString("X2", groupingSize)
 
 			Case Else
 				Debug.Assert(False, "This should have been caught above. Did someone add a new ByteFormat?")

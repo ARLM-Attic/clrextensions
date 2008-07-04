@@ -109,10 +109,9 @@
     <Compile Include="System\LongExtension.vb" />
     <Compile Include="System\ByteExtension.vb" />
     <Compile Include="System\Drawing\ColorExtension.vb" />
-    <Compile Include="System\Collections\IDictionaryEnumeratorExtension.vb" />
-    <Compile Include="System\Collections\IDictionaryExtension.vb" />
-    <Compile Include="System\Collections\IEnumerableExtension.vb" />
-    <Compile Include="System\Collections\IListExtension.vb" />
+    <Compile Include="System\Collections\DictionaryExtension.vb" />
+    <Compile Include="System\Collections\EnumerableExtension.vb" />
+    <Compile Include="System\Collections\ListExtension.vb" />
     <Compile Include="System\Collections\ObjectEnumerable.vb" />
     <Compile Include="System\Collections\ObjectEnumerator.vb" />
     <Compile Include="System\Collections\TypeEnumerable.vb" />

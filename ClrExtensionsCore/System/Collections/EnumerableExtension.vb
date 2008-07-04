@@ -1,4 +1,4 @@
-﻿Public Module IEnumerableExtension
+﻿Public Module EnumerableExtension
 
 	<Extension()> Public Function ToIEnumerable(ByVal this As IEnumerable) As IEnumerable(Of Object)
 		Return New ObjectEnumerable(this)

@@ -232,13 +232,24 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub ToStringTest2()
-		Dim this As IEnumerable(Of Byte) = Nothing ' TODO: Initialize to an appropriate value
-		Dim format As String = String.Empty	' TODO: Initialize to an appropriate value
-		Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim actual As String
-		actual = ByteExtension.ToString(this, format)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		'bList versions skips the pre-allocation logic
+
+
+
+		Assert.AreEqual("", ByteExtension.ToString(CType(Nothing, IEnumerable(Of Byte)), "x2"))
+		Assert.AreEqual("", ByteExtension.ToString(New Byte() {}, "x2"))
+		Assert.AreEqual("", ByteExtension.ToString(New List(Of Byte), "x2"))
+		Assert.AreEqual(String.Join("", LowerHexStrings), ByteExtension.ToString(bArray, "x2"))
+		Assert.AreEqual(String.Join("", LowerHexStrings), ByteExtension.ToString(bList, "x2"))
+		Assert.AreEqual(String.Join("", LowerHexStrings), ByteExtension.ToString(bList.Take(100), "x2"))
+
+		Assert.AreEqual("", ByteExtension.ToString(CType(Nothing, IEnumerable(Of Byte)), "X2"))
+		Assert.AreEqual("", ByteExtension.ToString(New Byte() {}, "X2"))
+		Assert.AreEqual("", ByteExtension.ToString(New List(Of Byte), "X2"))
+		Assert.AreEqual(String.Join("", UpperHexStrings), ByteExtension.ToString(bArray, "X2"))
+		Assert.AreEqual(String.Join("", UpperHexStrings), ByteExtension.ToString(bList, "X2"))
+		Assert.AreEqual(String.Join("", UpperHexStrings), ByteExtension.ToString(bList.Take(100), "X2"))
+
 	End Sub
 
 	'''<summary>
@@ -246,13 +257,15 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub ToStringTest1()
-		Dim this() As Byte = Nothing ' TODO: Initialize to an appropriate value
-		Dim encoding As Encoding = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim actual As String
-		actual = ByteExtension.ToString(this, encoding)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Assert.Inconclusive("To short to bother testing as this time.")
+
+		'Dim this() As Byte = Nothing ' TODO: Initialize to an appropriate value
+		'Dim encoding As Encoding = Nothing ' TODO: Initialize to an appropriate value
+		'Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
+		'Dim actual As String
+		'actual = ByteExtension.ToString(this, encoding)
+		'Assert.AreEqual(expected, actual)
+		'Assert.Inconclusive("Verify the correctness of this test method.")
 	End Sub
 
 	'''<summary>
@@ -260,14 +273,64 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub ToStringTest()
-		Dim this As IEnumerable(Of Byte) = Nothing ' TODO: Initialize to an appropriate value
-		Dim format As String = String.Empty	' TODO: Initialize to an appropriate value
-		Dim groupSize As Integer = 0 ' TODO: Initialize to an appropriate value
-		Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim actual As String
-		actual = ByteExtension.ToString(this, format, groupSize)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Dim groupSize = 0
+
+		Assert.AreEqual("", ByteExtension.ToString(CType(Nothing, IEnumerable(Of Byte)), "x2", groupSize))
+		Assert.AreEqual("", ByteExtension.ToString(New Byte() {}, "x2", groupSize))
+		Assert.AreEqual("", ByteExtension.ToString(New List(Of Byte), "x2", groupSize))
+
+		Assert.AreEqual("", ByteExtension.ToString(CType(Nothing, IEnumerable(Of Byte)), "X2", groupSize))
+		Assert.AreEqual("", ByteExtension.ToString(New Byte() {}, "X2", groupSize))
+		Assert.AreEqual("", ByteExtension.ToString(New List(Of Byte), "X2", groupSize))
+
+
+		Assert.AreEqual(String.Join("", LowerHexStrings), ByteExtension.ToString(bArray, "x2", groupSize))
+		Assert.AreEqual(String.Join("", LowerHexStrings), ByteExtension.ToString(bList, "x2", groupSize))
+		Assert.AreEqual(String.Join("", LowerHexStrings), ByteExtension.ToString(bList.Take(100), "x2", groupSize))
+
+		Assert.AreEqual(String.Join("", UpperHexStrings), ByteExtension.ToString(bArray, "X2", groupSize))
+		Assert.AreEqual(String.Join("", UpperHexStrings), ByteExtension.ToString(bList, "X2", groupSize))
+		Assert.AreEqual(String.Join("", UpperHexStrings), ByteExtension.ToString(bList.Take(100), "X2", groupSize))
+
+
+		groupSize = 1
+
+
+		Assert.AreEqual(String.Join(" ", LowerHexStrings), ByteExtension.ToString(bArray, "x2", groupSize))
+		Assert.AreEqual(String.Join(" ", LowerHexStrings), ByteExtension.ToString(bList, "x2", groupSize))
+		Assert.AreEqual(String.Join(" ", LowerHexStrings), ByteExtension.ToString(bList.Take(100), "x2", groupSize))
+
+		Assert.AreEqual(String.Join(" ", UpperHexStrings), ByteExtension.ToString(bArray, "X2", groupSize))
+		Assert.AreEqual(String.Join(" ", UpperHexStrings), ByteExtension.ToString(bList, "X2", groupSize))
+		Assert.AreEqual(String.Join(" ", UpperHexStrings), ByteExtension.ToString(bList.Take(100), "X2", groupSize))
+
+		groupSize = 2
+
+		Dim lHex2 = ToStringTest3Extracted(LowerHexStrings, 2)
+		Dim uHex2 = ToStringTest3Extracted(UpperHexStrings, 2)
+
+		Assert.AreEqual(lHex2, ByteExtension.ToString(bArray, "x2", groupSize))
+		Assert.AreEqual(lHex2, ByteExtension.ToString(bList, "x2", groupSize))
+		Assert.AreEqual(lHex2, ByteExtension.ToString(bList.Take(100), "x2", groupSize))
+
+		Assert.AreEqual(uHex2, ByteExtension.ToString(bArray, "X2", groupSize))
+		Assert.AreEqual(uHex2, ByteExtension.ToString(bList, "X2", groupSize))
+		Assert.AreEqual(uHex2, ByteExtension.ToString(bList.Take(100), "X2", groupSize))
+
+
+		groupSize = 4
+
+		Dim lHex4 = ToStringTest3Extracted(LowerHexStrings, 4)
+		Dim uHex4 = ToStringTest3Extracted(UpperHexStrings, 4)
+
+		Assert.AreEqual(lHex4, ByteExtension.ToString(bArray, "x2", groupSize))
+		Assert.AreEqual(lHex4, ByteExtension.ToString(bList, "x2", groupSize))
+		Assert.AreEqual(lHex4, ByteExtension.ToString(bList.Take(100), "x2", groupSize))
+
+		Assert.AreEqual(uHex4, ByteExtension.ToString(bArray, "X2", groupSize))
+		Assert.AreEqual(uHex4, ByteExtension.ToString(bList, "X2", groupSize))
+		Assert.AreEqual(uHex4, ByteExtension.ToString(bList.Take(100), "X2", groupSize))
+
 	End Sub
 
 	'''<summary>
@@ -275,13 +338,15 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub ToByteArrayTest()
-		Dim this As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim encoding As Encoding = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected() As Byte = Nothing ' TODO: Initialize to an appropriate value
-		Dim actual() As Byte
-		actual = ByteExtension.ToByteArray(this, encoding)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Assert.Inconclusive("To short to bother testing as this time.")
+
+		'Dim this As String = String.Empty ' TODO: Initialize to an appropriate value
+		'Dim encoding As Encoding = Nothing ' TODO: Initialize to an appropriate value
+		'Dim expected() As Byte = Nothing ' TODO: Initialize to an appropriate value
+		'Dim actual() As Byte
+		'actual = ByteExtension.ToByteArray(this, encoding)
+		'Assert.AreEqual(expected, actual)
+		'Assert.Inconclusive("Verify the correctness of this test method.")
 	End Sub
 
 	'''<summary>
@@ -289,12 +354,14 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub ToBitStringTest()
-		Dim this As Byte = 0 ' TODO: Initialize to an appropriate value
-		Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim actual As String
-		actual = ByteExtension.ToBitString(this)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Assert.Inconclusive("To short to bother testing as this time.")
+
+		'Dim this As Byte = 0 ' TODO: Initialize to an appropriate value
+		'Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
+		'Dim actual As String
+		'actual = ByteExtension.ToBitString(this)
+		'Assert.AreEqual(expected, actual)
+		'Assert.Inconclusive("Verify the correctness of this test method.")
 	End Sub
 
 	'''<summary>
@@ -302,12 +369,58 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub IsBitSetTest()
-		Dim this As Byte = 0 ' TODO: Initialize to an appropriate value
-		Dim bit As Integer = 0 ' TODO: Initialize to an appropriate value
-		Dim expected As Boolean = False	' TODO: Initialize to an appropriate value
-		Dim actual As Boolean
-		actual = ByteExtension.IsBitSet(this, bit)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Dim b1 As Byte = 1
+		Dim b2 As Byte = 2
+		Dim b3 As Byte = 3
+		Dim b4 As Byte = 4
+		Dim b5 As Byte = 26
+		Dim b6 As Byte = 145
+
+		For i = 0 To 7
+			Assert.AreEqual(False, ByteExtension.IsBitSet(b0, i))
+		Next
+
+		For i = 0 To 7
+			Assert.AreEqual(i = 0, ByteExtension.IsBitSet(b1, i))
+		Next
+
+		For i = 0 To 7
+			Assert.AreEqual(i = 1, ByteExtension.IsBitSet(b2, i))
+		Next
+
+		For i = 0 To 7
+			Assert.AreEqual(i = 1 Or i = 0, ByteExtension.IsBitSet(b3, i))
+		Next
+
+		For i = 0 To 7
+			Assert.AreEqual(i = 2, ByteExtension.IsBitSet(b4, i))
+		Next
+
+		'00011010
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b5, 0))
+		Assert.AreEqual(True, ByteExtension.IsBitSet(b5, 1))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b5, 2))
+		Assert.AreEqual(True, ByteExtension.IsBitSet(b5, 3))
+		Assert.AreEqual(True, ByteExtension.IsBitSet(b5, 4))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b5, 5))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b5, 6))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b5, 7))
+
+
+		'10010001
+		Assert.AreEqual(True, ByteExtension.IsBitSet(b6, 0))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b6, 1))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b6, 2))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b6, 3))
+		Assert.AreEqual(True, ByteExtension.IsBitSet(b6, 4))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b6, 5))
+		Assert.AreEqual(False, ByteExtension.IsBitSet(b6, 6))
+		Assert.AreEqual(True, ByteExtension.IsBitSet(b6, 7))
+
+
+		For i = 0 To 7
+			Assert.AreEqual(True, ByteExtension.IsBitSet(bMax, i))
+		Next
 	End Sub
 End Class
+
