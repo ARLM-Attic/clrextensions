@@ -109,6 +109,7 @@
     <Compile Include="Scratch.vb" />
     <Compile Include="System\ByteFormat.vb" />
     <Compile Include="System\Collections\QuickEqualityComparer.vb" />
+    <Compile Include="System\Collections\SortedList.vb" />
     <Compile Include="System\DoubleExtension.vb" />
     <Compile Include="System\EnumExtension.vb" />
     <Compile Include="System\EventHandlerExtension.vb" />

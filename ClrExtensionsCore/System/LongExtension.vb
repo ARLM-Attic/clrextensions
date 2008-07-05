@@ -21,11 +21,11 @@
 	End Function
 
 
-	<Extension()> Public Function ParseByteSize(ByVal this As String) As Long
-		If this Is Nothing Then Throw New ArgumentNullException("this")
+	<Extension()> Public Function ParseByteSize(ByVal value As String) As Long
+		If value Is Nothing Then Throw New ArgumentNullException("value")
 
 
-		Dim temp As String = this.Replace(" ", "").ToUpper
+		Dim temp As String = value.Replace(" ", "").ToUpper
 
 		Try
 			If temp.EndsWith("GB") Then

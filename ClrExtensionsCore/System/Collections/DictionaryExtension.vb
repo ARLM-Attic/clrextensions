@@ -70,4 +70,29 @@
 	End Function
 
 
+	<Extension()> Public Function ToDictionary(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As Dictionary(Of String, String)
+		If rowSeparator = columnSeparator Then Return ToDictionary(source, rowSeparator)
+
+		Dim result As New Dictionary(Of String, String)
+		Dim rows = source.Split(rowSeparator, StringSplitOptions.RemoveEmptyEntries)
+
+		For Each pair In rows.Select(Function(s) s.Split(columnSeparator, 2))
+			If pair.Length = 2 Then result.Add(pair(0), pair(1)) Else result.Add(pair(0), "")
+		Next
+
+		Return result
+	End Function
+
+	<Extension()> Public Function ToDictionary(ByVal source As String, ByVal separator As String) As Dictionary(Of String, String)
+		Dim result As New Dictionary(Of String, String)
+		Dim rows = source.Split(separator)
+
+		If rows.Count Mod 2 <> 0 Then Throw New FormatException("This contains an odd number of entries")
+		For i = 0 To rows.Count - 1 Step 2
+			result.Add(rows(i), rows(i + 1))
+		Next
+
+		Return result
+	End Function
+
 End Module

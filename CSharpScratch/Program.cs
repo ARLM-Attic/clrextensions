@@ -10,6 +10,7 @@ namespace CSharpScratch
 	{
 		static EventHandler<EventArgs> Boom;
 
+		static SortedList<string, string> XXXX;
 
 		static void commit() { }
 		static void report_that_b_failed() { }
@@ -27,6 +28,7 @@ namespace CSharpScratch
 
 
 
+			var X = new Dictionary<int, bool, Func<string>>();
 			X.Add(5, true, () => "Boom!");
 			X.Add(5, false, () => "Splat!");
 			X.Add(15, true, () => "Ka-Pow");
@@ -47,4 +49,5 @@ namespace CSharpScratch
 		}
 
 	}
+
 }

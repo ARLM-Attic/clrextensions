@@ -3,14 +3,14 @@
 	''' <summary>
 	''' Creates a text dump of the object and its properties to an unlimited depth.
 	''' </summary>
-	''' <param name="this"></param>
+	''' <param name="value"></param>
 	''' <returns></returns>
 	''' <remarks>This tracks the object graph to prevent circular references</remarks>
-	<Extension()> Function ToDebugString(ByVal this As Object) As String
+	<Extension()> Function ToDebugString(ByVal value As Object) As String
 		Dim result As New Text.StringBuilder
 		Dim graph As New List(Of Object)
 
-		DebugString(Nothing, this, result, 0, graph)
+		DebugString(Nothing, value, result, 0, graph)
 		Return result.ToString
 
 	End Function
@@ -115,55 +115,55 @@
 		Return DirectCast(binaryFormatter.Deserialize(memoryStream), T)
 	End Function
 
-	<Extension()> Public Function IsIn(Of T)(ByVal this As T, ByVal ParamArray list() As T) As Boolean
-		Return list.Contains(this)
+	<Extension()> Public Function IsIn(Of T)(ByVal value As T, ByVal ParamArray list() As T) As Boolean
+		Return list.Contains(value)
 	End Function
 
-	<Extension()> Public Function IsIn(Of T)(ByVal this As T, ByVal list As IList(Of T)) As Boolean
-		Return list.Contains(this)
+	<Extension()> Public Function IsIn(Of T)(ByVal value As T, ByVal list As IList(Of T)) As Boolean
+		Return list.Contains(value)
 	End Function
 
 
 	'TODO - Convert the object to XML using an XML Serializer
 	'<Extension()> Public Function ToXDocument(ByVal this As Object) As XDocument
 
-	<Extension()> Public Function Cast(Of T)(ByVal this As Object) As T
-		Return CType(this, T)
+	<Extension()> Public Function Cast(Of T)(ByVal value As Object) As T
+		Return CType(value, T)
 	End Function
 
-	<Extension()> Public Function [TryCast](Of T As Class)(ByVal this As Object) As T
-		Return TryCast(this, T)
+	<Extension()> Public Function [TryCast](Of T As Class)(ByVal value As Object) As T
+		Return TryCast(value, T)
 	End Function
 
-	<Extension()> Public Function [TryCast](Of T As Class)(ByVal this As Object, ByVal [default] As T) As T
-		Dim result = TryCast(this, T)
+	<Extension()> Public Function [TryCast](Of T As Class)(ByVal value As Object, ByVal [default] As T) As T
+		Dim result = TryCast(value, T)
 		Return If(result, [default])
 	End Function
 
-	<Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal this As Object) As Nullable(Of T)
-		If this Is Nothing Then Return Nothing
+	<Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal value As Object) As Nullable(Of T)
+		If value Is Nothing Then Return Nothing
 
 		'todo, find a way to do this that won't throw an exception or require a double cast
-		If TypeOf this Is Nullable(Of T) Then
-			Return CType(this, Nullable(Of T))
+		If TypeOf value Is Nullable(Of T) Then
+			Return CType(value, Nullable(Of T))
 		Else
 			Return Nothing
 		End If
 	End Function
 
-	<Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal this As Object, ByVal [default] As Nullable(Of T)) As Nullable(Of T)
-		If this Is Nothing Then Return [default]
+	<Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal value As Object, ByVal [default] As Nullable(Of T)) As Nullable(Of T)
+		If value Is Nothing Then Return [default]
 
 		'todo, find a way to do this that won't throw an exception or require a double cast
-		If TypeOf this Is Nullable(Of T) Then
-			Return CType(this, Nullable(Of T))
+		If TypeOf value Is Nullable(Of T) Then
+			Return CType(value, Nullable(Of T))
 		Else
 			Return [default]
 		End If
 	End Function
 
 
-	Public Function ToNullableString(Of T As Structure)(ByVal this As Nullable(Of T)) As String
-		Return If(this.HasValue, this.ToString, "")
+	Public Function ToNullableString(Of T As Structure)(ByVal value As Nullable(Of T)) As String
+		Return If(value.HasValue, value.ToString, "")
 	End Function
 End Module

@@ -18,13 +18,13 @@
 	''' <summary>
 	''' Truncates the decimal to the specified precision
 	''' </summary>
-	''' <param name="this"></param>
+	''' <param name="value"></param>
 	''' <param name="precision">Number of decimal places to retain. If negative, number of zeros to the left of the decimal place.</param>
 	''' <returns></returns>
 	''' <remarks>This may inadvertendly throw an overflow exception for large values with high precision</remarks>
-	<Extension()> Public Function TruncatePrecision(ByVal this As Decimal, ByVal precision As Integer) As Decimal
+	<Extension()> Public Function TruncatePrecision(ByVal value As Decimal, ByVal precision As Integer) As Decimal
 		Dim precisionPower = Pow10(precision)
-		Return Decimal.Truncate(this * precisionPower) / precisionPower
+		Return Decimal.Truncate(value * precisionPower) / precisionPower
 
 		'TODO: Rewrite this so it will work with any decimal
 	End Function
