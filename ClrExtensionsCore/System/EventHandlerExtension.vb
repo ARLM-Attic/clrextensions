@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Public Module EventHandlerExtension
+<Untested()> Public Module EventHandlerExtension
 
 	''' <summary>
 	''' This method is only available to C# applications. VB programs should use the RaiseEvent keyword instead.

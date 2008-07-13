@@ -7,7 +7,7 @@ Imports System.Runtime.InteropServices
 <Serializable()> _
 <DebuggerDisplay("Count = {Count}")> _
 <ComVisible(False)> _
-<Obsolete("Untested")> Public Class SortedList(Of T)
+<Untested()> Public Class SortedList(Of T)
 	Implements IList(Of T)
 	Implements IList
 

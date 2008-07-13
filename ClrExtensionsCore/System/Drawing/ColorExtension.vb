@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Public Module ColorExtension
+<Untested()> Public Module ColorExtension
 	'Reference: http://en.wikipedia.org/wiki/HSL_color_space
 
 

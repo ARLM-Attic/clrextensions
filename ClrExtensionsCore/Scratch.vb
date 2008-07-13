@@ -5,7 +5,7 @@
 
 End Module
 
-<Obsolete("Untested")> Public Structure Tuple(Of TA, TB)
+<Untested()> Public Structure Tuple(Of TA, TB)
 	Implements IEquatable(Of Tuple(Of TA, TB))
 
 	Private m_A As TA
@@ -48,7 +48,7 @@ End Module
 End Structure
 
 
-<Obsolete("Untested")> Public Structure Tuple(Of TA, TB, TC)
+<Untested()> Public Structure Tuple(Of TA, TB, TC)
 	Implements IEquatable(Of Tuple(Of TA, TB, TC))
 
 	Private m_A As TA
@@ -96,11 +96,11 @@ End Structure
 	End Function
 
 	Public Overloads Function Equals(ByVal other As Tuple(Of TA, TB, TC)) As Boolean Implements System.IEquatable(Of Tuple(Of TA, TB, TC)).Equals
-		Return Object.Equals(A, other.A) AndAlso Object.Equals(B, other.B) AndAlso Object.Equals(C, other.c)
+		Return Object.Equals(A, other.A) AndAlso Object.Equals(B, other.B) AndAlso Object.Equals(C, other.C)
 	End Function
 End Structure
 
-<Obsolete("Untested")> Public Class Dictionary(Of TKey1, TKey2, TValue)
+<Untested()> Public Class Dictionary(Of TKey1, TKey2, TValue)
 	Inherits Dictionary(Of Tuple(Of TKey1, TKey2), TValue)
 
 	Private Shared Function MakeKey(ByVal key1 As TKey1, ByVal key2 As TKey2) As Tuple(Of TKey1, TKey2)
@@ -133,7 +133,7 @@ End Structure
 	End Function
 End Class
 
-<Obsolete("Untested")> Public Class Dictionary(Of TKey1, TKey2, TKey3, TValue)
+<Untested()> Public Class Dictionary(Of TKey1, TKey2, TKey3, TValue)
 	Inherits Dictionary(Of Tuple(Of TKey1, TKey2, TKey3), TValue)
 
 	Public Sub New()

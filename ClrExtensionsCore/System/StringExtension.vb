@@ -1,4 +1,4 @@
-﻿<Obsolete("Untested")> Public Module StringExtension
+﻿<Untested()> Public Module StringExtension
 
 	''' <summary>
 	''' Joins all the strings in the supplied enumeration.

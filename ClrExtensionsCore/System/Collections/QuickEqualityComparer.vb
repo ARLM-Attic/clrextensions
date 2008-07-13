@@ -1,5 +1,5 @@
 
-<Obsolete("untested")> Public Class QuickEqualityComparer(Of T)
+<Untested()> Public Class QuickEqualityComparer(Of T)
 	Implements IEqualityComparer(Of T)
 
 	Private m_EqualityFunction As Func(Of T, T, Boolean)

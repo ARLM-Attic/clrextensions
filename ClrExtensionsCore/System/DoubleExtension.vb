@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Public Module DoubleExtension
+<Untested()> Public Module DoubleExtension
 
 	''' <summary>
 	''' 

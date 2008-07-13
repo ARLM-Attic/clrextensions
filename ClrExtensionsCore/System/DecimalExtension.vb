@@ -1,5 +1,5 @@
 
-<Obsolete("Untested")> Public Module DecimalExtension
+<Untested()> Public Module DecimalExtension
 
 	Private Function Pow10(ByVal exponent As Integer) As Decimal
 		Dim result As Decimal = 1

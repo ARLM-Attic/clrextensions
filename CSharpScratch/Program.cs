@@ -3,51 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ClrExtensions;
+using ClrExtensions.Win32.Http;
 
 namespace CSharpScratch
 {
 	class Program
 	{
-		static EventHandler<EventArgs> Boom;
-
-		static SortedList<string, string> XXXX;
-
-		static void commit() { }
-		static void report_that_b_failed() { }
-		static void report_that_a_failed() { }
-
 		static void Main(string[] args)
 		{
-			var d = new Dictionary<int, int, Action>();
-			d.Add(1, 1, Commit);
-			d.Add(1, 0, report_that_b_failed);
-			d.Add(0, 0, report_that_a_failed);
+			using (HttpApiConfigContext context = new HttpApiConfigContext())
+			{
 
-			var a = 1, b = 0;
-			d[a, b].Invoke();
+				context.SetUrlAcl("http://+:8016/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration)));
 
+				context.SetUrlAcl("http://+:8017/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration), new UrlAce("RADICALJAY\\Grauenwolf", UrlPermission.Delegation ^ UrlPermission.Registration)));
 
+				var x = context.QueryUrlAcl();
+				foreach (var key in x.Keys)
+				{
+					Console.WriteLine(key);
+				}
 
-			var X = new Dictionary<int, bool, Func<string>>();
-			X.Add(5, true, () => "Boom!");
-			X.Add(5, false, () => "Splat!");
-			X.Add(15, true, () => "Ka-Pow");
-
-			Console.WriteLine(X[5, true].Invoke());
-			Console.WriteLine(X[5, false].Invoke());
-			Console.WriteLine(X[15, false].Invoke());
+				context.DeleteUrlAcl("http://+:8016/");
+				context.DeleteUrlAcl("http://+:8017/");
 
 
-			//Boom.RaiseEvent(null, EventArgs.Empty);
-			//Boom += CatchBoom;
-			//Boom.RaiseEvent(null, EventArgs.Empty);
+				//var config = new UrlAclConfigItem();
+				//config.Dacl = new Acl();
+				//config.Url = "http://+:8080/";
+
+				//var ace = new Ace("RADICALJAY\\fourthmonth", true  , UrlPermission.Registration,null);
+				//config.Dacl.Aces.Add(ace);
+				//config.ApplyConfig();
+				////                "RADICALJAY\\fourthmonth"		
+			}
+
 		}
-
-		static void CatchBoom(object sender, EventArgs e)
-		{
-			Console.WriteLine("Yea!");
-		}
-
 	}
 
 }

@@ -1,7 +1,7 @@
 Imports System.Windows.Forms
 
 
-<Obsolete("Untested")> Public Module ControlCollectionExtension
+<Untested()> Public Module ControlCollectionExtension
 
 	''' <summary>
 	''' Returns all the controls in the tree using a breadth-first algorythm. This is a live enumerator, it won't dump everything in the graph into one giant list.

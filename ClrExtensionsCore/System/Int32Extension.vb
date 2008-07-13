@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Public Module Int32Extension
+<Untested()> Public Module Int32Extension
 
 	<Extension()> Public Function IsBetween(ByVal value As Integer, ByVal lowValue As Integer, ByVal highValue As Integer) As Boolean
 		Return lowValue <= value And value <= highValue

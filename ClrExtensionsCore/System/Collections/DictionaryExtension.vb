@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Public Module DictionaryExtension
+<Untested()> Public Module DictionaryExtension
 
 	<Extension()> Function Keys(ByVal this As IDictionaryEnumerator) As Collections.ObjectModel.Collection(Of Object)
 		Dim result As New Collections.ObjectModel.Collection(Of Object)

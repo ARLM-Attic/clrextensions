@@ -1,7 +1,7 @@
 Imports System.Windows.Forms
 
 
-<Obsolete("Untested")> Friend Class ControlEnumerator
+<Untested()> Friend Class ControlEnumerator
 	Implements IEnumerator(Of Control)
 
 	Private m_Root As Control.ControlCollection

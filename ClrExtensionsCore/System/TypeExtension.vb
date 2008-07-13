@@ -1,5 +1,5 @@
 
-<Obsolete("Untested")> Public Module TypeExtension
+<Untested()> Public Module TypeExtension
 	<Extension()> Public Function HasAttribute(ByVal type As Type, ByVal attribute As Type) As Boolean
 		Return type.GetCustomAttributes(attribute, True).Length > 0
 	End Function

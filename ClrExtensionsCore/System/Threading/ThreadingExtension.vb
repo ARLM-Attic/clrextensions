@@ -1,4 +1,4 @@
-﻿<Obsolete("Untested")> Public Module ThreadExtension
+﻿<Untested()> Public Module ThreadExtension
 	'The generic Volatile Read and Write are described in http://www.panopticoncentral.net/archive/2004/09/30/1721.aspx
 	'C# don't need them, instead the volatile keyword
 

@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Public Module LongExtension
+<Untested()> Public Module LongExtension
 
 	Private Const GB As Long = CLng(1024 ^ 3)
 	Private Const MB As Long = CLng(1024 ^ 2)

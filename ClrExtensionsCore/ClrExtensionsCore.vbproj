@@ -106,6 +106,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Compile Include="Attributes.vb" />
     <Compile Include="Scratch.vb" />
     <Compile Include="System\ByteFormat.vb" />
     <Compile Include="System\Collections\QuickEqualityComparer.vb" />
@@ -130,6 +131,25 @@
     <Compile Include="System\DecimalExtension.vb" />
     <Compile Include="System\Int32Extension.vb" />
     <Compile Include="System\ObjectExtension.vb" />
+    <Compile Include="Win32\Http\HTTPAPI_VERSION.vb" />
+    <Compile Include="Win32\Http\HttpInitializeFlags.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_KEY.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_PARAM.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_SET.vb" />
+    <Compile Include="Win32\Http\UrlAce.vb" />
+    <Compile Include="Win32\Http\UrlAcl.vb" />
+    <Compile Include="Win32\Win32Exception.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_ID.vb" />
+    <Compile Include="Win32\Win32Extension.vb" />
+    <Compile Include="Win32\StructPointer.vb" />
+    <Compile Include="Win32\Http\HttpApiConfigContext.vb" />
+    <Compile Include="Win32\Http\HttpApi.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_QUERY_TYPE.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_QUERY.vb" />
+    <Compile Include="Win32\Http\UrlPermission.vb" />
+    <Compile Include="Win32\Kernel\KernelApi.vb" />
+    <Compile Include="System\Security\AccessControl\SecurityPrincipalExtension.vb" />
+    <Compile Include="Win32\SystemErrorCodes.vb" />
     <Compile Include="System\Threading\ThreadingExtension.vb" />
     <Compile Include="System\StringExtension.vb" />
     <Compile Include="System\TypeExtension.vb" />

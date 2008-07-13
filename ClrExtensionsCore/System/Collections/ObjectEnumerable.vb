@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Friend Class ObjectEnumerable
+<Untested()> Friend Class ObjectEnumerable
 	Implements IEnumerable(Of Object)
 	Private m_Source As IEnumerable
 

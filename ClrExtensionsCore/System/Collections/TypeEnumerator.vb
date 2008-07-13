@@ -1,4 +1,4 @@
-<Obsolete("Untested")> Friend Class TypeEnumerator(Of T)
+<Untested()> Friend Class TypeEnumerator(Of T)
 	Implements IEnumerator(Of T)
 
 	Private m_Source As IEnumerator
@@ -27,29 +27,22 @@
 		m_Source.Reset()
 	End Sub
 
-	Private disposedValue As Boolean = False		' To detect redundant calls
+	Private m_Disposed As Boolean
 
 	' IDisposable
 	Protected Overridable Sub Dispose(ByVal disposing As Boolean)
-		If Not Me.disposedValue Then
+		If Not Me.m_Disposed Then
 			If disposing Then
 				Dim temp = TryCast(m_Source, IDisposable)
 				If temp IsNot Nothing Then temp.Dispose()
 			End If
-
-			' TODO: free your own state (unmanaged objects).
-			' TODO: set large fields to null.
 		End If
-		Me.disposedValue = True
+		Me.m_Disposed = True
 	End Sub
 
-#Region " IDisposable Support "
-	' This code added by Visual Basic to correctly implement the disposable pattern.
 	Public Sub Dispose() Implements IDisposable.Dispose
-		' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
 		Dispose(True)
 		GC.SuppressFinalize(Me)
 	End Sub
-#End Region
 
 End Class

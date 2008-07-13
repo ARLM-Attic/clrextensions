@@ -168,7 +168,7 @@ Public Module ByteExtension
 	''' <returns></returns>
 	''' <remarks>We don't use the "default" encoding because it is almost invariably wrong.</remarks>
 	''' <exception cref="System.ArgumentNullException">Thrown is encoding is null</exception>
-	<Obsolete("Untested")> <Extension()> Function ToString(ByVal source As Byte(), ByVal encoding As Text.Encoding) As String
+	<Untested()> <Extension()> Function ToString(ByVal source As Byte(), ByVal encoding As Text.Encoding) As String
 		If encoding Is Nothing Then Throw New ArgumentNullException("encoding")
 		If source Is Nothing Then Return ""
 		If source.Length = 0 Then Return ""
@@ -184,7 +184,7 @@ Public Module ByteExtension
 	''' <returns></returns>
 	''' <remarks></remarks>
 	''' <exception cref="System.ArgumentNullException">Thrown is encoding is null</exception>
-	<Obsolete("Untested")> <Extension()> Public Function ToByteArray(ByVal source As String, ByVal encoding As Text.Encoding) As Byte()
+	<Untested()> <Extension()> Public Function ToByteArray(ByVal source As String, ByVal encoding As Text.Encoding) As Byte()
 		If source = "" Then Return New Byte() {}
 		Return encoding.GetBytes(source)
 	End Function
