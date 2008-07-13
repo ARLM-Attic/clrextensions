@@ -9,7 +9,7 @@ Public Module ByteExtension
 	''' <param name="format">Null, "", or a valid string for Byte.ToString</param>
 	''' <returns>An empty string if source is empty/null</returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.FormatException">Thrown if the format string is malformed.</exception>
+	''' <exception cref="FormatException">Thrown if the format string is malformed.</exception>
 	<Extension()> Public Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As String) As String
 		Return ToString(source, format, 0)
 	End Function
@@ -22,8 +22,8 @@ Public Module ByteExtension
 	''' <param name="groupingSize">Amount of bytes to group together. Each group is separated by a space.</param>
 	''' <returns>An empty string if source is empty/null</returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.FormatException">Thrown if the format string is malformed.</exception>
-	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
+	''' <exception cref="FormatException">Thrown if the format string is malformed.</exception>
+	''' <exception cref="ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
 	<Extension()> Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As String, ByVal groupingSize As Integer) As String
 		If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
 
@@ -48,7 +48,7 @@ Public Module ByteExtension
 	''' <param name="format">Must be a defined value</param>
 	''' <returns>An empty string if source is empty/null</returns>
 	''' <remarks>The grouping size is 0, except for Bits which is 1</remarks>
-	''' <exception cref="System.ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
+	''' <exception cref="ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
 	Public Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As ByteFormat) As String
 		Dim groupingSize = 0
 		If format = ByteFormat.Bits Then groupingSize = 1
@@ -64,9 +64,9 @@ Public Module ByteExtension
 	''' <param name="groupingSize">Amount of bytes to group together. Each group is separated by a space.</param>
 	''' <returns>An empty string if source is empty/null</returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
-	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
-	''' <exception cref="System.ArgumentOutOfRangeException ">Thrown is format is Bit and groupingSize &gt; 1.</exception>
+	''' <exception cref="ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
+	''' <exception cref="ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
+	''' <exception cref="ArgumentOutOfRangeException ">Thrown is format is Bit and groupingSize &gt; 1.</exception>
 	<Extension()> Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As ByteFormat, ByVal groupingSize As Integer) As String
 		If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
 		If groupingSize > 1 And format = ByteFormat.Bits Then Throw New ArgumentOutOfRangeException("groupingSize", "The group size cannot be greater than 1 for the format mode Bit")
@@ -123,7 +123,7 @@ Public Module ByteExtension
 	''' <param name="format"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.ArgumentOutOfRangeException">Thrown is format isn't a defined value</exception>
+	''' <exception cref="ArgumentOutOfRangeException">Thrown is format isn't a defined value</exception>
 	<Extension()> Function ToString(ByVal value As Byte, ByVal format As ByteFormat) As String
 		Select Case format
 			Case ByteFormat.Bits
@@ -147,7 +147,7 @@ Public Module ByteExtension
 	''' <param name="bit">0 to 7, 0 being the least significant digit</param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.ArgumentOutOfRangeException">Thrown if bit is outside 0 to 7</exception>
+	''' <exception cref="ArgumentOutOfRangeException">Thrown if bit is outside 0 to 7</exception>
 	<Extension()> Public Function IsBitSet(ByVal value As Byte, ByVal bit As Integer) As Boolean
 		If Not bit.IsBetween(0, 7) Then Throw New ArgumentOutOfRangeException("bit")
 		Dim bitMask As Integer = 1 << bit

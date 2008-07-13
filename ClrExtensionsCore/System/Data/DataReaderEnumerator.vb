@@ -1,8 +1,8 @@
+#If IncludeUntested Then
 Imports ClrExtensions.System.Collections
 Imports System.Data
 Imports ClrExtensions.System.Data
 
-#If IncludeUntested Then
 Namespace System.Data
 	Friend Class DataReaderEnumerator
 		Implements IEnumerator(Of IDataRecord)

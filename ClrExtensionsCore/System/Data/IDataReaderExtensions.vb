@@ -1,8 +1,8 @@
-﻿Imports ClrExtensions.System.Collections
+﻿#If IncludeUntested Then
+Imports ClrExtensions.System.Collections
 Imports System.Data
 Imports ClrExtensions.System.Data
 
-#If IncludeUntested Then
 <Untested()> Public Module IDataReaderExtension
 
 	<Extension()> Public Function ToEnumerable(ByVal this As IDataReader) As IEnumerable(Of IDataRecord)

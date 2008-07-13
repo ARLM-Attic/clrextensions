@@ -1,8 +1,9 @@
+#If IncludeUntested Then
+
 Imports ClrExtensions.System.Collections
 Imports System.Data
 Imports ClrExtensions.System.Data
 
-#If IncludeUntested Then
 Namespace System.Data
 	Friend Class DataRecordColumns
 		Private m_Names As List(Of String)
