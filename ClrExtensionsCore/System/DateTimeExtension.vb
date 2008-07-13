@@ -58,6 +58,8 @@ Public Module DateTimeExtension
 		End If
 	End Function
 
+#If IncludeUntested Then
+
 	''' <summary>
 	''' Returns a DateTime with the time altered
 	''' </summary>
@@ -93,6 +95,8 @@ Public Module DateTimeExtension
 
 		Return New Date(value.Year, value.Month, value.Day, hours, minutes, seconds)
 	End Function
+
+#End If
 
 	''' <summary>
 	''' Returns a DateTime with the time altered

@@ -1,3 +1,4 @@
+#If IncludeUntested Then
 
 <Untested()> Public Module DecimalExtension
 
@@ -30,3 +31,5 @@
 	End Function
 
 End Module
+
+#End If

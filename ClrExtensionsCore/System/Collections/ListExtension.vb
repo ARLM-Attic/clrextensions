@@ -1,33 +1,5 @@
-<Untested()> Public Module ListExtension
 
-	''' <summary>
-	''' This attempts to create a new list of the indicated type. This may fail due to casting.
-	''' For a safer version use OfType, which filters out items that cannot be cast.
-	''' </summary>
-	''' <typeparam name="T"></typeparam>
-	''' <param name="this"></param>
-	''' <returns></returns>
-	''' <remarks></remarks>
-	<Extension()> Public Function ToList(Of T)(ByVal this As IList) As List(Of T)
-		Return (From item In this Select CType(item, T)).ToList
-	End Function
-
-	<Extension()> Public Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String) As String
-		Dim temp As New List(Of String)(this.Count)
-		For Each item In this
-			temp.Add(item.ToString)
-		Next
-		Return temp.Join(separator)
-	End Function
-
-	<Extension()> Public Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String, ByVal formater As Func(Of T, String)) As String
-		Dim temp As New List(Of String)(this.Count)
-		For Each item In this
-			temp.Add(formater(item))
-		Next
-		Return temp.Join(separator)
-	End Function
-
+Public Module ListExtension
 
 	<Extension()> Public Function Chunk(Of T)(ByVal this As IList(Of T), ByVal size As Integer) As List(Of List(Of T))
 		Dim result As New List(Of List(Of T))
@@ -45,7 +17,43 @@
 		Return result
 	End Function
 
-	<Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Integer
+#If IncludeUntested Then
+
+
+	''' <summary>
+	''' This attempts to create a new list of the indicated type. This may fail due to casting.
+	''' For a safer version use OfType, which filters out items that cannot be cast.
+	''' </summary>
+	''' <typeparam name="T"></typeparam>
+	''' <param name="this"></param>
+	''' <returns></returns>
+	''' <remarks></remarks>
+	<Untested()> <Extension()> Public Function ToList(Of T)(ByVal this As IList) As List(Of T)
+		Return (From item In this Select CType(item, T)).ToList
+	End Function
+
+	<Untested()> <Extension()> Public Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String) As String
+		Dim temp As New List(Of String)(this.Count)
+		For Each item In this
+			temp.Add(item.ToString)
+		Next
+		Return temp.Join(separator)
+	End Function
+
+	<Untested()> <Extension()> Public Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String, ByVal formater As Func(Of T, String)) As String
+		Dim temp As New List(Of String)(this.Count)
+		For Each item In this
+			temp.Add(formater(item))
+		Next
+		Return temp.Join(separator)
+	End Function
+
+
+
+
+
+
+	<Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Integer
 		If this Is Nothing Then Return -1
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
 		If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -65,7 +73,7 @@
 		Return -1
 	End Function
 
-	<Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Integer
+	<Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Integer
 		If this Is Nothing Then Return -1
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
 		If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -74,7 +82,7 @@
 	End Function
 
 
-	<Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Integer
+	<Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Integer
 		If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
 		If this Is Nothing Then Return -1
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -97,7 +105,7 @@
 		Return -1
 	End Function
 
-	<Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Integer
+	<Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Integer
 		If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
 		If this Is Nothing Then Return -1
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -106,7 +114,7 @@
 		Return IndexOfSequence(this, comparer, CType(pattern, IList(Of T)))
 	End Function
 
-	<Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
+	<Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
 		If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
 		If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -120,7 +128,7 @@
 		Return True
 	End Function
 
-	<Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
+	<Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
 		If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
 		If pattern.Count > this.Count Then Return False
@@ -134,7 +142,7 @@
 	End Function
 
 
-	<Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
+	<Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
 		If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
 		If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -149,7 +157,7 @@
 		Return True
 	End Function
 
-	<Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
+	<Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
 		If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
 		If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
 		If pattern.Count > this.Count Then Return False
@@ -163,24 +171,24 @@
 		Return True
 	End Function
 
-	<Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
+	<Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
 		Return EndsWith(this, CType(pattern, IList(Of T)))
 	End Function
 
-	<Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
+	<Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
 		Return EndsWith(this, comparer, CType(pattern, IList(Of T)))
 	End Function
 
-	<Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
+	<Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
 		Return StartsWith(this, CType(pattern, IList(Of T)))
 	End Function
 
-	<Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
+	<Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
 		Return StartsWith(this, comparer, CType(pattern, IList(Of T)))
 	End Function
 
 
-	<Extension()> Public Function IndexesWhere(Of T)(ByVal source As IList(Of T), ByVal where As Func(Of T, Boolean)) As List(Of Integer)
+	<Untested()> <Extension()> Public Function IndexesWhere(Of T)(ByVal source As IList(Of T), ByVal where As Func(Of T, Boolean)) As List(Of Integer)
 		Dim result As New List(Of Integer)
 		For i = 0 To source.Count - 1
 			If where(source(i)) Then result.Add(i)
@@ -188,7 +196,7 @@
 		Return result
 	End Function
 
-	<Extension()> Public Function TakeEvery(Of T)(ByVal source As IList(Of T), ByVal startIndex As Integer, ByVal skip As Integer) As List(Of T)
+	<Untested()> <Extension()> Public Function TakeEvery(Of T)(ByVal source As IList(Of T), ByVal startIndex As Integer, ByVal skip As Integer) As List(Of T)
 		Dim result As New List(Of T)
 		For i = startIndex To source.Count - 1 Step skip
 			result.Add(source(i))
@@ -196,5 +204,7 @@
 		Return result
 	End Function
 
+#End If
 
 End Module
+

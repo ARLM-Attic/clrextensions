@@ -1,3 +1,4 @@
+#If IncludeUntested Then
 <Untested()> Public Module ColorExtension
 	'Reference: http://en.wikipedia.org/wiki/HSL_color_space
 
@@ -93,3 +94,4 @@
 
 
 End Module
+#End If

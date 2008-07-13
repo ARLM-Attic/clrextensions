@@ -32,6 +32,7 @@
     </NoWarn>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+    <DefineConstants>IncludeUntested=1</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +45,18 @@
     </NoWarn>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Untested|AnyCPU' ">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release-Untested\</OutputPath>
+    <DocumentationFile>ClrExtensions.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <DefineConstants>IncludeUntested=1</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -107,10 +120,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <Compile Include="Attributes.vb" />
+    <Compile Include="System\Collections\Dictionary2.vb" />
+    <Compile Include="System\Collections\Dictionary3.vb" />
     <Compile Include="Scratch.vb" />
     <Compile Include="System\ByteFormat.vb" />
     <Compile Include="System\Collections\QuickEqualityComparer.vb" />
     <Compile Include="System\Collections\SortedList.vb" />
+    <Compile Include="System\Data\DataReaderEnumerable.vb" />
+    <Compile Include="System\Data\DataReaderEnumerator.vb" />
+    <Compile Include="System\Data\DataRecord.vb" />
+    <Compile Include="System\Data\DataRecordColumns.vb" />
     <Compile Include="System\DoubleExtension.vb" />
     <Compile Include="System\EnumExtension.vb" />
     <Compile Include="System\EventHandlerExtension.vb" />
@@ -131,6 +150,8 @@
     <Compile Include="System\DecimalExtension.vb" />
     <Compile Include="System\Int32Extension.vb" />
     <Compile Include="System\ObjectExtension.vb" />
+    <Compile Include="System\Collections\Tuple2.vb" />
+    <Compile Include="System\Collections\Tuple3.vb" />
     <Compile Include="Win32\Http\HTTPAPI_VERSION.vb" />
     <Compile Include="Win32\Http\HttpInitializeFlags.vb" />
     <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_KEY.vb" />

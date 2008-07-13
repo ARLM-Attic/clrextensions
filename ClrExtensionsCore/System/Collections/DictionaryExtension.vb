@@ -1,3 +1,5 @@
+#If IncludeUntested Then
+
 <Untested()> Public Module DictionaryExtension
 
 	<Extension()> Function Keys(ByVal this As IDictionaryEnumerator) As Collections.ObjectModel.Collection(Of Object)
@@ -96,3 +98,4 @@
 	End Function
 
 End Module
+#End If

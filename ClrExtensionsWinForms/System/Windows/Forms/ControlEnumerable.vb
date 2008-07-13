@@ -1,5 +1,6 @@
 Imports System.Windows.Forms
 
+#If IncludeUntested Then
 
 <Untested()> Friend Class ControlEnumerable
 	Implements IEnumerable(Of Control)
@@ -18,3 +19,4 @@ Imports System.Windows.Forms
 		Return New ControlEnumerator(m_Root)
 	End Function
 End Class
+#End If

@@ -1,6 +1,7 @@
 Imports ClrExtensions
 
 
+#If IncludeUntested Then
 
 <Untested()> Public Module ListControlExtension
 	'TODO Maybe the AddItem methods should return the newly created item
@@ -14,3 +15,4 @@ Imports ClrExtensions
 	End Sub
 
 End Module
+#End If

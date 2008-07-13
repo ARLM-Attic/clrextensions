@@ -11,21 +11,36 @@ namespace CSharpScratch
 	{
 		static void Main(string[] args)
 		{
+			var ev = new System.Security.Principal.NTAccount("Everyone");
+			var g = new System.Security.Principal.NTAccount("Guest");
+
+
+
+			Console.WriteLine(ev.Value);
+			Console.WriteLine(g.Value);
+			Console.WriteLine(ev.ToSddl());
+			Console.WriteLine(g.ToSddl());
+
+			Console.ReadLine();
+
+
 			using (HttpApiConfigContext context = new HttpApiConfigContext())
 			{
 
-				context.SetUrlAcl("http://+:8016/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration)));
 
-				context.SetUrlAcl("http://+:8017/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration), new UrlAce("RADICALJAY\\Grauenwolf", UrlPermission.Delegation ^ UrlPermission.Registration)));
 
-				var x = context.QueryUrlAcl();
-				foreach (var key in x.Keys)
-				{
-					Console.WriteLine(key);
-				}
+				//context.SetUrlAcl("http://+:8016/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration)));
 
-				context.DeleteUrlAcl("http://+:8016/");
-				context.DeleteUrlAcl("http://+:8017/");
+				//context.SetUrlAcl("http://+:8017/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration), new UrlAce("RADICALJAY\\Grauenwolf", UrlPermission.Delegation ^ UrlPermission.Registration)));
+
+				//var x = context.QueryUrlAcl();
+				//foreach (var key in x.Keys)
+				//{
+				//    Console.WriteLine(key);
+				//}
+
+				//context.DeleteUrlAcl("http://+:8016/");
+				//context.DeleteUrlAcl("http://+:8017/");
 
 
 				//var config = new UrlAclConfigItem();

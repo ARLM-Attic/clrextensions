@@ -1,3 +1,5 @@
+#If IncludeUntested Then
+
 <Untested()> Public Module LongExtension
 
 	Private Const GB As Long = CLng(1024 ^ 3)
@@ -49,3 +51,4 @@ End Module
 
 
 
+#End If

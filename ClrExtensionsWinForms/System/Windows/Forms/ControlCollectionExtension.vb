@@ -1,6 +1,7 @@
 Imports System.Windows.Forms
 
 
+#If IncludeUntested Then
 <Untested()> Public Module ControlCollectionExtension
 
 	''' <summary>
@@ -13,3 +14,4 @@ Imports System.Windows.Forms
 		Return New ControlEnumerable(this)
 	End Function
 End Module
+#End If

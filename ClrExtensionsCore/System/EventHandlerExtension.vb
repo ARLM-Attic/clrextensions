@@ -1,3 +1,5 @@
+#If IncludeUntested Then
+
 <Untested()> Public Module EventHandlerExtension
 
 	''' <summary>
@@ -26,3 +28,4 @@
 		If [event] IsNot Nothing Then [event](sender, EventArgs.Empty)
 	End Sub
 End Module
+#End If

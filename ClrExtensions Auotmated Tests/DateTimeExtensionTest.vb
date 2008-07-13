@@ -89,6 +89,7 @@ Public Class DateTimeExtensionTest
 		Assert.AreEqual(testDateTime, DateTimeExtension.SetTime(testDateTimeSeconds, 14, 27))
 	End Sub
 
+#If TODO Then
 	'''<summary>
 	'''A test for SetTime
 	'''</summary>
@@ -122,6 +123,7 @@ Public Class DateTimeExtensionTest
 		Assert.AreEqual(expected, actual)
 		Assert.Inconclusive("Verify the correctness of this test method.")
 	End Sub
+#End If
 
 	'''<summary>
 	'''A test for SetTime

@@ -1,3 +1,5 @@
+#If IncludeUntested Then
+
 <Untested()> Public Module DoubleExtension
 
 	''' <summary>
@@ -11,3 +13,4 @@
 		Return value ^ exponent
 	End Function
 End Module
+#End If

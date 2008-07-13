@@ -1,16 +1,24 @@
-<Untested()> Friend Class ObjectEnumerable
-	Implements IEnumerable(Of Object)
-	Private m_Source As IEnumerable
+Imports ClrExtensions.System.Collections
+Namespace System.Collections
+#If IncludeUntested Then
 
-	Public Sub New(ByVal souce As IEnumerable)
-		m_Source = souce
-	End Sub
 
-	Public Function GetEnumerator() As System.Collections.Generic.IEnumerator(Of Object) Implements System.Collections.Generic.IEnumerable(Of Object).GetEnumerator
-		Return New ObjectEnumerator(m_Source.GetEnumerator)
-	End Function
+	<Untested()> Friend Class ObjectEnumerable
+		Implements IEnumerable(Of Object)
+		Private m_Source As IEnumerable
 
-	Private Function IEnumerable_GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
-		Return m_Source.GetEnumerator
-	End Function
-End Class
+		Public Sub New(ByVal souce As IEnumerable)
+			m_Source = souce
+		End Sub
+
+		Public Function GetEnumerator() As IEnumerator(Of Object) Implements IEnumerable(Of Object).GetEnumerator
+			Return New ObjectEnumerator(m_Source.GetEnumerator)
+		End Function
+
+		Private Function IEnumerable_GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
+			Return m_Source.GetEnumerator
+		End Function
+	End Class
+
+#End If
+End Namespace

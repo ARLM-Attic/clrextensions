@@ -36,10 +36,18 @@ Parameter Names:
 	
 Testing:
 
-	Anything that has not been tested should be marked as "Obsolete" either directly or at the module level.
+	Anything that has not been tested should be marked as "Untested" and excluded from "Release" builds using #IF regions
 	
 Lists and Enumerables:
 
 	Functions that take lists should return lists.
 	Functions that take enumerables should return enumerables
 	
+Namespaces
+
+	Modules of Extension Methods don't go in a namespace
+	Other Modules and Classes follow the folder pattern
+	Win32 is the root for all P/Invoke features
+	Win32/xxx shall have all xxx.dll related features
+	Win32/xxxAPI is the module for the P/Invoke stuff itself
+

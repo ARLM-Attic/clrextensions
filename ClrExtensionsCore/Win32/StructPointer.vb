@@ -14,6 +14,7 @@ Namespace Win32
 
 		Public ReadOnly Property Pointer() As IntPtr
 			Get
+				CheckDisposed()
 				Return m_Pointer
 			End Get
 		End Property
@@ -46,32 +47,33 @@ Namespace Win32
 		''' <remarks></remarks>
 		Public ReadOnly Property [Structure]() As T
 			Get
+				CheckDisposed()
 				Return DirectCast(Marshal.PtrToStructure(m_Pointer, GetType(T)), T)
 			End Get
 		End Property
 
-		Private disposedValue As Boolean = False		' To detect redundant calls
+		Private m_Disposed As Boolean = False		' To detect redundant calls
 
 		' IDisposable
 		Protected Overridable Sub Dispose(ByVal disposing As Boolean)
-			If Not Me.disposedValue Then
-				If disposing Then
-					' TODO: free other state (managed objects).
-				End If
-
+			If Not Me.m_Disposed Then
 				Marshal.FreeHGlobal(m_Pointer)
+				m_Pointer = IntPtr.Zero
 			End If
-			Me.disposedValue = True
+			Me.m_Disposed = True
 		End Sub
 
-#Region " IDisposable Support "
-		' This code added by Visual Basic to correctly implement the disposable pattern.
 		Public Sub Dispose() Implements IDisposable.Dispose
-			' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
 			Dispose(True)
 			GC.SuppressFinalize(Me)
 		End Sub
-#End Region
 
+		Protected Overrides Sub Finalize()
+			Dispose(False)
+		End Sub
+
+		Private Sub CheckDisposed()
+			If m_Disposed Then Throw New InvalidOperationException("Conext has been disposed")
+		End Sub
 	End Class
 End Namespace

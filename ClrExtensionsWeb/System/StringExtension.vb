@@ -2,7 +2,7 @@ Imports System.Web
 
 
 
-<Untested()> Public Module StringExtension
+Public Module StringExtension
 	<Extension()> Public Function HtmlEncode(ByVal this As String) As String
 		Return HttpUtility.HtmlEncode(this)
 	End Function

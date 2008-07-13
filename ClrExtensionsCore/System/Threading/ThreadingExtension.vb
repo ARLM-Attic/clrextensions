@@ -1,4 +1,4 @@
-﻿<Untested()> Public Module ThreadExtension
+﻿Public Module ThreadExtension
 	'The generic Volatile Read and Write are described in http://www.panopticoncentral.net/archive/2004/09/30/1721.aspx
 	'C# don't need them, instead the volatile keyword
 
@@ -12,8 +12,11 @@
 		Address = Value
 	End Sub
 
-	Sub Sleep(ByVal minutes As Integer, ByVal seconds As Integer)
+#If IncludeUntested Then
+	<Untested()> Sub Sleep(ByVal minutes As Integer, ByVal seconds As Integer)
 		Threading.Thread.Sleep(minutes * 60 * 1000 + seconds * 60)
 	End Sub
+#End If
+
 End Module
 

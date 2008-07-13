@@ -3,6 +3,11 @@ Imports System.Runtime.InteropServices
 Imports System.Security.Principal
 
 Namespace Win32.Http
+
+	''' <summary>
+	''' This context can be used for performing configuration operations against http.dll.
+	''' </summary>
+	''' <remarks>This has to be hand-tested because it messes with the OS</remarks>
 	Public Class HttpApiConfigContext
 		Implements IDisposable
 
@@ -90,11 +95,13 @@ Namespace Win32.Http
 			Return result
 		End Function
 
+#If IncludeUntested Then
 		<Untested()> Public Function QueryUrlAcl(ByVal url As String) As Dictionary(Of String, UrlAcl)
 			Throw New NotImplementedException
 
 			'use HttpServiceConfigQueryExact
 		End Function
+#End If
 
 	End Class
 End Namespace

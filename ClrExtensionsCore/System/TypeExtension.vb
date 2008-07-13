@@ -1,3 +1,5 @@
+#If IncludeUntested Then
+
 
 <Untested()> Public Module TypeExtension
 	<Extension()> Public Function HasAttribute(ByVal type As Type, ByVal attribute As Type) As Boolean
@@ -9,3 +11,4 @@
 	End Function
 
 End Module
+#End If

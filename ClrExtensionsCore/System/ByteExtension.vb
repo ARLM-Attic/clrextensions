@@ -156,7 +156,7 @@ Public Module ByteExtension
 
 #End Region
 
-
+#If IncludeUntested Then
 
 #Region "Byte()"
 
@@ -191,5 +191,6 @@ Public Module ByteExtension
 
 #End Region
 
+#End If
 
 End Module

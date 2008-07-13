@@ -1,5 +1,6 @@
 Imports System.Windows.Forms
 
+#If IncludeUntested Then
 
 <Untested()> Friend Class ControlEnumerator
 	Implements IEnumerator(Of Control)
@@ -59,31 +60,24 @@ Imports System.Windows.Forms
 		Preload(m_Root)
 	End Sub
 
-	Private disposedValue As Boolean = False		' To detect redundant calls
+	Private m_Disposed As Boolean 
 
-	' IDisposable
 	Protected Overridable Sub Dispose(ByVal disposing As Boolean)
-		If Not Me.disposedValue Then
-			If disposing Then
-				' TODO: free other state (managed objects).
-			End If
-
+		If Not Me.m_Disposed Then
 			'we are freeing these variables so we don't accidentilly keep a large object graph in memory
 			m_Root = Nothing
 			m_Unvisited = Nothing
 			m_Visited = Nothing
 			m_Current = Nothing
 		End If
-		Me.disposedValue = True
+		Me.m_Disposed = True
 	End Sub
 
-#Region " IDisposable Support "
-	' This code added by Visual Basic to correctly implement the disposable pattern.
 	Public Sub Dispose() Implements IDisposable.Dispose
-		' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
 		Dispose(True)
 		GC.SuppressFinalize(Me)
 	End Sub
-#End Region
 
 End Class
+
+#End If

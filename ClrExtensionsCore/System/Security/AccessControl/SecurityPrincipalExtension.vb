@@ -2,17 +2,26 @@ Imports System
 Imports System.Security.Principal
 
 
-
+''' <summary>
+''' 
+''' </summary>
+''' <remarks>These are hand-tested because they are dependent on the OS</remarks>
 Public Module SecurityPrincipalExtension
+
+
 	<Extension()> Function Translate(Of T As IdentityReference)(ByVal value As IdentityReference) As T
 		Return DirectCast(value.Translate(GetType(T)), T)
 	End Function
 
 	<Extension()> Public Function ToSid(ByVal account As NTAccount) As SecurityIdentifier
+		If account Is Nothing Then Throw New ArgumentNullException("account")
+
 		Return account.Translate(Of SecurityIdentifier)()
 	End Function
 
 	<Extension()> Public Function ToSddl(ByVal account As NTAccount) As String
+		If account Is Nothing Then Throw New ArgumentNullException("account")
+
 		Return account.ToSid.Value
 	End Function
 
@@ -33,6 +42,8 @@ Public Module SecurityPrincipalExtension
 	End Function
 
 	<Extension()> Public Function ToAccount(ByVal sid As SecurityIdentifier) As NTAccount
+		If sid Is Nothing Then Throw New ArgumentNullException("sid")
+
 		Return sid.Translate(Of NTAccount)()
 	End Function
 

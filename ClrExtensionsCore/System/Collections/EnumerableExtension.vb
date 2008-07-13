@@ -1,4 +1,9 @@
-﻿<Untested()> Public Module EnumerableExtension
+﻿Imports ClrExtensions.System.Collections
+
+#If IncludeUntested Then
+
+
+<Untested()> Public Module EnumerableExtension
 
 	<Extension()> Public Function ToIEnumerable(ByVal this As IEnumerable) As IEnumerable(Of Object)
 		Return New ObjectEnumerable(this)
@@ -79,5 +84,5 @@ End Module
 
 
 
-
+#End If
 
