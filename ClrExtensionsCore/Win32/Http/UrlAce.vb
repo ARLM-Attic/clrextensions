@@ -44,6 +44,16 @@ Namespace Win32.Http
 			result.Append(")")
 
 			Return result.ToString
-		End Function
-	End Class
+        End Function
+        Public ReadOnly Property Account() As NTAccount
+            Get
+                Return m_Account
+            End Get
+        End Property
+        Public ReadOnly Property Permission() As UrlPermission
+            Get
+                Return m_Permission
+            End Get
+        End Property
+    End Class
 End Namespace

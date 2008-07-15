@@ -46,7 +46,7 @@ Namespace Win32.Http
 		End Sub
 
 		Private Sub CheckDisposed()
-			If m_Disposed Then Throw New InvalidOperationException("Conext has been disposed")
+            If m_Disposed Then Throw New InvalidOperationException("Context has been disposed")
 		End Sub
 
 		Public Sub DeleteUrlAcl(ByVal url As String)

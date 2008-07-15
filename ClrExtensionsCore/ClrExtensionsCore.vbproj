@@ -120,6 +120,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <Compile Include="Attributes.vb" />
+    <Compile Include="System\ArrayExtension.vb" />
     <Compile Include="System\Collections\Dictionary2.vb" />
     <Compile Include="System\Collections\Dictionary3.vb" />
     <Compile Include="Scratch.vb" />
@@ -134,6 +135,7 @@
     <Compile Include="System\EnumExtension.vb" />
     <Compile Include="System\EventHandlerExtension.vb" />
     <Compile Include="System\ExceptionExtension.vb" />
+    <Compile Include="System\IntPtrExtension.vb" />
     <Compile Include="System\IO\IOExention.vb" />
     <Compile Include="System\LongExtension.vb" />
     <Compile Include="System\ByteExtension.vb" />

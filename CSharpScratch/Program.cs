@@ -7,53 +7,34 @@ using ClrExtensions.Win32.Http;
 
 namespace CSharpScratch
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			var ev = new System.Security.Principal.NTAccount("Everyone");
-			var g = new System.Security.Principal.NTAccount("Guest");
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var arr = new String[3, 3];
 
 
+            arr[0, 0] = "Carl";
+            arr[1, 0] = "Adam";
+            arr[2, 0] = "Scott";
+            arr[0, 1] = "Fred";
+            arr[1, 1] = "Louis";
+            arr[2, 1] = "Bob";
+            arr[0, 2] = "Simon";
+            arr[1, 2] = "Joe";
+            arr[2, 2] = "Bill";
 
-			Console.WriteLine(ev.Value);
-			Console.WriteLine(g.Value);
-			Console.WriteLine(ev.ToSddl());
-			Console.WriteLine(g.ToSddl());
+            var sorted = arr.SortByColumn(0);
 
-			Console.ReadLine();
-
-
-			using (HttpApiConfigContext context = new HttpApiConfigContext())
-			{
-
-
-
-				//context.SetUrlAcl("http://+:8016/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration)));
-
-				//context.SetUrlAcl("http://+:8017/", new UrlAcl(new UrlAce("RADICALJAY", "fourthmonth", UrlPermission.Registration), new UrlAce("RADICALJAY\\Grauenwolf", UrlPermission.Delegation ^ UrlPermission.Registration)));
-
-				//var x = context.QueryUrlAcl();
-				//foreach (var key in x.Keys)
-				//{
-				//    Console.WriteLine(key);
-				//}
-
-				//context.DeleteUrlAcl("http://+:8016/");
-				//context.DeleteUrlAcl("http://+:8017/");
-
-
-				//var config = new UrlAclConfigItem();
-				//config.Dacl = new Acl();
-				//config.Url = "http://+:8080/";
-
-				//var ace = new Ace("RADICALJAY\\fourthmonth", true  , UrlPermission.Registration,null);
-				//config.Dacl.Aces.Add(ace);
-				//config.ApplyConfig();
-				////                "RADICALJAY\\fourthmonth"		
-			}
-
-		}
-	}
+            for (var i = 0; i < 3; i++)
+            {
+                for (var j = 0; j < 3; j++)
+                {
+                    Console.Write(sorted[i, j] + ' ');
+                } Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
 
 }
