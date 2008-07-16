@@ -156,7 +156,6 @@ Public Module ByteExtension
 
 #End Region
 
-#If IncludeUntested Then
 
 #Region "Byte()"
 
@@ -167,14 +166,16 @@ Public Module ByteExtension
 	''' <param name="encoding">Cannot be null.</param>
 	''' <returns></returns>
 	''' <remarks>We don't use the "default" encoding because it is almost invariably wrong.</remarks>
-	''' <exception cref="System.ArgumentNullException">Thrown is encoding is null</exception>
-	<Untested()> <Extension()> Function ToString(ByVal source As Byte(), ByVal encoding As Text.Encoding) As String
+	''' <exception cref="ArgumentNullException">Thrown is encoding is null</exception>
+	<Extension()> Function ToString(ByVal source As Byte(), ByVal encoding As Text.Encoding) As String
 		If encoding Is Nothing Then Throw New ArgumentNullException("encoding")
 		If source Is Nothing Then Return ""
 		If source.Length = 0 Then Return ""
 
 		Return encoding.GetString(source)
 	End Function
+
+
 
 	''' <summary>
 	''' This converts a string into a byte array using the specified encoding
@@ -183,14 +184,12 @@ Public Module ByteExtension
 	''' <param name="encoding">Cannot be null.</param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.ArgumentNullException">Thrown is encoding is null</exception>
-	<Untested()> <Extension()> Public Function ToByteArray(ByVal source As String, ByVal encoding As Text.Encoding) As Byte()
+	''' <exception cref="ArgumentNullException">Thrown is encoding is null</exception>
+	<Extension()> Public Function ToByteArray(ByVal source As String, ByVal encoding As Text.Encoding) As Byte()
 		If source = "" Then Return New Byte() {}
 		Return encoding.GetBytes(source)
 	End Function
 
 #End Region
-
-#End If
 
 End Module

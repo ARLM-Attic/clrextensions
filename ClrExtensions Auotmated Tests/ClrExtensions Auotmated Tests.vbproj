@@ -72,15 +72,19 @@
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
+    <Import Include="System.Collections.Generic" />
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteExtensionTest.vb" />
     <Compile Include="DateTimeExtensionTest.vb" />
     <Compile Include="DecimalExtensionTest.vb" />
+    <Compile Include="DoubleExtensionTest.vb" />
     <Compile Include="EnumExtensionTest.vb" />
+    <Compile Include="Int32ExtensionTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="SecurityPrincipalExtensionTest.vb" />
+    <Compile Include="StringExtensionTest.vb" />
+    <Compile Include="ThreadExtensionTest.vb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />

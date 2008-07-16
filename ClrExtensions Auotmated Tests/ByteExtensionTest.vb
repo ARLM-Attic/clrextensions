@@ -338,15 +338,18 @@ Public Class ByteExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub ToByteArrayTest()
-		Assert.Inconclusive("To short to bother testing as this time.")
 
-		'Dim this As String = String.Empty ' TODO: Initialize to an appropriate value
-		'Dim encoding As Encoding = Nothing ' TODO: Initialize to an appropriate value
-		'Dim expected() As Byte = Nothing ' TODO: Initialize to an appropriate value
-		'Dim actual() As Byte
-		'actual = ByteExtension.ToByteArray(this, encoding)
-		'Assert.AreEqual(expected, actual)
-		'Assert.Inconclusive("Verify the correctness of this test method.")
+		Dim source = "adfljkahd flkjahfl ksdjfhls dkfhsdlkfjhdslfjks"
+		Dim encodings = New Text.Encoding() {Encoding.ASCII, Encoding.Unicode, Encoding.UTF32, Encoding.UTF7, Encoding.UTF8}
+
+		For Each encoding In encodings
+			Dim expected = encoding.GetBytes(source)
+			Dim actual = source.ToByteArray(encoding)
+			For i = 0 To expected.Length - 1
+				Assert.AreEqual(expected(i), actual(i))
+			Next
+		Next
+
 	End Sub
 
 	'''<summary>
@@ -416,6 +419,28 @@ Public Class ByteExtensionTest
 		For i = 0 To 7
 			Assert.AreEqual(True, ByteExtension.IsBitSet(bMax, i))
 		Next
+	End Sub
+
+	'''<summary>
+	'''A test for ToString
+	'''</summary>
+	<TestMethod()> _
+	Public Sub ToStringTest6()
+
+
+		Dim raw = "adfljkahd flkjahfl ksdjfhls dkfhsdlkfjhdslfjks"
+		Dim source = Encoding.ASCII.GetBytes(raw)
+
+		Dim encodings = New Text.Encoding() {encoding.ASCII, encoding.Unicode, encoding.UTF32, encoding.UTF7, encoding.UTF8}
+
+		For Each encoding In encodings
+			Dim expected = encoding.GetString(source)
+			Dim actual = source.ToString(encoding)
+			For i = 0 To expected.Length - 1
+				Assert.AreEqual(expected(i), actual(i))
+			Next
+		Next
+
 	End Sub
 End Class
 

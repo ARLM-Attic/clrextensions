@@ -133,7 +133,7 @@
     <Compile Include="System\Data\DataRecordColumns.vb" />
     <Compile Include="System\DoubleExtension.vb" />
     <Compile Include="System\EnumExtension.vb" />
-    <Compile Include="System\EventHandlerExtension.vb" />
+    <Compile Include="CSharp\Events.vb" />
     <Compile Include="System\ExceptionExtension.vb" />
     <Compile Include="System\IntPtrExtension.vb" />
     <Compile Include="System\IO\IOExention.vb" />

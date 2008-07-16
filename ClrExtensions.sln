@@ -17,9 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClrExtensions CSharp Tests", "ClrExtensions CSharp Tests\ClrExtensions CSharp Tests.csproj", "{02C0A8CE-9B4F-4500-997C-04C8E969ED11}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -38,6 +40,9 @@ Global
 		SccProjectUniqueName5 = ClrExtensions\u0020Auotmated\u0020Tests\\ClrExtensions\u0020Auotmated\u0020Tests.vbproj
 		SccProjectName5 = ClrExtensions\u0020Auotmated\u0020Tests
 		SccLocalPath5 = ClrExtensions\u0020Auotmated\u0020Tests
+		SccProjectUniqueName6 = ClrExtensions\u0020CSharp\u0020Tests\\ClrExtensions\u0020CSharp\u0020Tests.csproj
+		SccProjectName6 = ClrExtensions\u0020CSharp\u0020Tests
+		SccLocalPath6 = ClrExtensions\u0020CSharp\u0020Tests
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ClrExtensions.vsmdi
@@ -78,6 +83,12 @@ Global
 		{750BC689-E60A-401F-9862-7E0B0B39AA3C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{750BC689-E60A-401F-9862-7E0B0B39AA3C}.Release-Untested|Any CPU.ActiveCfg = Release-Untested|Any CPU
 		{750BC689-E60A-401F-9862-7E0B0B39AA3C}.Release-Untested|Any CPU.Build.0 = Release-Untested|Any CPU
+		{02C0A8CE-9B4F-4500-997C-04C8E969ED11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C0A8CE-9B4F-4500-997C-04C8E969ED11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C0A8CE-9B4F-4500-997C-04C8E969ED11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C0A8CE-9B4F-4500-997C-04C8E969ED11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02C0A8CE-9B4F-4500-997C-04C8E969ED11}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
+		{02C0A8CE-9B4F-4500-997C-04C8E969ED11}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,7 @@
 	End Function
 
 	<Extension()> Public Function NameVBFormat(ByVal type As Type) As String
+		'TODO - handle VB-sepcific names such as Integer, String, and Date
 		Return type.Name.Replace("[", "(").Replace("]", ")")
 	End Function
 

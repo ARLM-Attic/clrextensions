@@ -14,8 +14,25 @@ Public Module StringExtension
 		Return String.Join(separator, source.ToArray)
 	End Function
 
-#If IncludeUntested Then
-
+	''' <summary>
+	''' Repeats the given string N times.
+	''' To facilitate some coding patterns, N may be 0; this will result in an empty string.
+	''' </summary>
+	''' <param name="value"></param>
+	''' <param name="count"></param>
+	''' <returns></returns>
+	''' <remarks></remarks>
+	<Extension()> Public Function Repeat(ByVal value As String, ByVal count As Integer) As String
+		If value Is Nothing Then Throw New ArgumentNullException("value")
+		If value = "" Then Throw New ArgumentException("value")
+		If count < 0 Then Throw New ArgumentOutOfRangeException("count")
+		If count = 0 Then Return ""
+		Dim result As New Text.StringBuilder(value.Length * count)
+		For i = 1 To count
+			result.Append(value)
+		Next
+		Return result.ToString
+	End Function
 
 	''' <summary>
 	''' Joins all the strings in the supplied enumeration.
@@ -26,7 +43,7 @@ Public Module StringExtension
 	''' <param name="options">Optionally skip null and empty entries in the enumeration</param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String, ByVal options As StringSplitOptions) As String
+	<Extension()> Public Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String, ByVal options As StringSplitOptions) As String
 		If source Is Nothing Then Return ""
 		Select Case options
 			Case StringSplitOptions.None
@@ -38,6 +55,7 @@ Public Module StringExtension
 		End Select
 	End Function
 
+
 	''' <summary>
 	''' Returns a string array that contains the substrings in this string that are delimited by elements of a specified string array.
 	''' </summary>
@@ -45,7 +63,7 @@ Public Module StringExtension
 	''' <param name="separator">A string that delimits the substrings in this string</param>
 	''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function Split(ByVal source As String, ByVal separator As String) As String()
+	<Extension()> Public Function Split(ByVal source As String, ByVal separator As String) As String()
 		If source Is Nothing Then Return New String() {}
 		Return source.Split(New String() {separator}, StringSplitOptions.None)
 	End Function
@@ -58,12 +76,11 @@ Public Module StringExtension
 	''' <param name="options">Specify System.StringSplitOptions.RemoveEmptyEntries to omit empty array elements from the array returned, or System.StringSplitOptions.None to include empty array elements in the array returned.</param>
 	''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
-	<Untested()> <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal options As StringSplitOptions) As String()
+	''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
+	<Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal options As StringSplitOptions) As String()
 		If source Is Nothing Then Return New String() {}
 		Return source.Split(New String() {separator}, options)
 	End Function
-
 
 	''' <summary>
 	''' Returns a string array that contains the substrings in this string that are delimited by elements of a specified string array.
@@ -73,11 +90,12 @@ Public Module StringExtension
 	''' <param name="count">The maximum number of substrings to return.</param>
 	''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
-	<Untested()> <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer) As String()
+	''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
+	<Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer) As String()
 		If source Is Nothing Then Return New String() {}
 		Return Split(source, separator, count, StringSplitOptions.None)
 	End Function
+
 
 	''' <summary>
 	''' Returns a string array that contains the substrings in this string that are delimited by elements of a specified string array. A parameter specifies whether to return empty array elements.
@@ -88,8 +106,8 @@ Public Module StringExtension
 	''' <param name="options">Specify System.StringSplitOptions.RemoveEmptyEntries to omit empty array elements from the array returned, or System.StringSplitOptions.None to include empty array elements in the array returned.</param>
 	''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
 	''' <remarks></remarks>
-	''' <exception cref="System.ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
-	<Untested()> <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
+	''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
+	<Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
 		If source Is Nothing Then Return New String() {}
 
 		Dim temp = Microsoft.VisualBasic.Split(source, separator, count)
@@ -97,11 +115,28 @@ Public Module StringExtension
 			Case StringSplitOptions.None
 				Return temp
 			Case StringSplitOptions.RemoveEmptyEntries
-				Return temp.Where(Function(s) s <> "").ToArray
+				Dim result As New List(Of String)
+				Dim remainder As String = source
+				Do
+					Dim pivot = remainder.IndexOf(separator)
+					If pivot = -1 Then Exit Do
+
+					Dim fragment = remainder.Substring(0, pivot)
+					If fragment <> "" Then result.Add(fragment)
+					remainder = remainder.Substring(pivot + 1)
+				Loop Until remainder = "" Or result.Count = count - 1
+
+				If remainder <> "" Then result.Add(remainder)
+
+				Return result.ToArray
+
+				'The below won't work because it will return less than Count elements
+				'Return temp.Where(Function(s) s <> "").ToArray
 			Case Else
 				Throw New ArgumentException("options")
 		End Select
 	End Function
+
 
 	''' <summary>
 	''' Changes the first letter to a lower case letter, leaving the rest alone. Useful for turning "TestVar" into "testVar"
@@ -110,7 +145,7 @@ Public Module StringExtension
 	''' <param name="value"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function FirstToLower(ByVal value As String) As String
+	<Extension()> Public Function FirstToLower(ByVal value As String) As String
 		If value Is Nothing Then Return Nothing
 		If value = "" Then Return ""
 		If value.Length = 1 Then Return value.ToLower
@@ -124,7 +159,7 @@ Public Module StringExtension
 	''' <param name="value"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function FirstToUpper(ByVal value As String) As String
+	<Extension()> Public Function FirstToUpper(ByVal value As String) As String
 		If value Is Nothing Then Return Nothing
 		If value = "" Then Return ""
 		If value.Length = 1 Then Return value.ToUpper
@@ -138,7 +173,7 @@ Public Module StringExtension
 	''' <param name="value"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function Capitalize(ByVal value As String) As String
+	<Extension()> Public Function Capitalize(ByVal value As String) As String
 		If value Is Nothing Then Return Nothing
 		If value = "" Then Return ""
 		If value.Length = 1 Then Return value.ToUpper
@@ -151,7 +186,7 @@ Public Module StringExtension
 	''' <param name="value"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function DefaultIfNull(ByVal value As String) As String
+	<Extension()> Public Function DefaultIfNull(ByVal value As String) As String
 		Return If(value Is Nothing, "", value)
 	End Function
 
@@ -162,7 +197,7 @@ Public Module StringExtension
 	''' <param name="default"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function DefaultIfNull(ByVal value As String, ByVal [default] As String) As String
+	<Extension()> Public Function DefaultIfNull(ByVal value As String, ByVal [default] As String) As String
 		Return If(value Is Nothing, [default], value)
 	End Function
 
@@ -173,17 +208,17 @@ Public Module StringExtension
 	''' <param name="default"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Extension()> Public Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
+	Public Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
 		Return If(value = "", [default], value)
 	End Function
 
 	''' <summary>
-	''' Checks to see if the string is an email address as per the System.Net.Mail definition
+	''' Checks to see if the string is an email address as per the System.Net.Mail definition. Note that a string may be the combination of a display name and an address. TO just get the address part, use ToMailAddress.Address
 	''' </summary>
 	''' <param name="value"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function IsEmailAddress(ByVal value As String) As Boolean
+	<Extension()> Public Function IsEmailAddress(ByVal value As String) As Boolean
 		If value = "" Then Return False
 		Try
 			Dim temp = New Net.Mail.MailAddress(value)
@@ -194,27 +229,16 @@ Public Module StringExtension
 	End Function
 
 	''' <summary>
-	''' Uses the IsMatch function in regular expressions for matching
+	''' Returns the canonical email address from a full email address
 	''' </summary>
 	''' <param name="value"></param>
-	''' <param name="pattern"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function IsMatch(ByVal value As String, ByVal pattern As String) As Boolean
-		Return Text.RegularExpressions.Regex.IsMatch(value, pattern)
+	<Extension()> Public Function ToMailAddress(ByVal value As String) As Net.Mail.MailAddress
+		Return New Net.Mail.MailAddress(value)
 	End Function
 
-	''' <summary>
-	''' Uses the IsMatch function in regular expressions for matching
-	''' </summary>
-	''' <param name="value"></param>
-	''' <param name="pattern"></param>
-	''' <param name="options"></param>
-	''' <returns></returns>
-	''' <remarks></remarks>
-	<Extension()> Public Function IsMatch(ByVal value As String, ByVal pattern As String, ByVal options As Text.RegularExpressions.RegexOptions) As Boolean
-		Return Text.RegularExpressions.Regex.IsMatch(value, pattern, options)
-	End Function
+
 
 	''' <summary>
 	''' Returns the first N characters, or the whole string
@@ -224,9 +248,7 @@ Public Module StringExtension
 	''' <param name="length"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function Left(ByVal value As String, ByVal length As Integer) As String
-		If value.Length < length Then Throw New ArgumentOutOfRangeException("length")
-
+	<Extension()> Public Function Left(ByVal value As String, ByVal length As Integer) As String
 		If value Is Nothing Then Return Nothing
 		If value = "" Then Return ""
 		Return If(value.Length > length, value.Substring(0, length), value)
@@ -241,32 +263,76 @@ Public Module StringExtension
 	''' <returns></returns>
 	''' <remarks></remarks>
 	<Extension()> Public Function Right(ByVal value As String, ByVal length As Integer) As String
-		If value.Length < length Then Throw New ArgumentOutOfRangeException("length")
-
 		If value Is Nothing Then Return Nothing
 		If value = "" Then Return ""
 		Return If(value.Length > length, value.Substring(value.Length - length), value)
 	End Function
 
+
+	 <Extension()> Public Function NormalizeLineBreaks(ByVal value As String) As String
+		Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr).Replace(vbCr, vbCrLf)
+	End Function
+
+
+	<Extension()> Public Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
+		Select Case mode
+			Case LineBreakMode.Windows
+				Return NormalizeLineBreaks(value)
+			Case LineBreakMode.Macintosh
+				Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr)
+			Case LineBreakMode.Unix
+				Return value.Replace(vbCrLf, vbLf).Replace(vbCr, vbLf)
+			Case Else
+				Throw New ArgumentOutOfRangeException("mode")
+		End Select
+	End Function
+
+
+	<Extension()> Public Function HtmlLineBreaks(ByVal value As String) As String
+		Return value.Replace(vbCrLf, "<br/>").Replace(vbLf, "<br/>").Replace(vbCr, "<br/>")
+	End Function
+
+	<Extension()> Function Reverse(ByVal value As String) As String
+		If value Is Nothing Then Return Nothing
+
+		Dim result = value.ToCharArray
+
+		For i = 0 To result.Length \ 2 - 1
+			Dim c = result(i)
+			result(i) = result(result.Length - i - 1)
+			result(result.Length - i - 1) = c
+		Next
+
+		Return New String(result)
+	End Function
+
+	'''' <summary>
+	'''' 
+	'''' </summary>
+	'''' <param name="value"></param>
+	'''' <returns></returns>
+	'''' <remarks>I'm not sure the semantics of this is right. We may end up rolling our own version, hopefully one more useful.</remarks>
+	'<Extension()> Public Function ToTitleCase(ByVal value As String) As String
+	'	If value Is Nothing Then Return Nothing
+	'	If value = "" Then Return ""
+	'	Return Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value)
+	'End Function
+
 	''' <summary>
-	''' Repeats the given string N times.
-	''' To facilitate some coding patterns, N may be 0; this will result in an empty string.
+	''' 
 	''' </summary>
 	''' <param name="value"></param>
-	''' <param name="count"></param>
 	''' <returns></returns>
-	''' <remarks></remarks>
-	<Untested()> <Extension()> Public Function Repeat(ByVal value As String, ByVal count As Integer) As String
-		If value Is Nothing Then Throw New ArgumentNullException("value")
-		If value = "" Then Throw New ArgumentException("value")
-		If count < 0 Then Throw New ArgumentOutOfRangeException("count")
-		If count = 0 Then Return ""
-		Dim result As New Text.StringBuilder(value.Length * count)
-		For i = 1 To count
-			result.Append(value)
-		Next
-		Return result.ToString
+	''' <remarks>Not really needed for VB, but C# programmers seem to like it</remarks>
+	<Extension()> Public Function IsNullOrEmpty(ByVal value As String) As Boolean
+		Return value = ""
+		'Side note, String.IsNullOrEmpty has bug in .NET 2.0. It should be fixed in 2.0 SP 1.
 	End Function
+
+
+
+#If IncludeUntested Then
+
 
 	''' <summary>
 	''' This method does key-value replacements based on a simple pattern match
@@ -313,32 +379,6 @@ Public Module StringExtension
 		Return result.ToString
 	End Function
 
-
-	<Untested()> <Extension()> Public Function NormalizeLineBreaks(ByVal value As String) As String
-		Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr).Replace(vbCr, vbCrLf)
-	End Function
-
-	<Untested()> <Extension()> Public Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
-		Select Case mode
-			Case LineBreakMode.Windows
-				Return NormalizeLineBreaks(value)
-			Case LineBreakMode.Macintosh
-				Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr)
-			Case LineBreakMode.Unix
-				Return value.Replace(vbCrLf, vbLf).Replace(vbCr, vbCrLf)
-			Case Else
-				Throw New ArgumentOutOfRangeException("mode")
-		End Select
-	End Function
-
-	<Untested()> <Extension()> Public Function HtmlLineBreaks(ByVal value As String) As String
-		Return value.Replace(vbCrLf, "<br/>").Replace(vbLf, "<br/>").Replace(vbCr, "<br/>")
-	End Function
-
-
-
-
-
 	<Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
 		If rowSeparator = columnSeparator Then Return ToKeyValueCollection(source, rowSeparator)
 
@@ -368,48 +408,11 @@ Public Module StringExtension
 		Return Security.Cryptography.MD5CryptoServiceProvider.Create().ComputeHash(Text.Encoding.UTF8.GetBytes(value)).ToString("x2")
 	End Function
 
-	<Untested()> <Extension()> Function Reverse(ByVal value As String) As String
-		If value Is Nothing Then Return Nothing
 
-		Dim result = value.ToCharArray
-
-		For i = 0 To result.Length \ 2 - 1
-			Dim c = result(i)
-			result(i) = result(result.Length - i - 1)
-			result(result.Length - i - 1) = c
-		Next
-
-		Return New String(result)
-	End Function
 
 
 	<Untested()> <Extension()> Public Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
 		Return String.Format(value, args)
-	End Function
-
-	''' <summary>
-	''' 
-	''' </summary>
-	''' <param name="value"></param>
-	''' <returns></returns>
-	''' <remarks>Not really needed for VB, but C# programmers seem to like it</remarks>
-	<Untested()> <Extension()> Public Function IsNullOrEmpty(ByVal value As String) As Boolean
-		Return value = ""
-	End Function
-
-	'Would this actually be useful to anyone?
-	'<Extension()> Public Function ToMemoryStream(ByVal this As String, ByVal encoding As Text.Encoding) As IO.MemoryStream
-	'	Return New IO.MemoryStream(this.ToByteArray(encoding))
-	'End Function
-
-
-	<Untested()> <Extension()> Public Function ToEnum(Of T As Structure)(ByVal value As String) As T
-		Return CType([Enum].Parse(GetType(T), value, True), T)
-	End Function
-
-
-	<Untested()> <Extension()> Public Function ToTitleCase(ByVal value As String) As String
-		Return Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value)
 	End Function
 
 	<Untested()> <Extension()> Public Function Truncate(ByVal value As String, ByVal maxLength As Integer) As String
@@ -433,6 +436,39 @@ Public Module StringExtension
 		Return Microsoft.VisualBasic.IsNumeric(value)
 	End Function
 
+
+	''' <summary>
+	''' Uses the IsMatch function in regular expressions for matching
+	''' </summary>
+	''' <param name="value"></param>
+	''' <param name="pattern"></param>
+	''' <returns></returns>
+	''' <remarks></remarks>
+	<Untested()> <Extension()> Public Function IsMatch(ByVal value As String, ByVal pattern As String) As Boolean
+		Return Text.RegularExpressions.Regex.IsMatch(value, pattern)
+	End Function
+
+	''' <summary>
+	''' Uses the IsMatch function in regular expressions for matching
+	''' </summary>
+	''' <param name="value"></param>
+	''' <param name="pattern"></param>
+	''' <param name="options"></param>
+	''' <returns></returns>
+	''' <remarks></remarks>
+	<Extension()> Public Function IsMatch(ByVal value As String, ByVal pattern As String, ByVal options As Text.RegularExpressions.RegexOptions) As Boolean
+		Return Text.RegularExpressions.Regex.IsMatch(value, pattern, options)
+	End Function
+
+	'Would this actually be useful to anyone?
+	'<Extension()> Public Function ToMemoryStream(ByVal this As String, ByVal encoding As Text.Encoding) As IO.MemoryStream
+	'	Return New IO.MemoryStream(this.ToByteArray(encoding))
+	'End Function
+
+
+	<Untested()> <Extension()> Public Function ToEnum(Of T As Structure)(ByVal value As String) As T
+		Return CType([Enum].Parse(GetType(T), value, True), T)
+	End Function
 
 #End If
 

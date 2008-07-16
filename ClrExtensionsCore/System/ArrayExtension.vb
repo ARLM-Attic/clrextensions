@@ -1,5 +1,6 @@
 ﻿Public Module ArrayExtension
 
+#If IncludeUntested Then
     <Untested()> <Extension()> Function SortByColumn(Of T)(ByVal array As T(,), ByVal sortColumn As Integer) As T(,)
         Dim fragments = array.ToJagged
 
@@ -44,5 +45,6 @@
         Return result
     End Function
 
+#End If
 
 End Module
