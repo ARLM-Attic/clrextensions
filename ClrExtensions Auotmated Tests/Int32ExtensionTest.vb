@@ -106,7 +106,7 @@ Public Class Int32ExtensionTest
 	Public Sub ToBitStringTest()
 
 		For i = 0 To bArray.Length - 1
-			Dim actual = Int32Extension.ToBitString(bArray(i))
+            Dim actual = Int32Extension.ToBitString(bArray(i), 0)
 			Assert.AreEqual(BitStrings(i), actual)
 		Next
 

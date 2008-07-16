@@ -264,7 +264,7 @@ Public Class StringExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub CapitalizeTest()
-		Dim expected = New String() {"", Nothing, "Testvar", "Testvar", "T", "T", "12345", "test var", "Test var"}
+        Dim expected = New String() {"", Nothing, "Testvar", "Testvar", "T", "T", "12345", "Test var", "Test var"}
 
 		For i = 0 To casingSource.Length - 1
 			Assert.AreEqual(expected(i), casingSource(i).Capitalize)
@@ -277,7 +277,7 @@ Public Class StringExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub DefaultIfNullTest()
-		Dim expected = New String() {"", "", "Testvar", "Testvar", "T", "T", "12345", "test var", "TEST VAR"}
+        Dim expected = New String() {"", "", "testVar", "TestVar", "t", "T", "12345", "test var", "TEST VAR"}
 
 		For i = 0 To casingSource.Length - 1
 			Assert.AreEqual(expected(i), casingSource(i).DefaultIfNull())
@@ -290,7 +290,7 @@ Public Class StringExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub DefaultIfNullTest1()
-		Dim expected = New String() {"", "ZZZ", "Testvar", "Testvar", "T", "T", "12345", "test var", "TEST VAR"}
+        Dim expected = New String() {"", "ZZZ", "testVar", "TestVar", "t", "T", "12345", "test var", "TEST VAR"}
 
 		For i = 0 To casingSource.Length - 1
 			Assert.AreEqual(expected(i), casingSource(i).DefaultIfNull("ZZZ"))
@@ -302,10 +302,10 @@ Public Class StringExtensionTest
 	'''</summary>
 	<TestMethod()> _
 	Public Sub DefaultIfEmptyTest()
-		Dim expected = New String() {"ZZZ", "ZZZ", "Testvar", "Testvar", "T", "T", "12345", "test var", "TEST VAR"}
+        Dim expected = New String() {"ZZZ", "ZZZ", "testVar", "TestVar", "t", "T", "12345", "test var", "TEST VAR"}
 
 		For i = 0 To casingSource.Length - 1
-			Assert.AreEqual(expected(i), casingSource(i).DefaultIfNull("ZZZ"))
+            Assert.AreEqual(expected(i), casingSource(i).DefaultIfEmpty("ZZZ"))
 		Next
 	End Sub
 

@@ -149,7 +149,7 @@ Public Module StringExtension
 		If value Is Nothing Then Return Nothing
 		If value = "" Then Return ""
 		If value.Length = 1 Then Return value.ToLower
-		Return value.Substring(0, 1).ToUpper & value.Substring(1)
+        Return value.Substring(0, 1).ToLower & value.Substring(1)
 	End Function
 
 	''' <summary>
@@ -208,9 +208,9 @@ Public Module StringExtension
 	''' <param name="default"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	Public Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
-		Return If(value = "", [default], value)
-	End Function
+    <Extension()> Public Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
+        Return If(value = "", [default], value)
+    End Function
 
 	''' <summary>
 	''' Checks to see if the string is an email address as per the System.Net.Mail definition. Note that a string may be the combination of a display name and an address. TO just get the address part, use ToMailAddress.Address

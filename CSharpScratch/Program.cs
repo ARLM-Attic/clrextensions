@@ -37,4 +37,71 @@ namespace CSharpScratch
         }
     }
 
+
+    class MyCollection : ICollection<String>
+    {
+        private readonly List<String> m_BaseList;
+
+        MyCollection(int capacity)
+        {
+            m_BaseList = new List<string>(capacity);
+        }
+
+        #region ICollection<string> Members
+
+        public void Add(string item)
+        {
+            m_BaseList.Add(item);
+        }
+
+        public void Clear()
+        {
+            m_BaseList.Clear();
+        }
+
+        public bool Contains(string item)
+        {
+            return m_BaseList.Contains(item);
+        }
+
+        public void CopyTo(string[] array, int arrayIndex)
+        {
+            m_BaseList.CopyTo(array, arrayIndex);
+        }
+
+        public int Count
+        {
+            get {return m_BaseList.Count ; }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return false; }
+        }
+
+        public bool Remove(string item)
+        {
+            return m_BaseList.Remove(item);
+        }
+
+        #endregion
+
+        #region IEnumerable<string> Members
+
+        public IEnumerator<string> GetEnumerator()
+        {
+            return m_BaseList.GetEnumerator();
+        }
+
+        #endregion
+
+        #region IEnumerable Members
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return m_BaseList.GetEnumerator();
+        }
+
+        #endregion
+    }
 }

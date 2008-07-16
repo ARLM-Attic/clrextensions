@@ -256,22 +256,6 @@ Public Class ByteExtensionTest
 	'''A test for ToString
 	'''</summary>
 	<TestMethod()> _
-	Public Sub ToStringTest1()
-		Assert.Inconclusive("To short to bother testing as this time.")
-
-		'Dim this() As Byte = Nothing ' TODO: Initialize to an appropriate value
-		'Dim encoding As Encoding = Nothing ' TODO: Initialize to an appropriate value
-		'Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
-		'Dim actual As String
-		'actual = ByteExtension.ToString(this, encoding)
-		'Assert.AreEqual(expected, actual)
-		'Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
-
-	'''<summary>
-	'''A test for ToString
-	'''</summary>
-	<TestMethod()> _
 	Public Sub ToStringTest()
 		Dim groupSize = 0
 
