@@ -155,6 +155,7 @@
     <Compile Include="System\ObjectExtension.vb" />
     <Compile Include="System\Collections\Tuple2.vb" />
     <Compile Include="System\Collections\Tuple3.vb" />
+    <Compile Include="System\TimeSpanExtension.vb" />
     <Compile Include="Win32\Http\HTTPAPI_VERSION.vb" />
     <Compile Include="Win32\Http\HttpInitializeFlags.vb" />
     <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_KEY.vb" />
