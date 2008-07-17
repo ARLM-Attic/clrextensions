@@ -82,10 +82,13 @@
     <Compile Include="DoubleExtensionTest.vb" />
     <Compile Include="EnumExtensionTest.vb" />
     <Compile Include="Int32ExtensionTest.vb" />
+    <Compile Include="LongExtensionTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="StringExtensionTest.vb" />
     <Compile Include="ThreadExtensionTest.vb" />
     <Compile Include="TimeSpanExtensionTest.vb" />
+    <Compile Include="Tuple3Test.vb" />
+    <Compile Include="TupleTest2.vb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
