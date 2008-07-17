@@ -32,6 +32,11 @@ Namespace System.Collections
 		Public Overloads Function TryGetValue(ByVal key1 As TKey1, ByVal key2 As TKey2, ByRef value As TValue) As Boolean
 			Return MyBase.TryGetValue(MakeKey(key1, key2), value)
 		End Function
+
+		Public Function StoreAndReturn(ByVal key1 As TKey1, ByVal key2 As TKey2, ByRef value As TValue) As TValue
+			Me(key1, key2) = value
+			Return value
+		End Function
 	End Class
 #End If
 End Namespace

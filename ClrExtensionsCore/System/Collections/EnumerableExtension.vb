@@ -80,6 +80,23 @@
 		Next
 	End Sub
 
+	<Extension()> Public Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Func(Of T, Boolean)) As Boolean
+		For Each item In source
+			If Not predicate.Invoke(item) Then Return False
+		Next
+		Return True
+	End Function
+
+	<Extension()> Public Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Predicate(Of T)) As Boolean
+		For Each item In source
+			If Not predicate.Invoke(item) Then Return False
+		Next
+		Return True
+		source.First()
+	End Function
+
+
+
 End Module
 
 

@@ -2,6 +2,12 @@
 
 <Untested()> Public Module DictionaryExtension
 
+	<Extension()> Sub ForEachs(Of TKey, TValue)(ByVal source As IDictionary(Of TKey, TValue), ByVal action As Action(Of TKey, TValue))
+		For Each item In source
+			action.Invoke(item.Key, item.Value)
+		Next
+	End Sub
+
 	<Extension()> Function Keys(ByVal this As IDictionaryEnumerator) As Collections.ObjectModel.Collection(Of Object)
 		Dim result As New Collections.ObjectModel.Collection(Of Object)
 		Do While this.MoveNext

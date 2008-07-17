@@ -19,6 +19,49 @@ Public Module Int32Extension
 		Return CBool(value And flag)
 	End Function
 
+
+	''' <summary>
+	''' Adds the English suffix to a number for displaying in ranks
+	''' </summary>
+	''' <param name="value"></param>
+	''' <returns>1st, 2nd, 3rd, 4th, etc.</returns>
+	''' <remarks></remarks>
+	<Untested()> <Extension()> Public Function EnglishSuffix(ByVal value As Integer) As String
+		If value <= 0 Then Throw New ArgumentOutOfRangeException("value")
+
+		If (value Mod 100).IsBetween(10, 19) Then
+			Return value & "th"
+		Else
+			Select Case value Mod 10
+				Case 1
+					Return value & "st"
+				Case 2
+					Return value & "nd"
+				Case 3
+					Return value & "rd"
+				Case Else
+					Return value & "th"
+			End Select
+		End If
+	End Function
+
+
+	<Untested()> <Extension()> Public Function IsEven(ByVal value As Integer) As Boolean
+		Return value Mod 2 = 0
+	End Function
+
+	<Untested()> <Extension()> Public Function IsOdd(ByVal value As Integer) As Boolean
+		Return value Mod 2 = 1
+	End Function
+
+	<Untested()> <Extension()> Public Function IsMultipleOf(ByVal value As Integer, ByVal factor As Integer) As Boolean
+		Return value Mod factor = 0
+	End Function
+
+	<Untested()> <Extension()> Public Function IsFactorOf(ByVal value As Integer, ByVal multiple As Integer) As Boolean
+		Return multiple Mod value = 0
+	End Function
+
 #End If
 
 	'TODO: Create versions of these for all the interger types
