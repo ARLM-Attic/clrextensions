@@ -119,7 +119,13 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Compile Include="System\ActionExtensions.vb" />
     <Compile Include="Attributes.vb" />
+    <Compile Include="System\Collections\CollectionExtension.vb" />
+    <Compile Include="System\IO\DirectoryInfo.vb" />
+    <Compile Include="System\FuncExtension.vb" />
+    <Compile Include="System\PredicateExtension.vb" />
+    <Compile Include="System\IO\StreamExtension.vb" />
     <Compile Include="System\ArrayExtension.vb" />
     <Compile Include="System\Collections\Dictionary2.vb" />
     <Compile Include="System\Collections\Dictionary3.vb" />

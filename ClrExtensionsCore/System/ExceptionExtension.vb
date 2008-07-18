@@ -1,10 +1,10 @@
 #If IncludeUntested Then
 
-<Untested()> Public Module ExceptionExtension
-	'TODO Add a function to dump the detailed SQL exceptions that are not normally part of SqlException.ToString
+Public Module ExceptionExtension
+    'TODO Add a function to dump the detailed SQL exceptions that are not normally part of SqlException.ToString
 
 
-    <Extension()> Public Function ToStringDetailed(ByVal Exception As Exception) As String
+    <Untested()> <Extension()> Public Function ToStringDetailed(ByVal Exception As Exception) As String
         Dim result As New Text.StringBuilder(Exception.ToString)
 
         If TypeOf Exception Is SqlClient.SqlException Then
@@ -19,7 +19,7 @@
 
 
 
-    <Extension()> Public Function SqlExceptionDetails(ByVal sqlException As SqlClient.SqlException) As String
+    <Untested()> <Extension()> Public Function SqlExceptionDetails(ByVal sqlException As SqlClient.SqlException) As String
         Dim result As New Text.StringBuilder(sqlException.ToString)
 
         result.AppendLine("SQL Exception Details")
