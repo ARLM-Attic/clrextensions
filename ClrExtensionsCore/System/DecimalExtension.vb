@@ -43,5 +43,34 @@ Public Module DecimalExtension
 		End Try
 	End Function
 
+	<Untested()> <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
+		Return CDec(Math.Sqrt((Aggregate item In source Into Sum(item * item)) / CDec(source.Count)))
+	End Function
+
+	<Untested()> <Extension()> Function Mode(ByVal source As IList(Of Decimal)) As List(Of Decimal)
+		Dim counts = (From Value In source Group By Value Into Elements = Count()).ToList
+		Dim maxCount = counts.Max(Function(x) x.Elements)
+		Return (From item In counts Where item.Elements = maxCount Select item.Value).ToList
+	End Function
+
+	<Untested()> <Extension()> Function StandardDeviation(ByVal source As IList(Of Decimal)) As Decimal
+		Dim step1 = source.Average 'mean
+		Dim step2 = From item In source Select item - step1	'deviation from mean
+		Dim step3 = From item In step2 Select item * item 'square of deviation from mean
+		Dim step4 = step3.Average / step3.Count	'mean of square of deviation from mean
+		Dim step5 = CDec(Math.Sqrt(step4)) 'Square root of mean of square of deviation from mean
+
+		Return step5
+	End Function
+
+	<Untested()> <Extension()> Function MeanAbsoluteError(ByVal predictedList As IList(Of Decimal), ByVal actualList As IList(Of Decimal)) As Decimal
+		If predictedList.Count <> actualList.Count Then Throw New ArgumentException("Lists are of unequal length")
+		Dim step1 = predictedList.Join(actualList, Function(predicted, actual) Math.Abs(predicted - actual))
+		Dim step2 = (step1.Sum) / predictedList.Count
+		Return step2
+	End Function
+
 End Module
+
+
 
