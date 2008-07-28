@@ -21,4 +21,14 @@
         Return value.Add(New TimeSpan(0, 0, 0, 0, milliseconds))
     End Function
 
+#If IncludeUntested Then
+    <Untested()> Public Function Max(ByVal valueA As TimeSpan, ByVal valueB As TimeSpan) As TimeSpan
+        If valueA >= valueB Then Return valueA Else Return valueB
+    End Function
+
+    <Untested()> Public Function Max(ByVal ParamArray values() As TimeSpan) As TimeSpan
+        Return values.Max
+    End Function
+#End If
+
 End Module
