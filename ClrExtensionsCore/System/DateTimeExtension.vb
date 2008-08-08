@@ -96,40 +96,54 @@ Public Module DateTimeExtension
 		Return New Date(value.Year, value.Month, value.Day, hours, minutes, seconds)
 	End Function
 
+
+    <Untested()> <Extension()> Public Function Quarter(ByVal this As DateTime) As Integer
+        Select Case this.Month
+            Case 1 To 3 : Return 1
+            Case 4 To 6 : Return 2
+            Case 7 To 9 : Return 3
+            Case 10 To 12 : Return 4
+        End Select
+    End Function
+
+    <Untested()> <Extension()> Public Function ToQuarter(ByVal this As DateTime) As System.Quarter
+        Return New System.Quarter(this)
+    End Function
+
 #End If
 
-	''' <summary>
-	''' Returns a DateTime with the time altered
-	''' </summary>
-	''' <param name="value">Date component</param>
-	''' <param name="hours"></param>
-	''' <param name="minutes"></param>
-	''' <returns></returns>
-	''' <remarks></remarks>
-	<Extension()> Public Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer) As Date
-		If hours < 0 Or hours > 23 Then Throw New ArgumentOutOfRangeException("hours")
-		If minutes < 0 Or minutes > 59 Then Throw New ArgumentOutOfRangeException("minutes")
+    ''' <summary>
+    ''' Returns a DateTime with the time altered
+    ''' </summary>
+    ''' <param name="value">Date component</param>
+    ''' <param name="hours"></param>
+    ''' <param name="minutes"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    <Extension()> Public Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer) As Date
+        If hours < 0 Or hours > 23 Then Throw New ArgumentOutOfRangeException("hours")
+        If minutes < 0 Or minutes > 59 Then Throw New ArgumentOutOfRangeException("minutes")
 
-		Return New Date(value.Year, value.Month, value.Day, hours, minutes, 0)
-	End Function
+        Return New Date(value.Year, value.Month, value.Day, hours, minutes, 0)
+    End Function
 
-	''' <summary>
-	''' Returns a DateTime with the time altered
-	''' </summary>
-	''' <param name="value">Date component</param>
-	''' <param name="time">Time component, must be less than 1 day</param>
-	''' <returns></returns>
-	''' <remarks></remarks>
-	<Extension()> Public Function SetTime(ByVal value As Date, ByVal time As TimeSpan) As Date
-		If time.Days > 0 Then Throw New ArgumentOutOfRangeException("time", "Time exceeds one day. Use this.Date.Add(time) instead.")
-		Return value.Date.Add(time)
-	End Function
+    ''' <summary>
+    ''' Returns a DateTime with the time altered
+    ''' </summary>
+    ''' <param name="value">Date component</param>
+    ''' <param name="time">Time component, must be less than 1 day</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    <Extension()> Public Function SetTime(ByVal value As Date, ByVal time As TimeSpan) As Date
+        If time.Days > 0 Then Throw New ArgumentOutOfRangeException("time", "Time exceeds one day. Use this.Date.Add(time) instead.")
+        Return value.Date.Add(time)
+    End Function
 
-	'Todo: Look up how to create this date string. It is used for RSS feeds
-	'<Extension()> Public Function ToRfc822DateString(ByVal this As Date) As String
+    'Todo: Look up how to create this date string. It is used for RSS feeds
+    '<Extension()> Public Function ToRfc822DateString(ByVal this As Date) As String
 
-	<Extension()> Public Function IsBetween(ByVal value As Date, ByVal start As Date, ByVal [end] As Date) As Boolean
-		Return start <= value And value <= [end]
-	End Function
+    <Extension()> Public Function IsBetween(ByVal value As Date, ByVal start As Date, ByVal [end] As Date) As Boolean
+        Return start <= value And value <= [end]
+    End Function
 
 End Module
