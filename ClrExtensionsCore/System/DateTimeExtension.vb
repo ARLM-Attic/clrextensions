@@ -106,8 +106,8 @@ Public Module DateTimeExtension
         End Select
     End Function
 
-    <Untested()> <Extension()> Public Function ToQuarter(ByVal this As DateTime) As System.Quarter
-        Return New System.Quarter(this)
+    <Untested()> <Extension()> Public Function ToQuarterYear(ByVal this As DateTime) As System.QuarterYear
+        Return New System.QuarterYear(this)
     End Function
 
 #End If

@@ -123,6 +123,7 @@
     <Compile Include="Attributes.vb" />
     <Compile Include="System\Collections\CollectionExtension.vb" />
     <Compile Include="System\Collections\TwoWayDictionary.vb" />
+    <Compile Include="System\FlexDate.vb" />
     <Compile Include="System\IO\DirectoryInfo.vb" />
     <Compile Include="System\FuncExtension.vb" />
     <Compile Include="System\PredicateExtension.vb" />
@@ -162,7 +163,7 @@
     <Compile Include="System\ObjectExtension.vb" />
     <Compile Include="System\Collections\Tuple2.vb" />
     <Compile Include="System\Collections\Tuple3.vb" />
-    <Compile Include="System\Quarter.vb" />
+    <Compile Include="System\QuarterYear.vb" />
     <Compile Include="System\TimeSpanExtension.vb" />
     <Compile Include="Win32\Http\HTTPAPI_VERSION.vb" />
     <Compile Include="Win32\Http\HttpInitializeFlags.vb" />
