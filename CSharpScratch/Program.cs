@@ -18,7 +18,7 @@ namespace CSharpScratch
 
 			var y = new Dictionary<string, int>() { { "foo", 1 }, { "bar", 2 }, { "baz", 3 } };
 			var z = new Dictionary<string, int, bool>() { { "foo", 1, true }, { "bar", 2, false }, { "baz", 3, true } };
-			var result = new CustomerList() { { "Tom", "Jones", 19}, { "Mary", "More", 36}, { "Frank", "Brown", 37} };
+			//var result = new CustomerList() { { "Tom", "Jones", 19}, { "Mary", "More", 36}, { "Frank", "Brown", 37} };
 
 			//System.Data.DataTable x;
 		
