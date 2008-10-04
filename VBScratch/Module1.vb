@@ -4,9 +4,10 @@ Imports System.Runtime.CompilerServices
 Module Module1
 
 	Sub Main()
+#If IncludeUntested Then
 
 		Dim result = (New Object(,) {{"foo", 1}, {"bar", 2}, {"baz", 3}}).ToList
-
+#End If
 
 
 		'		Dim z As Action(Of Integer) = Function(a As Integer) Console.WriteLine(a)
@@ -15,7 +16,7 @@ Module Module1
 		'		x.ForEach(x, (Function(a As Integer) Console.WriteLine(x)))
 	End Sub
 
-
+#If IncludeUntested Then
 	<Extension()> Public Function ToList(Of T)(ByVal source As T(,)) As List(Of T())
 		Dim result As New List(Of T())
 
@@ -26,6 +27,7 @@ Module Module1
 		Return result
 
 	End Function
+#End If
 
 	<extension()> Public Function ToDataTable(ByVal table As Object(,)) As DataTable
 		Dim result As New DataTable
