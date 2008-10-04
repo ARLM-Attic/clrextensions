@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{37B441E0-2CED-40A6-AC75-A267CCBAFCE4}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -105,7 +105,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Scratch.vb" />
-    <Compile Include="System\StringExtension.vb" />
     <Compile Include="System\Web\Caching\CacheExtension.vb" />
     <Compile Include="System\Web\UI\WebControls\ListControlExtension.vb" />
   </ItemGroup>
