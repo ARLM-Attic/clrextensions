@@ -189,7 +189,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function [TryCast](Of T As Structure)(ByVal value As Object) As Nullable(Of T)
+    <Untested()> <Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal value As Object) As Nullable(Of T)
         If value Is Nothing Then Return Nothing
 
         'todo, find a way to do this that won't throw an exception or require a double cast
