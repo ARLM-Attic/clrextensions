@@ -2,19 +2,30 @@ Imports System.Runtime.InteropServices
 Imports ClrExtensions.System.Collections
 
 
-Module ActionExtensions
-#If IncludeUntested Then
+Public Module ActionExtensions
 
-    <Untested()> <Extension()> Public Sub Repeat(ByVal action As Action, ByVal occurances As Integer)
-        For i = 0 To occurances
+    ''' <summary>
+    ''' Calls the action N times
+    ''' </summary>
+    ''' <param name="action">An action delegate to call</param>
+    ''' <param name="occurances">The number of times the action is called</param>
+    ''' <remarks></remarks>
+    <Extension()> Public Sub Repeat(ByVal action As Action, ByVal occurances As Integer)
+        For i = 1 To occurances
             action.Invoke()
         Next
     End Sub
 
-    <Untested()> <Extension()> Public Sub Repeat(ByVal action As Action(Of Integer), ByVal occurances As Integer)
-        For i = 0 To occurances
+    ''' <summary>
+    ''' Calls the action N times, passing the number 1 to N to the action
+    ''' </summary>
+    ''' <param name="action">An action delegate to call</param>
+    ''' <param name="occurances">The number of times the action is called</param>
+    ''' <remarks>Note that this is 1 based, not 0 based</remarks>
+    <Extension()> Public Sub Repeat(ByVal action As Action(Of Integer), ByVal occurances As Integer)
+        For i = 1 To occurances
             action.Invoke(i)
         Next
     End Sub
-#End If
+
 End Module
