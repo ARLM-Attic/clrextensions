@@ -12,7 +12,7 @@ namespace CSharpScratch
 	{
 		static void Main(string[] args)
 		{
-
+#if IncludeUntested 
 			//var result = new List<object[]> { { "foo", 1 }, { "bar", 2 }, { "baz", 3 } };
 			var x = new object[,] { { "foo", 1 }, { "bar", 2 }, { "baz", 3 } };
 
@@ -46,6 +46,7 @@ namespace CSharpScratch
 			//    } Console.WriteLine();
 			//}
 			//Console.ReadLine();
+#endif
 		}
 	}
 
