@@ -14,10 +14,24 @@ Public Module EnumExtension
 
 #If IncludeUntested Then
 
+    ''' <summary>
+    ''' Parse a string, returning the indicated enum
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="value"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> Public Function EnumParse(Of T As Structure)(ByVal value As String) As T
         Return CType([Enum].Parse(GetType(T), value), T)
     End Function
 
+    ''' <summary>
+    ''' Parse a string, returning the indicated enum
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="value"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> Public Function EnumTryParse(Of T As Structure)(ByVal value As String) As T?
         Try
             Return CType([Enum].Parse(GetType(T), value), T)
@@ -26,10 +40,26 @@ Public Module EnumExtension
         End Try
     End Function
 
+    ''' <summary>
+    ''' Parse a string, returning the indicated enum
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="value"></param>
+    ''' <param name="ignoreCase"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> Public Function EnumParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T
         Return CType([Enum].Parse(GetType(T), value, ignoreCase), T)
     End Function
 
+    ''' <summary>
+    ''' Parse a string, returning the indicated enum
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="value"></param>
+    ''' <param name="ignoreCase"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> Public Function EnumTryParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T?
         Try
             Return CType([Enum].Parse(GetType(T), value, ignoreCase), T)
