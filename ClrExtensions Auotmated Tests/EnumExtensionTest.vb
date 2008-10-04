@@ -57,25 +57,25 @@ Public Class EnumExtensionTest
 	'''<summary>
 	'''A test for IsDefined
 	'''</summary>
-	Public Sub IsDefinedTestHelper(Of T As Structure)()
+	Public Sub EnumIsDefinedTestHelper(Of T As Structure)()
 
 		Dim values() = New Object() {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 		For i = 0 To values.Length - 1
-			Assert.AreEqual([Enum].IsDefined(GetType(T), values(i)), IsDefined(Of T)(CType(values(i), T)))
+			Assert.AreEqual([Enum].IsDefined(GetType(T), values(i)), EnumIsDefined(Of T)(CType(values(i), T)))
 		Next
 
 	End Sub
 
 	<TestMethod()> _
-	Public Sub IsDefinedTest()
-		IsDefinedTestHelper(Of IO.DriveType)()
-		IsDefinedTestHelper(Of IO.FileAccess)()
+	Public Sub EnumIsDefinedTest()
+		EnumIsDefinedTestHelper(Of IO.DriveType)()
+		EnumIsDefinedTestHelper(Of IO.FileAccess)()
 	End Sub
 
 	<TestMethod()> _
 	<ExpectedException(GetType(ArgumentException))> _
-	Public Sub IsDefinedTest2()
-		IsDefinedTestHelper(Of Drawing.Rectangle)()
+	Public Sub EnumIsDefinedTest2()
+		EnumIsDefinedTestHelper(Of Drawing.Rectangle)()
 	End Sub
 
 
