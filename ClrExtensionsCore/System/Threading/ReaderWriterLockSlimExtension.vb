@@ -2,18 +2,18 @@
 Public Module ReaderWriterLockSlimExtension
 
 	<Untested()> <Extension()> Public Function ReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
-		Return New LockWrapper(lock, LockMode.Read)
+		Return New LockToken(lock, LockMode.Read)
 	End Function
 
 	<Untested()> <Extension()> Public Function UpgradeableReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
-		Return New LockWrapper(lock, LockMode.Upgradable)
+		Return New LockToken(lock, LockMode.Upgradable)
 	End Function
 
 	<Untested()> <Extension()> Public Function WriteSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
-		Return New LockWrapper(lock, LockMode.Write)
+		Return New LockToken(lock, LockMode.Write)
 	End Function
 
-	Private NotInheritable Class LockWrapper
+	Private NotInheritable Class LockToken
 		Implements IDisposable
 		Private m_Mode As LockMode
 		Private m_Lock As Global.System.Threading.ReaderWriterLockSlim
