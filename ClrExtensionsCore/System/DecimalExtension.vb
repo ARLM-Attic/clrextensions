@@ -43,6 +43,7 @@ Public Module DecimalExtension
 		End Try
 	End Function
 
+#If IncludeUntested Then
 	<Untested()> <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
 		Return CDec(Math.Sqrt((Aggregate item In source Into Sum(item * item)) / CDec(source.Count)))
 	End Function
@@ -69,6 +70,8 @@ Public Module DecimalExtension
 		Dim step2 = (step1.Sum) / predictedList.Count
 		Return step2
 	End Function
+#End If
+
 
 End Module
 
