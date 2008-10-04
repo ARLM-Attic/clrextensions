@@ -494,6 +494,18 @@
     <Untested()> <Extension()> Public Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
         Return Global.System.Web.HttpUtility.ParseQueryString(this)
     End Function
+
+    <Untested()> <Extension()> Public Function RemoveNonNumeric(ByVal value As String) As String
+        Dim sb As New Text.StringBuilder(value.Length)
+
+        For Each c In value.ToCharArray
+            If Char.IsNumber(c) Then sb.Append(c)
+        Next
+
+        Return sb.ToString()
+
+    End Function
+
 #End If
 
 
