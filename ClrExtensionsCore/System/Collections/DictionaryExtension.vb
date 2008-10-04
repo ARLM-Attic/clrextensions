@@ -2,7 +2,19 @@
 
 Public Module DictionaryExtension
 
-    <Untested()> <Extension()> Sub ForEachs(Of TKey, TValue)(ByVal source As IDictionary(Of TKey, TValue), ByVal action As Action(Of TKey, TValue))
+    ''' <summary>
+    ''' Stores the value, then returns the same value
+    ''' </summary>
+    ''' <param name="key"></param>
+    ''' <param name="value"></param>
+    ''' <returns></returns>
+    ''' <remarks>This was created to support anonymous functions in VB that need to do more than one thing with a value in a single line. See the Memorize function for an example of its use</remarks>
+    <Untested()> <Extension()> Public Function StoreAndReturn(Of TKey, TValue)(ByVal dictionary As Dictionary(Of TKey, TValue), ByVal key As TKey, ByVal value As TValue) As TValue
+        dictionary(key) = value
+        Return value
+    End Function
+
+    <Untested()> <Extension()> Sub ForEach(Of TKey, TValue)(ByVal source As IDictionary(Of TKey, TValue), ByVal action As Action(Of TKey, TValue))
         For Each item In source
             action.Invoke(item.Key, item.Value)
         Next

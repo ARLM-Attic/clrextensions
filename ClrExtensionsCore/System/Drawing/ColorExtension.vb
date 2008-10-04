@@ -52,6 +52,14 @@ Public Module ColorExtension
         End Select
     End Function
 
+    ''' <summary>
+    ''' Creates a Color object from Hue-Saturation-Value (HSV)
+    ''' </summary>
+    ''' <param name="hue"></param>
+    ''' <param name="saturation"></param>
+    ''' <param name="value"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> Public Function FromHsv(ByVal hue As Single, ByVal saturation As Single, ByVal value As Single) As Drawing.Color
         'todo : Check ranges
         Dim hi = (hue / 60.0F) Mod 6

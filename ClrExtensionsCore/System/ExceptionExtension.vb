@@ -1,16 +1,29 @@
 #If IncludeUntested Then
 
 Public Module ExceptionExtension
-    'TODO Add a function to dump the detailed SQL exceptions that are not normally part of SqlException.ToString
 
+    ''' <summary>
+    ''' Gets detailed information from an exception object and all its inner exceptions
+    ''' </summary>
+    ''' <param name="Exception"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    <Untested()> <Extension()> Public Function ToStringDetailed(ByVal exception As Exception) As String
+        Dim result As New Text.StringBuilder()
 
-    <Untested()> <Extension()> Public Function ToStringDetailed(ByVal Exception As Exception) As String
-        Dim result As New Text.StringBuilder(Exception.ToString)
+        Dim localException = exception
 
-        If TypeOf Exception Is SqlClient.SqlException Then
-            result.AppendLine()
-            result.AppendLine(SqlExceptionDetails(DirectCast(Exception, SqlClient.SqlException)))
-        End If
+        Do Until localException Is Nothing
+            result.AppendLine(exception.ToString)
+            If TypeOf exception Is SqlClient.SqlException Then
+                result.AppendLine()
+                result.AppendLine(SqlExceptionDetails(DirectCast(exception, SqlClient.SqlException)))
+            End If
+
+            'TODO - Add any other 'tricky' exceptions here
+
+            localException = exception.InnerException
+        Loop
 
 
         Return result.ToString
@@ -18,7 +31,12 @@ Public Module ExceptionExtension
     End Function
 
 
-
+    ''' <summary>
+    ''' Returns the detailed exception information from a SqlException, including its error collection
+    ''' </summary>
+    ''' <param name="sqlException"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function SqlExceptionDetails(ByVal sqlException As SqlClient.SqlException) As String
         Dim result As New Text.StringBuilder(sqlException.ToString)
 

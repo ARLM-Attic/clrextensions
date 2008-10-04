@@ -1,5 +1,11 @@
 Namespace System.Collections
 
+    ''' <summary>
+    ''' This repesents a pair of values
+    ''' </summary>
+    ''' <typeparam name="TA"></typeparam>
+    ''' <typeparam name="TB"></typeparam>
+    ''' <remarks></remarks>
     Public Class Tuple(Of TA, TB)
         Implements IEquatable(Of Tuple(Of TA, TB))
 

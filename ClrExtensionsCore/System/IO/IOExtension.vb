@@ -22,6 +22,12 @@
     End Sub
 
 
+    ''' <summary>
+    ''' This prints a file using the defaults set by the operating system
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    ''' <returns></returns>
+    ''' <remarks>This was hand tested because it is so heavily dependent on OS settings</remarks>
     Public Function PrintFile(ByVal fileName As String) As Process
         Dim printJob As New Process()
         printJob.StartInfo.FileName = fileName

@@ -1,7 +1,11 @@
 Namespace System.Collections
 #If IncludeUntested Then
 
-
+    ''' <summary>
+    ''' This creates a new IEqualityComparer object from a pair of functions
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <remarks></remarks>
 	<Untested()> Public Class QuickEqualityComparer(Of T)
 		Implements IEqualityComparer(Of T)
 
@@ -12,7 +16,7 @@ Namespace System.Collections
 		''' 
 		''' </summary>
 		''' <param name="equalityFunction"></param>
-		''' <remarks>The lack of a true hashing function will make this version slow</remarks>
+        ''' <remarks>The lack of a true hashing function will make this version slow, don't use it when working with dictionaries</remarks>
 		Public Sub New(ByVal equalityFunction As Func(Of T, T, Boolean))
 			MyClass.New(equalityFunction, Nothing)
 		End Sub

@@ -267,7 +267,12 @@
         Return If(value.Length > length, value.Substring(value.Length - length), value)
     End Function
 
-
+    ''' <summary>
+    ''' Normalizes line breaks to the Windows standard
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Extension()> Public Function NormalizeLineBreaks(ByVal value As String) As String
         Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr).Replace(vbCr, vbCrLf)
     End Function

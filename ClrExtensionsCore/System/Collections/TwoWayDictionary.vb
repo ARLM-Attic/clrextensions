@@ -1,4 +1,13 @@
 ﻿
+#If IncludeUntested Then
+
+''' <summary>
+''' This dictionary has a one-to-one mapping between "keys" and "values", making it cheap to go from a value back to a key
+''' </summary>
+''' <typeparam name="TLeft">The left-hand key</typeparam>
+''' <typeparam name="TRight">The right-hand key</typeparam>
+''' <remarks></remarks>
+<Untested()> _
 Public Class TwoWayDictionary(Of TLeft, TRight)
     Private m_FromLeft As New Dictionary(Of TLeft, TRight)
     Private m_FromRight As New Dictionary(Of TRight, TLeft)
@@ -64,3 +73,5 @@ Public Class TwoWayDictionary(Of TLeft, TRight)
     End Function
 
 End Class
+
+#End If

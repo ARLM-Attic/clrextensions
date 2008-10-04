@@ -1,6 +1,13 @@
 
 Public Module ListExtension
-
+    ''' <summary>
+    ''' Breaks a list into a collection of lists whose size is no more than the indicated limit
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="size"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
 	<Extension()> Public Function Chunk(Of T)(ByVal this As IList(Of T), ByVal size As Integer) As List(Of List(Of T))
 		Dim result As New List(Of List(Of T))
 		For i = 0 To CInt(Math.Ceiling(this.Count / size)) - 1
@@ -9,6 +16,15 @@ Public Module ListExtension
 		Return result
 	End Function
 
+    ''' <summary>
+    ''' Adds a GetRange method to any IList that doesn't already have one.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="index">The starting index to return</param>
+    ''' <param name="count">The Maximum number of items to return</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
 	<Extension()> Public Function GetRange(Of T)(ByVal this As IList(Of T), ByVal index As Integer, ByVal count As Integer) As List(Of T)
 		Dim result As New List(Of T)(count)
 		For i = index To Math.Min(index + count, this.Count) - 1
@@ -55,6 +71,14 @@ Public Module ListExtension
         Return (From item In this Select CType(item, T)).ToList
     End Function
 
+    ''' <summary>
+    ''' This calls ToString on each element in the list, then joins them on the seperator
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="separator"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String) As String
         Dim temp As New List(Of String)(this.Count)
         For Each item In this
@@ -63,6 +87,15 @@ Public Module ListExtension
         Return temp.Join(separator)
     End Function
 
+    ''' <summary>
+    ''' This converts each item in the list to a string using the supplied format function, then joins them on the separator
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="separator"></param>
+    ''' <param name="formater"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String, ByVal formater As Func(Of T, String)) As String
         Dim temp As New List(Of String)(this.Count)
         For Each item In this
@@ -72,10 +105,14 @@ Public Module ListExtension
     End Function
 
 
-
-
-
-
+    ''' <summary>
+    ''' This determines if a specified sequence is contained in the source list.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="pattern"></param>
+    ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Integer
         If this Is Nothing Then Return -1
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -96,6 +133,14 @@ Public Module ListExtension
         Return -1
     End Function
 
+    ''' <summary>
+    ''' This determines if a specified sequence is contained in the source list.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="pattern"></param>
+    ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Integer
         If this Is Nothing Then Return -1
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -104,7 +149,15 @@ Public Module ListExtension
         Return IndexOfSequence(this, CType(pattern, IList(Of T)))
     End Function
 
-
+    ''' <summary>
+    ''' This determines if a specified sequence is contained in the source list.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="comparer">A custom comparer used to determine if two elements are equal</param>
+    ''' <param name="pattern"></param>
+    ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Integer
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If this Is Nothing Then Return -1
@@ -128,6 +181,15 @@ Public Module ListExtension
         Return -1
     End Function
 
+    ''' <summary>
+    ''' This determines if a specified sequence is contained in the source list.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="comparer">A custom comparer used to determine if two elements are equal</param>
+    ''' <param name="pattern"></param>
+    ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Integer
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If this Is Nothing Then Return -1
@@ -137,6 +199,15 @@ Public Module ListExtension
         Return IndexOfSequence(this, comparer, CType(pattern, IList(Of T)))
     End Function
 
+    ''' <summary>
+    ''' This determines if the source list starts with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="comparer">A custom comparer used to determine if two elements are equal</param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -151,6 +222,14 @@ Public Module ListExtension
         Return True
     End Function
 
+    ''' <summary>
+    ''' This determines if the source list starts with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -164,7 +243,15 @@ Public Module ListExtension
         Return True
     End Function
 
-
+    ''' <summary>
+    ''' This determines if the source list ends with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="comparer">A custom comparer used to determine if two elements are equal</param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -180,6 +267,14 @@ Public Module ListExtension
         Return True
     End Function
 
+    ''' <summary>
+    ''' This determines if the source list ends with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -194,23 +289,64 @@ Public Module ListExtension
         Return True
     End Function
 
+    ''' <summary>
+    ''' This determines if the source list ends with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
         Return EndsWith(this, CType(pattern, IList(Of T)))
     End Function
 
+    ''' <summary>
+    ''' This determines if the source list ends with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="comparer">A custom comparer used to determine if two elements are equal</param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
         Return EndsWith(this, comparer, CType(pattern, IList(Of T)))
     End Function
 
+    ''' <summary>
+    ''' This determines if the source list starts with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
         Return StartsWith(this, CType(pattern, IList(Of T)))
     End Function
 
+    ''' <summary>
+    ''' This determines if the source list starts with the specified sequence
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="this"></param>
+    ''' <param name="comparer">A custom comparer used to determine if two elements are equal</param>
+    ''' <param name="pattern"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
         Return StartsWith(this, comparer, CType(pattern, IList(Of T)))
     End Function
 
-
+    ''' <summary>
+    ''' This returns a list of indexes where the element passes the where clause 
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="source"></param>
+    ''' <param name="where">Predicate to execute on each method</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function IndexesWhere(Of T)(ByVal source As IList(Of T), ByVal where As Func(Of T, Boolean)) As List(Of Integer)
         Dim result As New List(Of Integer)
         For i = 0 To source.Count - 1
@@ -219,6 +355,15 @@ Public Module ListExtension
         Return result
     End Function
 
+    ''' <summary>
+    ''' This returns every Nth item in the list
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="source"></param>
+    ''' <param name="startIndex"></param>
+    ''' <param name="skip"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function TakeEvery(Of T)(ByVal source As IList(Of T), ByVal startIndex As Integer, ByVal skip As Integer) As List(Of T)
         Dim result As New List(Of T)
         For i = startIndex To source.Count - 1 Step skip
@@ -227,11 +372,19 @@ Public Module ListExtension
         Return result
     End Function
 
-
+    ''' <summary>
+    ''' This inserts a list of values into the target list at the specified point
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="target"></param>
+    ''' <param name="index"></param>
+    ''' <param name="source"></param>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Sub InsertRange(Of T)(ByVal target As IList(Of T), ByVal index As Integer, ByVal source As IEnumerable(Of T))
         Dim currentIndex = index
         For Each item In source
             target.Insert(currentIndex, item)
+            currentIndex += 1
         Next
     End Sub
 

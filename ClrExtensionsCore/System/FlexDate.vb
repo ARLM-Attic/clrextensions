@@ -2,6 +2,7 @@
 
 #If IncludeUntested Then
 
+    'TODO: Look up the new Java RFC on partial dates, it could be very useful here
 
     ''' <summary>
     ''' This class is used to represent a date that can be a Year, Quarter-Year, Month-Year, Week-Month-Year, or Day-Month-Year

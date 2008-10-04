@@ -9,6 +9,11 @@ Imports ClrExtensions.System.Collections
 
 Namespace System.Collections
 
+    ''' <summary>
+    ''' This is a sorted list that won't throw an exception if two items have the same value.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <remarks></remarks>
 	<Serializable()> _
 	<DebuggerDisplay("Count = {Count}")> _
 	<ComVisible(False)> _

@@ -21,6 +21,13 @@ Public Module DateTimeExtension
 		Return New Date(value.Year, value.Month, Date.DaysInMonth(value.Year, value.Month))
 	End Function
 
+    ''' <summary>
+    ''' Returns the next date that falls on the indicated day of the week
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <param name="dayofWeek"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
 	<Extension()> Public Function [Next](ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
 		Dim temp = dayofWeek - value.DayOfWeek
 		If temp <= 0 Then
@@ -30,7 +37,13 @@ Public Module DateTimeExtension
 		End If
 	End Function
 
-
+    ''' <summary>
+    ''' Returns the previous date that falls on the indicated day of the week
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <param name="dayofWeek"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
 	<Extension()> Public Function Previous(ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
 		Dim temp = value.DayOfWeek - dayofWeek
 		If temp > 0 Then
@@ -40,6 +53,13 @@ Public Module DateTimeExtension
 		End If
 	End Function
 
+    ''' <summary>
+    ''' Returns the first date in the indicated month that lands on the given day.
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <param name="dayofWeek"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
 	<Extension()> Public Function FirstOfMonth(ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
 		Dim result = value.FirstOfMonth
 		If result.DayOfWeek = dayofWeek Then
@@ -49,14 +69,21 @@ Public Module DateTimeExtension
 		End If
 	End Function
 
-	<Extension()> Public Function LastOfMonth(ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
-		Dim result = value.LastOfMonth
-		If result.DayOfWeek = dayofWeek Then
-			Return result
-		Else
-			Return result.Previous(dayofWeek)
-		End If
-	End Function
+    ''' <summary>
+    ''' Returns the late date in the indicated month that lands on the given day. 
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <param name="dayofWeek"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    <Extension()> Public Function LastOfMonth(ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
+        Dim result = value.LastOfMonth
+        If result.DayOfWeek = dayofWeek Then
+            Return result
+        Else
+            Return result.Previous(dayofWeek)
+        End If
+    End Function
 
 #If IncludeUntested Then
 
@@ -96,7 +123,12 @@ Public Module DateTimeExtension
 		Return New Date(value.Year, value.Month, value.Day, hours, minutes, seconds)
 	End Function
 
-
+    ''' <summary>
+    ''' Returns the Quarter for the indicated date
+    ''' </summary>
+    ''' <param name="this"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function Quarter(ByVal this As DateTime) As Integer
         Select Case this.Month
             Case 1 To 3 : Return 1
@@ -106,6 +138,7 @@ Public Module DateTimeExtension
         End Select
     End Function
 
+    ''' Returns a QuarterYear object for the indicated date
     <Untested()> <Extension()> Public Function ToQuarterYear(ByVal this As DateTime) As System.QuarterYear
         Return New System.QuarterYear(this)
     End Function
@@ -142,6 +175,14 @@ Public Module DateTimeExtension
     'Todo: Look up how to create this date string. It is used for RSS feeds
     '<Extension()> Public Function ToRfc822DateString(ByVal this As Date) As String
 
+    ''' <summary>
+    ''' Returns true is the indicated date is between the start and end dates. This is an inclusive check.
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <param name="start"></param>
+    ''' <param name="end"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Extension()> Public Function IsBetween(ByVal value As Date, ByVal start As Date, ByVal [end] As Date) As Boolean
         Return start <= value And value <= [end]
     End Function

@@ -6,6 +6,14 @@ Module DirectoryInfo
 
 #If IncludeUntested Then
 
+    ''' <summary>
+    ''' Copies the contents of one folder to another
+    ''' </summary>
+    ''' <param name="source"></param>
+    ''' <param name="target"></param>
+    ''' <param name="recursive">If true the copy is recursive</param>
+    ''' <param name="overwrite">If true files will be silently over-written. If false, a pre-existing file will cause an exception to be thrown</param>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Public Sub CopyTo(ByVal source As IO.DirectoryInfo, ByVal target As IO.DirectoryInfo, ByVal recursive As Boolean, ByVal overwrite As Boolean)
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If target Is Nothing Then Throw New ArgumentNullException("target")

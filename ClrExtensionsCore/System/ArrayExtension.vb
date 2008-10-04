@@ -1,6 +1,15 @@
 ﻿Public Module ArrayExtension
 
 #If IncludeUntested Then
+
+    ''' <summary>
+    ''' Sorts a rectanglar array by the indicated column
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="array"></param>
+    ''' <param name="sortColumn"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Function SortByColumn(Of T)(ByVal array As T(,), ByVal sortColumn As Integer) As T(,)
         Dim fragments = array.ToJagged
 
@@ -10,6 +19,13 @@
 
     End Function
 
+    ''' <summary>
+    ''' Turns a rectanglar array into a jagged array
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="array"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Function ToJagged(Of T)(ByVal array As T(,)) As T()()
         Dim xMax As Integer = array.GetUpperBound(0)
         Dim yMax As Integer = array.GetUpperBound(1)
@@ -26,12 +42,19 @@
         Return fragments
     End Function
 
+    ''' <summary>
+    ''' Turns a jagged array into a rectanglar array
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="array"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Untested()> <Extension()> Function ToRectangle(Of T)(ByVal array As T()()) As T(,)
         Dim xMax As Integer = array.GetUpperBound(0)
         Dim yMax As Integer = array(0).GetUpperBound(0)
 
         For i = 1 To xMax
-            If array(i).GetUpperBound(0) <> yMax Then Throw New ArgumentException("array is not square")
+            If array(i).GetUpperBound(0) <> yMax Then Throw New ArgumentException("array is not rectanglar")
         Next
 
 

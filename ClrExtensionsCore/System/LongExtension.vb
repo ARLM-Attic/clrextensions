@@ -1,10 +1,19 @@
 Public Module LongExtension
 
+    'TODO - Support the various meanings for KB, MB, and GB
+
     Private Const GB As Long = CLng(1024 ^ 3)
     Private Const MB As Long = CLng(1024 ^ 2)
     Private Const KB As Long = CLng(1024 ^ 1)
     Private Const B As Long = 1
 
+    ''' <summary>
+    ''' Converts a byte count into a string such as "1.2 KB"
+    ''' </summary>
+    ''' <param name="bytes"></param>
+    ''' <returns></returns>
+    ''' <remarks>1 KB=1024 Bytes, 1 MB=1024 KB, 1 GB = 1024 MB
+    ''' The return format is "##0.## XX" where XX is B, KB, MB, or GB as appropriate</remarks>
     <Extension()> Public Function ToByteSize(ByVal bytes As Long) As String
         Select Case CDbl(bytes)
             Case Is >= GB
@@ -18,7 +27,12 @@ Public Module LongExtension
         End Select
     End Function
 
-
+    ''' <summary>
+    ''' This reads a string such as "1.2 KB" and turns it into a count of bytes
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Extension()> Public Function ParseByteSize(ByVal value As String) As Long
         If value Is Nothing Then Throw New ArgumentNullException("value")
 

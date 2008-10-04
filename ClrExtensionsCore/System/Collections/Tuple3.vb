@@ -1,5 +1,12 @@
 Namespace System.Collections
 
+    ''' <summary>
+    ''' This represents a triplet of values
+    ''' </summary>
+    ''' <typeparam name="TA"></typeparam>
+    ''' <typeparam name="TB"></typeparam>
+    ''' <typeparam name="TC"></typeparam>
+    ''' <remarks></remarks>
     Public Class Tuple(Of TA, TB, TC)
         Implements IEquatable(Of Tuple(Of TA, TB, TC))
 
