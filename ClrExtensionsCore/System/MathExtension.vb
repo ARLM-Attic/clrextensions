@@ -1,6 +1,11 @@
 ﻿
 Public Module MathExtension
 
+	''' <summary>
+	''' Creates an infinite list of primes.
+	''' </summary>
+	''' <returns></returns>
+	''' <remarks></remarks>
 	Public Function Primes() As IEnumerable(Of Integer)
 		Return New PrimeGenerator
 	End Function
