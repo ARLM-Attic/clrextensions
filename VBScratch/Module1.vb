@@ -9,12 +9,14 @@ Module Module1
 		Dim result = (New Object(,) {{"foo", 1}, {"bar", 2}, {"baz", 3}}).ToList
 #End If
 
-
-		For Each item In MathExtension.Primes
-			Console.Write(item)
+		Try
+			For Each item In MathExtension.Primes
+				Console.WriteLine(item)
+			Next
+		Catch ex As Exception
+			Console.WriteLine(ex)
 			Console.ReadLine()
-		Next
-
+		End Try
 
 
 		'		Dim z As Action(Of Integer) = Function(a As Integer) Console.WriteLine(a)

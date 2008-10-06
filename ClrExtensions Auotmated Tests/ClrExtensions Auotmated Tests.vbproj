@@ -81,6 +81,7 @@
     <Compile Include="CollectionExtensionTest.vb" />
     <Compile Include="DateTimeExtensionTest.vb" />
     <Compile Include="DecimalExtensionTest.vb" />
+    <Compile Include="Dictionary2Test.vb" />
     <Compile Include="DoubleExtensionTest.vb" />
     <Compile Include="EnumExtensionTest.vb" />
     <Compile Include="Int32ExtensionTest.vb" />
