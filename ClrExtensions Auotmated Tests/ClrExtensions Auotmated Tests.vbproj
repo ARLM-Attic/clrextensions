@@ -85,6 +85,7 @@
     <Compile Include="EnumExtensionTest.vb" />
     <Compile Include="Int32ExtensionTest.vb" />
     <Compile Include="LongExtensionTest.vb" />
+    <Compile Include="MathExtensionTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="StringExtensionTest.vb" />
     <Compile Include="ThreadExtensionTest.vb" />

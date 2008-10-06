@@ -10,6 +10,13 @@ Module Module1
 #End If
 
 
+		For Each item In MathExtension.Primes
+			Console.Write(item)
+			Console.ReadLine()
+		Next
+
+
+
 		'		Dim z As Action(Of Integer) = Function(a As Integer) Console.WriteLine(a)
 
 		'		Dim x = New Integer() {1, 2, 5, 7, 8, 4, 2324, 23}
