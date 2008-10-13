@@ -94,6 +94,7 @@
     <Compile Include="TimeSpanExtensionTest.vb" />
     <Compile Include="Tuple3Test.vb" />
     <Compile Include="TupleTest2.vb" />
+    <Compile Include="UniqueQueueTest.vb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />

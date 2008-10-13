@@ -83,31 +83,31 @@ Namespace System.Collections
 		''' </summary>
 		''' <param name="minBatchSize">Minimum number of items to remove from the queue</param>
 		''' <param name="maxBatchSize">Maximum number of items to remove from the queue</param>
-		''' <returns>A list containing minBatchSize <= count <= MaxBatchSize items or Null if there aren't at least minBatchSize items</returns>
+        ''' <returns>A list containing minBatchSize &lt;= count &lt;= MaxBatchSize items or an empty list if there aren't at least minBatchSize items</returns>
 		''' <remarks></remarks>
-		Public Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As List(Of T)
-			Using m_Lock.UpgradeableReadSection
+        Public Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As IList(Of T)
+            Using m_Lock.UpgradeableReadSection
 
-				If m_List.Count >= minBatchSize Then
+                If m_List.Count >= minBatchSize Then
 
-					Using m_Lock.WriteSection
-						Dim result As New List(Of T)
-						Dim currentNode = m_List.First
-						Do
-							result.Add(currentNode.Value)
-							Dim nodeToRemove = currentNode
-							currentNode = currentNode.Next 'we have to get the next node BEFORE we remove it from the list
-							m_List.Remove(nodeToRemove)
-						Loop Until m_List.Count = maxBatchSize OrElse currentNode Is Nothing
-						Return result
-					End Using
+                    Using m_Lock.WriteSection
+                        Dim result As New List(Of T)
+                        Dim currentNode = m_List.First
+                        Do
+                            result.Add(currentNode.Value)
+                            Dim nodeToRemove = currentNode
+                            currentNode = currentNode.Next 'we have to get the next node BEFORE we remove it from the list
+                            m_List.Remove(nodeToRemove)
+                        Loop Until result.Count = maxBatchSize OrElse currentNode Is Nothing
+                        Return result
+                    End Using
 
-				Else
-					Return Nothing
-				End If
-			End Using
+                Else
+                    Return New List(Of T)
+                End If
+            End Using
 
-		End Function
+        End Function
 
 		''' <summary>
 		''' Returns the number of items currently in the queue
@@ -133,15 +133,17 @@ Namespace System.Collections
 					If testNode.Value.Equals(value) Then
 						node = testNode
 						Exit Do
-					End If
-				Loop
+                    End If
+                    testNode = testNode.Next
+                Loop
 			Else
 				Dim testNode = m_List.First
 				Do Until testNode Is Nothing
 					If m_comparer.Equals(testNode.Value, value) Then
 						node = testNode
 						Exit Do
-					End If
+                    End If
+                    testNode = testNode.Next
 				Loop
 			End If
 
