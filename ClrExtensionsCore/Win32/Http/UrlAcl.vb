@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 Imports System.Collections
 Imports System.Runtime.InteropServices
 Imports System.Security.Principal

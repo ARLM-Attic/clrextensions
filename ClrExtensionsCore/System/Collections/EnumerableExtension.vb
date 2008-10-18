@@ -1,4 +1,6 @@
-﻿Imports ClrExtensions.System.Collections
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Imports ClrExtensions.System.Collections
 
 #If IncludeUntested Then
 

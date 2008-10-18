@@ -1,4 +1,6 @@
-﻿Public Module StringExtension
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Public Module StringExtension
 
     ''' <summary>
     ''' Joins all the strings in the supplied enumeration.

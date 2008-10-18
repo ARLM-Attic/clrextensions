@@ -1,4 +1,6 @@
-﻿
+﻿'Copyright (c) 2008, Jonathan Allen
+
+
 #If CONFIG = "Release-Untested" Then
 
 <AttributeUsage(AttributeTargets.All, AllowMultiple:=False, Inherited:=True)> _

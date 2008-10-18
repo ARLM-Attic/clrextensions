@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 Public Module ByteExtension
 
 
@@ -69,7 +71,7 @@ Public Module ByteExtension
     <Extension()> Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As ByteFormat, ByVal groupingSize As Integer) As String
         If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
         If groupingSize > 1 And format = ByteFormat.Bits Then Throw New ArgumentOutOfRangeException("groupingSize", "The group size cannot be greater than 1 for the format mode Bit")
-		If Not format.EnumIsDefined Then Throw New ArgumentOutOfRangeException("format")
+        If Not format.EnumIsDefined Then Throw New ArgumentOutOfRangeException("format")
 
         If source Is Nothing Then Return ""
 

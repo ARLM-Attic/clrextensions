@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 Namespace System.Collections
 
     ''' <summary>

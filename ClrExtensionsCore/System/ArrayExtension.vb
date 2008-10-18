@@ -1,4 +1,6 @@
-﻿Public Module ArrayExtension
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Public Module ArrayExtension
 
 #If IncludeUntested Then
 

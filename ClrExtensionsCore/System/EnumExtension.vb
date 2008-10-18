@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 Public Module EnumExtension
 
     ''' <summary>
@@ -7,10 +9,10 @@ Public Module EnumExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks>This is constrained on Structure, but really should be constrained on Enum if it were possible</remarks>
-	<Extension()> Public Function EnumIsDefined(Of T As Structure)(ByVal value As T) As Boolean
-		If Not GetType(T).IsEnum Then Throw New ArgumentException("T is not an enumeration")
-		Return [Enum].IsDefined(GetType(T), value)
-	End Function
+    <Extension()> Public Function EnumIsDefined(Of T As Structure)(ByVal value As T) As Boolean
+        If Not GetType(T).IsEnum Then Throw New ArgumentException("T is not an enumeration")
+        Return [Enum].IsDefined(GetType(T), value)
+    End Function
 
 #If IncludeUntested Then
 

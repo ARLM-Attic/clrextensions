@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 Imports System
 Imports System.Security.Principal
 

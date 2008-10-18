@@ -1,4 +1,6 @@
-﻿Imports System.Runtime.InteropServices
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Imports System.Runtime.InteropServices
 
 #If IncludeUntested Then
 

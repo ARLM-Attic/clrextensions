@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 Public Module LongExtension
 
     'TODO - Support the various meanings for KB, MB, and GB

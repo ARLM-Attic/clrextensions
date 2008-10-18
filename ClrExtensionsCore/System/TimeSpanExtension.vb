@@ -1,4 +1,6 @@
-﻿Public Module TimeSpanExtension
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Public Module TimeSpanExtension
 
     ''' <summary>
     ''' Adds a number of days to a TimeSpan, returning a new TimeSpan

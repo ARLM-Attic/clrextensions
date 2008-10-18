@@ -1,4 +1,6 @@
-﻿Public Module IOExtension
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Public Module IOExtension
 
     ''' <summary>
     ''' 

@@ -1,4 +1,6 @@
-﻿
+﻿'Copyright (c) 2008, Jonathan Allen
+
+
 #If IncludeUntested Then
 
 ''' <summary>

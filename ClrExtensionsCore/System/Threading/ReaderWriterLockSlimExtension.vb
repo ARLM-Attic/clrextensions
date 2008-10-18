@@ -1,4 +1,6 @@
-﻿
+﻿'Copyright (c) 2008, Jonathan Allen
+
+
 Public Module ReaderWriterLockSlimExtension
 
     <Extension()> Public Function ReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable

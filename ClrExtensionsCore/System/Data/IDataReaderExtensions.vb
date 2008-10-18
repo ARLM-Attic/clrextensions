@@ -1,4 +1,6 @@
-﻿#If IncludeUntested Then
+﻿'Copyright (c) 2008, Jonathan Allen
+
+#If IncludeUntested Then
 Imports ClrExtensions.System.Collections
 Imports System.Data
 Imports ClrExtensions.System.Data

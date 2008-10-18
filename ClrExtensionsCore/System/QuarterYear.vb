@@ -1,4 +1,6 @@
-﻿Namespace System
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Namespace System
 
 #If IncludeUntested Then
 

@@ -1,4 +1,6 @@
-﻿Public Module VBLanguageExtension
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Public Module VBLanguageExtension
 
 #If IncludeUntested Then
 

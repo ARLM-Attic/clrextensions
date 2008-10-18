@@ -1,4 +1,6 @@
-﻿Imports System
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Imports System
 Imports System.Collections
 Imports System.Diagnostics
 Imports System.Reflection

@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 #If IncludeUntested Then
 Public Module ColorExtension
     'Reference: http://en.wikipedia.org/wiki/HSL_color_space

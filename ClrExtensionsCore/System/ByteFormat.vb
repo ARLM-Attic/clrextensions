@@ -1,3 +1,5 @@
+'Copyright (c) 2008, Jonathan Allen
+
 ''' <summary>
 ''' The format used to convert bytes to strings
 ''' </summary>
