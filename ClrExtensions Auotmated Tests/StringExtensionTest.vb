@@ -447,6 +447,24 @@ Public Class StringExtensionTest
 			Assert.AreEqual(expected(i), casingSource(i).IsNullOrEmpty)
 		Next
 	End Sub
+
+
+	Public Shared UrlEncodingSource() As String = New String() {"Hi! frank was here."}
+	Public Shared UrlEncodingClrResult() As String = New String() {"Hi!+frank+was+here."}
+	Public Shared UrlEncodingOAuthResult() As String = New String() {"Hi%21%20frank%20was%20here."}
+
+	'''<summary>
+	'''A test for UrlEncode
+	'''</summary>
+	<TestMethod()> _
+	Public Sub UrlEncodeTest()
+		For i = 0 To UrlEncodingSource.Length - 1
+			Assert.AreEqual(UrlEncodingClrResult(i), UrlEncodingSource(i).UrlEncode)
+			Assert.AreEqual(UrlEncodingClrResult(i), UrlEncodingSource(i).UrlEncode(UrlEncodingMethod.Clr))
+			Assert.AreEqual(UrlEncodingOAuthResult(i), UrlEncodingSource(i).UrlEncode(UrlEncodingMethod.OAuth))
+		Next
+	End Sub
+
 End Class
 
 

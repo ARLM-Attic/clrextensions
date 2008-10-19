@@ -88,7 +88,9 @@
     <Compile Include="LongExtensionTest.vb" />
     <Compile Include="MathExtensionTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="OAuthUtilityTest.vb" />
     <Compile Include="ReaderWriterLockSlimExtensionTest.vb" />
+    <Compile Include="RestUrlTest.vb" />
     <Compile Include="StringExtensionTest.vb" />
     <Compile Include="ThreadExtensionTest.vb" />
     <Compile Include="TimeSpanExtensionTest.vb" />

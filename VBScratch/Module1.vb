@@ -4,19 +4,35 @@ Imports System.Runtime.CompilerServices
 Module Module1
 
 	Sub Main()
-#If IncludeUntested Then
+		Const STR_HiFrankWasHere As String = "Hi! frank was here."
+		Dim a = System.Web.HttpUtility.UrlEncode(STR_HiFrankWasHere)
+		Dim b = ClrExtensions.Security.OAuth.UrlEncode(STR_HiFrankWasHere)
+		Dim c = ClrExtensions.UrlEncode(STR_HiFrankWasHere, UrlEncodingMethod.Clr)
+		Dim d = ClrExtensions.UrlEncode(STR_HiFrankWasHere, UrlEncodingMethod.OAuth)
 
-		Dim result = (New Object(,) {{"foo", 1}, {"bar", 2}, {"baz", 3}}).ToList
-#End If
+		Console.WriteLine(a)
+		Console.WriteLine(b)
+		Console.WriteLine(c)
+		Console.WriteLine(d)
 
-		Try
-			For Each item In MathExtension.Primes
-				Console.WriteLine(item)
-			Next
-		Catch ex As Exception
-			Console.WriteLine(ex)
-			Console.ReadLine()
-		End Try
+
+
+		'#If IncludeUntested Then
+
+		'		Dim result = (New Object(,) {{"foo", 1}, {"bar", 2}, {"baz", 3}}).ToList
+		'#End If
+
+		'		Try
+		'			For Each item In MathExtension.Primes
+		'				Console.WriteLine(item)
+		'			Next
+		'		Catch ex As Exception
+		'			Console.WriteLine(ex)
+		'			Console.ReadLine()
+		'		End Try
+
+
+
 
 
 		'		Dim z As Action(Of Integer) = Function(a As Integer) Console.WriteLine(a)

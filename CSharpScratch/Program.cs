@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ClrExtensions;
 using ClrExtensions.Win32.Http;
-using ClrExtensions.System.Collections;
+using ClrExtensions.Collections;
 
 namespace CSharpScratch
 {

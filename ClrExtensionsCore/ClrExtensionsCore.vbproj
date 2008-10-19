@@ -134,6 +134,13 @@
     <Compile Include="System\IO\StreamReaderExtension.vb" />
     <Compile Include="System\LineBreakMode.vb" />
     <Compile Include="System\MathExtension.vb" />
+    <Compile Include="System\Net\Rest\QueryParameter.vb" />
+    <Compile Include="System\Net\Rest\QueryParameterCollection.vb" />
+    <Compile Include="System\Net\Rest\RestScheme.vb" />
+    <Compile Include="System\Net\Rest\RestVerb.vb" />
+    <Compile Include="System\Net\Rest\RestExtension.vb" />
+    <Compile Include="System\Net\Rest\RestUrl.vb" />
+    <Compile Include="System\Security\OAuth\OAuthUtility.vb" />
     <Compile Include="System\PredicateExtension.vb" />
     <Compile Include="System\IO\StreamExtension.vb" />
     <Compile Include="System\ArrayExtension.vb" />
@@ -175,6 +182,7 @@
     <Compile Include="System\Range.vb" />
     <Compile Include="System\Threading\ReaderWriterLockSlimExtension.vb" />
     <Compile Include="System\TimeSpanExtension.vb" />
+    <Compile Include="System\UrlEncodingMethod.vb" />
     <Compile Include="VB\VBLanguageExtensions.vb" />
     <Compile Include="Win32\Http\HTTPAPI_VERSION.vb" />
     <Compile Include="Win32\Http\HttpInitializeFlags.vb" />

@@ -1,4 +1,5 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
+Imports System.Net.Mail
 
 Public Module StringExtension
 
@@ -222,7 +223,7 @@ Public Module StringExtension
     <Extension()> Public Function IsEmailAddress(ByVal value As String) As Boolean
         If value = "" Then Return False
         Try
-            Dim temp = New Net.Mail.MailAddress(value)
+			Dim temp = New MailAddress(value)
             Return True
         Catch ex As FormatException
             Return False
@@ -235,9 +236,9 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Extension()> Public Function ToMailAddress(ByVal value As String) As Net.Mail.MailAddress
-        Return New Net.Mail.MailAddress(value)
-    End Function
+	<Extension()> Public Function ToMailAddress(ByVal value As String) As MailAddress
+		Return New MailAddress(value)
+	End Function
 
 
 
@@ -511,58 +512,26 @@ Public Module StringExtension
 #End If
 
 
-#If IncludeUntested Then
-	<Untested()> <Extension()> Public Function UrlEncode(ByVal this As String, ByVal method As UrlEncodingMethod) As String
+	<Extension()> Public Function UrlEncode(ByVal this As String) As String
+		Return UrlEncode(this, UrlEncodingMethod.Clr)
+	End Function
+
+	<Extension()> Public Function UrlEncode(ByVal value As String, ByVal method As UrlEncodingMethod) As String
 		Select Case method
+			Case UrlEncodingMethod.DoNoEncode
+				Return value 
 			Case UrlEncodingMethod.Clr
-				Return Global.System.Web.HttpUtility.UrlEncode(this)
+				Return Global.System.Web.HttpUtility.UrlEncode(value)
 			Case UrlEncodingMethod.OAuth
-				Return OAuthUrlEncode(this)
+				Return Security.OAuth.UrlEncode(value)
 			Case Else
 				Throw New ArgumentOutOfRangeException("method", method, "Encoding method not specified")
 		End Select
 	End Function
-#End If
 
-	''' <summary>
-	''' Custom URL encoding because the OAuth spec is lame
-	''' </summary>
-	''' <param name="value"></param>
-	''' <returns></returns>
-	''' <remarks></remarks>
-	Public Function OAuthUrlEncode(ByVal value As String) As String
-		Const unreservedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~"
 
-		Dim result As New Global.System.Text.StringBuilder
-		Dim symbol As Char
-		For Each symbol In value
-			If (unreservedChars.IndexOf(symbol) <> -1) Then
-				result.Append(symbol)
-			Else
-				result.Append(("%"c & String.Format("{0:X2}", Asc(symbol))))
-			End If
-		Next
-		Return result.ToString
-	End Function
+
 
 
 End Module
-
-''' <summary>
-''' This is used to indicate which URL Encoding algorythm should be used.
-''' </summary>
-''' <remarks></remarks>
-Public Enum UrlEncodingMethod
-	''' <summary>
-	''' The method used by the .NET framework's HttpUtility class
-	''' </summary>
-	''' <remarks></remarks>
-	Clr = 0
-	''' <summary>
-	''' The method used by the OAuth specification
-	''' </summary>
-	''' <remarks></remarks>
-	OAuth
-End Enum
-
 
