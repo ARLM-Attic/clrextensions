@@ -4,10 +4,10 @@ Imports System.Collections.Specialized
 Namespace Net.Rest
 
 	''' <summary>
-	''' This is a strongly typed representation of a URL used in REST-style calls.
+	''' This is a strongly typed representation of a Verb/URL used in REST-style calls.
 	''' </summary>
 	''' <remarks>This was partially created in resonse to the total lameness of the System.Uri class</remarks>
-	Public Class RestUrl
+	Public Class RestCall
 		Private ReadOnly m_Verb As RestVerb
 		Private ReadOnly m_Scheme As RestScheme
 		Private ReadOnly m_Root As String
@@ -102,8 +102,8 @@ Namespace Net.Rest
 			Return result.ToString
 		End Function
 
-		Public Function AddParameter(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod) As RestUrl
-			Dim result As New RestUrl(Verb, Scheme, Root, Path, m_Query)
+		Public Function AddParameter(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod) As RestCall
+			Dim result As New RestCall(Verb, Scheme, Root, Path, m_Query)
 			result.m_Query.Add(New QueryParameter(name, value.UrlEncode(encoding)))
 			Return result
 		End Function
@@ -118,6 +118,15 @@ Namespace Net.Rest
 			Return New Uri(ToUrlString)
 		End Function
 
+		Public Overrides Function ToString() As String
+			Return HttpMethod & " " & ToUrlString()
+		End Function
+
+		Public Function CreateHttpWebRequest() As System.Net.HttpWebRequest
+			Dim result = DirectCast(System.Net.WebRequest.Create(ToUrlString), System.Net.HttpWebRequest)
+			result.Method = HttpMethod
+			Return result
+		End Function
 
 	End Class
 End Namespace

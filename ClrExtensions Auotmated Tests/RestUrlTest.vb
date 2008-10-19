@@ -67,7 +67,7 @@ Public Class RestUrlTest
 	Public Sub VerbTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim actual As RestVerb
 		actual = target.Verb
 		Assert.Inconclusive("Verify the correctness of this test method.")
@@ -80,7 +80,7 @@ Public Class RestUrlTest
 	Public Sub SchemeTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim actual As RestScheme
 		actual = target.Scheme
 		Assert.Inconclusive("Verify the correctness of this test method.")
@@ -93,7 +93,7 @@ Public Class RestUrlTest
 	Public Sub RootTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim actual As String
 		actual = target.Root
 		Assert.Inconclusive("Verify the correctness of this test method.")
@@ -106,7 +106,7 @@ Public Class RestUrlTest
 	Public Sub PathTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim actual As String
 		actual = target.Path
 		Assert.Inconclusive("Verify the correctness of this test method.")
@@ -119,7 +119,7 @@ Public Class RestUrlTest
 	Public Sub HttpMethodTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim actual As String
 		actual = target.HttpMethod
 		Assert.Inconclusive("Verify the correctness of this test method.")
@@ -132,7 +132,7 @@ Public Class RestUrlTest
 	Public Sub ToUrlStringTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
 		Dim actual As String
 		actual = target.ToUrlString
@@ -147,7 +147,7 @@ Public Class RestUrlTest
 	Public Sub ToUriTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim expected As Uri = Nothing ' TODO: Initialize to an appropriate value
 		Dim actual As Uri
 		actual = target.ToUri
@@ -162,19 +162,19 @@ Public Class RestUrlTest
 	Public Sub AddParameterTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url) ' TODO: Initialize to an appropriate value
+		Dim target As RestCall = New RestCall(verb, url)	' TODO: Initialize to an appropriate value
 		Dim name As String = String.Empty ' TODO: Initialize to an appropriate value
 		Dim value As String = String.Empty ' TODO: Initialize to an appropriate value
 		Dim encoding As UrlEncodingMethod = New UrlEncodingMethod ' TODO: Initialize to an appropriate value
-		Dim expected As RestUrl = Nothing ' TODO: Initialize to an appropriate value
-		Dim actual As RestUrl
+		Dim expected As RestCall = Nothing ' TODO: Initialize to an appropriate value
+		Dim actual As RestCall
 		actual = target.AddParameter(name, value, encoding)
 		Assert.AreEqual(expected, actual)
 		Assert.Inconclusive("Verify the correctness of this test method.")
 	End Sub
 
 	'''<summary>
-	'''A test for RestUrl Constructor
+	'''A test for RestCallConstructor
 	'''</summary>
 	<TestMethod()> _
 	Public Sub RestUrlConstructorTest1()
@@ -183,18 +183,18 @@ Public Class RestUrlTest
 		Dim root As String = String.Empty ' TODO: Initialize to an appropriate value
 		Dim path As String = String.Empty ' TODO: Initialize to an appropriate value
 		Dim query As IList(Of QueryParameter) = Nothing	' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, scheme, root, path, query)
+		Dim target As RestCall = New RestCall(verb, scheme, root, path, query)
 		Assert.Inconclusive("TODO: Implement code to verify target")
 	End Sub
 
 	'''<summary>
-	'''A test for RestUrl Constructor
+	'''A test for RestCallConstructor
 	'''</summary>
 	<TestMethod()> _
 	Public Sub RestUrlConstructorTest()
 		Dim verb As RestVerb = New RestVerb	' TODO: Initialize to an appropriate value
 		Dim url As String = String.Empty ' TODO: Initialize to an appropriate value
-		Dim target As RestUrl = New RestUrl(verb, url)
+		Dim target As RestCall = New RestCall(verb, url)
 		Assert.Inconclusive("TODO: Implement code to verify target")
 	End Sub
 End Class

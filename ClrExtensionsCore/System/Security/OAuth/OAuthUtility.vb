@@ -37,14 +37,14 @@ Namespace Security
 
 			Private ReadOnly m_Random As New ThreadsafeRandom
 
-			Public Function GenerateRequest(ByVal url As RestUrl, ByVal consumerKey As String, ByVal consumerSecret As String) As String
-				Return GenerateRequest(url, consumerKey, consumerSecret, Nothing, Nothing)
+			<Extension()> Public Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String) As RestCall
+				Return SignRestCall(url, consumerKey, consumerSecret, Nothing, Nothing)
 			End Function
 
-			Public Function GenerateRequest(ByVal url As RestUrl, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String) As String
+			<Extension()> Public Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String) As RestCall
 				Dim httpMethod As String = url.Verb.ToMethodString
 				Dim signatureType As String = "HMAC-SHA1"
-				Return GenerateRequest(url.ToUri, consumerKey, consumerSecret, token, tokenSecret, httpMethod, signatureType)
+				Return New RestCall(url.Verb, GenerateRequest(url.ToUri, consumerKey, consumerSecret, token, tokenSecret, httpMethod, signatureType))
 			End Function
 
 			Public Function GenerateRequest(ByVal uri As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal signatureType As String) As String
