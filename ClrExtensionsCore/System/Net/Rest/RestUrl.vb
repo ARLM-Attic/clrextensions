@@ -82,8 +82,19 @@ Namespace Net.Rest
 			End If
 
 			m_Path = remainder.Substring(0, queryIndex)
-			If queryIndex < remainder.Length Then
-				m_Query.AddRange(Web.HttpUtility.ParseQueryString(remainder.Substring(queryIndex)))
+			If queryIndex <> remainder.Length - 1 Then
+				'm_Query.AddRange(Web.HttpUtility.ParseQueryString(remainder.Substring(queryIndex)))
+				'We cannot use Web.HttpUtility.ParseQueryString, it screws up value of some parameters
+				remainder = remainder.Substring(queryIndex + 1)
+
+
+				Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
+				Dim rows = remainder.Split("&", StringSplitOptions.RemoveEmptyEntries)
+
+				For Each pair In rows.Select(Function(s) s.Split("=", 2, StringSplitOptions.None))
+					If pair.Length = 2 Then m_Query.Add(New QueryParameter(pair(0), pair(1))) Else m_Query.Add(New QueryParameter(pair(0), Nothing))
+				Next
+
 			End If
 
 		End Sub
