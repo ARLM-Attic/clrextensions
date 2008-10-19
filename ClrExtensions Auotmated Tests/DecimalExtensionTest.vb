@@ -1,7 +1,5 @@
 ﻿Imports System
-
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
-
 Imports ClrExtensions
 
 
@@ -64,7 +62,7 @@ Public Class DecimalExtensionTest
 	<TestMethod()> _
 	Public Sub TruncatePrecisionTest()
 
-		Dim expected As New Collections.Generic.Dictionary(Of Integer, Decimal())
+		Dim expected As New System.Collections.Generic.Dictionary(Of Integer, Decimal())
 
 		expected.Add(5, New Decimal() {12345.67889D, 123.456D, 12.34D, 1.2D, 0, -1, 1, 79228162514264337593543950335D, -79228162514264337593543950335D})
 		expected.Add(4, New Decimal() {12345.6788D, 123.456D, 12.34D, 1.2D, 0, -1, 1, 79228162514264337593543950335D, -79228162514264337593543950335D})

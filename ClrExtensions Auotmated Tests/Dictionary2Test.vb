@@ -1,5 +1,5 @@
 ﻿Imports Microsoft.VisualStudio.TestTools.UnitTesting
-Imports ClrExtensions.System.Collections
+Imports ClrExtensions.Collections
 
 '''<summary>
 '''This is a test class for DictionaryTest and is intended

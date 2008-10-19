@@ -120,14 +120,18 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Compile Include="CodeGeneration\ExpressionUtilities.vb" />
     <Compile Include="System\ActionExtensions.vb" />
     <Compile Include="Attributes.vb" />
     <Compile Include="System\Collections\CollectionExtension.vb" />
+    <Compile Include="System\Collections\ComparerExtension.vb" />
     <Compile Include="System\Collections\TwoWayDictionary.vb" />
     <Compile Include="System\Collections\UniqueQueue.vb" />
+    <Compile Include="System\ComparableExtension.vb" />
     <Compile Include="System\FlexDate.vb" />
     <Compile Include="System\IO\DirectoryInfo.vb" />
     <Compile Include="System\FuncExtension.vb" />
+    <Compile Include="System\IO\StreamReaderExtension.vb" />
     <Compile Include="System\LineBreakMode.vb" />
     <Compile Include="System\MathExtension.vb" />
     <Compile Include="System\PredicateExtension.vb" />
@@ -168,6 +172,7 @@
     <Compile Include="System\Collections\Tuple2.vb" />
     <Compile Include="System\Collections\Tuple3.vb" />
     <Compile Include="System\QuarterYear.vb" />
+    <Compile Include="System\Range.vb" />
     <Compile Include="System\Threading\ReaderWriterLockSlimExtension.vb" />
     <Compile Include="System\TimeSpanExtension.vb" />
     <Compile Include="VB\VBLanguageExtensions.vb" />

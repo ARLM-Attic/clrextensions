@@ -141,9 +141,9 @@ Public Module DateTimeExtension
     End Function
 
     ''' Returns a QuarterYear object for the indicated date
-    <Untested()> <Extension()> Public Function ToQuarterYear(ByVal this As DateTime) As System.QuarterYear
-        Return New System.QuarterYear(this)
-    End Function
+	<Untested()> <Extension()> Public Function ToQuarterYear(ByVal this As DateTime) As QuarterYear
+		Return New QuarterYear(this)
+	End Function
 
 #End If
 

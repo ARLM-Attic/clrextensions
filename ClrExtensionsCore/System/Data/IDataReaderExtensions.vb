@@ -1,9 +1,9 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
 #If IncludeUntested Then
-Imports ClrExtensions.System.Collections
+Imports ClrExtensions.Collections
 Imports System.Data
-Imports ClrExtensions.System.Data
+Imports ClrExtensions.Data
 
 Public Module IDataReaderExtension
 

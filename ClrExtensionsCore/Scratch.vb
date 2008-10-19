@@ -4,7 +4,7 @@ Imports System.Runtime.InteropServices
 
 #If IncludeUntested Then
 
-Imports ClrExtensions.System.Collections
+Imports ClrExtensions.Collections
 
 Module Scratch
     Sub test()

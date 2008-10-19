@@ -28,5 +28,12 @@ Public Module TypeExtension
         Return type.Name.Replace("[", "(").Replace("]", ")")
     End Function
 
+
+	'TODO - Look up the reflection code used before to see if any of it belongs here
+
+	'TODO - Create a new instance from a Type
+	'TODO - Create a delegate that gets new instance from a Type
+	'TODO - Create a delegate representing a method
+
 End Module
 #End If

@@ -68,8 +68,8 @@ Public Class EnumExtensionTest
 
 	<TestMethod()> _
 	Public Sub EnumIsDefinedTest()
-		EnumIsDefinedTestHelper(Of IO.DriveType)()
-		EnumIsDefinedTestHelper(Of IO.FileAccess)()
+		EnumIsDefinedTestHelper(Of System.IO.DriveType)()
+		EnumIsDefinedTestHelper(Of System.IO.FileAccess)()
 	End Sub
 
 	<TestMethod()> _

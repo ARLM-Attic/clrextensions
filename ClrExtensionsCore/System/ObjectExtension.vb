@@ -1,5 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 
+Imports System.IO
 
 Public Module ObjectExtension
 
@@ -136,7 +137,7 @@ Public Module ObjectExtension
     <Untested()> <Extension()> Public Function DeepCopy(Of T)(ByVal this As T) As T
         If Not this.GetType.IsSerializable Then Throw New ArgumentException("Only serializable types can be copied")
 
-        Dim memoryStream = New IO.MemoryStream()
+		Dim memoryStream = New MemoryStream()
         Dim binaryFormatter = New Runtime.Serialization.Formatters.Binary.BinaryFormatter()
 
         binaryFormatter.Serialize(memoryStream, this)

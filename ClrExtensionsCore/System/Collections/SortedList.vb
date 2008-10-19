@@ -5,17 +5,17 @@ Imports System.Collections
 Imports System.Diagnostics
 Imports System.Reflection
 Imports System.Runtime.InteropServices
-Imports ClrExtensions.System.Collections
+Imports ClrExtensions.Collections
 
 #If IncludeUntested Then
 
-Namespace System.Collections
+Namespace Collections
 
-    ''' <summary>
-    ''' This is a sorted list that won't throw an exception if two items have the same value.
-    ''' </summary>
-    ''' <typeparam name="T"></typeparam>
-    ''' <remarks></remarks>
+	''' <summary>
+	''' This is a sorted list that won't throw an exception if two items have the same value.
+	''' </summary>
+	''' <typeparam name="T"></typeparam>
+	''' <remarks></remarks>
 	<Serializable()> _
 	<DebuggerDisplay("Count = {Count}")> _
 	<ComVisible(False)> _

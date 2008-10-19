@@ -2,7 +2,7 @@
 
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
-Imports ClrExtensions.System.Collections
+Imports ClrExtensions.Collections
 
 
 

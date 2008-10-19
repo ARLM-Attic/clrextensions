@@ -1,7 +1,7 @@
 'Copyright (c) 2008, Jonathan Allen
 
 Imports System.Runtime.InteropServices
-Imports ClrExtensions.System.Collections
+Imports ClrExtensions.Collections
 
 
 Public Module CollectionExtension
