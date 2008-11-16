@@ -39,4 +39,21 @@ Public Module IOExtension
         Return printJob
     End Function
 
+	Public Function ToFileName(ByVal text As String) As String
+		Dim temp As New System.Text.StringBuilder(text)
+		For Each c In IO.Path.GetInvalidPathChars
+			temp.Replace(c, "_")
+		Next
+		temp.Replace(IO.Path.DirectorySeparatorChar, "_")
+		temp.Replace(IO.Path.AltDirectorySeparatorChar, "_")
+		temp.Replace(IO.Path.VolumeSeparatorChar, "_")
+		Select Case System.Environment.OSVersion.Platform
+			Case PlatformID.Win32NT, PlatformID.Win32S, PlatformID.Win32Windows, PlatformID.WinCE
+				temp.Replace("*"c, "_")
+				temp.Replace("?"c, "_")
+		End Select
+
+		Return temp.ToString
+	End Function
+
 End Module

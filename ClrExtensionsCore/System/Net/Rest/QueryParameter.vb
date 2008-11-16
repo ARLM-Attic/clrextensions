@@ -7,6 +7,15 @@ Namespace Net.Rest
 		Private m_Value As String
 
 		''' <summary>
+		''' Creates a new QueryParameter without a value
+		''' </summary>
+		''' <param name="name"></param>
+		''' <remarks></remarks>
+		Public Sub New(ByVal name As String)
+			MyClass.New(name, Nothing)
+		End Sub
+
+		''' <summary>
 		''' 
 		''' </summary>
 		''' <param name="name"></param>
@@ -16,6 +25,13 @@ Namespace Net.Rest
 			m_Name = name
 			m_Value = value
 		End Sub
+
+
+		Public Sub New(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod)
+			m_Name = name
+			m_Value = UrlEncode(value, encoding)
+		End Sub
+
 
 		Public ReadOnly Property Name() As String
 			Get

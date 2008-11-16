@@ -139,7 +139,7 @@
     <Compile Include="System\Net\Rest\RestScheme.vb" />
     <Compile Include="System\Net\Rest\RestVerb.vb" />
     <Compile Include="System\Net\Rest\RestExtension.vb" />
-    <Compile Include="System\Net\Rest\RestUrl.vb" />
+    <Compile Include="System\Net\Rest\RestCall.vb" />
     <Compile Include="System\Security\OAuth\OAuthUtility.vb" />
     <Compile Include="System\PredicateExtension.vb" />
     <Compile Include="System\IO\StreamExtension.vb" />

@@ -46,7 +46,10 @@ Namespace Net.Rest
 
 		Public Sub New(ByVal verb As RestVerb, ByVal scheme As RestScheme, ByVal root As String, ByVal path As String, ByVal query As IList(Of QueryParameter))
 			m_Verb = verb
-
+			m_Scheme = scheme
+			m_Root = root
+			m_Path = path
+			m_Query.AddRange(query)
 		End Sub
 
 		Public Sub New(ByVal verb As RestVerb, ByVal url As String)
@@ -87,13 +90,7 @@ Namespace Net.Rest
 				'We cannot use Web.HttpUtility.ParseQueryString, it screws up value of some parameters
 				remainder = remainder.Substring(queryIndex + 1)
 
-
-				Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
-				Dim rows = remainder.Split("&", StringSplitOptions.RemoveEmptyEntries)
-
-				For Each pair In rows.Select(Function(s) s.Split("=", 2, StringSplitOptions.None))
-					If pair.Length = 2 Then m_Query.Add(New QueryParameter(pair(0), pair(1))) Else m_Query.Add(New QueryParameter(pair(0), Nothing))
-				Next
+				m_Query.AddByParsing(remainder)
 
 			End If
 
@@ -111,6 +108,14 @@ Namespace Net.Rest
 				Next
 			End If
 			Return result.ToString
+		End Function
+
+		Public Function AddParameter(ByVal parameter As QueryParameter) As RestCall
+			If parameter Is Nothing Then Return Me
+
+			Dim result As New RestCall(Verb, Scheme, Root, Path, m_Query)
+			result.m_Query.Add(parameter)
+			Return result
 		End Function
 
 		Public Function AddParameter(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod) As RestCall
