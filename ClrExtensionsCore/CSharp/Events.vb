@@ -1,5 +1,3 @@
-Imports System.Runtime.CompilerServices
-
 'Copyright (c) 2008, Jonathan Allen
 
 Public Module Events

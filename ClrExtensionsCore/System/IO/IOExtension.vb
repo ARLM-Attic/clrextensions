@@ -2,6 +2,7 @@
 
 Public Module IOExtension
 
+#If Client35 Then
     ''' <summary>
     ''' 
     ''' </summary>
@@ -22,7 +23,7 @@ Public Module IOExtension
 
         oNetWork.MapNetworkDrive(driveLetter, fixedUncName, True)
     End Sub
-
+#End If
 
     ''' <summary>
     ''' This prints a file using the defaults set by the operating system

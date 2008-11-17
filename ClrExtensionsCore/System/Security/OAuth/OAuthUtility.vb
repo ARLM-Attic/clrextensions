@@ -108,7 +108,11 @@ Namespace Security
 						hmacsha1.Key = Encoding.ASCII.GetBytes(String.Format("{0}&{1}", UrlEncode(consumerSecret), If(String.IsNullOrEmpty(tokenSecret), "", UrlEncode(tokenSecret))))
 						Return GenerateSignatureUsingHash(signatureBase, hmacsha1)
 					Case SignatureTypes.PLAINTEXT
+#If Full35 Then
 						Return Web.HttpUtility.UrlEncode(String.Format("{0}&{1}", consumerSecret, tokenSecret))
+#Else
+						Throw New NotSupportedException
+#End If
 					Case SignatureTypes.RSASHA1
 						Throw New NotImplementedException
 				End Select

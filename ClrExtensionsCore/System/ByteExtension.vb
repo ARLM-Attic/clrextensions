@@ -152,6 +152,7 @@ Public Module ByteExtension
         Return CBool(value And bitMask)
     End Function
 
+#If Full35 Then
     ''' <summary>
     ''' This converts a byte array to a string using the supplied encoding
     ''' </summary>
@@ -170,7 +171,7 @@ Public Module ByteExtension
         Return encoding.GetString(array)
 
     End Function
-
+#End If
 
 
     ''' <summary>

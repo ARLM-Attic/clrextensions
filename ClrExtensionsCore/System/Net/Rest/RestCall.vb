@@ -58,7 +58,7 @@ Namespace Net.Rest
 			m_Verb = verb
 
 			'determine the scheme. We call the enumeration directly to make adding new scheme easier
-			For Each item As RestScheme In [Enum].GetValues(GetType(RestScheme))
+			For Each item As RestScheme In GetRestSchemeValues()
 				Dim temp As String = item.ToSchemeString
 				If remainder.StartsWith(temp) Then
 					remainder = remainder.Substring(temp.Length)

@@ -22,4 +22,8 @@ Public Module RestExtension
 		End Select
 	End Function
 
+	Friend Function GetRestSchemeValues() As ICollection(Of RestScheme)
+		Return New RestScheme() {RestScheme.Http, RestScheme.https}
+	End Function
+
 End Module

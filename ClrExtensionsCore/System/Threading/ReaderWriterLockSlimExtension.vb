@@ -1,6 +1,6 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
-
+#If Not Compact35 Then
 Public Module ReaderWriterLockSlimExtension
 
     <Extension()> Public Function ReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
@@ -64,3 +64,4 @@ Public Module ReaderWriterLockSlimExtension
     End Enum
 
 End Module
+#End If

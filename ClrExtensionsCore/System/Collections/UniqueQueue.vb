@@ -1,6 +1,6 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
-
+#If Not Compact35 Then
 Namespace Collections
 
 	''' <summary>
@@ -189,3 +189,4 @@ Namespace Collections
 
 End Namespace
 
+#End If
