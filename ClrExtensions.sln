@@ -21,9 +21,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClrExtensions CSharp Tests"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VBScratch", "VBScratch\VBScratch.vbproj", "{3E7534DD-6465-42D3-BAC0-E75174335F6A}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore-Mobile-PocketPC-Compact35", "ClrExtensionsCore-Mobile-PocketPC-Compact35\ClrExtensionsCore-Mobile-PocketPC-Compact35.vbproj", "{FE25513A-FB8D-4D2F-BBF9-491E854C221C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore-Mobile-SmartPhone-Compact35", "ClrExtensionsCore-Mobile-SmartPhone-Compact35\ClrExtensionsCore-Mobile-SmartPhone-Compact35.vbproj", "{91B96003-5418-4FF2-B151-9D6A8AD4C863}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore-PocketPC-Compact35", "ClrExtensionsCore-PocketPC-Compact35\ClrExtensionsCore-PocketPC-Compact35.vbproj", "{CF80B239-B481-45F2-A063-B7658B847F07}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore-WinCE-Compact35", "ClrExtensionsCore-WinCE-Compact35\ClrExtensionsCore-WinCE-Compact35.vbproj", "{0AE2FEE3-E552-4549-A05C-976C02324D6D}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -48,6 +56,18 @@ Global
 		SccProjectUniqueName7 = VBScratch\\VBScratch.vbproj
 		SccProjectName7 = VBScratch
 		SccLocalPath7 = VBScratch
+		SccProjectUniqueName8 = ClrExtensionsCore-Mobile-PocketPC-Compact35\\ClrExtensionsCore-Mobile-PocketPC-Compact35.vbproj
+		SccProjectName8 = ClrExtensionsCore-Mobile-PocketPC-Compact35
+		SccLocalPath8 = ClrExtensionsCore-Mobile-PocketPC-Compact35
+		SccProjectUniqueName9 = ClrExtensionsCore-Mobile-SmartPhone-Compact35\\ClrExtensionsCore-Mobile-SmartPhone-Compact35.vbproj
+		SccProjectName9 = ClrExtensionsCore-Mobile-SmartPhone-Compact35
+		SccLocalPath9 = ClrExtensionsCore-Mobile-SmartPhone-Compact35
+		SccProjectUniqueName10 = ClrExtensionsCore-PocketPC-Compact35\\ClrExtensionsCore-PocketPC-Compact35.vbproj
+		SccProjectName10 = ClrExtensionsCore-PocketPC-Compact35
+		SccLocalPath10 = ClrExtensionsCore-PocketPC-Compact35
+		SccProjectUniqueName11 = ClrExtensionsCore-WinCE-Compact35\\ClrExtensionsCore-WinCE-Compact35.vbproj
+		SccProjectName11 = ClrExtensionsCore-WinCE-Compact35
+		SccLocalPath11 = ClrExtensionsCore-WinCE-Compact35
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ClrExtensions.vsmdi
@@ -100,6 +120,30 @@ Global
 		{3E7534DD-6465-42D3-BAC0-E75174335F6A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E7534DD-6465-42D3-BAC0-E75174335F6A}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
 		{3E7534DD-6465-42D3-BAC0-E75174335F6A}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
+		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
+		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
+		{91B96003-5418-4FF2-B151-9D6A8AD4C863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91B96003-5418-4FF2-B151-9D6A8AD4C863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91B96003-5418-4FF2-B151-9D6A8AD4C863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91B96003-5418-4FF2-B151-9D6A8AD4C863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91B96003-5418-4FF2-B151-9D6A8AD4C863}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
+		{91B96003-5418-4FF2-B151-9D6A8AD4C863}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
+		{CF80B239-B481-45F2-A063-B7658B847F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF80B239-B481-45F2-A063-B7658B847F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF80B239-B481-45F2-A063-B7658B847F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF80B239-B481-45F2-A063-B7658B847F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF80B239-B481-45F2-A063-B7658B847F07}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
+		{CF80B239-B481-45F2-A063-B7658B847F07}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
+		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
