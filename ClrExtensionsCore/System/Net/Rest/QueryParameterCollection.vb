@@ -15,12 +15,12 @@ Namespace Net.Rest
 			Me.AddRange(ParseQueryString(queryString))
 		End Sub
 
-		Public Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
+		Public Shared Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
 			Dim result As New ObjectModel.Collection(Of QueryParameter)
 			Dim rows = queryString.Split("&", StringSplitOptions.RemoveEmptyEntries)
 
 			For Each pair In rows.Select(Function(s) s.Split("=", 2, StringSplitOptions.None))
-				If pair.Length = 2 Then Add(New QueryParameter(pair(0), pair(1))) Else Add(New QueryParameter(pair(0), Nothing))
+				If pair.Length = 2 Then result.Add(New QueryParameter(pair(0), pair(1))) Else result.Add(New QueryParameter(pair(0), Nothing))
 			Next
 			Return result
 		End Function
