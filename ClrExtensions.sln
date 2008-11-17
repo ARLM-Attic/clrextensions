@@ -21,23 +21,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClrExtensions CSharp Tests"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VBScratch", "VBScratch\VBScratch.vbproj", "{3E7534DD-6465-42D3-BAC0-E75174335F6A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.Mobile.PocketPC.Compact35", "ClrExtensionsCore-Mobile-PocketPC-Compact35\ClrExtensionsCore.Mobile.PocketPC.Compact35.vbproj", "{FE25513A-FB8D-4D2F-BBF9-491E854C221C}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.Client", "ClrExtensionsCore.Client\ClrExtensionsCore.Client.vbproj", "{C859A503-EE3E-4785-ACD9-AFD43DE49034}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.Mobile.SmartPhone.Compact35", "ClrExtensionsCore-Mobile-SmartPhone-Compact35\ClrExtensionsCore.Mobile.SmartPhone.Compact35.vbproj", "{91B96003-5418-4FF2-B151-9D6A8AD4C863}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.Mobile.PocketPC.Compact35", "ClrExtensionsCore.Mobile.PocketPC.Compact35\ClrExtensionsCore.Mobile.PocketPC.Compact35.vbproj", "{FE25513A-FB8D-4D2F-BBF9-491E854C221C}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.PocketPC.Compact35", "ClrExtensionsCore-PocketPC-Compact35\ClrExtensionsCore.PocketPC.Compact35.vbproj", "{CF80B239-B481-45F2-A063-B7658B847F07}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.Mobile.SmartPhone.Compact35", "ClrExtensionsCore.Mobile.SmartPhone.Compact35\ClrExtensionsCore.Mobile.SmartPhone.Compact35.vbproj", "{91B96003-5418-4FF2-B151-9D6A8AD4C863}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.WinCE.Compact35", "ClrExtensionsCore-WinCE-Compact35\ClrExtensionsCore.WinCE.Compact35.vbproj", "{0AE2FEE3-E552-4549-A05C-976C02324D6D}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.PocketPC.Compact35", "ClrExtensionsCore.PocketPC.Compact35\ClrExtensionsCore.PocketPC.Compact35.vbproj", "{CF80B239-B481-45F2-A063-B7658B847F07}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.Client", "ClrExtensionsCore-Client\ClrExtensionsCore.Client.vbproj", "{C859A503-EE3E-4785-ACD9-AFD43DE49034}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClrExtensionsCore.WinCE.Compact35", "ClrExtensionsCore.WinCE.Compact35\ClrExtensionsCore.WinCE.Compact35.vbproj", "{0AE2FEE3-E552-4549-A05C-976C02324D6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Mobile.PocketPC.Compact35", "Mono-Mobile-PocketPC-Compact35\Mono.Mobile.PocketPC.Compact35.csproj", "{5293E2EC-3751-4B39-9C97-8196E3E48902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Mobile.PocketPC.Compact35", "Mono.Mobile.PocketPC.Compact35\Mono.Mobile.PocketPC.Compact35.csproj", "{5293E2EC-3751-4B39-9C97-8196E3E48902}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Mobile.SmartPhone.Compact35", "Mono-Mobile-SmartPhone-Compact35\Mono.Mobile.SmartPhone.Compact35.csproj", "{2FB27923-465B-4567-AE9B-28D8DECB6E6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Mobile.SmartPhone.Compact35", "Mono.Mobile.SmartPhone.Compact35\Mono.Mobile.SmartPhone.Compact35.csproj", "{2FB27923-465B-4567-AE9B-28D8DECB6E6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.WinCE.Compact35", "Mono-WinCE-Compact35\Mono.WinCE.Compact35.csproj", "{C4A5F733-36BB-44CA-B020-D71A61EB9455}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.PocketPC.Compact35", "Mono.PocketPC.Compact35\Mono.PocketPC.Compact35.csproj", "{17BA13B9-E8F7-418A-A2EE-8BE28471626C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.PocketPC.Compact35", "Mono-PocketPC-Compact35\Mono.PocketPC.Compact35.csproj", "{17BA13B9-E8F7-418A-A2EE-8BE28471626C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.WinCE.Compact35", "Mono.WinCE.Compact35\Mono.WinCE.Compact35.csproj", "{C4A5F733-36BB-44CA-B020-D71A61EB9455}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -66,33 +66,33 @@ Global
 		SccProjectUniqueName7 = VBScratch\\VBScratch.vbproj
 		SccProjectName7 = VBScratch
 		SccLocalPath7 = VBScratch
-		SccProjectUniqueName8 = ClrExtensionsCore-Mobile-PocketPC-Compact35\\ClrExtensionsCore.Mobile.PocketPC.Compact35.vbproj
-		SccProjectName8 = ClrExtensionsCore-Mobile-PocketPC-Compact35
-		SccLocalPath8 = ClrExtensionsCore-Mobile-PocketPC-Compact35
-		SccProjectUniqueName9 = ClrExtensionsCore-WinCE-Compact35\\ClrExtensionsCore.WinCE.Compact35.vbproj
-		SccProjectName9 = ClrExtensionsCore-WinCE-Compact35
-		SccLocalPath9 = ClrExtensionsCore-WinCE-Compact35
-		SccProjectUniqueName10 = ClrExtensionsCore-PocketPC-Compact35\\ClrExtensionsCore.PocketPC.Compact35.vbproj
-		SccProjectName10 = ClrExtensionsCore-PocketPC-Compact35
-		SccLocalPath10 = ClrExtensionsCore-PocketPC-Compact35
-		SccProjectUniqueName11 = ClrExtensionsCore-Client\\ClrExtensionsCore.Client.vbproj
-		SccProjectName11 = ClrExtensionsCore-Client
-		SccLocalPath11 = ClrExtensionsCore-Client
-		SccProjectUniqueName12 = ClrExtensionsCore-Mobile-SmartPhone-Compact35\\ClrExtensionsCore.Mobile.SmartPhone.Compact35.vbproj
-		SccProjectName12 = ClrExtensionsCore-Mobile-SmartPhone-Compact35
-		SccLocalPath12 = ClrExtensionsCore-Mobile-SmartPhone-Compact35
-		SccProjectUniqueName13 = Mono-Mobile-PocketPC-Compact35\\Mono.Mobile.PocketPC.Compact35.csproj
-		SccProjectName13 = Mono-Mobile-PocketPC-Compact35
-		SccLocalPath13 = Mono-Mobile-PocketPC-Compact35
-		SccProjectUniqueName14 = Mono-WinCE-Compact35\\Mono.WinCE.Compact35.csproj
-		SccProjectName14 = Mono-WinCE-Compact35
-		SccLocalPath14 = Mono-WinCE-Compact35
-		SccProjectUniqueName15 = Mono-PocketPC-Compact35\\Mono.PocketPC.Compact35.csproj
-		SccProjectName15 = Mono-PocketPC-Compact35
-		SccLocalPath15 = Mono-PocketPC-Compact35
-		SccProjectUniqueName16 = Mono-Mobile-SmartPhone-Compact35\\Mono.Mobile.SmartPhone.Compact35.csproj
-		SccProjectName16 = Mono-Mobile-SmartPhone-Compact35
-		SccLocalPath16 = Mono-Mobile-SmartPhone-Compact35
+		SccProjectUniqueName8 = ClrExtensionsCore.Client\\ClrExtensionsCore.Client.vbproj
+		SccProjectName8 = ClrExtensionsCore.Client
+		SccLocalPath8 = ClrExtensionsCore.Client
+		SccProjectUniqueName9 = ClrExtensionsCore.Mobile.PocketPC.Compact35\\ClrExtensionsCore.Mobile.PocketPC.Compact35.vbproj
+		SccProjectName9 = ClrExtensionsCore.Mobile.PocketPC.Compact35
+		SccLocalPath9 = ClrExtensionsCore.Mobile.PocketPC.Compact35
+		SccProjectUniqueName10 = ClrExtensionsCore.Mobile.SmartPhone.Compact35\\ClrExtensionsCore.Mobile.SmartPhone.Compact35.vbproj
+		SccProjectName10 = ClrExtensionsCore.Mobile.SmartPhone.Compact35
+		SccLocalPath10 = ClrExtensionsCore.Mobile.SmartPhone.Compact35
+		SccProjectUniqueName11 = ClrExtensionsCore.PocketPC.Compact35\\ClrExtensionsCore.PocketPC.Compact35.vbproj
+		SccProjectName11 = ClrExtensionsCore.PocketPC.Compact35
+		SccLocalPath11 = ClrExtensionsCore.PocketPC.Compact35
+		SccProjectUniqueName12 = ClrExtensionsCore.WinCE.Compact35\\ClrExtensionsCore.WinCE.Compact35.vbproj
+		SccProjectName12 = ClrExtensionsCore.WinCE.Compact35
+		SccLocalPath12 = ClrExtensionsCore.WinCE.Compact35
+		SccProjectUniqueName13 = Mono.Mobile.PocketPC.Compact35\\Mono.Mobile.PocketPC.Compact35.csproj
+		SccProjectName13 = Mono.Mobile.PocketPC.Compact35
+		SccLocalPath13 = Mono.Mobile.PocketPC.Compact35
+		SccProjectUniqueName14 = Mono.Mobile.SmartPhone.Compact35\\Mono.Mobile.SmartPhone.Compact35.csproj
+		SccProjectName14 = Mono.Mobile.SmartPhone.Compact35
+		SccLocalPath14 = Mono.Mobile.SmartPhone.Compact35
+		SccProjectUniqueName15 = Mono.PocketPC.Compact35\\Mono.PocketPC.Compact35.csproj
+		SccProjectName15 = Mono.PocketPC.Compact35
+		SccLocalPath15 = Mono.PocketPC.Compact35
+		SccProjectUniqueName16 = Mono.WinCE.Compact35\\Mono.WinCE.Compact35.csproj
+		SccProjectName16 = Mono.WinCE.Compact35
+		SccLocalPath16 = Mono.WinCE.Compact35
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ClrExtensions.vsmdi
@@ -145,6 +145,12 @@ Global
 		{3E7534DD-6465-42D3-BAC0-E75174335F6A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E7534DD-6465-42D3-BAC0-E75174335F6A}.Release-Untested|Any CPU.ActiveCfg = Release-Untested|Any CPU
 		{3E7534DD-6465-42D3-BAC0-E75174335F6A}.Release-Untested|Any CPU.Build.0 = Release-Untested|Any CPU
+		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release-Untested|Any CPU.ActiveCfg = Release-Untested|Any CPU
+		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release-Untested|Any CPU.Build.0 = Release-Untested|Any CPU
 		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE25513A-FB8D-4D2F-BBF9-491E854C221C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -169,12 +175,6 @@ Global
 		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Release-Untested|Any CPU.ActiveCfg = Release-Untested|Any CPU
 		{0AE2FEE3-E552-4549-A05C-976C02324D6D}.Release-Untested|Any CPU.Build.0 = Release-Untested|Any CPU
-		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release-Untested|Any CPU.ActiveCfg = Release-Untested|Any CPU
-		{C859A503-EE3E-4785-ACD9-AFD43DE49034}.Release-Untested|Any CPU.Build.0 = Release-Untested|Any CPU
 		{5293E2EC-3751-4B39-9C97-8196E3E48902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5293E2EC-3751-4B39-9C97-8196E3E48902}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5293E2EC-3751-4B39-9C97-8196E3E48902}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -187,18 +187,18 @@ Global
 		{2FB27923-465B-4567-AE9B-28D8DECB6E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FB27923-465B-4567-AE9B-28D8DECB6E6D}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
 		{2FB27923-465B-4567-AE9B-28D8DECB6E6D}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
-		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
-		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
 		{17BA13B9-E8F7-418A-A2EE-8BE28471626C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{17BA13B9-E8F7-418A-A2EE-8BE28471626C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17BA13B9-E8F7-418A-A2EE-8BE28471626C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17BA13B9-E8F7-418A-A2EE-8BE28471626C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{17BA13B9-E8F7-418A-A2EE-8BE28471626C}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
 		{17BA13B9-E8F7-418A-A2EE-8BE28471626C}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
+		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release-Untested|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A5F733-36BB-44CA-B020-D71A61EB9455}.Release-Untested|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

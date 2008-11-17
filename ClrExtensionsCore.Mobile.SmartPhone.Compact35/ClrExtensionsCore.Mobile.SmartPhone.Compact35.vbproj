@@ -301,7 +301,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mono-Mobile-SmartPhone-Compact35\Mono.Mobile.SmartPhone.Compact35.csproj">
+    <ProjectReference Include="..\Mono.Mobile.SmartPhone.Compact35\Mono.Mobile.SmartPhone.Compact35.csproj">
       <Project>{2FB27923-465B-4567-AE9B-28D8DECB6E6D}</Project>
       <Name>Mono.Mobile.SmartPhone.Compact35</Name>
     </ProjectReference>
