@@ -1,4 +1,5 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
+Imports System.IO
 
 Public Module IOExtension
 
@@ -42,12 +43,12 @@ Public Module IOExtension
 
 	Public Function ToFileName(ByVal text As String) As String
 		Dim temp As New System.Text.StringBuilder(text)
-		For Each c In IO.Path.GetInvalidPathChars
-			temp.Replace(c, "_")
-		Next
-		temp.Replace(IO.Path.DirectorySeparatorChar, "_")
-		temp.Replace(IO.Path.AltDirectorySeparatorChar, "_")
-		temp.Replace(IO.Path.VolumeSeparatorChar, "_")
+        For Each c In Path.GetInvalidPathChars
+            temp.Replace(c, "_")
+        Next
+        temp.Replace(Path.DirectorySeparatorChar, "_")
+        temp.Replace(Path.AltDirectorySeparatorChar, "_")
+        temp.Replace(Path.VolumeSeparatorChar, "_")
 		Select Case System.Environment.OSVersion.Platform
 			Case PlatformID.Win32NT, PlatformID.Win32S, PlatformID.Win32Windows, PlatformID.WinCE
 				temp.Replace("*"c, "_")

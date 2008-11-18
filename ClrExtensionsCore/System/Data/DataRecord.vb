@@ -33,17 +33,30 @@ Namespace Data
 			Return CByte(m_Data(i))
 		End Function
 
-		Public Function GetBytes(ByVal i As Integer, ByVal fieldOffset As Long, ByVal buffer() As Byte, ByVal bufferoffset As Integer, ByVal length As Integer) As Long Implements IDataRecord.GetBytes
+
+        Public Function GetBytes(ByVal i As Integer, ByVal fieldOffset As Long, ByVal buffer() As Byte, ByVal bufferoffset As Integer, ByVal length As Integer) As Long Implements IDataRecord.GetBytes
+
+#If Client35 Then
 			Array.Copy(CType(m_Data(i), Byte()), fieldOffset, buffer, bufferoffset, length)
-		End Function
+#Else
+            Throw New NotSupportedException
+#End If
+        End Function
+
 
 		Public Function GetChar(ByVal i As Integer) As Char Implements IDataRecord.GetChar
 			Return CChar(m_Data(i))
 		End Function
 
-		Public Function GetChars(ByVal i As Integer, ByVal fieldoffset As Long, ByVal buffer() As Char, ByVal bufferoffset As Integer, ByVal length As Integer) As Long Implements IDataRecord.GetChars
-			Array.Copy(CType(m_Data(i), Char()), fieldoffset, buffer, bufferoffset, length)
-		End Function
+
+        Public Function GetChars(ByVal i As Integer, ByVal fieldoffset As Long, ByVal buffer() As Char, ByVal bufferoffset As Integer, ByVal length As Integer) As Long Implements IDataRecord.GetChars
+#If Client35 Then
+            Array.Copy(CType(m_Data(i), Char()), fieldoffset, buffer, bufferoffset, length)
+#Else
+            Throw New NotSupportedException
+#End If
+        End Function
+
 
 		Public Function GetData(ByVal i As Integer) As IDataReader Implements IDataRecord.GetData
 			Throw New NotSupportedException

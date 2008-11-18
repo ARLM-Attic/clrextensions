@@ -90,8 +90,10 @@ Public Module ObjectExtension
             result.AppendLine(header & current.ToString)
             'TODO If DateTime.Kind is set, include that in this output
 
+#If Client35 Then
         ElseIf TypeOf current Is DateTimeOffset Then
             result.AppendLine(header & current.ToString)
+#End If
 
         ElseIf TypeOf current Is Boolean Then
             result.AppendLine(header & current.ToString)
@@ -134,6 +136,8 @@ Public Module ObjectExtension
         Next
     End Sub
 
+#If Client35 Then
+
     <Untested()> <Extension()> Public Function DeepCopy(Of T)(ByVal this As T) As T
         If Not this.GetType.IsSerializable Then Throw New ArgumentException("Only serializable types can be copied")
 
@@ -145,7 +149,7 @@ Public Module ObjectExtension
 
         Return DirectCast(binaryFormatter.Deserialize(memoryStream), T)
     End Function
-
+#End If
 
     'TODO - Convert the object to XML using an XML Serializer
     '<Extension()> Public Function ToXDocument(ByVal this As Object) As XDocument

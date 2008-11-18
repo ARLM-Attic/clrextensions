@@ -16,6 +16,8 @@ Public Module EnumExtension
 
 #If IncludeUntested Then
 
+#If Client35 Then
+
     ''' <summary>
     ''' Parse a string, returning the indicated enum
     ''' </summary>
@@ -41,6 +43,8 @@ Public Module EnumExtension
             Return Nothing
         End Try
     End Function
+#End If
+
 
     ''' <summary>
     ''' Parse a string, returning the indicated enum

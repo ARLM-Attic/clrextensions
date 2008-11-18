@@ -107,6 +107,7 @@ Public Module DictionaryExtension
 		Return If(temp IsNot Nothing, CType(temp, T), [default])
 	End Function
 
+#If Client35 Then
 
 	<Untested()> <Extension()> Public Function ToDictionary(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As Dictionary(Of String, String)
 		If rowSeparator = columnSeparator Then Return ToDictionary(source, rowSeparator)
@@ -120,10 +121,12 @@ Public Module DictionaryExtension
 
 		Return result
 	End Function
+#End If
 
+#If Client35 Then
 	<Untested()> <Extension()> Public Function ToDictionary(ByVal source As String, ByVal separator As String) As Dictionary(Of String, String)
 		Dim result As New Dictionary(Of String, String)
-		Dim rows = source.Split(separator)
+        Dim rows = source.Split(separator)
 
 		If rows.Count Mod 2 <> 0 Then Throw New FormatException("This contains an odd number of entries")
 		For i = 0 To rows.Count - 1 Step 2
@@ -132,6 +135,7 @@ Public Module DictionaryExtension
 
 		Return result
 	End Function
+#End If
 
 End Module
 #End If

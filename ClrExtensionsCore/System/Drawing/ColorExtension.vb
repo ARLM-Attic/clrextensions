@@ -1,5 +1,7 @@
 'Copyright (c) 2008, Jonathan Allen
 
+Imports System.Drawing
+
 #If IncludeUntested Then
 Public Module ColorExtension
     'Reference: http://en.wikipedia.org/wiki/HSL_color_space
@@ -33,7 +35,7 @@ Public Module ColorExtension
         Dim g = C(p, q, tG)
         Dim b = C(p, q, tB)
 
-        Return Drawing.Color.FromArgb(CInt(256 * r), CInt(256 * g), CInt(256 * b))
+        Return Color.FromArgb(CInt(256 * r), CInt(256 * g), CInt(256 * b))
 
     End Function
 

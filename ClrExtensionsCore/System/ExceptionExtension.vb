@@ -1,8 +1,12 @@
 'Copyright (c) 2008, Jonathan Allen
 
+
+
 #If IncludeUntested Then
 
 Public Module ExceptionExtension
+
+#If Client35 Then
 
     ''' <summary>
     ''' Gets detailed information from an exception object and all its inner exceptions
@@ -31,7 +35,9 @@ Public Module ExceptionExtension
         Return result.ToString
 
     End Function
+#End If
 
+#If Client35 Then
 
     ''' <summary>
     ''' Returns the detailed exception information from a SqlException, including its error collection
@@ -70,7 +76,7 @@ Public Module ExceptionExtension
 
         Return result.ToString
     End Function
-
+#End If
 
 End Module
 #End If

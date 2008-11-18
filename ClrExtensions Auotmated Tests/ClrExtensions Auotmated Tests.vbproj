@@ -84,6 +84,7 @@
     <Compile Include="Dictionary2Test.vb" />
     <Compile Include="DoubleExtensionTest.vb" />
     <Compile Include="EnumExtensionTest.vb" />
+    <Compile Include="EventsTest.vb" />
     <Compile Include="Int32ExtensionTest.vb" />
     <Compile Include="IOExtensionTest.vb" />
     <Compile Include="LongExtensionTest.vb" />

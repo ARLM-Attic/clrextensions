@@ -16,6 +16,9 @@ Module Module1
 		Console.WriteLine(d)
 
 
+        Dim x As Integer() = New Integer() {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+        Dim q = From item In x Where item Mod 2 = 0
+
 
 		'#If IncludeUntested Then
 

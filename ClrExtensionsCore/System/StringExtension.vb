@@ -393,6 +393,7 @@ Public Module StringExtension
         Next
         Return result.ToString
     End Function
+#If Client35 Then
 
     <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         If rowSeparator = columnSeparator Then Return ToKeyValueCollection(source, rowSeparator)
@@ -406,6 +407,9 @@ Public Module StringExtension
 
         Return result
     End Function
+#End If
+
+#If Client35 Then
 
     <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
@@ -418,12 +422,11 @@ Public Module StringExtension
 
         Return result
     End Function
+#End If
 
     <Untested()> <Extension()> Public Function MD5Hash(ByVal value As String) As String
-        Return Security.Cryptography.MD5CryptoServiceProvider.Create().ComputeHash(Text.Encoding.UTF8.GetBytes(value)).ToString("x2")
+        Return System.Security.Cryptography.MD5CryptoServiceProvider.Create().ComputeHash(Text.Encoding.UTF8.GetBytes(value)).ToString("x2")
     End Function
-
-
 
 
     <Untested()> <Extension()> Public Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
@@ -485,7 +488,7 @@ Public Module StringExtension
         Return CType([Enum].Parse(GetType(T), value, True), T)
     End Function
 
-
+#If Full35 Then
     <Untested()> <Extension()> Public Function HtmlEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlEncode(this)
     End Function
@@ -505,6 +508,7 @@ Public Module StringExtension
     <Untested()> <Extension()> Public Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
         Return Global.System.Web.HttpUtility.ParseQueryString(this)
     End Function
+#End If
 
     <Untested()> <Extension()> Public Function RemoveNonNumeric(ByVal value As String) As String
         Dim sb As New Text.StringBuilder(value.Length)

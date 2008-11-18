@@ -138,12 +138,14 @@ Namespace IO
 
 		Public Overrides Sub Close()
 			'NOP
-		End Sub
+        End Sub
 
-		Public Overrides Function CreateObjRef(ByVal requestedType As Global.System.Type) As Global.System.Runtime.Remoting.ObjRef
+#If Client35 Then
+        		Public Overrides Function CreateObjRef(ByVal requestedType As Global.System.Type) As Global.System.Runtime.Remoting.ObjRef
 			'TODO find out what this function actually does in this context
 			Throw New NotSupportedException
 		End Function
+#End If
 
 		Public Overrides Function EndRead(ByVal asyncResult As Global.System.IAsyncResult) As Integer
 			Return m_BaseStream.EndRead(asyncResult)
