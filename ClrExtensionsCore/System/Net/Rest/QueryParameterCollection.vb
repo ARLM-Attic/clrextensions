@@ -33,13 +33,16 @@ Namespace Net.Rest
 
 		Private Shared Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
 			Dim result As New ObjectModel.Collection(Of QueryParameter)
-			Dim rows = queryString.Split("&", StringSplitOptions.RemoveEmptyEntries)
+      Dim rows = queryString.Split("&"c) 'removed , StringSplitOptions.RemoveEmptyEntries because CF does not seem to understand
+      Dim values() As String
 
-			For Each pair In rows.Select(Function(s) s.Split("=", 2, StringSplitOptions.None))
-				If pair.Length = 2 Then result.Add(New QueryParameter(pair(0), pair(1))) Else result.Add(New QueryParameter(pair(0), Nothing))
-			Next
-			Return result
-		End Function
+      For Each item As String In rows
+        values = item.Split("="c) 'little c insure conversion to char, option explicit does not allow string to implicit cast to char
+        result.Add(New QueryParameter(values(0).Trim, values(1).Trim))
+      Next
+      
+      Return result
+    End Function
 
 
 	End Class
