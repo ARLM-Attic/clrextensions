@@ -84,7 +84,11 @@ Module FuncExtension
 
         Dim result As Func(Of T1, T2, T3, TResult) = Function(a, b, c) If(dataStore.ContainsKey(a, b, c), dataStore(a, b, c), dataStore.StoreAndReturn(a, b, c, func(a, b, c)))
         Return result
-    End Function
+	End Function
+
+	'Before and After functions
+	'http://feeds.feedburner.com/~r/GrabBagOfT/~3/459129786/functionally-dynamic.aspx
+
 #End If
 
 End Module
