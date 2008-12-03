@@ -14,7 +14,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyProduct("ClrExtensionsCore-Client")> 
 <Assembly: AssemblyCopyright("Copyright ©  2008")> 
 <Assembly: AssemblyTrademark("")> 
-
+<Assembly: CLSCompliant(True)> 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM

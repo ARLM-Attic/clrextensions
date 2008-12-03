@@ -52,6 +52,10 @@
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.IWshRuntimeLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ClrExtensionsCore\obj\Release\Interop.IWshRuntimeLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -91,13 +95,13 @@
     <Compile Include="QueryParameterTest.vb" />
     <Compile Include="ReaderWriterLockSlimExtensionTest.vb" />
     <Compile Include="RestCallTest.vb" />
-    <Compile Include="RestUrlTest.vb" />
     <Compile Include="StringExtensionTest.vb" />
     <Compile Include="ThreadExtensionTest.vb" />
     <Compile Include="TimeSpanExtensionTest.vb" />
     <Compile Include="Tuple3Test.vb" />
     <Compile Include="TupleTest2.vb" />
     <Compile Include="UniqueQueueTest.vb" />
+    <Compile Include="VBLanguageExtensionTest.vb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />

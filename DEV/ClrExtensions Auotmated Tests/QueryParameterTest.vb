@@ -1,4 +1,6 @@
-﻿Imports Microsoft.VisualStudio.TestTools.UnitTesting
+﻿Imports ClrExtensions
+
+Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports ClrExtensions.Net.Rest
 
 '''<summary>
@@ -74,4 +76,75 @@ Public Class QueryParameterTest
 		Next
 	End Sub
 
+
+    '''<summary>
+    '''A test for Value
+    '''</summary>
+    <TestMethod()> _
+    Public Sub ValueTest()
+        Dim name As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim target As QueryParameter = New QueryParameter(name) ' TODO: Initialize to an appropriate value
+        Dim actual As String
+        actual = target.Value
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for Name
+    '''</summary>
+    <TestMethod()> _
+    Public Sub NameTest()
+        Dim name As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim target As QueryParameter = New QueryParameter(name) ' TODO: Initialize to an appropriate value
+        Dim actual As String
+        actual = target.Name
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for ToString
+    '''</summary>
+    <TestMethod()> _
+    Public Sub ToStringTest1()
+        Dim name As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim target As QueryParameter = New QueryParameter(name) ' TODO: Initialize to an appropriate value
+        Dim expected As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim actual As String
+        actual = target.ToString
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for QueryParameter Constructor
+    '''</summary>
+    <TestMethod()> _
+    Public Sub QueryParameterConstructorTest2()
+        Dim name As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim target As QueryParameter = New QueryParameter(name)
+        Assert.Inconclusive("TODO: Implement code to verify target")
+    End Sub
+
+    '''<summary>
+    '''A test for QueryParameter Constructor
+    '''</summary>
+    <TestMethod()> _
+    Public Sub QueryParameterConstructorTest1()
+        Dim name As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim value As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim target As QueryParameter = New QueryParameter(name, value)
+        Assert.Inconclusive("TODO: Implement code to verify target")
+    End Sub
+
+    '''<summary>
+    '''A test for QueryParameter Constructor
+    '''</summary>
+    <TestMethod()> _
+    Public Sub QueryParameterConstructorTest()
+        Dim name As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim value As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim encoding As UrlEncodingMethod = New UrlEncodingMethod ' TODO: Initialize to an appropriate value
+        Dim target As QueryParameter = New QueryParameter(name, value, encoding)
+        Assert.Inconclusive("TODO: Implement code to verify target")
+    End Sub
 End Class

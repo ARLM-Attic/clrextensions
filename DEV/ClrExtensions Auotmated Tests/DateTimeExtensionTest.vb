@@ -199,4 +199,25 @@ Public Class DateTimeExtensionTest
 		Assert.AreEqual(testFirstMonday, DateTimeExtension.FirstOfMonth(testDate, System.DayOfWeek.Monday))
 		Assert.AreEqual(testFirstTuesday, DateTimeExtension.FirstOfMonth(testDate, System.DayOfWeek.Tuesday))
 	End Sub
+
+    Dim unixValue As Long = 1227888916
+    Dim dateValue As New DateTime(2008, 11, 28, 16, 15, 16, DateTimeKind.Utc)
+
+    '''<summary>
+    '''A test for ToUnixTime
+    '''</summary>
+    <TestMethod()> _
+    Public Sub ToUnixTimeTest()
+        Assert.AreEqual(unixValue, dateValue.ToUnixTime)
+    End Sub
+
+    '''<summary>
+    '''A test for FromUnixTime
+    '''</summary>
+    <TestMethod()> _
+    Public Sub FromUnixTimeTest()
+        Dim result As Date = FromUnixTime(unixValue)
+        Assert.AreEqual(dateValue, result)
+        Assert.AreEqual(DateTimeKind.Utc, result.Kind)
+    End Sub
 End Class

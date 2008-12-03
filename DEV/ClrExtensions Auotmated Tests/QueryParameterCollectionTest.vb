@@ -1,4 +1,6 @@
-﻿Imports System.Collections.Specialized
+﻿Imports System.Collections.ObjectModel
+
+Imports System.Collections.Specialized
 
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
@@ -92,4 +94,71 @@ Public Class QueryParameterCollectionTest
 		Next
 
 	End Sub
+
+    '''<summary>
+    '''A test for Item
+    '''</summary>
+    <TestMethod()> _
+    Public Sub ItemTest()
+        Dim target As QueryParameterCollection = New QueryParameterCollection ' TODO: Initialize to an appropriate value
+        Dim key As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim actual As String
+        actual = target(key)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for ParseQueryString
+    '''</summary>
+    <TestMethod(), _
+     DeploymentItem("ClrExtensionsCore.dll")> _
+    Public Sub ParseQueryStringTest()
+        Dim queryString As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim expected As Collection(Of QueryParameter) = Nothing ' TODO: Initialize to an appropriate value
+        Dim actual As Collection(Of QueryParameter)
+        actual = QueryParameterCollection_Accessor.ParseQueryString(queryString)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for AddRange
+    '''</summary>
+    <TestMethod()> _
+    Public Sub AddRangeTest1()
+        Dim target As QueryParameterCollection = New QueryParameterCollection ' TODO: Initialize to an appropriate value
+        Dim values As NameValueCollection = Nothing ' TODO: Initialize to an appropriate value
+        target.AddRange(values)
+        Assert.Inconclusive("A method that does not return a value cannot be verified.")
+    End Sub
+
+    '''<summary>
+    '''A test for AddByParsing
+    '''</summary>
+    <TestMethod()> _
+    Public Sub AddByParsingTest()
+        Dim target As QueryParameterCollection = New QueryParameterCollection ' TODO: Initialize to an appropriate value
+        Dim queryString As String = String.Empty ' TODO: Initialize to an appropriate value
+        target.AddByParsing(queryString)
+        Assert.Inconclusive("A method that does not return a value cannot be verified.")
+    End Sub
+
+    '''<summary>
+    '''A test for QueryParameterCollection Constructor
+    '''</summary>
+    <TestMethod()> _
+    Public Sub QueryParameterCollectionConstructorTest1()
+        Dim target As QueryParameterCollection = New QueryParameterCollection
+        Assert.Inconclusive("TODO: Implement code to verify target")
+    End Sub
+
+    '''<summary>
+    '''A test for QueryParameterCollection Constructor
+    '''</summary>
+    <TestMethod()> _
+    Public Sub QueryParameterCollectionConstructorTest()
+        Dim queryString As String = String.Empty ' TODO: Initialize to an appropriate value
+        Dim target As QueryParameterCollection = New QueryParameterCollection(queryString)
+        Assert.Inconclusive("TODO: Implement code to verify target")
+    End Sub
 End Class

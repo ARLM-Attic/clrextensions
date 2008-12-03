@@ -11,7 +11,8 @@ Namespace Security
 		''' <summary>
 		''' Utilities for generating and signing web requests using the OAuth specification
 		''' </summary>
-		''' <remarks>See http://oauth.net/ for information on this standard.</remarks>
+        ''' <remarks>See http://oauth.net/ for information on this standard.
+        ''' This class is currently being hand-tested. Some testing is also done via the WrapNetflix project.</remarks>
 		Public Module OAuthUtility
 
 			''' <summary>
@@ -72,23 +73,16 @@ Namespace Security
 				Return fullRequest
 			End Function
 
-
-
-
-
-
-
-
-			Private Function ComputeHash(ByVal hashAlgorithm As HashAlgorithm, ByVal data As String) As String
-				If (hashAlgorithm Is Nothing) Then
-					Throw New ArgumentNullException("hashAlgorithm")
-				End If
-				If String.IsNullOrEmpty(data) Then
-					Throw New ArgumentNullException("data")
-				End If
-				Dim dataBuffer As Byte() = Encoding.ASCII.GetBytes(data)
-				Return Convert.ToBase64String(hashAlgorithm.ComputeHash(dataBuffer))
-			End Function
+            Private Function ComputeHash(ByVal hashAlgorithm As HashAlgorithm, ByVal data As String) As String
+                If (hashAlgorithm Is Nothing) Then
+                    Throw New ArgumentNullException("hashAlgorithm")
+                End If
+                If String.IsNullOrEmpty(data) Then
+                    Throw New ArgumentNullException("data")
+                End If
+                Dim dataBuffer As Byte() = Encoding.ASCII.GetBytes(data)
+                Return Convert.ToBase64String(hashAlgorithm.ComputeHash(dataBuffer))
+            End Function
 
 			Public Function GenerateNonce() As String
 				Return m_Random.Next(&H1E208, &H98967F).ToString

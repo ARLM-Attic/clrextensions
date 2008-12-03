@@ -189,4 +189,17 @@ Public Module DateTimeExtension
         Return start <= value And value <= [end]
     End Function
 
+    Public Function FromUnixTime(ByVal unixTime As Long) As Date
+        Return UnixEpoch + TimeSpan.FromSeconds(unixTime)
+    End Function
+
+    <Extension()> Public Function ToUnixTime(ByVal value As Date) As Long
+        Dim ts As TimeSpan = DirectCast((value.ToUniversalTime - UnixEpoch), TimeSpan)
+        Return CLng(ts.TotalSeconds)
+    End Function
+
+    Public ReadOnly UnixEpoch As Date = New Date(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+
 End Module
+
+
