@@ -611,7 +611,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-     Public Function CUShort2(ByVal value As Object) As Integer?
+    Public Function CUShort2(ByVal value As Object) As UShort?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -625,7 +625,7 @@ Public Module VBLanguageExtension
     ''' <param name="default">Default value to be returned in the case of nulls</param>
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-     Public Function CUShort2(ByVal value As Object, ByVal [default] As Integer) As Integer
+    Public Function CUShort2(ByVal value As Object, ByVal [default] As UShort) As UShort
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -639,7 +639,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-     Public Function TryCUShort(ByVal value As Object) As Integer?
+    Public Function TryCUShort(ByVal value As Object) As UShort?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
