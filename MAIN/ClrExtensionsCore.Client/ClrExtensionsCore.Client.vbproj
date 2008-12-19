@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C859A503-EE3E-4785-ACD9-AFD43DE49034}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ClrExtensions</RootNamespace>
+    <AssemblyName>ClrExtensionsCore.Client</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkSubset>Client</TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ClrExtensionsCore.Client.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>Client35,IncludeUntested</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ClrExtensionsCore.Client.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>Client35</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Untested|AnyCPU' ">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release-Untested\</OutputPath>
+    <DefineConstants>Client35,IncludeUntested</DefineConstants>
+    <DocumentationFile>ClrExtensionsCore.Client.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Runtime.CompilerServices" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\ClrExtensionsCore\Attributes.vb">
+      <Link>Attributes.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\csharp\Events.vb">
+      <Link>CSharp\Events.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\ActionExtensions.vb">
+      <Link>System\ActionExtensions.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\ArrayExtension.vb">
+      <Link>System\ArrayExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\ByteExtension.vb">
+      <Link>System\ByteExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\ByteFormat.vb">
+      <Link>System\ByteFormat.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\CollectionExtension.vb">
+      <Link>System\Collections\CollectionExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\ComparerExtension.vb">
+      <Link>System\Collections\ComparerExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\Dictionary2.vb">
+      <Link>System\Collections\Dictionary2.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\Dictionary3.vb">
+      <Link>System\Collections\Dictionary3.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\DictionaryExtension.vb">
+      <Link>System\Collections\DictionaryExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\EnumerableExtension.vb">
+      <Link>System\Collections\EnumerableExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\ListExtension.vb">
+      <Link>System\Collections\ListExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\ObjectEnumerable.vb">
+      <Link>System\Collections\ObjectEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\ObjectEnumerator.vb">
+      <Link>System\Collections\ObjectEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\QuickEqualityComparer.vb">
+      <Link>System\Collections\QuickEqualityComparer.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\SortedList.vb">
+      <Link>System\Collections\SortedList.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\Tuple2.vb">
+      <Link>System\Collections\Tuple2.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\Tuple3.vb">
+      <Link>System\Collections\Tuple3.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\TwoWayDictionary.vb">
+      <Link>System\Collections\TwoWayDictionary.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\TypeEnumerable.vb">
+      <Link>System\Collections\TypeEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\TypeEnumerator.vb">
+      <Link>System\Collections\TypeEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\collections\UniqueQueue.vb">
+      <Link>System\Collections\UniqueQueue.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\ComparableExtension.vb">
+      <Link>System\ComparableExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\data\DataReaderEnumerable.vb">
+      <Link>System\Data\DataReaderEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\data\DataReaderEnumerator.vb">
+      <Link>System\Data\DataReaderEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\data\DataRecord.vb">
+      <Link>System\Data\DataRecord.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\data\DataRecordColumns.vb">
+      <Link>System\Data\DataRecordColumns.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\data\IDataReaderExtensions.vb">
+      <Link>System\Data\IDataReaderExtensions.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\DateTimeExtension.vb">
+      <Link>System\DateTimeExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\DecimalExtension.vb">
+      <Link>System\DecimalExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\DoubleExtension.vb">
+      <Link>System\DoubleExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\drawing\ColorExtension.vb">
+      <Link>System\Drawing\ColorExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\EnumExtension.vb">
+      <Link>System\EnumExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\ExceptionExtension.vb">
+      <Link>System\ExceptionExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\FlexDate.vb">
+      <Link>System\FlexDate.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\FuncExtension.vb">
+      <Link>System\FuncExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\Int32Extension.vb">
+      <Link>System\Int32Extension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\IntPtrExtension.vb">
+      <Link>System\IntPtrExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\io\DirectoryInfo.vb">
+      <Link>System\IO\DirectoryInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\io\FileInfoExtension.vb">
+      <Link>System\IO\FileInfoExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\io\IOExtension.vb">
+      <Link>System\IO\IOExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\io\StreamExtension.vb">
+      <Link>System\IO\StreamExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\io\StreamReaderExtension.vb">
+      <Link>System\IO\StreamReaderExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\LineBreakMode.vb">
+      <Link>System\LineBreakMode.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\LongExtension.vb">
+      <Link>System\LongExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\MathExtension.vb">
+      <Link>System\MathExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\net\rest\QueryParameter.vb">
+      <Link>System\Net\Rest\QueryParameter.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\net\rest\QueryParameterCollection.vb">
+      <Link>System\Net\Rest\QueryParameterCollection.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\net\rest\RestCall.vb">
+      <Link>System\Net\Rest\RestCall.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\net\rest\RestExtension.vb">
+      <Link>System\Net\Rest\RestExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\net\rest\RestScheme.vb">
+      <Link>System\Net\Rest\RestScheme.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\net\rest\RestVerb.vb">
+      <Link>System\Net\Rest\RestVerb.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\ObjectExtension.vb">
+      <Link>System\ObjectExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\PredicateExtension.vb">
+      <Link>System\PredicateExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\QuarterYear.vb">
+      <Link>System\QuarterYear.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\Range.vb">
+      <Link>System\Range.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensionsCore\System\Security\AccessControl\SecurityPrincipalExtension.vb">
+      <Link>System\Security\AccessControl\SecurityPrincipalExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\security\oauth\OAuthUtility.vb">
+      <Link>System\Security\OAuth\OAuthUtility.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\StringExtension.vb">
+      <Link>System\StringExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\threading\ReaderWriterLockSlimExtension.vb">
+      <Link>System\Threading\ReaderWriterLockSlimExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\threading\ThreadingExtension.vb">
+      <Link>System\Threading\ThreadingExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\TimeSpanExtension.vb">
+      <Link>System\TimeSpanExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\TypeExtension.vb">
+      <Link>System\TypeExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\system\UrlEncodingMethod.vb">
+      <Link>System\UrlEncodingMethod.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensionscore\vb\VBLanguageExtensions.vb">
+      <Link>VB\VBLanguageExtensions.vb</Link>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

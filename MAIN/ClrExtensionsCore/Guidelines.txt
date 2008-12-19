@@ -1,0 +1,53 @@
+﻿
+
+Basic Organization:
+
+	To faciliate those who wish to import the library as a whole, there are no per-file namepaces. (This is for VB developers, C# developers will have to import on a per-module basis.)
+
+	Files will be organized in a folder structure mirroring the namespaces they extend.
+
+	Extension methods will be contained in modules names "xxxExtension" where xxx is the class being extended.
+
+	Extensions for arrays will be in the parent class's module.
+	
+	No module name may start with the interface prefix I. For example, extension methods for IList go in the ListExtension module. Likewise, IDictionary methods go in DictionaryExtension.
+
+	Exension methods that don't take an instance method sill follow the "xxxExtension" pattern. For example, ThreadExtension.Sleep(minutes, seconds) will go there.
+
+Special rule for Strings:
+	Methods that extend String, but don't return a string, are not in the StringExtension module. Rather, they are with the returned type. For example, String.ToByteArray(encoding) is with Byte().ToString in ByteExtension.
+
+	This is done because 
+		a. the StringExtension class is huge and 
+		b. many operations have natural pairs.
+
+	Empty strings should be returned instead of nulls. The exception is methods that accept a string and return the same string.
+
+Parameter Validation:
+
+	All methods should be as permissive as possible, especially with parameters that may be passed in from the user. In general, null strings/collections should be treated as empty strings/collections.
+	
+
+Parameter Names:
+
+	Name parameters as if they were normal functions. Don't use "this" for a parameter name.
+	
+	The names "value" and "source" are good for scalars and collections respectively.
+	
+Testing:
+
+	Anything that has not been tested should be marked as "Untested" and excluded from "Release" builds using #IF regions
+	
+Lists and Enumerables:
+
+	Functions that take lists should return lists.
+	Functions that take enumerables should return enumerables
+	
+Namespaces
+
+	Modules of Extension Methods don't go in a namespace
+	Other Modules and Classes follow the folder pattern
+	Win32 is the root for all P/Invoke features
+	Win32/xxx shall have all xxx.dll related features
+	Win32/xxxAPI is the module for the P/Invoke stuff itself
+

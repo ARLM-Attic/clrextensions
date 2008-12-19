@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1918938-E4B5-444E-89DB-6739D7B48C90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ClrExtensions</RootNamespace>
+    <AssemblyName>ClrExtensionsCore</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ClrExtensionsCore.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+    <DefineConstants>IncludeUntested,Full35,Client35</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ClrExtensionsCore.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+    <DefineConstants>Full35,Client35</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Untested|AnyCPU' ">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release-Untested\</OutputPath>
+    <DocumentationFile>ClrExtensionsCore.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <DefineConstants>Full35,IncludeUntested,Client35</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Runtime.CompilerServices" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="CodeGeneration\ExpressionUtilities.vb" />
+    <Compile Include="System\ActionExtensions.vb" />
+    <Compile Include="Attributes.vb" />
+    <Compile Include="System\Collections\BatchQueue.vb" />
+    <Compile Include="System\Collections\CollectionExtension.vb" />
+    <Compile Include="System\Collections\ComparerExtension.vb" />
+    <Compile Include="System\Collections\TwoWayDictionary.vb" />
+    <Compile Include="System\Collections\UniqueQueue.vb" />
+    <Compile Include="System\ComparableExtension.vb" />
+    <Compile Include="System\FlexDate.vb" />
+    <Compile Include="System\IO\DirectoryInfo.vb" />
+    <Compile Include="System\FuncExtension.vb" />
+    <Compile Include="System\IO\StreamReaderExtension.vb" />
+    <Compile Include="System\LineBreakMode.vb" />
+    <Compile Include="System\MathExtension.vb" />
+    <Compile Include="System\Net\Rest\QueryParameter.vb" />
+    <Compile Include="System\Net\Rest\QueryParameterCollection.vb" />
+    <Compile Include="System\Net\Rest\RestScheme.vb" />
+    <Compile Include="System\Net\Rest\RestVerb.vb" />
+    <Compile Include="System\Net\Rest\RestExtension.vb" />
+    <Compile Include="System\Net\Rest\RestCall.vb" />
+    <Compile Include="System\Security\OAuth\OAuthUtility.vb" />
+    <Compile Include="System\PredicateExtension.vb" />
+    <Compile Include="System\IO\StreamExtension.vb" />
+    <Compile Include="System\ArrayExtension.vb" />
+    <Compile Include="System\Collections\Dictionary2.vb" />
+    <Compile Include="System\Collections\Dictionary3.vb" />
+    <Compile Include="Scratch.vb" />
+    <Compile Include="System\ByteFormat.vb" />
+    <Compile Include="System\Collections\QuickEqualityComparer.vb" />
+    <Compile Include="System\Collections\SortedList.vb" />
+    <Compile Include="System\Data\DataReaderEnumerable.vb" />
+    <Compile Include="System\Data\DataReaderEnumerator.vb" />
+    <Compile Include="System\Data\DataRecord.vb" />
+    <Compile Include="System\Data\DataRecordColumns.vb" />
+    <Compile Include="System\DoubleExtension.vb" />
+    <Compile Include="System\EnumExtension.vb" />
+    <Compile Include="CSharp\Events.vb" />
+    <Compile Include="System\ExceptionExtension.vb" />
+    <Compile Include="System\IntPtrExtension.vb" />
+    <Compile Include="System\IO\FileInfoExtension.vb" />
+    <Compile Include="System\IO\IOExtension.vb" />
+    <Compile Include="System\LongExtension.vb" />
+    <Compile Include="System\ByteExtension.vb" />
+    <Compile Include="System\Drawing\ColorExtension.vb" />
+    <Compile Include="System\Collections\DictionaryExtension.vb" />
+    <Compile Include="System\Collections\EnumerableExtension.vb" />
+    <Compile Include="System\Collections\ListExtension.vb" />
+    <Compile Include="System\Collections\ObjectEnumerable.vb" />
+    <Compile Include="System\Collections\ObjectEnumerator.vb" />
+    <Compile Include="System\Collections\TypeEnumerable.vb" />
+    <Compile Include="System\Collections\TypeEnumerator.vb" />
+    <Compile Include="System\Data\IDataReaderExtensions.vb" />
+    <Compile Include="System\DateTimeExtension.vb" />
+    <Compile Include="System\DecimalExtension.vb" />
+    <Compile Include="System\Int32Extension.vb" />
+    <Compile Include="System\ObjectExtension.vb" />
+    <Compile Include="System\Collections\Tuple2.vb" />
+    <Compile Include="System\Collections\Tuple3.vb" />
+    <Compile Include="System\QuarterYear.vb" />
+    <Compile Include="System\Range.vb" />
+    <Compile Include="System\Threading\ReaderWriterLockSlimExtension.vb" />
+    <Compile Include="System\TimeSpanExtension.vb" />
+    <Compile Include="System\UrlEncodingMethod.vb" />
+    <Compile Include="VB\VBLanguageExtensions.vb" />
+    <Compile Include="Win32\Http\HTTPAPI_VERSION.vb" />
+    <Compile Include="Win32\Http\HttpInitializeFlags.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_KEY.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_PARAM.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_SET.vb" />
+    <Compile Include="Win32\Http\UrlAce.vb" />
+    <Compile Include="Win32\Http\UrlAcl.vb" />
+    <Compile Include="Win32\Win32Exception.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_ID.vb" />
+    <Compile Include="Win32\Win32Extension.vb" />
+    <Compile Include="Win32\StructPointer.vb" />
+    <Compile Include="Win32\Http\HttpApiConfigContext.vb" />
+    <Compile Include="Win32\Http\HttpApi.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_QUERY_TYPE.vb" />
+    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_QUERY.vb" />
+    <Compile Include="Win32\Http\UrlPermission.vb" />
+    <Compile Include="Win32\Kernel\KernelApi.vb" />
+    <Compile Include="System\Security\AccessControl\SecurityPrincipalExtension.vb" />
+    <Compile Include="Win32\SystemErrorCodes.vb" />
+    <Compile Include="System\Threading\ThreadingExtension.vb" />
+    <Compile Include="System\StringExtension.vb" />
+    <Compile Include="System\TypeExtension.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Guidelines.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
