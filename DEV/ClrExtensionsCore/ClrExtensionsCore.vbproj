@@ -124,6 +124,7 @@
     <Compile Include="CodeGeneration\ExpressionUtilities.vb" />
     <Compile Include="System\ActionExtensions.vb" />
     <Compile Include="Attributes.vb" />
+    <Compile Include="System\Collections\BatchQueue.vb" />
     <Compile Include="System\Collections\CollectionExtension.vb" />
     <Compile Include="System\Collections\ComparerExtension.vb" />
     <Compile Include="System\Collections\TwoWayDictionary.vb" />
