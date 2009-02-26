@@ -4,6 +4,8 @@
 
 Public Module DictionaryExtension
 
+
+
 	<Untested()> <Extension()> Public Function GetOrCreate(Of TKey, TValue)(ByVal dictionary As Dictionary(Of TKey, TValue), ByVal key As TKey, ByVal valueFunction As Func(Of TKey, TValue)) As TValue
 		If dictionary.ContainsKey(key) Then
 			Return dictionary(key)
@@ -73,7 +75,17 @@ Public Module DictionaryExtension
 
 	<Untested()> <Extension()> Function ToDictionary(Of TKey, TValue)(ByVal this As IEnumerable(Of KeyValuePair(Of TKey, TValue))) As Dictionary(Of TKey, TValue)
 		Return this.ToDictionary(Function(item) item.Key, Function(item) item.Value)
-	End Function
+    End Function
+
+    <Untested()> <Extension()> Function ToDictionaryWith(Of TKey, TValue)(ByVal keys As IEnumerable(Of TKey), ByVal values As IEnumerable(Of TValue)) As Dictionary(Of TKey, TValue)
+        Dim keyStream = keys.GetEnumerator
+        Dim valueStream = values.GetEnumerator
+        Dim result As New Dictionary(Of TKey, TValue)
+        Do While keyStream.MoveNext And valueStream.MoveNext
+            result.Add(keyStream.Current, valueStream.Current)
+        Loop
+        Return result
+    End Function
 
 	<Untested()> <Extension()> Public Function StringJoin(ByVal this As IDictionary(Of String, String), ByVal rowSeparator As String, ByVal columnSeparator As String) As String
 
