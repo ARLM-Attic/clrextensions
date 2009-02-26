@@ -521,7 +521,13 @@ Public Module StringExtension
 
     End Function
 
+    <Untested()> <Extension()> _
+    Public Sub EnsureNotNull(ByRef value As String)
+        If value Is Nothing Then value = ""
+    End Sub
+
 #End If
+
 
 
 	<Extension()> Public Function UrlEncode(ByVal this As String) As String
