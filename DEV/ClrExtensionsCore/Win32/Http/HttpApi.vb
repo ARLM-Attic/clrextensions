@@ -1,7 +1,7 @@
 'Copyright (c) 2008, Jonathan Allen
 
 Namespace Win32.Http
-    Public Module HttpApi
+    <CLSCompliant(False)> Public Module HttpApi
 
         Declare Function HttpSetServiceConfiguration Lib "httpapi.dll" Alias "HttpSetServiceConfiguration" (ByVal ServiceIntPtr As IntPtr, ByVal ConfigId As HTTP_SERVICE_CONFIG_ID, ByRef configInformation As HTTP_SERVICE_CONFIG_URLACL_SET, ByVal ConfigInformationLength As Integer, ByVal pOverlapped As IntPtr) As SystemErrorCode
 

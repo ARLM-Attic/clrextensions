@@ -282,7 +282,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    Public Function CSByte2(ByVal value As Object) As SByte?
+    <CLSCompliant(False)> Public Function CSByte2(ByVal value As Object) As SByte?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -310,7 +310,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    Public Function TryCSByte(ByVal value As Object) As SByte?
+    <CLSCompliant(False)> Public Function TryCSByte(ByVal value As Object) As SByte?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -517,7 +517,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-     Public Function CUInt2(ByVal value As Object) As UInteger?
+    <CLSCompliant(False)> Public Function CUInt2(ByVal value As Object) As UInteger?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -531,7 +531,7 @@ Public Module VBLanguageExtension
     ''' <param name="default">Default value to be returned in the case of nulls</param>
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-     Public Function CUInt2(ByVal value As Object, ByVal [default] As UInteger) As UInteger
+    <CLSCompliant(False)> Public Function CUInt2(ByVal value As Object, ByVal [default] As UInteger) As UInteger
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -545,7 +545,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-     Public Function TryCUInt(ByVal value As Object) As UInteger?
+    <CLSCompliant(False)> Public Function TryCUInt(ByVal value As Object) As UInteger?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -565,7 +565,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-     Public Function CULng2(ByVal value As Object) As ULong?
+    <CLSCompliant(False)> Public Function CULng2(ByVal value As Object) As ULong?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -579,7 +579,7 @@ Public Module VBLanguageExtension
     ''' <param name="default">Default value to be returned in the case of nulls</param>
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-     Public Function CULng2(ByVal value As Object, ByVal [default] As ULong) As ULong
+    <CLSCompliant(False)> Public Function CULng2(ByVal value As Object, ByVal [default] As ULong) As ULong
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -593,7 +593,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-     Public Function TryCULng(ByVal value As Object) As ULong?
+    <CLSCompliant(False)> Public Function TryCULng(ByVal value As Object) As ULong?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -611,7 +611,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    Public Function CUShort2(ByVal value As Object) As UShort?
+    <CLSCompliant(False)> Public Function CUShort2(ByVal value As Object) As UShort?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -625,7 +625,7 @@ Public Module VBLanguageExtension
     ''' <param name="default">Default value to be returned in the case of nulls</param>
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    Public Function CUShort2(ByVal value As Object, ByVal [default] As UShort) As UShort
+    <CLSCompliant(False)> Public Function CUShort2(ByVal value As Object, ByVal [default] As UShort) As UShort
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -639,7 +639,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    Public Function TryCUShort(ByVal value As Object) As UShort?
+    <CLSCompliant(False)> Public Function TryCUShort(ByVal value As Object) As UShort?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
