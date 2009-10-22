@@ -1,10 +1,43 @@
 'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
+
 
 Imports System.IO
 
 Public Module ObjectExtension
 
+    ''' <summary>
+    ''' Duplicates the functionality of CStr, but with support for database nulls
+    ''' </summary>
+    ''' <param name="value">Value to be converted into a string</param>
+    ''' <param name="default">Default value to be returned in the case of nulls</param>
+    ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
+    ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
+    <Extension()> Public Function ToStringSafe(ByVal value As Object, ByVal [default] As String) As String
+        Dim temp = ObjectExtension.ToStringSafe(value)
+        Return If(temp, [default])
+    End Function
+
+    ''' <summary>
+    ''' Duplicates the functionality of CStr, but with support for database nulls
+    ''' </summary>
+    ''' <param name="value">Value to be converted into an integer</param>
+    ''' <returns>This returns Nothing if the value is Nothing or DBNull</returns>
+    ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
+    <Extension()> Public Function ToStringSafe(ByVal value As Object) As String
+        If value Is Nothing Then Return Nothing
+        If value Is DBNull.Value Then Return Nothing
+        Dim temp As Object
+#If ClrVersion >= 40 Then
+        If value.GetType.Name = "FSharpOption`1" Then temp = FSharpInterop.OptionGetUnderlyingValue(value) Else temp = value
+#Else
+        temp = value
+#End If
+        If temp Is Nothing Then Return Nothing
+        Return temp.ToString
+    End Function
+
+
+#If IncludeUntested Then
     ''' <summary>
     ''' Returns true if the object is contained in the indicated list
     ''' </summary>
@@ -241,5 +274,6 @@ Public Module ObjectExtension
     End Function
 #End If
 
-End Module
 #End If
+
+End Module

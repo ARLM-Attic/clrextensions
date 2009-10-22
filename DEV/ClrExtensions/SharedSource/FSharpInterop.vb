@@ -1,4 +1,6 @@
-﻿Option Strict Off
+﻿#If ClrVersion >= 40 Then
+
+Option Strict Off
 Imports Microsoft.FSharp.Core
 
 Public Module FSharpInterop
@@ -12,3 +14,5 @@ Public Module FSharpInterop
         Return temp
     End Function
 End Module
+
+#End If

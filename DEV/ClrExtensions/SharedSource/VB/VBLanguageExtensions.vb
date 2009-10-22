@@ -704,7 +704,7 @@ Public Module VBLanguageExtension
     End Function
 #End If
 
-    ''' <summary>Nothing
+    ''' <summary>
     ''' Duplicates the functionality of CStr, but with support for database nulls
     ''' </summary>
     ''' <param name="value">Value to be converted into a string</param>
@@ -713,12 +713,8 @@ Public Module VBLanguageExtension
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str")>
     Public Function CStr2(ByVal value As Object, ByVal [default] As String) As String
-        If value Is Nothing Then Return [default]
-        If value Is DBNull.Value Then Return [default]
-        Dim temp As Object
-        If value.GetType.Name = "FSharpOption`1" Then temp = FSharpInterop.OptionGetUnderlyingValue(value) Else temp = value
-        If temp Is Nothing Then Return [default]
-        Return temp.ToString
+        Dim temp = ObjectExtension.ToStringSafe(value)
+        Return If(temp, [default])
     End Function
 
     ''' <summary>
@@ -729,12 +725,7 @@ Public Module VBLanguageExtension
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str")>
     Public Function CStr2(ByVal value As Object) As String
-        If value Is Nothing Then Return Nothing
-        If value Is DBNull.Value Then Return Nothing
-        Dim temp As Object
-        If value.GetType.Name = "FSharpOption`1" Then temp = FSharpInterop.OptionGetUnderlyingValue(value) Else temp = value
-        If temp Is Nothing Then Return Nothing
-        Return temp.ToString
+        Return ObjectExtension.ToStringSafe(value)
     End Function
 
 
