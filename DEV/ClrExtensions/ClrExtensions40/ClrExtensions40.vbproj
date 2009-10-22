@@ -10,7 +10,7 @@
     <ProjectGuid>{2284D70C-30EC-4055-95C2-A1FAAE30B049}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ClrExtensions</RootNamespace>
-    <AssemblyName>ClrExtensionsCore4</AssemblyName>
+    <AssemblyName>ClrExtensions40</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -29,7 +29,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>ClrExtensionsCore4.xml</DocumentationFile>
+    <DocumentationFile>ClrExtensions40.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -43,7 +43,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>ClrExtensionsCore4.xml</DocumentationFile>
+    <DocumentationFile>ClrExtensions40.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -54,7 +54,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Untested|AnyCPU'">
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Release-Untested\</OutputPath>
-    <DocumentationFile>ClrExtensionsCore4.xml</DocumentationFile>
+    <DocumentationFile>ClrExtensions40.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DebugType>pdbonly</DebugType>

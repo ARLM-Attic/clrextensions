@@ -8,17 +8,18 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("CLR Extensions Core")> 
+<Assembly: AssemblyTitle("CLR Extensions for .NET 4.0")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Jonathan Allen")> 
 <Assembly: AssemblyProduct("CLR Extensions")> 
 <Assembly: AssemblyCopyright("Copyright © Jonathan Allen 2009")> 
 <Assembly: AssemblyTrademark("")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: CLSCompliant(True)> 
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("ae94c64a-01f0-4314-9619-23516e2ed84d")> 
+<Assembly: Guid("c7ae5860-d6be-4520-b091-3ae57713efc0")> 
 
 ' Version information for an assembly consists of the following four values:
 '
