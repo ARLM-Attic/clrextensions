@@ -18,6 +18,12 @@ Namespace Collections
             End Using
         End Sub
 
+        Public Sub EnqueueFirst(ByVal value As T)
+            Using m_Lock.WriteSection
+                m_List.AddFirst(value)
+            End Using
+        End Sub
+
         ''' <summary>
         ''' Adds a list of items to the queue
         ''' </summary>
@@ -28,6 +34,20 @@ Namespace Collections
                 For Each item In list
                     AddInternal(item)
                 Next
+            End Using
+        End Sub
+
+        Public Sub EnqueueFirst(ByVal list As IEnumerable(Of T))
+            Using m_Lock.WriteSection
+                For Each item In list.Reverse
+                    m_List.AddFirst(item)
+                Next
+            End Using
+        End Sub
+
+        Public Sub Clear()
+            Using m_Lock.WriteSection
+                m_List.Clear()
             End Using
         End Sub
 

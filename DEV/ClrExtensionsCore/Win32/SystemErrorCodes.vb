@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
 Namespace Win32
-    <CLSCompliant(False)> Public Enum SystemErrorCode As UInteger
+    Public Enum SystemErrorCode As UInteger
         NO_ERROR = 0L
         ERROR_INVALID_FUNCTION = 1L
         ERROR_FILE_NOT_FOUND = 2L

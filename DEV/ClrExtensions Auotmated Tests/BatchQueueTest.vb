@@ -71,7 +71,7 @@ Public Class BatchQueueTest
 
 
     <TestMethod()> _
-    Public Sub DuplicatesIqnoredTest()
+    Public Sub BasicFunctions()
         Dim queue As New BatchQueue(Of TestObject)
 
         'Pass 1
@@ -129,4 +129,62 @@ Public Class BatchQueueTest
     End Sub
 
 
+    <TestMethod()> _
+    Public Sub EnqueueFirstTest1()
+        Dim queue As New BatchQueue(Of TestObject)
+
+        For i = 0 To 9
+            queue.EnqueueFirst(New TestObject(i, 0))
+        Next
+
+        Dim item As TestObject = Nothing
+        For i = 9 To 0 Step -1
+            If Not queue.TryDequeue(item) Then Assert.Fail()
+            Assert.AreEqual(i, item.Id)
+        Next
+
+
+        If queue.TryDequeue(item) Then Assert.Fail()
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub EnqueueFirstTest()
+        Dim queue As New BatchQueue(Of TestObject)
+
+        For i = 100 To 199
+            queue.Enqueue(New TestObject(i, 0))
+        Next
+
+        Dim tempList As New List(Of TestObject)
+        For i = 0 To 9
+            tempList.Add(New TestObject(i, 0))
+        Next
+
+        queue.EnqueueFirst(tempList)
+
+        Dim item As TestObject = Nothing
+        For i = 0 To 9
+            If Not queue.TryDequeue(item) Then Assert.Fail()
+            Assert.AreEqual(i, item.Id)
+        Next
+
+        Assert.AreEqual(100, queue.Count)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub ClearTest()
+        Dim queue As New BatchQueue(Of TestObject)
+
+        For i = 100 To 199
+            queue.Enqueue(New TestObject(i, 0))
+        Next
+        Assert.AreEqual(100, queue.Count)
+
+        queue.Clear()
+
+        Assert.AreEqual(0, queue.Count)
+    End Sub
 End Class

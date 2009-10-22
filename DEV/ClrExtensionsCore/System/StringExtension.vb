@@ -521,13 +521,7 @@ Public Module StringExtension
 
     End Function
 
-    <Untested()> <Extension()> _
-    Public Sub EnsureNotNull(ByRef value As String)
-        If value Is Nothing Then value = ""
-    End Sub
-
 #End If
-
 
 
 	<Extension()> Public Function UrlEncode(ByVal this As String) As String
@@ -544,8 +538,12 @@ Public Module StringExtension
 #Else
 				Throw New NotSupportedException
 #End If
+
+#If IncludeUntested Then
 			Case UrlEncodingMethod.OAuth
-				Return Security.OAuth.UrlEncode(value)
+                Return Security.OAuth.UrlEncode(value)
+#End If
+
 			Case Else
 #If Client35 Then
 				Throw New ArgumentOutOfRangeException("method", method, "Encoding method not specified")

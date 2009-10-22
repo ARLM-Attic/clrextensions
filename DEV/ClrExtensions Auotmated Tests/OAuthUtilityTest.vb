@@ -53,6 +53,7 @@ Public Class OAuthUtilityTest
 	'
 #End Region
 
+#If IncludeUntested Then
 
 	'''<summary>
 	'''A test for UrlEncode
@@ -65,4 +66,6 @@ Public Class OAuthUtilityTest
 		Next
 
 	End Sub
+#End If
+
 End Class
