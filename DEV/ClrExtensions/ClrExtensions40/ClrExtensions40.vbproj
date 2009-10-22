@@ -32,8 +32,8 @@
     <DocumentationFile>ClrExtensions40.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DefineConstants>IncludeUntested</DefineConstants>
     <CodeAnalysisRuleSet>ExtendedDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -46,8 +46,8 @@
     <DocumentationFile>ClrExtensions40.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>ExtendedDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -56,10 +56,10 @@
     <OutputPath>bin\Release-Untested\</OutputPath>
     <DocumentationFile>ClrExtensions40.xml</DocumentationFile>
     <Optimize>true</Optimize>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
     <CodeAnalysisLogFile>bin\Release\ClrExtensionsCore4.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisInputAssembly>bin\Release-Untested\ClrExtensionsCore4.dll</CodeAnalysisInputAssembly>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
@@ -72,6 +72,7 @@
     <DefineConstants>IncludeUntested</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FSharp.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -95,8 +96,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes.vb" />
-    <Compile Include="CodeGeneration\ExpressionUtilities.vb" />
-    <Compile Include="CSharp\Events.vb" />
+    <Compile Include="FSharpInterop.vb" />
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -112,89 +113,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="System\ActionExtensions.vb" />
-    <Compile Include="System\ArrayExtension.vb" />
-    <Compile Include="System\ByteExtension.vb" />
-    <Compile Include="System\ByteFormat.vb" />
-    <Compile Include="System\Collections\BatchQueue.vb" />
-    <Compile Include="System\Collections\CollectionExtension.vb" />
-    <Compile Include="System\Collections\ComparerExtension.vb" />
-    <Compile Include="System\Collections\Dictionary2.vb" />
-    <Compile Include="System\Collections\Dictionary3.vb" />
-    <Compile Include="System\Collections\DictionaryExtension.vb" />
-    <Compile Include="System\Collections\EnumerableExtension.vb" />
-    <Compile Include="System\Collections\ListExtension.vb" />
-    <Compile Include="System\Collections\ObjectEnumerable.vb" />
-    <Compile Include="System\Collections\ObjectEnumerator.vb" />
-    <Compile Include="System\Collections\QuickEqualityComparer.vb" />
-    <Compile Include="System\Collections\SortedList.vb" />
-    <Compile Include="System\Collections\Tuple2.vb" />
-    <Compile Include="System\Collections\Tuple3.vb" />
-    <Compile Include="System\Collections\TwoWayDictionary.vb" />
-    <Compile Include="System\Collections\TypeEnumerable.vb" />
-    <Compile Include="System\Collections\TypeEnumerator.vb" />
-    <Compile Include="System\Collections\UniqueQueue.vb" />
-    <Compile Include="System\ComparableExtension.vb" />
-    <Compile Include="System\Data\DataReaderEnumerable.vb" />
-    <Compile Include="System\Data\DataReaderEnumerator.vb" />
-    <Compile Include="System\Data\DataRecord.vb" />
-    <Compile Include="System\Data\DataRecordColumns.vb" />
-    <Compile Include="System\Data\IDataReaderExtensions.vb" />
-    <Compile Include="System\DateTimeExtension.vb" />
-    <Compile Include="System\DecimalExtension.vb" />
-    <Compile Include="System\DoubleExtension.vb" />
-    <Compile Include="System\Drawing\ColorExtension.vb" />
-    <Compile Include="System\EnumExtension.vb" />
-    <Compile Include="System\ExceptionExtension.vb" />
-    <Compile Include="System\FlexDate.vb" />
-    <Compile Include="System\FuncExtension.vb" />
-    <Compile Include="System\Int32Extension.vb" />
-    <Compile Include="System\IntPtrExtension.vb" />
-    <Compile Include="System\IO\DirectoryInfo.vb" />
-    <Compile Include="System\IO\FileInfoExtension.vb" />
-    <Compile Include="System\IO\IOExtension.vb" />
-    <Compile Include="System\IO\StreamExtension.vb" />
-    <Compile Include="System\IO\StreamReaderExtension.vb" />
-    <Compile Include="System\LineBreakMode.vb" />
-    <Compile Include="System\LongExtension.vb" />
-    <Compile Include="System\MathExtension.vb" />
-    <Compile Include="System\Net\Rest\QueryParameter.vb" />
-    <Compile Include="System\Net\Rest\QueryParameterCollection.vb" />
-    <Compile Include="System\Net\Rest\RestCall.vb" />
-    <Compile Include="System\Net\Rest\RestExtension.vb" />
-    <Compile Include="System\Net\Rest\RestScheme.vb" />
-    <Compile Include="System\Net\Rest\RestVerb.vb" />
-    <Compile Include="System\ObjectExtension.vb" />
-    <Compile Include="System\PredicateExtension.vb" />
-    <Compile Include="System\QuarterYear.vb" />
-    <Compile Include="System\Range.vb" />
-    <Compile Include="System\Security\AccessControl\SecurityPrincipalExtension.vb" />
-    <Compile Include="System\Security\OAuth\OAuthUtility.vb" />
-    <Compile Include="System\StringExtension.vb" />
-    <Compile Include="System\Threading\ReaderWriterLockSlimExtension.vb" />
-    <Compile Include="System\Threading\ThreadingExtension.vb" />
-    <Compile Include="System\TimeSpanExtension.vb" />
-    <Compile Include="System\TypeExtension.vb" />
-    <Compile Include="System\UrlEncodingMethod.vb" />
+    <Compile Include="VB\VBLanguageExtension.LateBound.vb" />
     <Compile Include="VB\VBLanguageExtensions.vb" />
-    <Compile Include="Win32\Http\HttpApi.vb" />
-    <Compile Include="Win32\Http\HttpApiConfigContext.vb" />
-    <Compile Include="Win32\Http\HTTPAPI_VERSION.vb" />
-    <Compile Include="Win32\Http\HttpInitializeFlags.vb" />
-    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_ID.vb" />
-    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_QUERY_TYPE.vb" />
-    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_KEY.vb" />
-    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_PARAM.vb" />
-    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_QUERY.vb" />
-    <Compile Include="Win32\Http\HTTP_SERVICE_CONFIG_URLACL_SET.vb" />
-    <Compile Include="Win32\Http\UrlAce.vb" />
-    <Compile Include="Win32\Http\UrlAcl.vb" />
-    <Compile Include="Win32\Http\UrlPermission.vb" />
-    <Compile Include="Win32\Kernel\KernelApi.vb" />
-    <Compile Include="Win32\StructPointer.vb" />
-    <Compile Include="Win32\SystemErrorCodes.vb" />
-    <Compile Include="Win32\Win32Exception.vb" />
-    <Compile Include="Win32\Win32Extension.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -226,6 +146,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
 
 Public Module VBLanguageExtension
+#If IncludeUntested Then
 
 
 
@@ -19,7 +19,7 @@ Public Module VBLanguageExtension
         Return CBool(value)
     End Function
 
-    ''' <summary>Nothing
+    ''' <summary>
     ''' Duplicates the functionality of CBool, but with support for nullable types
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
@@ -301,6 +301,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function CSByte2(ByVal value As Object) As SByte?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -316,7 +317,8 @@ Public Module VBLanguageExtension
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <Untested()>
-    <CLSCompliant(False)> Public Function CSByte2(ByVal value As Object, ByVal [default] As SByte) As SByte
+    <CLSCompliant(False)>
+    Public Function CSByte2(ByVal value As Object, ByVal [default] As SByte) As SByte
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -331,6 +333,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function TryCSByte(ByVal value As Object) As SByte?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -551,6 +554,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function CUInt2(ByVal value As Object) As UInteger?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -581,6 +585,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function TryCUInt(ByVal value As Object) As UInteger?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -602,6 +607,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function CULng2(ByVal value As Object) As ULong?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -617,6 +623,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function CULng2(ByVal value As Object, ByVal [default] As ULong) As ULong
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
@@ -632,6 +639,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function TryCULng(ByVal value As Object) As ULong?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -651,6 +659,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function CUShort2(ByVal value As Object) As UShort?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -666,6 +675,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function CUShort2(ByVal value As Object, ByVal [default] As UShort) As UShort
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
@@ -681,6 +691,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <Untested()>
+    <CLSCompliant(False)>
     Public Function TryCUShort(ByVal value As Object) As UShort?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -691,7 +702,24 @@ Public Module VBLanguageExtension
             Return Nothing
         End Try
     End Function
+#End If
 
+    ''' <summary>Nothing
+    ''' Duplicates the functionality of CStr, but with support for database nulls
+    ''' </summary>
+    ''' <param name="value">Value to be converted into a string</param>
+    ''' <param name="default">Default value to be returned in the case of nulls</param>
+    ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
+    ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str")>
+    Public Function CStr2(ByVal value As Object, ByVal [default] As String) As String
+        If value Is Nothing Then Return [default]
+        If value Is DBNull.Value Then Return [default]
+        Dim temp As Object
+        If value.GetType.Name = "FSharpOption`1" Then temp = FSharpInterop.OptionGetUnderlyingValue(value) Else temp = value
+        If temp Is Nothing Then Return [default]
+        Return temp.ToString
+    End Function
 
     ''' <summary>
     ''' Duplicates the functionality of CStr, but with support for database nulls
@@ -699,13 +727,42 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing or DBNull</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str")>
     Public Function CStr2(ByVal value As Object) As String
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
-        Return CStr(value)
+        Dim temp As Object
+        If value.GetType.Name = "FSharpOption`1" Then temp = FSharpInterop.OptionGetUnderlyingValue(value) Else temp = value
+        If temp Is Nothing Then Return Nothing
+        Return temp.ToString
     End Function
 
 
-End Module
+#If IncludeUntested Then
+
+    ''' <summary>
+    ''' Duplicates the functionality of CStr, but with better handling for nullable value types
+    ''' </summary>
+    ''' <typeparam name="T">Type of nullable value being converted</typeparam>
+    ''' <param name="value">Value being checked</param>
+    ''' <returns>This returns Nothing or the result of calling ToString.</returns>
+    ''' <remarks></remarks>
+    <Untested()>
+    Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T)) As String
+        If value.HasValue Then Return value.ToString Else Return Nothing
+    End Function
+
+    ''' <summary>
+    ''' Duplicates the functionality of CStr, but with better handling for nullable value types
+    ''' </summary>
+    ''' <typeparam name="T">Type of nullable value being converted</typeparam>
+    ''' <param name="value">Value being checked</param>
+    ''' <param name="default">Default value to be returned in the case of nulls</param>
+    ''' <returns>This returns Nothing or the result of calling ToString.</returns>
+    ''' <remarks></remarks>
+    <Untested()>
+    Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T), ByVal [default] As String) As String
+        If value.HasValue Then Return value.ToString Else Return [default]
+    End Function
 #End If
+End Module
