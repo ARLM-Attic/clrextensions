@@ -90,6 +90,9 @@
     <Import Include="System.Runtime.CompilerServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ClrExtensions40\Attributes.vb">
+      <Link>Attributes.vb</Link>
+    </Compile>
     <Compile Include="..\clrextensions40\system\ObjectExtension.vb">
       <Link>System\ObjectExtension.vb</Link>
     </Compile>

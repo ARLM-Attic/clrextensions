@@ -94,6 +94,9 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ClrExtensions40\Attributes.vb">
+      <Link>Attributes.vb</Link>
+    </Compile>
     <Compile Include="..\ClrExtensions40\System\ObjectExtension.vb">
       <Link>System\ObjectExtension.vb</Link>
     </Compile>
