@@ -2,7 +2,7 @@
 
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
-Imports ClrExtensions
+Imports ClrExtensions.Text
 
 
 
