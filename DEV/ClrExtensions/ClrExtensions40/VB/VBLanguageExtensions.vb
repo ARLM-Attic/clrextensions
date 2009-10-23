@@ -713,8 +713,7 @@ Public Module VBLanguageExtension
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str")>
     Public Function CStr2(ByVal value As Object, ByVal [default] As String) As String
-        Dim temp = ObjectExtension.ToStringSafe(value)
-        Return If(temp, [default])
+        Return ObjectExtension.ToStringSafe(value, [default])
     End Function
 
     ''' <summary>
@@ -731,29 +730,29 @@ Public Module VBLanguageExtension
 
 #If IncludeUntested Then
 
-    ''' <summary>
-    ''' Duplicates the functionality of CStr, but with better handling for nullable value types
-    ''' </summary>
-    ''' <typeparam name="T">Type of nullable value being converted</typeparam>
-    ''' <param name="value">Value being checked</param>
-    ''' <returns>This returns Nothing or the result of calling ToString.</returns>
-    ''' <remarks></remarks>
-    <Untested()>
-    Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T)) As String
-        If value.HasValue Then Return value.ToString Else Return Nothing
-    End Function
+    '''' <summary>
+    '''' Duplicates the functionality of CStr, but with better handling for nullable value types
+    '''' </summary>
+    '''' <typeparam name="T">Type of nullable value being converted</typeparam>
+    '''' <param name="value">Value being checked</param>
+    '''' <returns>This returns Nothing or the result of calling ToString.</returns>
+    '''' <remarks></remarks>
+    '<Untested()>
+    'Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T)) As String
+    'If value.HasValue Then Return value.ToString Else Return Nothing
+    'End Function
 
-    ''' <summary>
-    ''' Duplicates the functionality of CStr, but with better handling for nullable value types
-    ''' </summary>
-    ''' <typeparam name="T">Type of nullable value being converted</typeparam>
-    ''' <param name="value">Value being checked</param>
-    ''' <param name="default">Default value to be returned in the case of nulls</param>
-    ''' <returns>This returns Nothing or the result of calling ToString.</returns>
-    ''' <remarks></remarks>
-    <Untested()>
-    Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T), ByVal [default] As String) As String
-        If value.HasValue Then Return value.ToString Else Return [default]
-    End Function
+    '''' <summary>
+    '''' Duplicates the functionality of CStr, but with better handling for nullable value types
+    '''' </summary>
+    '''' <typeparam name="T">Type of nullable value being converted</typeparam>
+    '''' <param name="value">Value being checked</param>
+    '''' <param name="default">Default value to be returned in the case of nulls</param>
+    '''' <returns>This returns Nothing or the result of calling ToString.</returns>
+    '''' <remarks></remarks>
+    '<Untested()>
+    'Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T), ByVal [default] As String) As String
+    'If value.HasValue Then Return value.ToString Else Return [default]
+    'End Function
 #End If
 End Module

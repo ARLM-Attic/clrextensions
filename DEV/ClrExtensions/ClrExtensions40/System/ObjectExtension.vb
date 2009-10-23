@@ -3,26 +3,29 @@
 
 Imports System.IO
 
+
 Public Module ObjectExtension
 
     ''' <summary>
-    ''' Duplicates the functionality of CStr, but with support for database nulls
+    ''' Converts an object to a string in manner that ensures exceptions are not thrown.
     ''' </summary>
     ''' <param name="value">Value to be converted into a string</param>
     ''' <param name="default">Default value to be returned in the case of nulls</param>
-    ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
-    ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
+    ''' <returns>This returns the default value if the value is None, null, DBNull, or an empty string. 
+    ''' If the value is Some(x), x.ToString is returned.
+    ''' For all other values, ToString is called.</returns>
+    ''' <remarks></remarks>
     <Extension()> Public Function ToStringSafe(ByVal value As Object, ByVal [default] As String) As String
         Dim temp = ObjectExtension.ToStringSafe(value)
-        Return If(temp, [default])
+        Return If(temp = "", temp, [default])
     End Function
 
     ''' <summary>
-    ''' Duplicates the functionality of CStr, but with support for database nulls
+    ''' Converts an object to a string in manner that ensures exceptions are not thrown.
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
-    ''' <returns>This returns Nothing if the value is Nothing or DBNull</returns>
-    ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
+    ''' <returns>This returns Nothing if the value is None, Nothing or DBNull</returns>
+    ''' <remarks></remarks>
     <Extension()> Public Function ToStringSafe(ByVal value As Object) As String
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -37,7 +40,7 @@ Public Module ObjectExtension
     End Function
 
 
-#If IncludeUntested Then
+#If IncludeUntested And Exclude Then
     ''' <summary>
     ''' Returns true if the object is contained in the indicated list
     ''' </summary>
