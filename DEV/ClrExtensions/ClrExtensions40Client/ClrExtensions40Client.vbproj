@@ -96,16 +96,19 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharedSource\Attributes.vb">
+    <Compile Include="..\ClrExtensions40\Attributes.vb">
       <Link>Attributes.vb</Link>
     </Compile>
-    <Compile Include="..\SharedSource\FSharpInterop.vb">
-      <Link>FSharpInterop.vb</Link>
+    <Compile Include="..\clrextensions40\fsharp\FSharpInterop.vb">
+      <Link>FSharp\FSharpInterop.vb</Link>
     </Compile>
-    <Compile Include="..\SharedSource\System\ObjectExtension.vb">
-      <Link>ObjectExtension.vb</Link>
+    <Compile Include="..\clrextensions40\system\ObjectExtension.vb">
+      <Link>System\ObjectExtension.vb</Link>
     </Compile>
-    <Compile Include="..\sharedsource\vb\VBLanguageExtensions.vb">
+    <Compile Include="..\clrextensions40\system\text\StringBuilderExtension.vb">
+      <Link>System\Text\StringBuilderExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\vb\VBLanguageExtensions.vb">
       <Link>VB\VBLanguageExtensions.vb</Link>
     </Compile>
     <Compile Include="GlobalSuppressions.vb" />

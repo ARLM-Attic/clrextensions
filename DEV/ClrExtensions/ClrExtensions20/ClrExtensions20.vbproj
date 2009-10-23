@@ -91,16 +91,13 @@
     <Import Include="System.Runtime.CompilerServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharedSource\Attributes.vb">
-      <Link>Attributes.vb</Link>
+    <Compile Include="..\clrextensions40\system\ObjectExtension.vb">
+      <Link>System\ObjectExtension.vb</Link>
     </Compile>
-    <Compile Include="..\SharedSource\FSharpInterop.vb">
-      <Link>FSharpInterop.vb</Link>
+    <Compile Include="..\clrextensions40\system\text\StringBuilderExtension.vb">
+      <Link>System\Text\StringBuilderExtension.vb</Link>
     </Compile>
-    <Compile Include="..\SharedSource\System\ObjectExtension.vb">
-      <Link>ObjectExtension.vb</Link>
-    </Compile>
-    <Compile Include="..\sharedsource\vb\VBLanguageExtensions.vb">
+    <Compile Include="..\clrextensions40\vb\VBLanguageExtensions.vb">
       <Link>VB\VBLanguageExtensions.vb</Link>
     </Compile>
     <Compile Include="GlobalSuppressions.vb" />
@@ -145,6 +142,7 @@
       <Name>ExtensionAttribute</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
