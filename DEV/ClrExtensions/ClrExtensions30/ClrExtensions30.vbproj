@@ -87,6 +87,7 @@
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Runtime.CompilerServices" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedSource\Attributes.vb">
@@ -94,6 +95,9 @@
     </Compile>
     <Compile Include="..\SharedSource\FSharpInterop.vb">
       <Link>FSharpInterop.vb</Link>
+    </Compile>
+    <Compile Include="..\SharedSource\System\ObjectExtension.vb">
+      <Link>ObjectExtension.vb</Link>
     </Compile>
     <Compile Include="..\sharedsource\vb\VBLanguageExtensions.vb">
       <Link>VB\VBLanguageExtensions.vb</Link>
@@ -133,6 +137,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExtensionAttribute\ExtensionAttribute.csproj">
+      <Project>{CF101237-5157-4F6C-9A14-078A85275ACE}</Project>
+      <Name>ExtensionAttribute</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
