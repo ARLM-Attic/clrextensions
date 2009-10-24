@@ -2,7 +2,10 @@
 Imports System.Collections.Specialized
 Imports System.Text
 
+#If Subset <> Client Then
+
 Namespace Net.Rest
+
 
 #If IncludeUntested Then
     ''' <summary>
@@ -162,3 +165,4 @@ Namespace Net.Rest
     End Class
 #End If
 End Namespace
+#End If

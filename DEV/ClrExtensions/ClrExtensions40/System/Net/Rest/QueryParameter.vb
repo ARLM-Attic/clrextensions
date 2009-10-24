@@ -1,6 +1,7 @@
 'Copyright (c) 2008, Jonathan Allen
 Imports System.Collections.Specialized
 #If IncludeUntested Then
+#If Subset <> Client Then
 
 Namespace Net.Rest
 	Public Class QueryParameter
@@ -67,4 +68,5 @@ Namespace Net.Rest
 
 	End Class
 End Namespace
+#End If
 #End If

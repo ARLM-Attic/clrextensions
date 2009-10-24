@@ -74,7 +74,9 @@ Public Module DictionaryExtension
 			result.Add(CType(this.Key, T))
 		Loop
 		Return result
-	End Function
+    End Function
+
+#If ClrVersion >= 35 Then
 
 	<Untested()> <Extension()> Function ToDictionary(Of TKey, TValue)(ByVal this As IEnumerable(Of KeyValuePair(Of TKey, TValue))) As Dictionary(Of TKey, TValue)
 		Return this.ToDictionary(Function(item) item.Key, Function(item) item.Value)
@@ -102,6 +104,9 @@ Public Module DictionaryExtension
 		Return temp.Join(separator)
 	End Function
 
+#End If
+
+
 	<Untested()> <Extension()> Public Function GetValue(Of T)(ByVal this As IDictionary, ByVal key As Object) As T
 		Dim temp As Object = this(key)
 		Return If(temp IsNot Nothing, CType(temp, T), Nothing)
@@ -111,6 +116,8 @@ Public Module DictionaryExtension
 		Dim temp As Object = this(key)
 		Return If(temp IsNot Nothing, CType(temp, T), [default])
 	End Function
+
+#If ClrVersion >= 35 Then
 
     <Untested()> <Extension()> Public Function ToDictionary(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As Dictionary(Of String, String)
         If rowSeparator = columnSeparator Then Return ToDictionary(source, rowSeparator)
@@ -137,6 +144,7 @@ Public Module DictionaryExtension
 
         Return result
     End Function
+#End If
 
 End Module
 #End If

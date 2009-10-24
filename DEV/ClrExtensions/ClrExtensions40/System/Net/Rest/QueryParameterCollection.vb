@@ -1,5 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 Imports System.Collections.Specialized
+#If Subset <> Client Then
 #If IncludeUntested Then
 
 Namespace Net.Rest
@@ -55,4 +56,5 @@ Namespace Net.Rest
 
     End Class
 End Namespace
+#End If
 #End If

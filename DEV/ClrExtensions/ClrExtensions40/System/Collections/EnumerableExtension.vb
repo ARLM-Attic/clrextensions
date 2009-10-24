@@ -1,5 +1,6 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
+Imports System.data
 Imports ClrExtensions.Collections
 
 #If IncludeUntested Then
@@ -28,6 +29,7 @@ Public Module EnumerableExtension
         Return New TypeEnumerable(Of T)(this)
     End Function
 
+#If ClrVersion >= 35 Then
     ''' <summary>
     ''' This converts a collection of objects into a DataTable. The columns are determined by the properties of the specified type.
     ''' </summary>
@@ -58,6 +60,7 @@ Public Module EnumerableExtension
 
         Return result
     End Function
+
 
     ''' <summary>
     ''' This converts a collection of objects into a data table.
@@ -97,6 +100,9 @@ Public Module EnumerableExtension
 
         Return result
     End Function
+
+#End If
+
 
     ''' <summary>
     ''' Performs the Action delegate on each item in the enumeration

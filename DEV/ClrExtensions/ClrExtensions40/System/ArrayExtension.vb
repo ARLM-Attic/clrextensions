@@ -3,7 +3,7 @@
 
 Public Module ArrayExtension
 
-
+#If ClrVersion >= 35 Then
     ''' <summary>
     ''' Sorts a rectanglar array by the indicated column
     ''' </summary>
@@ -20,6 +20,7 @@ Public Module ArrayExtension
         Return ToRectangle(sorted)
 
     End Function
+#End If
 
     ''' <summary>
     ''' Turns a rectanglar array into a jagged array

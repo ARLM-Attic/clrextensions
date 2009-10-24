@@ -76,6 +76,8 @@ Public Module TimeSpanExtension
         If valueA >= valueB Then Return valueA Else Return valueB
     End Function
 
+#If ClrVersion >= 35 Then
+
     ''' <summary>
     ''' Returns the greator of a list of time spans
     ''' </summary>
@@ -85,6 +87,7 @@ Public Module TimeSpanExtension
     <Untested()> Public Function Max(ByVal ParamArray values() As TimeSpan) As TimeSpan
         Return values.Max
     End Function
+#End If
 
     ''' <summary>
     ''' Returns the lessor of two time spans
@@ -97,6 +100,8 @@ Public Module TimeSpanExtension
         If valueA >= valueB Then Return valueA Else Return valueB
     End Function
 
+#If ClrVersion >= 35 Then
+
     ''' <summary>
     ''' Returns the least of a list of time spans
     ''' </summary>
@@ -106,6 +111,8 @@ Public Module TimeSpanExtension
     <Untested()> Public Function Min(ByVal ParamArray values() As TimeSpan) As TimeSpan
         Return values.Max
     End Function
+
+#End If
 
 
 #End If
