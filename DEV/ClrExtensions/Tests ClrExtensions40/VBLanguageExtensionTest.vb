@@ -97,7 +97,6 @@ Public Class VBLanguageExtensionTest
         Assert.AreEqual("5", CStr2(valueJ, defaultValue))
         Assert.AreEqual(defaultValue, CStr2(valueK, defaultValue))
 
-
     End Sub
 
     '''<summary>
@@ -125,8 +124,6 @@ Public Class VBLanguageExtensionTest
 
         Dim valueJ As Object = "5"
         Dim valueK As Object = ""
-
-
 
         Assert.AreEqual(Nothing, CStr2(valueA))
         Assert.AreEqual(Nothing, CStr2(valueB))

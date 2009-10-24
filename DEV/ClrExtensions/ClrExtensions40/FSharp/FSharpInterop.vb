@@ -8,7 +8,7 @@ Public Module FSharpInterop
         If value Is Nothing Then Return Nothing
         Dim temp = value
         Do While temp.GetType.Name = "FSharpOption`1"
-            temp = OptionModule.GetValue(temp)
+            temp = temp.Value
             If temp Is Nothing Then Return Nothing
         Loop
         Return temp
