@@ -47,6 +47,8 @@ Public Module ByteExtension
         Return result.ToString.Trim
     End Function
 
+#If ClrVersion >= 35 Then
+
     ''' <summary>
     ''' Calls Byte.ToString(format) on each byte and concatenates the results
     ''' </summary>
@@ -105,6 +107,7 @@ Public Module ByteExtension
 
         End Select
     End Function
+#End If
 
     ''' <summary>
     ''' Returns the value as a series of bits from most to least significant bit
@@ -162,6 +165,8 @@ Public Module ByteExtension
         Return CBool(value And bitMask)
     End Function
 
+#If ClrVersion >= 35 Then
+
     ''' <summary>
     ''' This converts a byte array to a string using the supplied encoding
     ''' </summary>
@@ -181,6 +186,7 @@ Public Module ByteExtension
 
     End Function
 
+#End If
 
 
     ''' <summary>

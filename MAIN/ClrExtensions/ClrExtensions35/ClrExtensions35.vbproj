@@ -97,6 +97,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -115,11 +118,203 @@
     <Compile Include="..\ClrExtensions40\Attributes.vb">
       <Link>Attributes.vb</Link>
     </Compile>
+    <Compile Include="..\clrextensions40\system\ActionExtensions.vb">
+      <Link>System\ActionExtensions.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ArrayExtension.vb">
+      <Link>System\ArrayExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ByteExtension.vb">
+      <Link>System\ByteExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ByteFormat.vb">
+      <Link>System\ByteFormat.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\BatchQueue.vb">
+      <Link>System\Collections\BatchQueue.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\CollectionExtension.vb">
+      <Link>System\Collections\CollectionExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\ComparerExtension.vb">
+      <Link>System\Collections\ComparerExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\Dictionary2.vb">
+      <Link>System\Collections\Dictionary2.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\Dictionary3.vb">
+      <Link>System\Collections\Dictionary3.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\DictionaryExtension.vb">
+      <Link>System\Collections\DictionaryExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\EnumerableExtension.vb">
+      <Link>System\Collections\EnumerableExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\ListExtension.vb">
+      <Link>System\Collections\ListExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\ObjectEnumerable.vb">
+      <Link>System\Collections\ObjectEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\ObjectEnumerator.vb">
+      <Link>System\Collections\ObjectEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\QuickEqualityComparer.vb">
+      <Link>System\Collections\QuickEqualityComparer.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\SortedList.vb">
+      <Link>System\Collections\SortedList.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\Tuple2.vb">
+      <Link>System\Collections\Tuple2.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\Tuple3.vb">
+      <Link>System\Collections\Tuple3.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\TwoWayDictionary.vb">
+      <Link>System\Collections\TwoWayDictionary.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\TypeEnumerable.vb">
+      <Link>System\Collections\TypeEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\TypeEnumerator.vb">
+      <Link>System\Collections\TypeEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\collections\UniqueQueue.vb">
+      <Link>System\Collections\UniqueQueue.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ComparableExtension.vb">
+      <Link>System\ComparableExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\data\DataReaderEnumerable.vb">
+      <Link>System\Data\DataReaderEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\data\DataReaderEnumerator.vb">
+      <Link>System\Data\DataReaderEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\data\DataRecord.vb">
+      <Link>System\Data\DataRecord.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\data\DataRecordColumns.vb">
+      <Link>System\Data\DataRecordColumns.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\data\IDataReaderExtensions.vb">
+      <Link>System\Data\IDataReaderExtensions.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DateTimeExtension.vb">
+      <Link>System\DateTimeExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DBNullExtension.vb">
+      <Link>System\DBNullExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DecimalExtension.vb">
+      <Link>System\DecimalExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DoubleExtension.vb">
+      <Link>System\DoubleExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\drawing\ColorExtension.vb">
+      <Link>System\Drawing\ColorExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\EnumExtension.vb">
+      <Link>System\EnumExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ExceptionExtension.vb">
+      <Link>System\ExceptionExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\FlexDate.vb">
+      <Link>System\FlexDate.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\FuncExtension.vb">
+      <Link>System\FuncExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\Int32Extension.vb">
+      <Link>System\Int32Extension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\IntPtrExtension.vb">
+      <Link>System\IntPtrExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\DirectoryInfo.vb">
+      <Link>System\IO\DirectoryInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\FileInfoExtension.vb">
+      <Link>System\IO\FileInfoExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\IOExtension.vb">
+      <Link>System\IO\IOExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\StreamExtension.vb">
+      <Link>System\IO\StreamExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\StreamReaderExtension.vb">
+      <Link>System\IO\StreamReaderExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\LineBreakMode.vb">
+      <Link>System\LineBreakMode.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\LongExtension.vb">
+      <Link>System\LongExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\MathExtension.vb">
+      <Link>System\MathExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\QueryParameter.vb">
+      <Link>System\Net\Rest\QueryParameter.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\QueryParameterCollection.vb">
+      <Link>System\Net\Rest\QueryParameterCollection.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestCall.vb">
+      <Link>System\Net\Rest\RestCall.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestExtension.vb">
+      <Link>System\Net\Rest\RestExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestScheme.vb">
+      <Link>System\Net\Rest\RestScheme.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestVerb.vb">
+      <Link>System\Net\Rest\RestVerb.vb</Link>
+    </Compile>
     <Compile Include="..\ClrExtensions40\System\ObjectExtension.vb">
       <Link>System\ObjectExtension.vb</Link>
     </Compile>
+    <Compile Include="..\clrextensions40\system\QuarterYear.vb">
+      <Link>System\QuarterYear.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\Range.vb">
+      <Link>System\Range.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\security\accesscontrol\SecurityPrincipalExtension.vb">
+      <Link>System\Security\AccessControl\SecurityPrincipalExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\security\oauth\OAuthUtility.vb">
+      <Link>System\Security\OAuth\OAuthUtility.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\StringExtension.vb">
+      <Link>System\StringExtension.vb</Link>
+    </Compile>
     <Compile Include="..\ClrExtensions40\System\Text\StringBuilderExtension.vb">
       <Link>System\Text\StringBuilderExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\threading\ReaderWriterLockSlimExtension.vb">
+      <Link>System\Threading\ReaderWriterLockSlimExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\threading\ThreadingExtension.vb">
+      <Link>System\Threading\ThreadingExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\TimeSpanExtension.vb">
+      <Link>System\TimeSpanExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\TupleExtension.vb">
+      <Link>System\TupleExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\TypeExtension.vb">
+      <Link>System\TypeExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\UrlEncodingMethod.vb">
+      <Link>System\UrlEncodingMethod.vb</Link>
     </Compile>
     <Compile Include="..\ClrExtensions40\VB\VBLanguageExtensions.vb">
       <Link>VB\VBLanguageExtensions.vb</Link>
@@ -161,14 +356,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="System\Collections\" />
-    <Folder Include="System\Data\" />
-    <Folder Include="System\Drawing\" />
-    <Folder Include="System\IO\" />
-    <Folder Include="System\Net\Rest\" />
-    <Folder Include="System\Security\AccessControl\" />
-    <Folder Include="System\Security\OAuth\" />
-    <Folder Include="System\Threading\" />
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

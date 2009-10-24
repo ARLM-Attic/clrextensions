@@ -4,6 +4,7 @@ Imports System.Runtime.InteropServices
 Imports ClrExtensions.Net.Rest
 
 'Copyright (c) 2008, Jonathan Allen
+#If Subset <> Client Then
 
 Namespace Security
     Namespace OAuth
@@ -297,3 +298,5 @@ Namespace Security
 #End If
     End Namespace
 End Namespace
+
+#End If

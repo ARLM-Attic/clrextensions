@@ -64,6 +64,7 @@ Public Module ListExtension
         Return result
     End Function
 
+#If ClrVersion >= 35 Then
     ''' <summary>
     ''' This attempts to create a new list of the indicated type. This may fail due to casting.
     ''' For a safer version use OfType, which filters out items that cannot be cast.
@@ -92,6 +93,8 @@ Public Module ListExtension
         Return temp.Join(separator)
     End Function
 
+
+
     ''' <summary>
     ''' This converts each item in the list to a string using the supplied format function, then joins them on the separator
     ''' </summary>
@@ -108,6 +111,8 @@ Public Module ListExtension
         Next
         Return temp.Join(separator)
     End Function
+
+#End If
 
 
     ''' <summary>
@@ -149,7 +154,7 @@ Public Module ListExtension
     <Untested()> <Extension()> Public Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Integer
         If this Is Nothing Then Return -1
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
-        If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
+        If pattern.Length = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
 
         Return IndexOfSequence(this, CType(pattern, IList(Of T)))
     End Function
@@ -199,7 +204,7 @@ Public Module ListExtension
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If this Is Nothing Then Return -1
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
-        If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
+        If pattern.Length = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
 
         Return IndexOfSequence(this, comparer, CType(pattern, IList(Of T)))
     End Function

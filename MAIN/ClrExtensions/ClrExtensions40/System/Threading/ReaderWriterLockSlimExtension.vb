@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
 
+#If ClrVersion >= 35 Then
 Public Module ReaderWriterLockSlimExtension
 
     <Extension()> Public Function ReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
@@ -20,7 +20,7 @@ Public Module ReaderWriterLockSlimExtension
         Implements IDisposable
         Private m_Mode As LockMode
         Private m_Lock As Global.System.Threading.ReaderWriterLockSlim
-        Private m_Disposed As Boolean = False       ' To detect redundant calls
+        Private m_Disposed As Boolean = False
 
         Friend Sub New(ByVal lock As Global.System.Threading.ReaderWriterLockSlim, ByVal mode As LockMode)
             m_Lock = lock
@@ -65,4 +65,5 @@ Public Module ReaderWriterLockSlimExtension
     End Enum
 
 End Module
+
 #End If

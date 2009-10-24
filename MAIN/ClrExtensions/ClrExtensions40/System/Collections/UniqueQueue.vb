@@ -1,5 +1,6 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
+#If ClrVersion >= 35 Then
 #If IncludeUntested Then
 Namespace Collections
 
@@ -197,4 +198,5 @@ Namespace Collections
 
 End Namespace
 
+#End If
 #End If

@@ -56,6 +56,9 @@ Public Module DecimalExtension
     End Function
 
 #If IncludeUntested Then
+
+
+#If ClrVersion >= 35 Then
     ''' <summary>
     ''' Returns the Root Mean Square of a list of values
     ''' </summary>
@@ -65,6 +68,7 @@ Public Module DecimalExtension
     <Untested()> <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
         Return CDec(Math.Sqrt((Aggregate item In source Into Sum(item * item)) / CDec(source.Count)))
     End Function
+
 
     ''' <summary>
     ''' Returns the most frequently encounted number. If there is a tie, they will all be returned
@@ -94,6 +98,7 @@ Public Module DecimalExtension
         Return step5
     End Function
 
+
     ''' <summary>
     ''' Returns the Mean Absolute Error between a predicted and actual list
     ''' </summary>
@@ -107,6 +112,7 @@ Public Module DecimalExtension
         Dim step2 = (step1.Sum) / predictedList.Count
         Return step2
     End Function
+#End If
 #End If
 
 

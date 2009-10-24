@@ -1,3 +1,4 @@
+#If ClrVersion >= 35 Then
 #If IncludeUntested Then
 Namespace Collections
     ''' <summary>
@@ -131,4 +132,5 @@ Namespace Collections
         End Sub
     End Class
 End Namespace
+#End If
 #End If

@@ -100,7 +100,7 @@ Public Module ColorExtension
                 b = q
         End Select
 
-        Return Drawing.Color.FromArgb(CInt(256 * r), CInt(256 * g), CInt(256 * b))
+        Return Color.FromArgb(CInt(256 * r), CInt(256 * g), CInt(256 * b))
 
     End Function
 

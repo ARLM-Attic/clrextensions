@@ -1,17 +1,14 @@
-﻿Imports System.Net.Mail
+﻿'Copyright (c) 2008, Jonathan Allen
+
+Imports System.Net.Mail
 Imports System.Text
 Imports System.Text.RegularExpressions
 
 #If IncludeUntested Then
 
-'Copyright (c) 2008, Jonathan Allen
-
-#If Client35 Then
-Imports System.Net.Mail
-#End If
-
 Public Module StringExtension
 
+#If ClrVersion >= 35 Then
     ''' <summary>
     ''' Joins all the strings in the supplied enumeration.
     ''' Empty and null enumerations will return an empty string
@@ -21,10 +18,11 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String) As String
+    <Extension()> Public Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String) As String
         If source Is Nothing Then Return ""
         Return String.Join(separator, source.ToArray)
     End Function
+#End If
 
     ''' <summary>
     ''' Repeats the given string N times.
@@ -47,6 +45,7 @@ Public Module StringExtension
         Return result.ToString
     End Function
 
+#If ClrVersion >= 35 Then
     ''' <summary>
     ''' Joins all the strings in the supplied enumeration.
     ''' Empty and null enumerations will return an empty string
@@ -68,6 +67,7 @@ Public Module StringExtension
                 Throw New ArgumentException("options")
         End Select
     End Function
+#End If
 
 
     ''' <summary>
@@ -418,6 +418,7 @@ Public Module StringExtension
         Return result.ToString
     End Function
 
+#If ClrVersion >= 35 Then
     <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         If rowSeparator = columnSeparator Then Return ToKeyValueCollection(source, rowSeparator)
 
@@ -430,14 +431,14 @@ Public Module StringExtension
 
         Return result
     End Function
-
+#End If
 
     <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim rows = source.Split(separator)
 
-        If rows.Count Mod 2 <> 0 Then Throw New FormatException("This contains an odd number of entries")
-        For i = 0 To rows.Count - 1 Step 2
+        If rows.Length Mod 2 <> 0 Then Throw New FormatException("This contains an odd number of entries")
+        For i = 0 To rows.Length - 1 Step 2
             result.Add(New KeyValuePair(Of String, String)(rows(i), rows(i + 1)))
         Next
 
@@ -509,7 +510,7 @@ Public Module StringExtension
         Return CType([Enum].Parse(GetType(T), value, True), T)
     End Function
 
-
+#If Subset <> Client Then
     <Untested()> <Extension()> Public Function HtmlEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlEncode(this)
     End Function
@@ -529,7 +530,7 @@ Public Module StringExtension
     <Untested()> <Extension()> Public Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
         Return Global.System.Web.HttpUtility.ParseQueryString(this)
     End Function
-
+#End If
 
     <Untested()> <Extension()> Public Function RemoveNonNumeric(ByVal value As String) As String
         Dim sb As New StringBuilder(value.Length)
@@ -544,6 +545,7 @@ Public Module StringExtension
 
 
 
+#If Subset <> Client Then
 
     <Extension()> Public Function UrlEncode(ByVal this As String) As String
         Return UrlEncode(this, UrlEncodingMethod.Clr)
@@ -564,7 +566,7 @@ Public Module StringExtension
                 Throw New ArgumentOutOfRangeException("method", method, "Encoding method not specified")
         End Select
     End Function
-
+#End If
 
 
 

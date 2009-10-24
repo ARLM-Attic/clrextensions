@@ -113,6 +113,7 @@
   <ItemGroup>
     <Compile Include="FSharpInteropTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="ReaderWriterLockSlimExtensionTest.vb" />
     <Compile Include="TupleExtensionTest.vb" />
     <Compile Include="VBLanguageExtensionTest.vb" />
   </ItemGroup>
