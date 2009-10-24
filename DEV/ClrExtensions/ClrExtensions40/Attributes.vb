@@ -4,7 +4,7 @@
 #If CONFIG = "Release-Untested" Then
 
 <AttributeUsage(AttributeTargets.Method Or AttributeTargets.Property Or AttributeTargets.Constructor, AllowMultiple:=False, Inherited:=True)>
-Public Class UntestedAttribute
+NotInheritable Public Class UntestedAttribute
     Inherits Attribute
 End Class
 
@@ -12,9 +12,9 @@ End Class
 
 'In debug mode we flag untested features to make them more noticable
 
-<Obsolete()>
-<AttributeUsage(AttributeTargets.Method or AttributeTargets.Property or AttributeTargets.Constructor , AllowMultiple:=False, Inherited:=True)>
-Public Class UntestedAttribute
+'<Obsolete("This method has not been tested")>
+<AttributeUsage(AttributeTargets.Method Or AttributeTargets.Property Or AttributeTargets.Constructor, AllowMultiple:=False, Inherited:=True)>
+Public NotInheritable Class UntestedAttribute
     Inherits Attribute
 End Class
 
@@ -22,7 +22,7 @@ End Class
 
 <Obsolete("Untested code shouldn't be in this release", True)>
 <AttributeUsage(AttributeTargets.Method or AttributeTargets.Property or AttributeTargets.Constructor , AllowMultiple:=False, Inherited:=True)>
-Public Class UntestedAttribute
+NotInheritable Public Class UntestedAttribute
     Inherits Attribute
 End Class
 

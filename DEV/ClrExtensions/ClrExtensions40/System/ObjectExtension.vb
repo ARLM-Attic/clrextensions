@@ -17,7 +17,7 @@ Public Module ObjectExtension
     ''' <remarks></remarks>
     <Extension()> Public Function ToStringSafe(ByVal value As Object, ByVal [default] As String) As String
         Dim temp = ObjectExtension.ToStringSafe(value)
-        Return If(temp = "", temp, [default])
+        Return If(temp <> "", temp, [default])
     End Function
 
     ''' <summary>
