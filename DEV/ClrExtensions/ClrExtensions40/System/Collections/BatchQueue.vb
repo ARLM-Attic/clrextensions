@@ -6,7 +6,7 @@ Namespace Collections
     ''' </summary>
     ''' <remarks>All methods are threadsafe</remarks>
     Public Class BatchQueue(Of T)
-        Private ReadOnly m_Lock As New Threading.ReaderWriterLockSlim
+        Private ReadOnly m_Lock As New Object
         Private ReadOnly m_List As New LinkedList(Of T)
 
         ''' <summary>
@@ -16,16 +16,16 @@ Namespace Collections
         ''' <remarks></remarks>
         <Untested()>
         Public Sub Enqueue(ByVal value As T)
-            Using m_Lock.WriteSection
+            SyncLock m_Lock
                 AddInternal(value)
-            End Using
+            End SyncLock
         End Sub
 
         <Untested()>
         Public Sub EnqueueFirst(ByVal value As T)
-            Using m_Lock.WriteSection
+            SyncLock m_Lock
                 m_List.AddFirst(value)
-            End Using
+            End SyncLock
         End Sub
 
         ''' <summary>
@@ -35,27 +35,27 @@ Namespace Collections
         ''' <remarks></remarks>
         <Untested()>
         Public Sub Enqueue(ByVal list As IEnumerable(Of T))
-            Using m_Lock.WriteSection
+            SyncLock m_Lock
                 For Each item In list
                     AddInternal(item)
                 Next
-            End Using
+            End SyncLock
         End Sub
 
         <Untested()>
         Public Sub EnqueueFirst(ByVal list As IEnumerable(Of T))
-            Using m_Lock.WriteSection
+            SyncLock m_Lock
                 For Each item In list.Reverse
                     m_List.AddFirst(item)
                 Next
-            End Using
+            End SyncLock
         End Sub
 
         <Untested()>
         Public Sub Clear()
-            Using m_Lock.WriteSection
+            SyncLock m_Lock
                 m_List.Clear()
-            End Using
+            End SyncLock
         End Sub
 
         ''' <summary>
@@ -66,7 +66,7 @@ Namespace Collections
         ''' <remarks></remarks>
         <Untested()>
         Public Function TryDequeue(ByRef value As T) As Boolean
-            Using m_Lock.WriteSection
+            SyncLock m_Lock
                 If m_List.Count > 0 Then
                     value = m_List.First.Value
                     m_List.RemoveFirst()
@@ -75,7 +75,7 @@ Namespace Collections
                     value = Nothing
                     Return False
                 End If
-            End Using
+            End SyncLock
         End Function
 
 
@@ -88,26 +88,24 @@ Namespace Collections
         ''' <remarks></remarks>
         <Untested()>
         Public Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As IList(Of T)
-            Using m_Lock.UpgradeableReadSection
+            SyncLock m_Lock
 
                 If m_List.Count >= minBatchSize Then
 
-                    Using m_Lock.WriteSection
-                        Dim result As New List(Of T)
-                        Dim currentNode = m_List.First
-                        Do
-                            result.Add(currentNode.Value)
-                            Dim nodeToRemove = currentNode
-                            currentNode = currentNode.Next 'we have to get the next node BEFORE we remove it from the list
-                            m_List.Remove(nodeToRemove)
-                        Loop Until result.Count = maxBatchSize OrElse currentNode Is Nothing
-                        Return result
-                    End Using
+                    Dim result As New List(Of T)
+                    Dim currentNode = m_List.First
+                    Do
+                        result.Add(currentNode.Value)
+                        Dim nodeToRemove = currentNode
+                        currentNode = currentNode.Next 'we have to get the next node BEFORE we remove it from the list
+                        m_List.Remove(nodeToRemove)
+                    Loop Until result.Count = maxBatchSize OrElse currentNode Is Nothing
+                    Return result
 
                 Else
                     Return New List(Of T)
                 End If
-            End Using
+            End SyncLock
 
         End Function
 
@@ -120,9 +118,9 @@ Namespace Collections
         <Untested()>
         Public ReadOnly Property Count() As Integer
             Get
-                Using m_Lock.ReadSection
+                SyncLock m_Lock
                     Return m_List.Count
-                End Using
+                End SyncLock
             End Get
         End Property
 

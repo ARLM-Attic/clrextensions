@@ -19,6 +19,8 @@ Public Module CollectionExtension
     <Untested()>
     <Extension()>
     Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As IEnumerable(Of T))
+        If target Is Nothing Then Throw New ArgumentNullException("target")
+        If source Is Nothing Then Throw New ArgumentNullException("source")
         For Each item In source
             target.Add(item)
         Next

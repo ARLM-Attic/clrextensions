@@ -1,4 +1,5 @@
 Imports System.Text
+Imports System.Security.Permissions
 
 'Copyright (c) 2008, Jonathan Allen
 
@@ -27,7 +28,7 @@ Public Module Int32Extension
     ''' <param name="flag">Flag to check for</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function IsFlagSet(ByVal value As Integer, ByVal flag As Integer) As Boolean
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId:="Flag")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId:="flag")> <Untested()> <Extension()> Public Function IsFlagSet(ByVal value As Integer, ByVal flag As Integer) As Boolean
         'TODO: Rewrite this if Microsoft ever decides to support Enumerations with generics
         Return CBool(value And flag)
     End Function
@@ -152,8 +153,10 @@ Public Module Int32Extension
     ''' <param name="groupSize">This must be 0, 2, 4, 8, 16, or 32</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")>
     <Untested()>
- <Extension()> Public Function ToBitString(ByVal value As Integer, ByVal groupSize As Integer) As String
+    <EnvironmentPermissionAttribute(SecurityAction.LinkDemand)>
+    <Extension()> Public Function ToBitString(ByVal value As Integer, ByVal groupSize As Integer) As String
 
         Select Case groupSize
             Case 0, 32

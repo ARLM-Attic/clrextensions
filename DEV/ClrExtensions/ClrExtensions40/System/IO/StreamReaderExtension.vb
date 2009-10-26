@@ -72,7 +72,7 @@ Namespace IO
 	''' This class prevents the underlying stream from being closed by a higher level wrapper like StreamReader
 	''' </summary>
 	''' <remarks></remarks>
-    Class StreamProtector
+    Public Class StreamProtector
         Inherits Global.System.IO.Stream
         Private m_BaseStream As Global.System.IO.Stream
 
@@ -98,7 +98,7 @@ Namespace IO
         End Property
 
         <Untested()>
-            Public Overrides Sub Flush()
+        Public Overrides Sub Flush()
             m_BaseStream.Flush()
         End Sub
 
@@ -120,32 +120,32 @@ Namespace IO
         End Property
 
         <Untested()>
-            Public Overrides Function Read(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer) As Integer
+        Public Overrides Function Read(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer) As Integer
             Return m_BaseStream.Read(buffer, offset, count)
         End Function
 
         <Untested()>
-            Public Overrides Function Seek(ByVal offset As Long, ByVal origin As Global.System.IO.SeekOrigin) As Long
+        Public Overrides Function Seek(ByVal offset As Long, ByVal origin As Global.System.IO.SeekOrigin) As Long
             Return m_BaseStream.Seek(offset, origin)
         End Function
 
         <Untested()>
-            Public Overrides Sub SetLength(ByVal value As Long)
+        Public Overrides Sub SetLength(ByVal value As Long)
             m_BaseStream.SetLength(value)
         End Sub
 
         <Untested()>
-            Public Overrides Sub Write(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer)
+        Public Overrides Sub Write(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer)
             m_BaseStream.Write(buffer, offset, count)
         End Sub
 
         <Untested()>
-            Public Overrides Function BeginRead(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
+        Public Overrides Function BeginRead(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
             Return m_BaseStream.BeginRead(buffer, offset, count, callback, state)
         End Function
 
         <Untested()>
-            Public Overrides Function BeginWrite(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
+        Public Overrides Function BeginWrite(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
             Return m_BaseStream.BeginWrite(buffer, offset, count, callback, state)
         End Function
 
@@ -157,7 +157,7 @@ Namespace IO
         End Property
 
         <Untested()>
-            Public Overrides Sub Close()
+        Public Overrides Sub Close()
             'NOP
         End Sub
 
@@ -169,17 +169,17 @@ Namespace IO
 #End If
 
         <Untested()>
-            Public Overrides Function EndRead(ByVal asyncResult As Global.System.IAsyncResult) As Integer
+        Public Overrides Function EndRead(ByVal asyncResult As Global.System.IAsyncResult) As Integer
             Return m_BaseStream.EndRead(asyncResult)
         End Function
 
         <Untested()>
-            Public Overrides Sub EndWrite(ByVal asyncResult As Global.System.IAsyncResult)
+        Public Overrides Sub EndWrite(ByVal asyncResult As Global.System.IAsyncResult)
             m_BaseStream.EndWrite(asyncResult)
         End Sub
 
         <Untested()>
-            Public Overrides Function ReadByte() As Integer
+        Public Overrides Function ReadByte() As Integer
             Return m_BaseStream.ReadByte()
         End Function
 
@@ -195,7 +195,7 @@ Namespace IO
 
 
         <Untested()>
-            Public Overrides Sub WriteByte(ByVal value As Byte)
+        Public Overrides Sub WriteByte(ByVal value As Byte)
             m_BaseStream.WriteByte(value)
         End Sub
 
@@ -210,7 +210,7 @@ Namespace IO
         End Property
 
         <Untested()>
-            Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
             'NOP
             GC.SuppressFinalize(Me)
         End Sub

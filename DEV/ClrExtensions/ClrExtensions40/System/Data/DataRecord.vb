@@ -145,6 +145,7 @@ Namespace Data
 
         <Untested()>
         Public Function GetValues(ByVal values() As Object) As Integer Implements IDataRecord.GetValues
+            If values Is Nothing Then Throw New ArgumentNullException("values")
             Array.Copy(m_Data.ToArray, values, m_Data.Count)
             Return values.Length
         End Function

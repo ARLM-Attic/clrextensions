@@ -42,7 +42,7 @@ Public ReadOnly Property [End]() As T
         m_Start = start
         m_End = [end]
         m_Options = options
-        m_Comparer = New ComparableExtension.ComparerComparable(Of T)
+        m_Comparer = New ComparerComparable(Of T)
     End Sub
 
     <Untested()>

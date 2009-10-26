@@ -5,19 +5,34 @@ Imports ClrExtensions.Collections
 
 #If ClrVersion < 35 Then
 Public Delegate Function Func(Of TResult)() As TResult
+
 Public Delegate Function Func(Of T1, TResult)(ByVal arg1 As T1) As TResult
+
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
 Public Delegate Function Func(Of T1, T2, TResult)(ByVal arg1 As T1, ByVal arg2 As T2) As TResult
+
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
 Public Delegate Function Func(Of T1, T2, T3, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3) As TResult
+
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
 Public Delegate Function Func(Of T1, T2, T3, T4, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4) As TResult
+
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
 Public Delegate Function Func(Of T1, T2, T3, T4, T5, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5) As TResult
+
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
 Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6) As TResult
+
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
 Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6, ByVal arg7 As T7) As TResult
+
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
 Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, T8, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6, ByVal arg7 As T7, ByVal arg8 As T8) As TResult
 #End If
 
 #If IncludeUntested Then
 
-Module FuncExtension
+Public Module FuncExtension
 
     ''' <summary>
     ''' This converts a Func(Of T, Boolean) into a Predicate(Of T)
@@ -40,7 +55,11 @@ Module FuncExtension
     ''' <param name="firstElement"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function CreateList(Of T)(ByVal func As Func(Of T, T), ByVal count As Integer, ByVal firstElement As T) As List(Of T)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
+    <Untested()>
+    <Extension()> Function CreateList(Of T)(ByVal func As Func(Of T, T), ByVal count As Integer, ByVal firstElement As T) As List(Of T)
+        If func Is Nothing Then Throw New ArgumentNullException("func")
+
         Dim result As New List(Of T)(count)
         Dim current = firstElement
         Do

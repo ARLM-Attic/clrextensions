@@ -25,12 +25,12 @@ Public Module DecimalExtension
         Return result
     End Function
 
-	''' <summary>
-	''' Truncates the decimal to the specified precision
-	''' </summary>
-	''' <param name="value"></param>
-	''' <param name="precision">Number of decimal places to retain. If negative, number of zeros to the left of the decimal place.</param>
-	''' <returns></returns>
+    ''' <summary>
+    ''' Truncates the decimal to the specified precision
+    ''' </summary>
+    ''' <param name="value"></param>
+    ''' <param name="precision">Number of decimal places to retain. If negative, number of zeros to the left of the decimal place.</param>
+    ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
     <Extension()> Public Function TruncatePrecision(ByVal value As Decimal, ByVal precision As Integer) As Decimal
@@ -66,6 +66,8 @@ Public Module DecimalExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
+        If source Is Nothing Then Throw New ArgumentNullException("source")
+
         Return CDec(Math.Sqrt((Aggregate item In source Into Sum(item * item)) / CDec(source.Count)))
     End Function
 
@@ -76,6 +78,7 @@ Public Module DecimalExtension
     ''' <param name="source"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
     <Untested()> <Extension()> Function Mode(ByVal source As IList(Of Decimal)) As List(Of Decimal)
         Dim counts = (From Value In source Group By Value Into Elements = Count()).ToList
         Dim maxCount = counts.Max(Function(x) x.Elements)
@@ -107,7 +110,10 @@ Public Module DecimalExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function MeanAbsoluteError(ByVal predictedList As IList(Of Decimal), ByVal actualList As IList(Of Decimal)) As Decimal
+        If predictedList Is Nothing Then Throw New ArgumentNullException("predictedList")
+        If actualList Is Nothing Then Throw New ArgumentNullException("actualList")
         If predictedList.Count <> actualList.Count Then Throw New ArgumentException("Lists are of unequal length")
+
         Dim step1 = predictedList.Join(actualList, Function(predicted, actual) Math.Abs(predicted - actual))
         Dim step2 = (step1.Sum) / predictedList.Count
         Return step2

@@ -10,6 +10,8 @@
 ' "In Project Suppression File". 
 ' You do not need to add suppressions to this file manually. 
 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope:="namespace", Target:="ClrExtensions.Net.Rest")> 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope:="namespace", Target:="ClrExtensions.IO")> 
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope:="namespace", Target:="ClrExtensions.Text")> 
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str", Scope:="member", Target:="ClrExtensions.VBLanguageExtension.#CStr2`1(System.Nullable`1<!!0>,System.String)")> 
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str", Scope:="member", Target:="ClrExtensions.VBLanguageExtension.#CStr2`1(System.Nullable`1<!!0>)")> 

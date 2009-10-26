@@ -12,7 +12,10 @@ Public Module ArrayExtension
     ''' <param name="sortColumn"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function SortByColumn(Of T)(ByVal array As T(,), ByVal sortColumn As Integer) As T(,)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="Return")>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="0#")>
+    <Untested()>
+    <Extension()> Function SortByColumn(Of T)(ByVal array As T(,), ByVal sortColumn As Integer) As T(,)
         Dim fragments = array.ToJagged
 
         Dim sorted = (From fragment In fragments Order By fragment(sortColumn)).ToArray
@@ -29,6 +32,8 @@ Public Module ArrayExtension
     ''' <param name="array"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="0#")>
     <Untested()> <Extension()> Function ToJagged(Of T)(ByVal array As T(,)) As T()()
         Dim xMax As Integer = array.GetUpperBound(0)
         Dim yMax As Integer = array.GetUpperBound(1)
@@ -52,7 +57,12 @@ Public Module ArrayExtension
     ''' <param name="array"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function ToRectangle(Of T)(ByVal array As T()()) As T(,)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="Return")>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="Body")>
+    <Untested()>
+    <Extension()> Function ToRectangle(Of T)(ByVal array As T()()) As T(,)
+        If array Is Nothing Then Throw New ArgumentNullException("array")
+
         Dim xMax As Integer = array.GetUpperBound(0)
         Dim yMax As Integer = array(0).GetUpperBound(0)
 
