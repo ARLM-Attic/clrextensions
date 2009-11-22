@@ -1,6 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 Imports System.Collections.Specialized
-#If Subset <> Client Then
+#If Subset <> "Client" Then
 #If IncludeUntested Then
 
 Namespace Net.Rest
@@ -9,23 +9,23 @@ Namespace Net.Rest
         Inherits ObjectModel.Collection(Of QueryParameter)
 
         <Untested()>
-            Public Sub New()
+        Public Sub New()
 
         End Sub
         <Untested()>
-            Public Sub New(ByVal queryString As String)
+        Public Sub New(ByVal queryString As String)
             AddByParsing(queryString)
         End Sub
 
         <Untested()>
-            Public Sub AddRange(ByVal values As System.Collections.Specialized.NameValueCollection)
+        Public Sub AddRange(ByVal values As System.Collections.Specialized.NameValueCollection)
             For Each key As String In values.Keys
                 Me.Add(New QueryParameter(key, values(key)))
             Next
         End Sub
 
         <Untested()>
-            Public Sub AddByParsing(ByVal queryString As String)
+        Public Sub AddByParsing(ByVal queryString As String)
             Me.AddRange(ParseQueryString(queryString))
         End Sub
 
@@ -40,7 +40,7 @@ Namespace Net.Rest
         End Property
 
         <Untested()>
-            Private Shared Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
+        Private Shared Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
             Dim result As New ObjectModel.Collection(Of QueryParameter)
             Dim rows = queryString.Split("&"c) 'removed , StringSplitOptions.RemoveEmptyEntries because CF does not seem to understand
             Dim values() As String

@@ -36,7 +36,7 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>ExtendedDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\CLR Extenstions Rule Set.ruleset</CodeAnalysisRuleSet>
     <DefineConstants>IncludeUntested,ClrVersion=30</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -107,6 +107,7 @@
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Diagnostics.Contracts" />
     <Import Include="System.Runtime.CompilerServices" />
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +352,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contract\Contract.csproj">
+      <Project>{77B9CAB8-E978-4F06-A993-F16FFC46A334}</Project>
+      <Name>Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExtensionAttribute\ExtensionAttribute.csproj">
       <Project>{CF101237-5157-4F6C-9A14-078A85275ACE}</Project>
       <Name>ExtensionAttribute</Name>

@@ -2,18 +2,18 @@
 Public Class Range(Of T)
     Private ReadOnly m_Start As T
     Private ReadOnly m_End As T
-    Private ReadOnly m_Options As RangeOptions
+    Private ReadOnly m_Options As RangeOption
     Private ReadOnly m_Comparer As IComparer(Of T)
 
     <Untested()>
-    Public ReadOnly Property Options() As RangeOptions
+    Public ReadOnly Property Options() As RangeOption
         Get
             Return m_Options
         End Get
     End Property
 
     <Untested()>
-Public ReadOnly Property [End]() As T
+    Public ReadOnly Property [End]() As T
         Get
             Return m_End
         End Get
@@ -27,7 +27,7 @@ Public ReadOnly Property [End]() As T
     End Property
 
     <Untested()>
-    Public Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal options As RangeOptions)
+    Public Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal options As RangeOption)
         m_Start = start
         m_End = [end]
         m_Options = options
@@ -35,7 +35,7 @@ Public ReadOnly Property [End]() As T
     End Sub
 
     <Untested()>
-    Public Sub New(ByVal start As T, ByVal [end] As T, ByVal options As RangeOptions)
+    Public Sub New(ByVal start As T, ByVal [end] As T, ByVal options As RangeOption)
         If Not GetType(IComparable(Of T)).IsAssignableFrom(GetType(T)) Then
             Throw New ArgumentException("T doesn't implement IComparable and a IComparer wasn't supplied")
         End If
@@ -48,13 +48,13 @@ Public ReadOnly Property [End]() As T
     <Untested()>
     Public Function Contains(ByVal testValue As T) As Boolean
         Select Case m_Options
-            Case RangeOptions.IncludeBoth
+            Case RangeOption.IncludeBoth
                 Return m_Comparer.Compare(m_Start, testValue) >= 0 AndAlso m_Comparer.Compare(testValue, m_End) <= 0
-            Case RangeOptions.ExcludeStart
+            Case RangeOption.ExcludeStart
                 Return m_Comparer.Compare(m_Start, testValue) > 0 AndAlso m_Comparer.Compare(testValue, m_End) <= 0
-            Case RangeOptions.ExcludeEnd
+            Case RangeOption.ExcludeEnd
                 Return m_Comparer.Compare(m_Start, testValue) >= 0 AndAlso m_Comparer.Compare(testValue, m_End) < 0
-            Case RangeOptions.ExcludeBoth
+            Case RangeOption.ExcludeBoth
                 Return m_Comparer.Compare(m_Start, testValue) > 0 AndAlso m_Comparer.Compare(testValue, m_End) < 0
             Case Else
                 Throw New InvalidOperationException
@@ -64,14 +64,14 @@ Public ReadOnly Property [End]() As T
     <Untested()>
     Public ReadOnly Property IncludesStart() As Boolean
         Get
-            Return CBool(Not (m_Options And RangeOptions.ExcludeStart))
+            Return CBool(Not (m_Options And RangeOption.ExcludeStart))
         End Get
     End Property
 
     <Untested()>
     Public ReadOnly Property IncludesEnd() As Boolean
         Get
-            Return CBool(Not (m_Options And RangeOptions.ExcludeEnd))
+            Return CBool(Not (m_Options And RangeOption.ExcludeEnd))
         End Get
     End Property
 
@@ -150,14 +150,11 @@ Public ReadOnly Property [End]() As T
 
 End Class
 
-
-
-
-<Flags()> Public Enum RangeOptions
-	IncludeBoth = 0
-	ExcludeStart = 1
-	ExcludeEnd = 2
-	ExcludeBoth = ExcludeStart Or ExcludeEnd
+Public Enum RangeOption
+    IncludeBoth = 0
+    ExcludeStart = 1
+    ExcludeEnd = 2
+    ExcludeBoth = ExcludeStart Or ExcludeEnd
 End Enum
 
 #End If

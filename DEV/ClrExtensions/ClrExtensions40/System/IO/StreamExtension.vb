@@ -52,6 +52,7 @@ Public Module StreamExtension
     End Function
 
 
+#If ClrVersion < 40 Then
     ''' <summary>
     ''' Copies from one stream to another using the specified buffer size
     ''' </summary>
@@ -60,6 +61,10 @@ Public Module StreamExtension
     ''' <param name="bufferSize"></param>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Sub CopyTo(ByVal source As Stream, ByVal target As Stream, ByVal bufferSize As Integer)
+        If source Is Nothing Then Throw New ArgumentNullException("source")
+        If target Is Nothing Then Throw New ArgumentNullException("target")
+        Contract.EndContractBlock()
+
         Dim buffer(bufferSize - 1) As Byte
 
         Dim bytesRead As Integer
@@ -80,6 +85,7 @@ Public Module StreamExtension
     Public Sub CopyTo(ByVal source As Stream, ByVal target As Stream)
         CopyTo(source, target, DefaultBufferSize)
     End Sub
+#End If
 
 
     '<Untested()> <Extension()> Function ReadToEnd(ByVal stream As Stream) As Byte()

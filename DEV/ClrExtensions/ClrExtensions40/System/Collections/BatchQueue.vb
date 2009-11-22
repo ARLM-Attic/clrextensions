@@ -9,6 +9,12 @@ Namespace Collections
         Private ReadOnly m_Lock As New Object
         Private ReadOnly m_List As New LinkedList(Of T)
 
+        <ContractInvariantMethod()>
+        Private Sub ObjectInvariant()
+            Contract.Invariant(m_List IsNot Nothing)
+        End Sub
+
+
         ''' <summary>
         ''' Adds a single item to the queue
         ''' </summary>

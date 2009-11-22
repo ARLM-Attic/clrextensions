@@ -64,7 +64,7 @@ Public Module StringExtension
             Case StringSplitOptions.RemoveEmptyEntries
                 Return String.Join(separator, source.Where(Function(s) s <> "").ToArray)
             Case Else
-                Throw New ArgumentException("options")
+                Throw New ArgumentOutOfRangeException("options")
         End Select
     End Function
 #End If
@@ -127,6 +127,11 @@ Public Module StringExtension
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
     <Untested()>
  <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
+        If separator = "" Then Throw New ArgumentException("separator")
+        If count < 2 Then Throw New ArgumentOutOfRangeException("count")
+        Contract.EndContractBlock()
+
+
         If source Is Nothing Then Return New String() {}
 
         Dim temp = Microsoft.VisualBasic.Split(source, separator, count)
@@ -169,6 +174,7 @@ Public Module StringExtension
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToLower
+        Contract.Assume(value.Length > 1)
         Return value.Substring(0, 1).ToLower & value.Substring(1)
     End Function
 
@@ -184,6 +190,7 @@ Public Module StringExtension
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToUpper
+        Contract.Assume(value.Length > 1)
         Return value.Substring(0, 1).ToUpper & value.Substring(1)
     End Function
 
@@ -199,6 +206,7 @@ Public Module StringExtension
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToUpper
+        Contract.Assume(value.Length > 1)
         Return value.Substring(0, 1).ToUpper & value.Substring(1).ToLower
     End Function
 
@@ -263,6 +271,10 @@ Public Module StringExtension
     ''' <remarks></remarks>
     <Untested()>
     <Extension()> Public Function ToMailAddress(ByVal value As String) As MailAddress
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        If value = "" Then Throw New ArgumentException("value")
+        Contract.EndContractBlock()
+
         Return New MailAddress(value)
     End Function
 
@@ -277,6 +289,9 @@ Public Module StringExtension
     ''' <remarks></remarks>
     <Untested()>
     <Extension()> Public Function Left(ByVal value As String, ByVal length As Integer) As String
+        If length <= 0 Then Throw New ArgumentOutOfRangeException("length")
+        Contract.EndContractBlock()
+
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         Return If(value.Length > length, value.Substring(0, length), value)
@@ -292,6 +307,9 @@ Public Module StringExtension
     ''' <remarks></remarks>
     <Untested()>
     <Extension()> Public Function Right(ByVal value As String, ByVal length As Integer) As String
+        If length <= 0 Then Throw New ArgumentOutOfRangeException("length")
+        Contract.EndContractBlock()
+
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         Return If(value.Length > length, value.Substring(value.Length - length), value)
@@ -305,12 +323,15 @@ Public Module StringExtension
     ''' <remarks></remarks>
     <Untested()>
     <Extension()> Public Function NormalizeLineBreaks(ByVal value As String) As String
+        If value = "" Then Return value
         Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr).Replace(vbCr, vbCrLf)
     End Function
 
 
     <Untested()>
     <Extension()> Public Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
+        If value = "" Then Return value
+
         Select Case mode
             Case LineBreakMode.Windows
                 Return NormalizeLineBreaks(value)
@@ -326,6 +347,7 @@ Public Module StringExtension
 
     <Untested()>
     <Extension()> Public Function HtmlLineBreaks(ByVal value As String) As String
+        If value = "" Then Return value
         Return value.Replace(vbCrLf, "<br/>").Replace(vbLf, "<br/>").Replace(vbCr, "<br/>")
     End Function
 
@@ -385,6 +407,8 @@ Public Module StringExtension
         If searchPattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If searchPattern = "" Then Throw New ArgumentException("pattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
+        If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
+        Contract.EndContractBlock()
 
         If value = "" Then Return value
 
@@ -408,6 +432,10 @@ Public Module StringExtension
         If searchPattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If searchPattern = "" Then Throw New ArgumentException("pattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
+        If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
+        If replacementPattern Is Nothing Then Throw New ArgumentNullException("replacementPattern")
+        If replacementPattern = "" Then Throw New ArgumentException("replacementPattern")
+        Contract.EndContractBlock()
 
         If value = "" Then Return value
 
@@ -447,11 +475,20 @@ Public Module StringExtension
 #End If
 
     <Untested()> <Extension()> Public Function MD5Hash(ByVal value As String) As String
-        Return System.Security.Cryptography.MD5CryptoServiceProvider.Create().ComputeHash(Encoding.UTF8.GetBytes(value)).ToString("x2")
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        Contract.EndContractBlock()
+
+        Using hasher = System.Security.Cryptography.MD5CryptoServiceProvider.Create()
+            Return hasher.ComputeHash(Encoding.UTF8.GetBytes(value)).ToString("x2")
+        End Using
     End Function
 
 
     <Untested()> <Extension()> Public Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        If args Is Nothing Then Throw New ArgumentNullException("args")
+        Contract.EndContractBlock()
+
         Return String.Format(value, args)
     End Function
 
@@ -507,10 +544,13 @@ Public Module StringExtension
 
 
     <Untested()> <Extension()> Public Function ToEnum(Of T As Structure)(ByVal value As String) As T
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        Contract.EndContractBlock()
+
         Return CType([Enum].Parse(GetType(T), value, True), T)
     End Function
 
-#If Subset <> Client Then
+#If Subset <> "Client" Then
     <Untested()> <Extension()> Public Function HtmlEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlEncode(this)
     End Function
@@ -532,7 +572,9 @@ Public Module StringExtension
     End Function
 #End If
 
-    <Untested()> <Extension()> Public Function RemoveNonNumeric(ByVal value As String) As String
+    <Untested()> <Extension()> Public Function RemoveNonnumeric(ByVal value As String) As String
+        If value Is Nothing Then Return Nothing
+
         Dim sb As New StringBuilder(value.Length)
 
         For Each c In value.ToCharArray
@@ -545,7 +587,7 @@ Public Module StringExtension
 
 
 
-#If Subset <> Client Then
+#If Subset <> "Client" Then
 
     <Extension()> Public Function UrlEncode(ByVal this As String) As String
         Return UrlEncode(this, UrlEncodingMethod.Clr)

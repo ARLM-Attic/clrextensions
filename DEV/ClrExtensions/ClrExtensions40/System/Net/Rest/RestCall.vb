@@ -2,7 +2,7 @@
 Imports System.Collections.Specialized
 Imports System.Text
 
-#If Subset <> Client Then
+#If Subset <> "Client" Then
 
 Namespace Net.Rest
 

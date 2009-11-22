@@ -35,6 +35,9 @@ Public Module ArrayExtension
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="0#")>
     <Untested()> <Extension()> Function ToJagged(Of T)(ByVal array As T(,)) As T()()
+        If array Is Nothing Then Throw New ArgumentNullException("array")
+        Contract.EndContractBlock()
+
         Dim xMax As Integer = array.GetUpperBound(0)
         Dim yMax As Integer = array.GetUpperBound(1)
 

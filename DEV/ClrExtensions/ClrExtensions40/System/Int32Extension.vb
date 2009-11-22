@@ -155,7 +155,6 @@ Public Module Int32Extension
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")>
     <Untested()>
-    <EnvironmentPermissionAttribute(SecurityAction.LinkDemand)>
     <Extension()> Public Function ToBitString(ByVal value As Integer, ByVal groupSize As Integer) As String
 
         Select Case groupSize

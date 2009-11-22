@@ -103,7 +103,6 @@ Public Module ByteExtension
                 Return source.ToString("X2", groupingSize)
 
             Case Else
-                Debug.Assert(False, "This should have been caught above. Did someone add a new ByteFormat?")
                 Throw New ArgumentOutOfRangeException("format")
 
         End Select

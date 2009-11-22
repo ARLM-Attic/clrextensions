@@ -41,7 +41,7 @@ Public Module IDataReaderExtension
     ''' <param name="source"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
     <Untested()> <Extension()> Public Function ToDictionaryList(ByVal source As IDataReader) As List(Of Dictionary(Of String, Object))
         Dim result As New List(Of Dictionary(Of String, Object))
         For Each record In source.ToEnumerable
@@ -97,7 +97,7 @@ Public Module IDataReaderExtension
         Return this.GetChar(this.GetOrdinal(name))
     End Function
 
-    <Untested()> <Extension()> Public Function GetChars(ByVal this As IDataRecord, ByVal name As String, ByVal fieldOffset As Long, ByVal buffer() As Char, ByVal bufferoffset As Integer, ByVal length As Integer) As Long
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="bufferoffset")> <Untested()> <Extension()> Public Function GetChars(ByVal this As IDataRecord, ByVal name As String, ByVal fieldOffset As Long, ByVal buffer() As Char, ByVal bufferoffset As Integer, ByVal length As Integer) As Long
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Return this.GetChars(this.GetOrdinal(name), fieldoffset, buffer, bufferoffset, length)

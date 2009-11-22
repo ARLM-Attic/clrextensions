@@ -27,6 +27,9 @@ Public Module EnumExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> Public Function EnumParse(Of T As Structure)(ByVal value As String) As T
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        Contract.EndContractBlock()
+
         Return CType([Enum].Parse(GetType(T), value), T)
     End Function
 
@@ -38,6 +41,7 @@ Public Module EnumExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> Public Function EnumTryParse(Of T As Structure)(ByVal value As String) As T?
+        If value Is Nothing Then Return Nothing
         Try
             Return CType([Enum].Parse(GetType(T), value), T)
         Catch ex As ArgumentException
@@ -56,6 +60,9 @@ Public Module EnumExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> Public Function EnumParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        Contract.EndContractBlock()
+
         Return CType([Enum].Parse(GetType(T), value, ignoreCase), T)
     End Function
 
@@ -68,6 +75,8 @@ Public Module EnumExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> Public Function EnumTryParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T?
+        If value Is Nothing Then Return Nothing
+
         Try
             Return CType([Enum].Parse(GetType(T), value, ignoreCase), T)
         Catch ex As ArgumentException

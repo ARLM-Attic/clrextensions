@@ -14,10 +14,13 @@ Public Module SecurityPrincipalExtension
 
     <Untested()>
  <Extension()> Function Translate(Of T As IdentityReference)(ByVal value As IdentityReference) As T
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        Contract.EndContractBlock()
+
         Return DirectCast(value.Translate(GetType(T)), T)
     End Function
 
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")> <Untested()>
  <Extension()> Public Function ToSid(ByVal account As NTAccount) As SecurityIdentifier
         If account Is Nothing Then Throw New ArgumentNullException("account")
 
@@ -51,7 +54,7 @@ Public Module SecurityPrincipalExtension
         Return New NTAccount(name).ToSddl
     End Function
 
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")> <Untested()>
  <Extension()> Public Function ToAccount(ByVal sid As SecurityIdentifier) As NTAccount
         If sid Is Nothing Then Throw New ArgumentNullException("sid")
 

@@ -4,7 +4,7 @@ Imports System.Runtime.InteropServices
 Imports ClrExtensions.Net.Rest
 
 'Copyright (c) 2008, Jonathan Allen
-#If Subset <> Client Then
+#If Subset <> "Client" Then
 
 Namespace Security
     Namespace OAuth
@@ -24,7 +24,7 @@ Namespace Security
             ''' <returns></returns>
             ''' <remarks></remarks>
             <Untested()>
-                    Public Function UrlEncode(ByVal value As String) As String
+            Public Function UrlEncode(ByVal value As String) As String
                 Const unreservedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~"
 
                 Dim result As New StringBuilder
@@ -54,7 +54,7 @@ Namespace Security
             End Function
 
             <Untested()>
-                    Public Function GenerateRequest(ByVal uri As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal signatureType As String) As String
+            Public Function GenerateRequest(ByVal uri As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal signatureType As String) As String
 
                 'step 1
                 Dim timeStamp = OAuth.GenerateTimeStamp
@@ -80,7 +80,7 @@ Namespace Security
             End Function
 
             <Untested()>
-                    Private Function ComputeHash(ByVal hashAlgorithm As HashAlgorithm, ByVal data As String) As String
+            Private Function ComputeHash(ByVal hashAlgorithm As HashAlgorithm, ByVal data As String) As String
                 If (hashAlgorithm Is Nothing) Then
                     Throw New ArgumentNullException("hashAlgorithm")
                 End If
@@ -92,17 +92,17 @@ Namespace Security
             End Function
 
             <Untested()>
-                    Public Function GenerateNonce() As String
+            Public Function GenerateNonce() As String
                 Return m_Random.Next(&H1E208, &H98967F).ToString
             End Function
 
             <Untested()>
-                    Public Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timeStamp As String, ByVal nonce As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
+            Public Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timeStamp As String, ByVal nonce As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 Return GenerateSignature(url, consumerKey, consumerSecret, token, tokenSecret, httpMethod, timeStamp, nonce, SignatureTypes.HMACSHA1, normalizedUrl, normalizedRequestParameters)
             End Function
 
             <Untested()>
-                    Public Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timeStamp As String, ByVal nonce As String, ByVal signatureType As SignatureTypes, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
+            Public Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timeStamp As String, ByVal nonce As String, ByVal signatureType As SignatureTypes, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 normalizedUrl = Nothing
                 normalizedRequestParameters = Nothing
                 Select Case signatureType
@@ -124,7 +124,7 @@ Namespace Security
             End Function
 
             <Untested()>
-                    Public Function GenerateSignatureBase(ByVal url As Uri, ByVal consumerKey As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timeStamp As String, ByVal nonce As String, ByVal signatureType As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
+            Public Function GenerateSignatureBase(ByVal url As Uri, ByVal consumerKey As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timeStamp As String, ByVal nonce As String, ByVal signatureType As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 If (token Is Nothing) Then
                     token = String.Empty
                 End If
@@ -166,18 +166,18 @@ Namespace Security
             End Function
 
             <Untested()>
-                    Public Function GenerateSignatureUsingHash(ByVal signatureBase As String, ByVal hash As HashAlgorithm) As String
+            Public Function GenerateSignatureUsingHash(ByVal signatureBase As String, ByVal hash As HashAlgorithm) As String
                 Return ComputeHash(hash, signatureBase)
             End Function
 
             <Untested()>
-                    Public Function GenerateTimeStamp() As String
+            Public Function GenerateTimeStamp() As String
                 Dim ts = (DateTime.UtcNow - New DateTime(1970, 1, 1, 0, 0, 0, 0))
                 Return Convert.ToInt64(ts.TotalSeconds).ToString
             End Function
 
             <Untested()>
-                    Private Function GetQueryParameters(ByVal parameters As String) As List(Of QueryParameter)
+            Private Function GetQueryParameters(ByVal parameters As String) As List(Of QueryParameter)
                 If parameters.StartsWith("?") Then
                     parameters = parameters.Remove(0, 1)
                 End If
@@ -200,7 +200,7 @@ Namespace Security
             End Function
 
             <Untested()>
-                    Private Function NormalizeRequestParameters(ByVal parameters As IList(Of QueryParameter)) As String
+            Private Function NormalizeRequestParameters(ByVal parameters As IList(Of QueryParameter)) As String
                 Dim sb As New StringBuilder
                 Dim p As QueryParameter = Nothing
                 Dim i As Integer
@@ -238,7 +238,7 @@ Namespace Security
                 Implements IComparer(Of QueryParameter)
                 ' Methods
                 <Untested()>
-                            Public Function [Compare](ByVal x As QueryParameter, ByVal y As QueryParameter) As Integer Implements IComparer(Of QueryParameter).Compare
+                Public Function [Compare](ByVal x As QueryParameter, ByVal y As QueryParameter) As Integer Implements IComparer(Of QueryParameter).Compare
                     If (x.Name = y.Name) Then
                         Return String.Compare(x.Value, y.Value)
                     End If
@@ -255,31 +255,31 @@ Namespace Security
 
                 Private ReadOnly m_SyncRoot As New Object
                 <Untested()>
-                            Public Overrides Function [Next]() As Integer
+                Public Overrides Function [Next]() As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next]()
                     End SyncLock
                 End Function
                 <Untested()>
-                            Public Overrides Function [Next](ByVal minValue As Integer, ByVal maxValue As Integer) As Integer
+                Public Overrides Function [Next](ByVal minValue As Integer, ByVal maxValue As Integer) As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next](minValue, maxValue)
                     End SyncLock
                 End Function
                 <Untested()>
-                            Public Overrides Function [Next](ByVal maxValue As Integer) As Integer
+                Public Overrides Function [Next](ByVal maxValue As Integer) As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next](maxValue)
                     End SyncLock
                 End Function
                 <Untested()>
-                            Public Overrides Sub NextBytes(ByVal buffer() As Byte)
+                Public Overrides Sub NextBytes(ByVal buffer() As Byte)
                     SyncLock m_SyncRoot
                         MyBase.NextBytes(buffer)
                     End SyncLock
                 End Sub
                 <Untested()>
-                            Public Overrides Function NextDouble() As Double
+                Public Overrides Function NextDouble() As Double
                     SyncLock m_SyncRoot
                         Return MyBase.NextDouble()
                     End SyncLock

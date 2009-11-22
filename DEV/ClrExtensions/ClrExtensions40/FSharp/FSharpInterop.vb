@@ -1,7 +1,6 @@
 ﻿#If ClrVersion >= 40 Then
 
 Option Strict Off
-Imports Microsoft.FSharp.Core
 
 Public Module FSharpInterop
     Public Function OptionGetUnderlyingValue(ByVal value As Object) As Object

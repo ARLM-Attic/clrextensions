@@ -2,10 +2,10 @@ Imports System.Runtime.InteropServices
 Imports ClrExtensions.Collections
 
 #If IncludeUntested Then
-Module StreamReaderExtension
-	<Untested()> <Extension()> Function Enumerate(ByVal stream As Global.System.IO.StreamReader) As IEnumerator(Of String)
-		Return New StreamReaderEnumerator(stream)
-	End Function
+Public Module StreamReaderExtension
+    <Untested()> <Extension()> Function ToEnumerator(ByVal stream As Global.System.IO.StreamReader) As IEnumerator(Of String)
+        Return New StreamReaderEnumerator(stream)
+    End Function
 
     Friend Class StreamReaderEnumerator
         Implements IEnumerator(Of String)
@@ -13,7 +13,7 @@ Module StreamReaderExtension
         Private m_CurrentLine As String
 
         <Untested()>
-            Public Sub New(ByVal stream As Global.System.IO.StreamReader)
+        Public Sub New(ByVal stream As Global.System.IO.StreamReader)
             m_Stream = stream
         End Sub
 
@@ -33,13 +33,13 @@ Module StreamReaderExtension
         End Property
 
         <Untested()>
-            Private Function MoveNext() As Boolean Implements Global.System.Collections.IEnumerator.MoveNext
+        Private Function MoveNext() As Boolean Implements Global.System.Collections.IEnumerator.MoveNext
             m_CurrentLine = m_Stream.ReadLine
             Return m_CurrentLine IsNot Nothing
         End Function
 
         <Untested()>
-            Private Sub Reset() Implements Global.System.Collections.IEnumerator.Reset
+        Private Sub Reset() Implements Global.System.Collections.IEnumerator.Reset
             m_CurrentLine = Nothing
             m_Stream.BaseStream.Position = 0
         End Sub
@@ -47,7 +47,7 @@ Module StreamReaderExtension
         Private m_Disposed As Boolean = False       ' To detect redundant calls
 
         <Untested()>
-            Protected Overridable Sub Dispose(ByVal disposing As Boolean)
+        Protected Overridable Sub Dispose(ByVal disposing As Boolean)
             If Not Me.m_Disposed Then
                 If disposing Then
                     m_Stream.Dispose()
@@ -57,7 +57,7 @@ Module StreamReaderExtension
         End Sub
 
         <Untested()>
-            Private Sub Dispose() Implements IDisposable.Dispose
+        Private Sub Dispose() Implements IDisposable.Dispose
             Dispose(True)
         End Sub
 
