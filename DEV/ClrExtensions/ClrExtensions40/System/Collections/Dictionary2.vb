@@ -9,8 +9,9 @@ Namespace Collections
 	''' <typeparam name="TKey1">The first part of the compound key</typeparam>
 	''' <typeparam name="TKey2">The second part of the compound key</typeparam>
 	''' <typeparam name="TValue">The data being stored</typeparam>
-	''' <remarks></remarks>
-        Public Class Dictionary(Of TKey1, TKey2, TValue)
+    ''' <remarks></remarks>
+    <Serializable()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")> Public Class Dictionary(Of TKey1, TKey2, TValue)
         Inherits Dictionary(Of Tuple(Of TKey1, TKey2), TValue)
 
         ''' <summary>
@@ -18,8 +19,12 @@ Namespace Collections
         ''' </summary>
         ''' <remarks></remarks>
         <Untested()>
-         Public Sub New()
+        Public Sub New()
 
+        End Sub
+
+        Protected Sub New(ByVal info As System.Runtime.Serialization.SerializationInfo, ByVal context As System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
         End Sub
 
         ''' <summary>
@@ -58,7 +63,7 @@ Namespace Collections
         ''' <value></value>
         ''' <returns>The value associated with the specified key. If the specified key is not found, a get operation throws a System.Collections.Generic.KeyNotFoundException, and a set operation creates a new element with the specified key.</returns>
         ''' <remarks></remarks>
-        <Untested()>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1023:IndexersShouldNotBeMultidimensional")> <Untested()>
         Default Public Overloads Property Item(ByVal key1 As TKey1, ByVal key2 As TKey2) As TValue
             Get
                 Return MyBase.Item(MakeKey(key1, key2))
@@ -101,7 +106,7 @@ Namespace Collections
         ''' <returns>true if the Dictionary contains an element with the specified key; otherwise, false.</returns>
         ''' <remarks></remarks>
         <Untested()>
-        Public Overloads Function TryGetValue(ByVal key1 As TKey1, ByVal key2 As TKey2, ByRef value As TValue) As Boolean
+        Public Overloads Function TryGetValue(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal value As TValue) As Boolean
             Return MyBase.TryGetValue(MakeKey(key1, key2), value)
         End Function
 
@@ -114,7 +119,7 @@ Namespace Collections
         ''' <returns></returns>
         ''' <remarks>This was created to support anonymous functions in VB that need to do more than one thing with a value in a single line. See the Memorize function for an example of its use</remarks>
         <Untested()>
-        Public Function StoreAndReturn(ByVal key1 As TKey1, ByVal key2 As TKey2, ByRef value As TValue) As TValue
+        Public Function StoreAndReturn(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal value As TValue) As TValue
             Me(key1, key2) = value
             Return value
         End Function
@@ -122,6 +127,9 @@ Namespace Collections
 #If IncludeUntested Then
 
         <Untested()> Public Function GetOrCreate(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal valueFunction As Func(Of TKey1, TKey2, TValue)) As TValue
+            If valueFunction Is Nothing Then Throw New ArgumentNullException("valueFunction")
+            Contract.EndContractBlock()
+
             If ContainsKey(key1, key2) Then
                 Return Item(key1, key2)
             Else

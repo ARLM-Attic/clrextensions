@@ -58,13 +58,17 @@ Public Module ListExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function Join(Of TLeft, TRight, TResult)(ByVal left As IList(Of TLeft), ByVal right As IEnumerable(Of TRight), ByVal combiner As Func(Of TLeft, TRight, TResult)) As IList(Of TResult)
+        If left Is Nothing Then Throw New ArgumentNullException("left")
+        If right Is Nothing Then Throw New ArgumentNullException("right")
+        If combiner Is Nothing Then Throw New ArgumentNullException("combiner")
+        Contract.EndContractBlock()
 
         Dim result As New List(Of TResult)(left.Count)
         Dim s = left.GetEnumerator
         Dim d = right.GetEnumerator
 
         Do While s.MoveNext
-            If Not d.MoveNext Then Throw New Exception("Right is smaller than left")
+            If Not d.MoveNext Then Throw New ArgumentException("Right is smaller than left")
             result.Add(combiner(s.Current, d.Current))
         Loop
         Return result
@@ -115,7 +119,7 @@ Public Module ListExtension
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String, ByVal formatter As Func(Of T, String)) As String
         If this Is Nothing Then Throw New ArgumentNullException("this")
-        If formatter Is Nothing Then Throw New ArgumentNullException("foramtter")
+        If formatter Is Nothing Then Throw New ArgumentNullException("formatter")
         Contract.EndContractBlock()
 
         Dim temp As New List(Of String)(this.Count)

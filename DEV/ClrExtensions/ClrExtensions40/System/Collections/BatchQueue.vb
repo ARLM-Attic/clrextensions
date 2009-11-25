@@ -5,15 +5,9 @@ Namespace Collections
     ''' This is a queue which is thread-safe and can be dequeued in batches
     ''' </summary>
     ''' <remarks>All methods are threadsafe</remarks>
-    Public Class BatchQueue(Of T)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")> Public Class BatchQueue(Of T)
         Private ReadOnly m_Lock As New Object
         Private ReadOnly m_List As New LinkedList(Of T)
-
-        <ContractInvariantMethod()>
-        Private Sub ObjectInvariant()
-            Contract.Invariant(m_List IsNot Nothing)
-        End Sub
-
 
         ''' <summary>
         ''' Adds a single item to the queue
@@ -41,6 +35,9 @@ Namespace Collections
         ''' <remarks></remarks>
         <Untested()>
         Public Sub Enqueue(ByVal list As IEnumerable(Of T))
+            If list Is Nothing Then Throw New ArgumentNullException("list")
+            Contract.EndContractBlock()
+
             SyncLock m_Lock
                 For Each item In list
                     AddInternal(item)
@@ -50,6 +47,9 @@ Namespace Collections
 
         <Untested()>
         Public Sub EnqueueFirst(ByVal list As IEnumerable(Of T))
+            If list Is Nothing Then Throw New ArgumentNullException("list")
+            Contract.EndContractBlock()
+
             SyncLock m_Lock
                 For Each item In list.Reverse
                     m_List.AddFirst(item)
@@ -70,7 +70,7 @@ Namespace Collections
         ''' <param name="value">This is set to the element dequeued or Nothing if the queue is empty</param>
         ''' <returns>True if the queue contained items, False otherwise</returns>
         ''' <remarks></remarks>
-        <Untested()>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> <Untested()>
         Public Function TryDequeue(ByRef value As T) As Boolean
             SyncLock m_Lock
                 If m_List.Count > 0 Then

@@ -35,7 +35,7 @@ Public Module StringExtension
     <Untested()>
  <Extension()> Public Function Repeat(ByVal value As String, ByVal count As Integer) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
-        If value = "" Then Throw New ArgumentException("value")
+        If value = "" Then Throw New ArgumentException("value cannot be empty", "value")
         If count < 0 Then Throw New ArgumentOutOfRangeException("count")
         If count = 0 Then Return ""
         Dim result As New StringBuilder(value.Length * count)
@@ -110,6 +110,10 @@ Public Module StringExtension
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
     <Untested()>
  <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer) As String()
+        If separator = "" Then Throw New ArgumentException("separator cannot be empty", "separator")
+        If count < 2 Then Throw New ArgumentOutOfRangeException("count")
+        Contract.EndContractBlock()
+
         If source Is Nothing Then Return New String() {}
         Return Split(source, separator, count, StringSplitOptions.None)
     End Function
@@ -127,7 +131,7 @@ Public Module StringExtension
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
     <Untested()>
  <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
-        If separator = "" Then Throw New ArgumentException("separator")
+        If separator = "" Then Throw New ArgumentException("seperator cannot be empty", "separator")
         If count < 2 Then Throw New ArgumentOutOfRangeException("count")
         Contract.EndContractBlock()
 
@@ -157,7 +161,7 @@ Public Module StringExtension
                 'The below won't work because it will return less than Count elements
                 'Return temp.Where(Function(s) s <> "").ToArray
             Case Else
-                Throw New ArgumentException("options")
+                Throw New ArgumentOutOfRangeException("options")
         End Select
     End Function
 
@@ -252,7 +256,7 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId:="temp")> <Untested()>
     <Extension()> Public Function IsEmailAddress(ByVal value As String) As Boolean
         If value = "" Then Return False
         Try
@@ -272,7 +276,7 @@ Public Module StringExtension
     <Untested()>
     <Extension()> Public Function ToMailAddress(ByVal value As String) As MailAddress
         If value Is Nothing Then Throw New ArgumentNullException("value")
-        If value = "" Then Throw New ArgumentException("value")
+        If value = "" Then Throw New ArgumentException("value cannot be empty", "value")
         Contract.EndContractBlock()
 
         Return New MailAddress(value)
@@ -404,8 +408,8 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function PatternReplace(ByVal value As String, ByVal searchPattern As String, ByVal dictionary As Dictionary(Of String, String)) As String
-        If searchPattern Is Nothing Then Throw New ArgumentNullException("pattern")
-        If searchPattern = "" Then Throw New ArgumentException("pattern")
+        If searchPattern Is Nothing Then Throw New ArgumentNullException("searchPattern")
+        If searchPattern = "" Then Throw New ArgumentException("searchPattern cannot be empty", "searchPattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
         If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
         Contract.EndContractBlock()
@@ -429,12 +433,12 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function PatternReplace(Of T)(ByVal value As String, ByVal searchPattern As String, ByVal replacementPattern As String, ByVal dictionary As Dictionary(Of String, T)) As String
-        If searchPattern Is Nothing Then Throw New ArgumentNullException("pattern")
-        If searchPattern = "" Then Throw New ArgumentException("pattern")
+        If searchPattern Is Nothing Then Throw New ArgumentNullException("searchPattern")
+        If searchPattern = "" Then Throw New ArgumentException("searchPattern cannot be empty", "searchPattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
         If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
         If replacementPattern Is Nothing Then Throw New ArgumentNullException("replacementPattern")
-        If replacementPattern = "" Then Throw New ArgumentException("replacementPattern")
+        If replacementPattern = "" Then Throw New ArgumentException("replacementPattern cannot be empty", "replacementPattern")
         Contract.EndContractBlock()
 
         If value = "" Then Return value
@@ -447,7 +451,11 @@ Public Module StringExtension
     End Function
 
 #If ClrVersion >= 35 Then
-    <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+        If source Is Nothing Then Throw New ArgumentNullException("source")
+        Contract.EndContractBlock()
+
+
         If rowSeparator = columnSeparator Then Return ToKeyValueCollection(source, rowSeparator)
 
         Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
@@ -461,7 +469,9 @@ Public Module StringExtension
     End Function
 #End If
 
-    <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")>
+    <Untested()> <Extension()>
+    Public Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim rows = source.Split(separator)
 
@@ -559,11 +569,13 @@ Public Module StringExtension
         Return Global.System.Web.HttpUtility.HtmlDecode(this)
     End Function
 
-    <Untested()> <Extension()> Public Function UrlDecode(ByVal this As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")>
+ <Untested()> <Extension()> Public Function UrlDecode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.UrlDecode(this)
     End Function
 
-    <Untested()> <Extension()> Public Function UrlPathEncode(ByVal this As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")>
+<Untested()> <Extension()> Public Function UrlPathEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.UrlPathEncode(this)
     End Function
 
@@ -589,12 +601,15 @@ Public Module StringExtension
 
 #If Subset <> "Client" Then
 
-    <Extension()> Public Function UrlEncode(ByVal this As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Extension()> Public Function UrlEncode(ByVal this As String) As String
         Return UrlEncode(this, UrlEncodingMethod.Clr)
     End Function
 
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Untested()>
     <Extension()> Public Function UrlEncode(ByVal value As String, ByVal method As UrlEncodingMethod) As String
+        If value Is Nothing Then Throw New ArgumentNullException("value")
+        Contract.EndContractBlock()
+
         Select Case method
             Case UrlEncodingMethod.DoNoEncode
                 Return value

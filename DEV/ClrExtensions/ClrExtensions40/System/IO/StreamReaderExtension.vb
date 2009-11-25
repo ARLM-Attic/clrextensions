@@ -72,6 +72,7 @@ Namespace IO
 	''' This class prevents the underlying stream from being closed by a higher level wrapper like StreamReader
 	''' </summary>
 	''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix")>
     Public Class StreamProtector
         Inherits Global.System.IO.Stream
         Private m_BaseStream As Global.System.IO.Stream

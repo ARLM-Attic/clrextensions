@@ -10,7 +10,7 @@ Namespace Collections
     ''' <typeparam name="T2"></typeparam>
     ''' <typeparam name="T3"></typeparam>
     ''' <remarks></remarks>
-    Public Class Tuple(Of T1, T2, T3)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")> Public Class Tuple(Of T1, T2, T3)
         Implements IEquatable(Of Tuple(Of T1, T2, T3))
 
         Private m_Item1 As T1
@@ -39,10 +39,10 @@ Namespace Collections
         End Property
 
         <Untested()>
-        Public Sub New(ByVal Item1 As T1, ByVal Item2 As T2, ByVal Item3 As T3)
-            m_Item1 = Item1
-            m_Item2 = Item2
-            m_Item3 = Item3
+        Public Sub New(ByVal item1 As T1, ByVal item2 As T2, ByVal item3 As T3)
+            m_Item1 = item1
+            m_Item2 = item2
+            m_Item3 = item3
         End Sub
 
         <Untested()>
@@ -65,6 +65,9 @@ Namespace Collections
 
         <Untested()>
         Public Overloads Function Equals(ByVal other As Tuple(Of T1, T2, T3)) As Boolean Implements IEquatable(Of Tuple(Of T1, T2, T3)).Equals
+            If other Is Nothing Then Throw New ArgumentNullException("other")
+            Contract.EndContractBlock()
+
             Return Object.Equals(Item1, other.Item1) AndAlso Object.Equals(Item2, other.Item2) AndAlso Object.Equals(Item3, other.Item3)
         End Function
     End Class

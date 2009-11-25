@@ -16,6 +16,9 @@ Public Module ArrayExtension
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="0#")>
     <Untested()>
     <Extension()> Function SortByColumn(Of T)(ByVal array As T(,), ByVal sortColumn As Integer) As T(,)
+        If array Is Nothing Then Throw New ArgumentNullException("array")
+        Contract.EndContractBlock()
+
         Dim fragments = array.ToJagged
 
         Dim sorted = (From fragment In fragments Order By fragment(sortColumn)).ToArray
@@ -36,6 +39,7 @@ Public Module ArrayExtension
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="0#")>
     <Untested()> <Extension()> Function ToJagged(Of T)(ByVal array As T(,)) As T()()
         If array Is Nothing Then Throw New ArgumentNullException("array")
+        Contract.Ensures(Contract.Result(Of T()())() IsNot Nothing)
         Contract.EndContractBlock()
 
         Dim xMax As Integer = array.GetUpperBound(0)
@@ -51,6 +55,7 @@ Public Module ArrayExtension
             fragments(i) = temp
         Next
         Return fragments
+
     End Function
 
     ''' <summary>

@@ -16,10 +16,10 @@ Namespace Collections
 	''' </summary>
 	''' <typeparam name="T"></typeparam>
 	''' <remarks></remarks>
-    <Serializable()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix")> <Serializable()>
     <DebuggerDisplay("Count = {Count}")>
     <ComVisible(False)>
-    Public Class SortedList(Of T)
+    Public NotInheritable Class SortedList(Of T)
         Implements IList(Of T)
         Implements IList
 

@@ -19,6 +19,9 @@ Namespace Net.Rest
 
         <Untested()>
         Public Sub AddRange(ByVal values As System.Collections.Specialized.NameValueCollection)
+            If values Is Nothing Then Throw New ArgumentNullException("values")
+            Contract.EndContractBlock()
+
             For Each key As String In values.Keys
                 Me.Add(New QueryParameter(key, values(key)))
             Next

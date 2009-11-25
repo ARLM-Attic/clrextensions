@@ -31,12 +31,12 @@ Namespace Collections
         End Sub
 
         <Untested()>
-        Public Function IEqualityComparer_Equals(ByVal x As T, ByVal y As T) As Boolean Implements Global.System.Collections.Generic.IEqualityComparer(Of T).Equals
+        Private Function IEqualityComparer_Equals(ByVal x As T, ByVal y As T) As Boolean Implements Global.System.Collections.Generic.IEqualityComparer(Of T).Equals
             Return m_EqualityFunction(x, y)
         End Function
 
         <Untested()>
-        Public Function IEqualityComparer_GetHashCode(ByVal obj As T) As Integer Implements Global.System.Collections.Generic.IEqualityComparer(Of T).GetHashCode
+        Private Function IEqualityComparer_GetHashCode(ByVal obj As T) As Integer Implements Global.System.Collections.Generic.IEqualityComparer(Of T).GetHashCode
             Return m_HashingFunction(obj)
         End Function
     End Class

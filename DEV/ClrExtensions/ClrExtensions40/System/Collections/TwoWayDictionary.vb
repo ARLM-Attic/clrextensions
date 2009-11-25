@@ -9,7 +9,7 @@
 ''' <typeparam name="TLeft">The left-hand key</typeparam>
 ''' <typeparam name="TRight">The right-hand key</typeparam>
 ''' <remarks></remarks>
-Public Class TwoWayDictionary(Of TLeft, TRight)
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")> Public Class TwoWayDictionary(Of TLeft, TRight)
     Private m_FromLeft As New Dictionary(Of TLeft, TRight)
     Private m_FromRight As New Dictionary(Of TRight, TLeft)
 
@@ -35,32 +35,32 @@ Public Class TwoWayDictionary(Of TLeft, TRight)
     End Function
 
     <Untested()>
-Public Function ContainsLeft(ByVal left As TLeft) As Boolean
+    Public Function ContainsLeft(ByVal left As TLeft) As Boolean
         Return m_FromLeft.ContainsKey(left)
     End Function
 
     <Untested()>
-Public Function ContainsRight(ByVal right As TRight) As Boolean
+    Public Function ContainsRight(ByVal right As TRight) As Boolean
         Return m_FromRight.ContainsKey(right)
     End Function
 
     <Untested()>
-Public Function RemoveLeft(ByVal left As TLeft) As Boolean
+    Public Function RemoveLeft(ByVal left As TLeft) As Boolean
         Return m_FromLeft.Remove(left)
     End Function
 
     <Untested()>
-Public Function RemoveRight(ByVal right As TRight) As Boolean
+    Public Function RemoveRight(ByVal right As TRight) As Boolean
         Return m_FromRight.Remove(right)
     End Function
 
     <Untested()>
-Public Function ToLeftDictionary() As Dictionary(Of TLeft, TRight)
+    Public Function ToLeftDictionary() As Dictionary(Of TLeft, TRight)
         Return New Dictionary(Of TLeft, TRight)(m_FromLeft)
     End Function
 
     <Untested()>
-Public Function ToRightDictionary() As Dictionary(Of TRight, TLeft)
+    Public Function ToRightDictionary() As Dictionary(Of TRight, TLeft)
         Return New Dictionary(Of TRight, TLeft)(m_FromRight)
     End Function
 
@@ -72,18 +72,18 @@ Public Function ToRightDictionary() As Dictionary(Of TRight, TLeft)
     End Property
 
     <Untested()>
-Public Sub Clear()
+    Public Sub Clear()
         m_FromLeft.Clear()
         m_FromRight.Clear()
     End Sub
 
     <Untested()>
-Public Function LeftKeys() As Dictionary(Of TLeft, TRight).KeyCollection
+    Public Function LeftKeys() As Dictionary(Of TLeft, TRight).KeyCollection
         Return m_FromLeft.Keys
     End Function
 
     <Untested()>
-Public Function RightKeys() As Dictionary(Of TRight, TLeft).KeyCollection
+    Public Function RightKeys() As Dictionary(Of TRight, TLeft).KeyCollection
         Return m_FromRight.Keys
     End Function
 
