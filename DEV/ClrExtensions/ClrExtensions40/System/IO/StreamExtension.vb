@@ -38,6 +38,9 @@ Public Module StreamExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function ToStreamWriter(ByVal source As Stream) As StreamWriter
+        If source Is Nothing Then Throw New ArgumentNullException("source")
+        Contract.EndContractBlock()
+
         Return New StreamWriter(source)
     End Function
 

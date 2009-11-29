@@ -9,14 +9,19 @@ Namespace Data
 	Friend Class DataReaderEnumerator
 		Implements IEnumerator(Of IDataRecord)
 
-		Private m_Source As IDataReader
+        Private ReadOnly m_Source As IDataReader
 
         <Untested()>
+        <Pure()>
         Public Sub New(ByVal source As IDataReader)
+            If source Is Nothing Then Throw New ArgumentNullException("source")
+            Contract.EndContractBlock()
+
             m_Source = source
         End Sub
 
         <Untested()>
+        <Pure()>
         Public ReadOnly Property Current() As Global.System.Data.IDataRecord Implements IEnumerator(Of IDataRecord).Current
             Get
                 Return m_Source
@@ -25,6 +30,7 @@ Namespace Data
 
         <Untested()>
         Private ReadOnly Property IEnumerator_Current() As Object Implements IEnumerator.Current
+            <Pure()>
             Get
                 Return m_Source
             End Get

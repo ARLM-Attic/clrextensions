@@ -1,6 +1,4 @@
-﻿Imports System.Collections.Generic
-
-Imports System
+﻿Imports System.Threading
 
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
@@ -9,11 +7,11 @@ Imports ClrExtensions
 
 
 '''<summary>
-'''This is a test class for TupleExtensionTest and is intended
-'''to contain all TupleExtensionTest Unit Tests
+'''This is a test class for ReaderWriterLockSlimExtension_LockTokenTest and is intended
+'''to contain all ReaderWriterLockSlimExtension_LockTokenTest Unit Tests
 '''</summary>
 <TestClass()> _
-Public Class TupleExtensionTest
+Public Class ReaderWriterLockSlimExtension_LockTokenTest
 
 
     Private testContextInstance As TestContext
@@ -58,27 +56,28 @@ Public Class TupleExtensionTest
 #End Region
 
 
-    <TestMethod()> _
-    Public Sub AddTest()
-
-        Dim list As New List(Of Tuple(Of String, Integer))
-        Dim a = "test"
-        Dim b = 5
-        TupleExtension.Add(list, a, b)
-        Assert.AreEqual(1, list.Count)
-        Assert.AreEqual(a, list(0).Item1)
-        Assert.AreEqual(b, list(0).Item2)
-
-    End Sub
-
+    '''<summary>
+    '''A test for LockToken Constructor
+    '''</summary>
     <ExpectedException(GetType(ArgumentNullException))>
-    <TestMethod()> _
-    Public Sub AddTest1()
-        Dim list As List(Of Tuple(Of String, Integer)) = Nothing
-        Dim a = "test"
-        Dim b = 5
-        TupleExtension.Add(list, a, b)
-
-
+    <TestMethod(), _
+     DeploymentItem("ClrExtensions40.dll")> _
+    Public Sub ReaderWriterLockSlimExtension_LockTokenConstructorTest()
+        Dim lock As ReaderWriterLockSlim = Nothing
+        Dim mode As ReaderWriterLockSlimExtension_Accessor.LockMode = Nothing
+        Dim target As ReaderWriterLockSlimExtension_Accessor.LockToken = New ReaderWriterLockSlimExtension_Accessor.LockToken(lock, mode)
     End Sub
+
+    '''<summary>
+    '''A test for LockToken Constructor
+    '''</summary>
+    <ExpectedException(GetType(ArgumentOutOfRangeException))>
+    <TestMethod(), _
+     DeploymentItem("ClrExtensions40.dll")> _
+    Public Sub ReaderWriterLockSlimExtension_LockTokenConstructorTest2()
+        Dim lock As New ReaderWriterLockSlim
+        Dim mode As New ReaderWriterLockSlimExtension_Accessor.LockMode(New PrivateObject(-1))
+        Dim target As ReaderWriterLockSlimExtension_Accessor.LockToken = New ReaderWriterLockSlimExtension_Accessor.LockToken(lock, mode)
+    End Sub
+
 End Class

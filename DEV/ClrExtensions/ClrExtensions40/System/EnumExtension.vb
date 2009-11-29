@@ -1,7 +1,7 @@
 'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
 
 Public Module EnumExtension
+
 
     ''' <summary>
     ''' Returns True if the value is defined by the indicated enumeration
@@ -10,7 +10,7 @@ Public Module EnumExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks>This is constrained on Structure, but really should be constrained on Enum if it were possible</remarks>
-    <Untested()>
+    <Pure()>
     <Extension()> Public Function EnumIsDefined(Of T As Structure)(ByVal value As T) As Boolean
         If Not GetType(T).IsEnum Then Throw New ArgumentException("T is not an enumeration")
         Return [Enum].IsDefined(GetType(T), value)
@@ -48,7 +48,6 @@ Public Module EnumExtension
             Return Nothing
         End Try
     End Function
-#End If
 
 
     ''' <summary>
@@ -83,8 +82,7 @@ Public Module EnumExtension
             Return Nothing
         End Try
     End Function
-
+#End If
 
 End Module
 
-#End If

@@ -3,12 +3,12 @@
 
 Namespace Collections
 
-	''' <summary>
-	''' This dictionary uses a compound key. An entry is only considered a match if both keys match.
-	''' </summary>
-	''' <typeparam name="TKey1">The first part of the compound key</typeparam>
-	''' <typeparam name="TKey2">The second part of the compound key</typeparam>
-	''' <typeparam name="TValue">The data being stored</typeparam>
+    ''' <summary>
+    ''' This dictionary uses a compound key. An entry is only considered a match if both keys match.
+    ''' </summary>
+    ''' <typeparam name="TKey1">The first part of the compound key</typeparam>
+    ''' <typeparam name="TKey2">The second part of the compound key</typeparam>
+    ''' <typeparam name="TValue">The data being stored</typeparam>
     ''' <remarks></remarks>
     <Serializable()>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")> Public Class Dictionary(Of TKey1, TKey2, TValue)
@@ -19,10 +19,12 @@ Namespace Collections
         ''' </summary>
         ''' <remarks></remarks>
         <Untested()>
+        <Pure()>
         Public Sub New()
 
         End Sub
 
+        <Pure()>
         Protected Sub New(ByVal info As System.Runtime.Serialization.SerializationInfo, ByVal context As System.Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
         End Sub
@@ -33,12 +35,15 @@ Namespace Collections
         ''' <param name="capacity"></param>
         ''' <remarks></remarks>
         <Untested()>
+        <Pure()>
         Public Sub New(ByVal capacity As Integer)
             MyBase.New(capacity)
         End Sub
 
-        <Untested()>
+        <Untested()> <Pure()>
         Private Shared Function MakeKey(ByVal key1 As TKey1, ByVal key2 As TKey2) As Tuple(Of TKey1, TKey2)
+            Contract.Ensures(Contract.Result(Of Tuple(Of TKey1, TKey2))() IsNot Nothing)
+
             Return New Tuple(Of TKey1, TKey2)(key1, key2)
         End Function
 
@@ -52,6 +57,9 @@ Namespace Collections
         ''' <exception cref="ArgumentException">An element with the same key already exists </exception>
         <Untested()>
         Public Overloads Sub Add(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal value As TValue)
+            Contract.Ensures(Count = Contract.OldValue(Count) + 1)
+            Contract.EnsuresOnThrow(Of ArgumentException)(Count = Contract.OldValue(Count))
+
             MyBase.Add(MakeKey(key1, key2), value)
         End Sub
 
@@ -63,12 +71,15 @@ Namespace Collections
         ''' <value></value>
         ''' <returns>The value associated with the specified key. If the specified key is not found, a get operation throws a System.Collections.Generic.KeyNotFoundException, and a set operation creates a new element with the specified key.</returns>
         ''' <remarks></remarks>
-        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1023:IndexersShouldNotBeMultidimensional")> <Untested()>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1023:IndexersShouldNotBeMultidimensional")>
+        <Untested()>
         Default Public Overloads Property Item(ByVal key1 As TKey1, ByVal key2 As TKey2) As TValue
-            Get
+            <Pure()> Get
                 Return MyBase.Item(MakeKey(key1, key2))
             End Get
             Set(ByVal value As TValue)
+                Contract.Ensures(Count = Contract.OldValue(Count) OrElse Count = Contract.OldValue(Count) + 1)
+
                 MyBase.Item(MakeKey(key1, key2)) = value
             End Set
         End Property
@@ -81,6 +92,7 @@ Namespace Collections
         ''' <returns>true if the Dictionary contains an element with the specified key; otherwise, false.</returns>
         ''' <remarks></remarks>
         <Untested()>
+        <Pure()>
         Public Overloads Function ContainsKey(ByVal key1 As TKey1, ByVal key2 As TKey2) As Boolean
             Return MyBase.ContainsKey(MakeKey(key1, key2))
         End Function
@@ -94,6 +106,8 @@ Namespace Collections
         ''' <remarks></remarks>
         <Untested()>
         Public Overloads Function Remove(ByVal key1 As TKey1, ByVal key2 As TKey2) As Boolean
+            Contract.Ensures(Count = Contract.OldValue(Count) Or Count = Contract.OldValue(Count) - 1)
+
             Return MyBase.Remove(MakeKey(key1, key2))
         End Function
 
@@ -105,8 +119,9 @@ Namespace Collections
         ''' <param name="value">When this method returns, contains the value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter. This parameter is passed uninitialized.</param>
         ''' <returns>true if the Dictionary contains an element with the specified key; otherwise, false.</returns>
         ''' <remarks></remarks>
-        <Untested()>
-        Public Overloads Function TryGetValue(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal value As TValue) As Boolean
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="2#")> <Untested()>
+        <Pure()>
+        Public Overloads Function TryGetValue(ByVal key1 As TKey1, ByVal key2 As TKey2, ByRef value As TValue) As Boolean
             Return MyBase.TryGetValue(MakeKey(key1, key2), value)
         End Function
 
@@ -120,6 +135,8 @@ Namespace Collections
         ''' <remarks>This was created to support anonymous functions in VB that need to do more than one thing with a value in a single line. See the Memorize function for an example of its use</remarks>
         <Untested()>
         Public Function StoreAndReturn(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal value As TValue) As TValue
+            Contract.Ensures(Count = Contract.OldValue(Count) OrElse Count = Contract.OldValue(Count) + 1)
+
             Me(key1, key2) = value
             Return value
         End Function
@@ -128,20 +145,23 @@ Namespace Collections
 
         <Untested()> Public Function GetOrCreate(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal valueFunction As Func(Of TKey1, TKey2, TValue)) As TValue
             If valueFunction Is Nothing Then Throw New ArgumentNullException("valueFunction")
+            Contract.Ensures(Count = Contract.OldValue(Count) OrElse Count = Contract.OldValue(Count) + 1)
             Contract.EndContractBlock()
 
             If ContainsKey(key1, key2) Then
                 Return Item(key1, key2)
             Else
-                StoreAndReturn(key1, key2, valueFunction(key1, key2))
+                Return StoreAndReturn(key1, key2, valueFunction(key1, key2))
             End If
         End Function
 
         <Untested()> Public Function GetOrCreate(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal defaultValue As TValue) As TValue
+            Contract.Ensures(Count = Contract.OldValue(Count) OrElse Count = Contract.OldValue(Count) + 1)
+
             If ContainsKey(key1, key2) Then
                 Return Item(key1, key2)
             Else
-                StoreAndReturn(key1, key2, defaultValue)
+                Return StoreAndReturn(key1, key2, defaultValue)
             End If
         End Function
 

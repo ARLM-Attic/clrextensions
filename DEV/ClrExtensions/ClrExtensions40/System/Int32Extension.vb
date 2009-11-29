@@ -87,6 +87,7 @@ Public Module Int32Extension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function IsMultipleOf(ByVal value As Integer, ByVal factor As Integer) As Boolean
+        If factor = 0 Then Throw New ArgumentOutOfRangeException("factor")
         Return value Mod factor = 0
     End Function
 
@@ -98,6 +99,7 @@ Public Module Int32Extension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function IsFactorOf(ByVal value As Integer, ByVal multiple As Integer) As Boolean
+        If value = 0 Then Throw New ArgumentOutOfRangeException("value")
         Return multiple Mod value = 0
     End Function
 

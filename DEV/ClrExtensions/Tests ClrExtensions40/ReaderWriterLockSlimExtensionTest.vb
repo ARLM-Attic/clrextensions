@@ -122,4 +122,34 @@ Public Class ReaderWriterLockSlimExtensionTest
         Assert.AreEqual(0, lock.CurrentReadCount)
 
     End Sub
+
+    '''<summary>
+    '''A test for ReadSection
+    '''</summary>
+    <ExpectedException(GetType(ArgumentNullException))>
+    <TestMethod()> _
+    Public Sub ReadSectionTest1()
+        Dim lock As ReaderWriterLockSlim = Nothing
+        ReaderWriterLockSlimExtension.ReadSection(lock)
+    End Sub
+
+    '''<summary>
+    '''A test for WriteSection
+    '''</summary>
+    <ExpectedException(GetType(ArgumentNullException))>
+    <TestMethod()> _
+    Public Sub WriteSectionTest1()
+        Dim lock As ReaderWriterLockSlim = Nothing
+        ReaderWriterLockSlimExtension.WriteSection(lock)
+    End Sub
+
+    '''<summary>
+    '''A test for UpgradeableReadSection
+    '''</summary>
+    <ExpectedException(GetType(ArgumentNullException))>
+    <TestMethod()> _
+    Public Sub UpgradeableReadSectionTest1()
+        Dim lock As ReaderWriterLockSlim = Nothing
+        ReaderWriterLockSlimExtension.UpgradeableReadSection(lock)
+    End Sub
 End Class

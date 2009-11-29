@@ -41,10 +41,16 @@ Public Module IOExtension
     ''' <remarks>This was hand tested because it is so heavily dependent on OS settings</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")> <Untested()>
     Public Function PrintFile(ByVal fileName As String) As Process
+        If fileName Is Nothing Then Throw New ArgumentNullException("fileName")
+        If fileName = "" Then Throw New ArgumentException("fileName cannot be empty")
+        Contract.EndContractBlock()
+
+        If Not System.IO.File.Exists(filename) Then Throw New IOException("File " & filename & " does not exist.")
+
         Dim printJob As Process = Nothing
         Try
             printJob = New Process()
-            printJob.StartInfo.FileName = fileName
+            printJob.StartInfo.FileName = filename
             printJob.StartInfo.UseShellExecute = True
             printJob.StartInfo.Verb = "print"
             printJob.Start()

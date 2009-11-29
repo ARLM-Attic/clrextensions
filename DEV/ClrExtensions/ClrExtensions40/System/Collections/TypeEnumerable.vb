@@ -8,23 +8,27 @@ Namespace Collections
     Friend Class TypeEnumerable(Of T)
         Implements IEnumerable(Of T)
 
-        Private m_Source As IEnumerable
+        Private ReadOnly m_Source As IEnumerable
 
         <Untested()>
+        <Pure()>
         Public Sub New(ByVal souce As IEnumerable)
             m_Source = souce
         End Sub
 
         <Untested()>
+        <Pure()>
         Public Function GetEnumerator() As IEnumerator(Of T) Implements IEnumerable(Of T).GetEnumerator
             Return New TypeEnumerator(Of T)(m_Source.GetEnumerator)
         End Function
 
         <Untested()>
-        Public Function GetEnumerator1() As IEnumerator Implements IEnumerable.GetEnumerator
+        <Pure()>
+        Private Function IEnumerable_GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
             Return m_Source.GetEnumerator
         End Function
     End Class
 
 End Namespace
 #End If
+

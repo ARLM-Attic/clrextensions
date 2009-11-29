@@ -1,19 +1,15 @@
-﻿Imports System.Collections.Generic
-
-Imports System
-
-Imports Microsoft.VisualStudio.TestTools.UnitTesting
+﻿Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
 Imports ClrExtensions
 
 
 
 '''<summary>
-'''This is a test class for TupleExtensionTest and is intended
-'''to contain all TupleExtensionTest Unit Tests
+'''This is a test class for EnumExtensionTest and is intended
+'''to contain all EnumExtensionTest Unit Tests
 '''</summary>
 <TestClass()> _
-Public Class TupleExtensionTest
+Public Class EnumExtensionTest
 
 
     Private testContextInstance As TestContext
@@ -58,27 +54,21 @@ Public Class TupleExtensionTest
 #End Region
 
 
-    <TestMethod()> _
-    Public Sub AddTest()
-
-        Dim list As New List(Of Tuple(Of String, Integer))
-        Dim a = "test"
-        Dim b = 5
-        TupleExtension.Add(list, a, b)
-        Assert.AreEqual(1, list.Count)
-        Assert.AreEqual(a, list(0).Item1)
-        Assert.AreEqual(b, list(0).Item2)
-
+    '''<summary>
+    '''A test for EnumIsDefined
+    '''</summary>
+    Public Sub EnumIsDefinedTestHelper(Of T As Structure)()
+        Dim value As T = New T() ' TODO: Initialize to an appropriate value
+        Dim expected As Boolean = False ' TODO: Initialize to an appropriate value
+        Dim actual As Boolean
+        actual = EnumExtension.EnumIsDefined(Of T)(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
     End Sub
 
-    <ExpectedException(GetType(ArgumentNullException))>
+    <ExpectedException(GetType(ArgumentException))>
     <TestMethod()> _
-    Public Sub AddTest1()
-        Dim list As List(Of Tuple(Of String, Integer)) = Nothing
-        Dim a = "test"
-        Dim b = 5
-        TupleExtension.Add(list, a, b)
-
-
+    Public Sub EnumIsDefinedTest()
+        EnumIsDefined(Of Integer)(0)
     End Sub
 End Class

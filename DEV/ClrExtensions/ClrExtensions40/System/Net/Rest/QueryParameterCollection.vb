@@ -44,6 +44,9 @@ Namespace Net.Rest
 
         <Untested()>
         Private Shared Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
+            If queryString Is Nothing Then Throw New ArgumentNullException("queryString")
+            Contract.EndContractBlock()
+            
             Dim result As New ObjectModel.Collection(Of QueryParameter)
             Dim rows = queryString.Split("&"c) 'removed , StringSplitOptions.RemoveEmptyEntries because CF does not seem to understand
             Dim values() As String

@@ -3,6 +3,8 @@
 
 Namespace Collections
 
+#If ClrVersion < 40 Then
+
 	''' <summary>
 	''' This repesents a pair of values
 	''' </summary>
@@ -57,6 +59,7 @@ Namespace Collections
             Return Object.Equals(Item1, other.Item1) AndAlso Object.Equals(Item2, other.Item2)
         End Function
     End Class
+#End If
 
 End Namespace
 #End If

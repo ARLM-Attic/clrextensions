@@ -1,11 +1,11 @@
 #If ClrVersion >= 35 Then
-#If IncludeUntested Then
 Namespace Collections
     ''' <summary>
     ''' This is a queue which is thread-safe and can be dequeued in batches
     ''' </summary>
     ''' <remarks>All methods are threadsafe</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")> Public Class BatchQueue(Of T)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")>
+    Public Class BatchQueue(Of T)
         Private ReadOnly m_Lock As New Object
         Private ReadOnly m_List As New LinkedList(Of T)
 
@@ -14,15 +14,17 @@ Namespace Collections
         ''' </summary>
         ''' <param name="value"></param>
         ''' <remarks></remarks>
-        <Untested()>
         Public Sub Enqueue(ByVal value As T)
+            Contract.Ensures(Count = Contract.OldValue(Count) + 1)
+
             SyncLock m_Lock
                 AddInternal(value)
             End SyncLock
         End Sub
 
-        <Untested()>
         Public Sub EnqueueFirst(ByVal value As T)
+            Contract.Ensures(Count = Contract.OldValue(Count) + 1)
+
             SyncLock m_Lock
                 m_List.AddFirst(value)
             End SyncLock
@@ -33,7 +35,6 @@ Namespace Collections
         ''' </summary>
         ''' <param name="list"></param>
         ''' <remarks></remarks>
-        <Untested()>
         Public Sub Enqueue(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
             Contract.EndContractBlock()
@@ -45,7 +46,6 @@ Namespace Collections
             End SyncLock
         End Sub
 
-        <Untested()>
         Public Sub EnqueueFirst(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
             Contract.EndContractBlock()
@@ -57,8 +57,9 @@ Namespace Collections
             End SyncLock
         End Sub
 
-        <Untested()>
         Public Sub Clear()
+            Contract.Ensures(Count = 0)
+
             SyncLock m_Lock
                 m_List.Clear()
             End SyncLock
@@ -70,17 +71,21 @@ Namespace Collections
         ''' <param name="value">This is set to the element dequeued or Nothing if the queue is empty</param>
         ''' <returns>True if the queue contained items, False otherwise</returns>
         ''' <remarks></remarks>
-        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> <Untested()>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")>
         Public Function TryDequeue(ByRef value As T) As Boolean
+            Contract.Ensures(Contract.OldValue(Count) > 0 And Contract.Result(Of Boolean)() = True)
+            Contract.Ensures(Contract.OldValue(Count) = 0 And Contract.Result(Of Boolean)() = False)
+            Contract.Ensures(Contract.OldValue(Count) = 0 Or Contract.OldValue(Count) = Count + 1)
+
             SyncLock m_Lock
                 If m_List.Count > 0 Then
                     value = m_List.First.Value
                     m_List.RemoveFirst()
                     Return True
-                Else
-                    value = Nothing
-                    Return False
                 End If
+
+                value = Nothing
+                Return False
             End SyncLock
         End Function
 
@@ -92,8 +97,10 @@ Namespace Collections
         ''' <param name="maxBatchSize">Maximum number of items to remove from the queue</param>
         ''' <returns>A list containing minBatchSize &lt;= count &lt;= MaxBatchSize items or an empty list if there aren't at least minBatchSize items</returns>
         ''' <remarks></remarks>
-        <Untested()>
-        Public Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As IList(Of T)
+        Public Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As List(Of T)
+            Contract.Ensures(Contract.Result(Of List(Of T)).Count <= maxBatchSize)
+            Contract.Ensures(Contract.Result(Of List(Of T)).Count = 0 Or Contract.Result(Of List(Of T)).Count >= minBatchSize)
+
             SyncLock m_Lock
 
                 If m_List.Count >= minBatchSize Then
@@ -108,9 +115,9 @@ Namespace Collections
                     Loop Until result.Count = maxBatchSize OrElse currentNode Is Nothing
                     Return result
 
-                Else
-                    Return New List(Of T)
                 End If
+
+                Return New List(Of T)
             End SyncLock
 
         End Function
@@ -121,8 +128,7 @@ Namespace Collections
         ''' <value></value>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        <Untested()>
-        Public ReadOnly Property Count() As Integer
+     <Pure()> Public ReadOnly Property Count() As Integer
             Get
                 SyncLock m_Lock
                     Return m_List.Count
@@ -130,11 +136,10 @@ Namespace Collections
             End Get
         End Property
 
-        <Untested()>
         Private Sub AddInternal(ByVal value As T)
+            Contract.Ensures(Count = Contract.OldValue(Count) + 1)
             m_List.AddLast(value)
         End Sub
     End Class
 End Namespace
-#End If
 #End If

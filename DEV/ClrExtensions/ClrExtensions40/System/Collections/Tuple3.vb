@@ -2,6 +2,8 @@
 #If IncludeUntested Then
 
 Namespace Collections
+#If ClrVersion < 40 Then
+
 
     ''' <summary>
     ''' This represents Item1 triplet of values
@@ -65,12 +67,11 @@ Namespace Collections
 
         <Untested()>
         Public Overloads Function Equals(ByVal other As Tuple(Of T1, T2, T3)) As Boolean Implements IEquatable(Of Tuple(Of T1, T2, T3)).Equals
-            If other Is Nothing Then Throw New ArgumentNullException("other")
-            Contract.EndContractBlock()
-
+            If other Is Nothing Then Return False
             Return Object.Equals(Item1, other.Item1) AndAlso Object.Equals(Item2, other.Item2) AndAlso Object.Equals(Item3, other.Item3)
         End Function
     End Class
+#End If
 End Namespace
 #End If
 

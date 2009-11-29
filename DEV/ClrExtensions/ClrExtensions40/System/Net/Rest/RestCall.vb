@@ -65,6 +65,9 @@ Namespace Net.Rest
 
         <Untested()>
         Public Sub New(ByVal verb As RestVerb, ByVal url As String)
+            If url Is Nothing Then Throw New ArgumentNullException("url")
+            Contract.EndContractBlock()
+
             Dim remainder As String = url
 
             m_Verb = verb
@@ -123,6 +126,7 @@ Namespace Net.Rest
             Return result.ToString
         End Function
 
+
         <Untested()>
         Public Function AddParameter(ByVal parameter As QueryParameter) As RestCall
             If parameter Is Nothing Then Return Me
@@ -157,7 +161,7 @@ Namespace Net.Rest
 
         <Untested()>
         Public Function CreateHttpWebRequest() As System.Net.HttpWebRequest
-            Dim result = DirectCast(System.Net.WebRequest.Create(ToUrlString), System.Net.HttpWebRequest)
+            Dim result = DirectCast(System.Net.WebRequest.Create(ToUri), System.Net.HttpWebRequest)
             result.Method = HttpMethod
             Return result
         End Function

@@ -8,7 +8,8 @@ Namespace Collections
 	''' This is a queue in which any given item can only appear once.
 	''' </summary>
 	''' <remarks>All methods are threadsafe</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")> Public Class UniqueQueue(Of T)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")>
+    Public Class UniqueQueue(Of T)
         Private ReadOnly m_Lock As New Object
         Private ReadOnly m_List As New LinkedList(Of T)
         Private ReadOnly m_comparer As IEqualityComparer(Of T)
@@ -19,8 +20,11 @@ Namespace Collections
         ''' </summary>
         ''' <remarks></remarks>
         <Untested()>
+        <Pure()>
         Public Sub New(ByVal mode As UniqueQueueMode)
             If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode", mode, "Mode isn't defined")
+            Contract.EndContractBlock()
+
             m_Mode = mode
         End Sub
 
@@ -30,8 +34,10 @@ Namespace Collections
         ''' <param name="comparer"></param>
         ''' <remarks></remarks>
         <Untested()>
+        <Pure()>
         Public Sub New(ByVal mode As UniqueQueueMode, ByVal comparer As IEqualityComparer(Of T))
             If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode", mode, "Mode isn't defined")
+            Contract.EndContractBlock()
 
             m_Mode = mode
             m_comparer = comparer

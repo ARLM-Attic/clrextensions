@@ -67,6 +67,7 @@ Public Module DecimalExtension
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
         If source Is Nothing Then Throw New ArgumentNullException("source")
+        Contract.EndContractBlock()
 
         Return CDec(Math.Sqrt((Aggregate item In source Into Sum(item * item)) / CDec(source.Count)))
     End Function
@@ -80,6 +81,9 @@ Public Module DecimalExtension
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
     <Untested()> <Extension()> Function Mode(ByVal source As IList(Of Decimal)) As List(Of Decimal)
+        If source Is Nothing Then Throw New ArgumentNullException("source")
+        Contract.EndContractBlock()
+
         Dim counts = (From Value In source Group By Value Into Elements = Count()).ToList
         Dim maxCount = counts.Max(Function(x) x.Elements)
         Return (From item In counts Where item.Elements = maxCount Select item.Value).ToList
@@ -92,6 +96,9 @@ Public Module DecimalExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function StandardDeviation(ByVal source As IList(Of Decimal)) As Decimal
+        If source Is Nothing Then Throw New ArgumentNullException("source")
+        Contract.EndContractBlock()
+
         Dim step1 = source.Average 'mean
         Dim step2 = From item In source Select item - step1 'deviation from mean
         Dim step3 = From item In step2 Select item * item 'square of deviation from mean

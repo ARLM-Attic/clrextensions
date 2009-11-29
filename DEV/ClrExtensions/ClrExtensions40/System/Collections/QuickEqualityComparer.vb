@@ -11,8 +11,8 @@ Namespace Collections
     Public Class QuickEqualityComparer(Of T)
         Implements IEqualityComparer(Of T)
 
-        Private m_EqualityFunction As Func(Of T, T, Boolean)
-        Private m_HashingFunction As Func(Of T, Integer)
+        Private ReadOnly m_EqualityFunction As Func(Of T, T, Boolean)
+        Private ReadOnly m_HashingFunction As Func(Of T, Integer)
 
         ''' <summary>
         ''' 
@@ -20,12 +20,16 @@ Namespace Collections
         ''' <param name="equalityFunction"></param>
         ''' <remarks>The lack of a true hashing function will make this version slow, don't use it when working with dictionaries</remarks>
         <Untested()>
-                Public Sub New(ByVal equalityFunction As Func(Of T, T, Boolean))
+        Public Sub New(ByVal equalityFunction As Func(Of T, T, Boolean))
             MyClass.New(equalityFunction, Nothing)
         End Sub
 
         <Untested()>
         Public Sub New(ByVal equalityFunction As Func(Of T, T, Boolean), ByVal hashingFunction As Func(Of T, Integer))
+            If equalityFunction Is Nothing Then Throw New ArgumentNullException("equalityFunction")
+            If hashingFunction Is Nothing Then Throw New ArgumentNullException("hashingFunction")
+            Contract.EndContractBlock()
+
             m_EqualityFunction = equalityFunction
             m_HashingFunction = If(hashingFunction, Function(x As T) 0)
         End Sub

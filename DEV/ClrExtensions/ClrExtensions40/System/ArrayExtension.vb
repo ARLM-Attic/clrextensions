@@ -70,14 +70,19 @@ Public Module ArrayExtension
     <Untested()>
     <Extension()> Function ToRectangle(Of T)(ByVal array As T()()) As T(,)
         If array Is Nothing Then Throw New ArgumentNullException("array")
+        If array.Length = 0 Then Throw New ArgumentException("array length must be non-zero")
+        'If array.GetUpperBound(0) < 0 Then Throw New ArgumentException("array length must be greater than 0")
+        'If array(0) Is Nothing Then Throw New ArgumentException("array cannot contain nulls")
+        Contract.EndContractBlock()
 
         Dim xMax As Integer = array.GetUpperBound(0)
+        Contract.Assume(array(0) IsNot Nothing)
         Dim yMax As Integer = array(0).GetUpperBound(0)
 
         For i = 1 To xMax
+            If array(i) Is Nothing Then Throw New ArgumentException("array cannot contain null sub-arrays")
             If array(i).GetUpperBound(0) <> yMax Then Throw New ArgumentException("array is not rectanglar")
         Next
-
 
         Dim result(xMax, yMax) As T
         For i = 0 To xMax

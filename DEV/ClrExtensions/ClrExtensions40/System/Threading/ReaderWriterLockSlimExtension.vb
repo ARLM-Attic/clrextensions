@@ -5,24 +5,45 @@
 Public Module ReaderWriterLockSlimExtension
 
     <Extension()> Public Function ReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
+        If lock Is Nothing Then Throw New ArgumentNullException("lock")
+        Contract.EndContractBlock()
+
         Return New LockToken(lock, LockMode.Read)
     End Function
 
     <Extension()> Public Function UpgradeableReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
+        If lock Is Nothing Then Throw New ArgumentNullException("lock")
+        Contract.EndContractBlock()
+
         Return New LockToken(lock, LockMode.Upgradable)
     End Function
 
     <Extension()> Public Function WriteSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
+        If lock Is Nothing Then Throw New ArgumentNullException("lock")
+        Contract.EndContractBlock()
+
         Return New LockToken(lock, LockMode.Write)
     End Function
 
     Private NotInheritable Class LockToken
         Implements IDisposable
-        Private m_Mode As LockMode
+        Private ReadOnly m_Mode As LockMode
         Private m_Lock As Global.System.Threading.ReaderWriterLockSlim
         Private m_Disposed As Boolean = False
 
+        '<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")>
+        '<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>
+        '<ContractInvariantMethod()> _
+        'Private Sub ObjectInvariant()
+        'Contract.Invariant(m_Lock IsNot Nothing)
+        'End Sub
+
+
         Friend Sub New(ByVal lock As Global.System.Threading.ReaderWriterLockSlim, ByVal mode As LockMode)
+            If lock Is Nothing Then Throw New ArgumentNullException("lock")
+            If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode")
+            Contract.EndContractBlock()
+
             m_Lock = lock
             m_Mode = mode
             Select Case mode

@@ -325,14 +325,14 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()>
     <Extension()> Public Function NormalizeLineBreaks(ByVal value As String) As String
         If value = "" Then Return value
         Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr).Replace(vbCr, vbCrLf)
     End Function
 
 
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()>
     <Extension()> Public Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
         If value = "" Then Return value
 
@@ -349,7 +349,7 @@ Public Module StringExtension
     End Function
 
 
-    <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()>
     <Extension()> Public Function HtmlLineBreaks(ByVal value As String) As String
         If value = "" Then Return value
         Return value.Replace(vbCrLf, "<br/>").Replace(vbLf, "<br/>").Replace(vbCr, "<br/>")
@@ -451,7 +451,8 @@ Public Module StringExtension
     End Function
 
 #If ClrVersion >= 35 Then
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <Untested()> <Extension()> Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <Untested()> <Extension()>
+    Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         If source Is Nothing Then Throw New ArgumentNullException("source")
         Contract.EndContractBlock()
 
@@ -502,7 +503,7 @@ Public Module StringExtension
         Return String.Format(value, args)
     End Function
 
-    <Untested()> <Extension()> Public Function Truncate(ByVal value As String, ByVal maxLength As Integer) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()> <Extension()> Public Function Truncate(ByVal value As String, ByVal maxLength As Integer) As String
         If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
 
         If value = "" Then Return ""
@@ -510,7 +511,7 @@ Public Module StringExtension
         Return value.Substring(0, maxLength - 3) & "..."
     End Function
 
-    <Untested()> <Extension()> Public Function TruncateStart(ByVal value As String, ByVal maxLength As Integer) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()> <Extension()> Public Function TruncateStart(ByVal value As String, ByVal maxLength As Integer) As String
         If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
 
         If value = "" Then Return ""
@@ -580,6 +581,8 @@ Public Module StringExtension
     End Function
 
     <Untested()> <Extension()> Public Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
+        If this Is Nothing Then Throw New ArgumentNullException("this")
+        Contract.EndContractBlock()
         Return Global.System.Web.HttpUtility.ParseQueryString(this)
     End Function
 #End If

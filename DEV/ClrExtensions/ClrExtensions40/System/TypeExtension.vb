@@ -13,6 +13,10 @@ Public Module TypeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function HasAttribute(ByVal type As Reflection.MemberInfo, ByVal attribute As Type) As Boolean
+        If type Is Nothing Then Throw New ArgumentNullException("type")
+        If attribute Is Nothing Then Throw New ArgumentNullException("attribute")
+        Contract.EndContractBlock()
+
         Return type.GetCustomAttributes(attribute, True).Length > 0
     End Function
 
@@ -23,6 +27,9 @@ Public Module TypeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function NameVBFormat(ByVal type As Reflection.MemberInfo) As String
+        If type Is Nothing Then Throw New ArgumentNullException("type")
+        Contract.EndContractBlock()
+
         'TODO - handle VB-sepcific names such as Integer, String, and Date
         'TODO - what happens if the type is generic?
         Return type.Name.Replace("[", "(").Replace("]", ")")

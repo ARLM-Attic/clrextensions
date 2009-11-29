@@ -13,6 +13,7 @@ Public Module IDataReaderExtension
     ''' <param name="this"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <Pure()>
     <Untested()> <Extension()> Public Function ToEnumerable(ByVal this As IDataReader) As IEnumerable(Of IDataRecord)
         Return New DataReaderEnumerable(this)
     End Function
@@ -24,8 +25,11 @@ Public Module IDataReaderExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
-<Untested()> <Extension()> Public Function ToList(ByVal this As IDataReader) As List(Of IDataRecord)
+    <Pure()>
+    <Untested()> <Extension()> Public Function ToList(ByVal this As IDataReader) As List(Of IDataRecord)
         If this Is Nothing Then Throw New ArgumentNullException("this")
+        Contract.Ensures(Contract.Result(Of List(Of IDataRecord))() IsNot Nothing)
+        Contract.EndContractBlock()
 
         Dim schema = New DataRecordColumns(this)
         Dim result As New List(Of IDataRecord)
