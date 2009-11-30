@@ -12,7 +12,7 @@ Public Module RestExtension
             Case RestVerb.Get : Return "GET"
             Case RestVerb.Post : Return "POST"
             Case RestVerb.Put : Return "PUT"
-            Case Else : Throw New ArgumentOutOfRangeException
+            Case Else : Throw New ArgumentOutOfRangeException("value")
         End Select
     End Function
 
@@ -20,15 +20,17 @@ Public Module RestExtension
  <Extension()> Public Function ToSchemeString(ByVal value As RestScheme) As String
         Select Case value
             Case RestScheme.Http : Return "http://"
-            Case RestScheme.https : Return "https://"
-            Case Else : Throw New ArgumentOutOfRangeException
+            Case RestScheme.Https : Return "https://"
+            Case Else : Throw New ArgumentOutOfRangeException("value")
         End Select
     End Function
 
+#If Subset <> "Client" Then
     <Untested()>
     Friend Function GetRestSchemeValues() As ICollection(Of RestScheme)
-        Return New RestScheme() {RestScheme.Http, RestScheme.https}
+        Return New RestScheme() {RestScheme.Http, RestScheme.Https}
     End Function
+#End If
 
 End Module
 #End If

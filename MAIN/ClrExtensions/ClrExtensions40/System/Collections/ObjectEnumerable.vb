@@ -7,19 +7,25 @@ Namespace Collections
 
     Friend Class ObjectEnumerable
         Implements IEnumerable(Of Object)
-        Private m_Source As IEnumerable
+        Private ReadOnly m_Source As IEnumerable
 
         <Untested()>
-        Public Sub New(ByVal souce As IEnumerable)
-            m_Source = souce
+        <Pure()>
+        Public Sub New(ByVal source As IEnumerable)
+            If source Is Nothing Then Throw New ArgumentNullException("source")
+            Contract.EndContractBlock()
+
+            m_Source = source
         End Sub
 
         <Untested()>
+        <Pure()>
         Public Function GetEnumerator() As IEnumerator(Of Object) Implements IEnumerable(Of Object).GetEnumerator
             Return New ObjectEnumerator(m_Source.GetEnumerator)
         End Function
 
         <Untested()>
+        <Pure()>
         Private Function IEnumerable_GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
             Return m_Source.GetEnumerator
         End Function

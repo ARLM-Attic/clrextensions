@@ -32,6 +32,7 @@ Public Module ByteExtension
     <Untested()>
     <Extension()> Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As String, ByVal groupingSize As Integer) As String
         If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
+        If format Is Nothing Then Throw New ArgumentNullException("format")
 
         If source Is Nothing Then Return ""
 
@@ -102,7 +103,6 @@ Public Module ByteExtension
                 Return source.ToString("X2", groupingSize)
 
             Case Else
-                Debug.Assert(False, "This should have been caught above. Did someone add a new ByteFormat?")
                 Throw New ArgumentOutOfRangeException("format")
 
         End Select
@@ -199,6 +199,7 @@ Public Module ByteExtension
     ''' <exception cref="ArgumentNullException">Thrown is encoding is null</exception>
     <Untested()>
     <Extension()> Public Function ToByteArray(ByVal source As String, ByVal encoding As Encoding) As Byte()
+        If encoding Is Nothing Then Throw New ArgumentNullException("encoding")
         If source = "" Then Return New Byte() {}
         Return encoding.GetBytes(source)
     End Function

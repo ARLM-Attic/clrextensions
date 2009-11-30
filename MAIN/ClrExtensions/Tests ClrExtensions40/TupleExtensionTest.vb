@@ -58,19 +58,8 @@ Public Class TupleExtensionTest
 #End Region
 
 
-    '''<summary>
-    '''A test for Add
-    '''</summary>
-    Public Sub AddTestHelper(Of TArg1, TArg2)()
-        Dim list As List(Of Tuple(Of TArg1, TArg2)) = Nothing ' TODO: Initialize to an appropriate value
-        Dim arg1 As TArg1 = CType(Nothing, TArg1) ' TODO: Initialize to an appropriate value
-        Dim arg2 As TArg2 = CType(Nothing, TArg2) ' TODO: Initialize to an appropriate value
-        TupleExtension.Add(Of TArg1, TArg2)(list, arg1, arg2)
-        Assert.Inconclusive("A method that does not return a value cannot be verified.")
-    End Sub
-
     <TestMethod()> _
-        Public Sub AddTest()
+    Public Sub AddTest()
 
         Dim list As New List(Of Tuple(Of String, Integer))
         Dim a = "test"
@@ -79,6 +68,17 @@ Public Class TupleExtensionTest
         Assert.AreEqual(1, list.Count)
         Assert.AreEqual(a, list(0).Item1)
         Assert.AreEqual(b, list(0).Item2)
+
+    End Sub
+
+    <ExpectedException(GetType(ArgumentNullException))>
+    <TestMethod()> _
+    Public Sub AddTest1()
+        Dim list As List(Of Tuple(Of String, Integer)) = Nothing
+        Dim a = "test"
+        Dim b = 5
+        TupleExtension.Add(list, a, b)
+
 
     End Sub
 End Class

@@ -5,7 +5,7 @@ Imports ClrExtensions.Collections
 
 #If IncludeUntested Then
 
-Module PredicateExtension
+Public Module PredicateExtension
 
     ''' <summary>
     ''' Converts a Predicate into a Func(Of T, Boolean)

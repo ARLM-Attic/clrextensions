@@ -6,14 +6,16 @@ Namespace Collections
     Friend Class TypeEnumerator(Of T)
         Implements IEnumerator(Of T)
 
-        Private m_Source As IEnumerator
+        Private ReadOnly m_Source As IEnumerator
 
         <Untested()>
+        <Pure()>
         Public Sub New(ByVal souce As IEnumerator)
             m_Source = souce
         End Sub
 
         <Untested()>
+        <Pure()>
         Public ReadOnly Property Current() As T Implements IEnumerator(Of T).Current
             Get
                 Return CType(m_Source.Current, T)
@@ -21,7 +23,8 @@ Namespace Collections
         End Property
 
         <Untested()>
-        Public ReadOnly Property IEnumerator_Current() As Object Implements IEnumerator.Current
+        <Pure()>
+        Private ReadOnly Property IEnumerator_Current() As Object Implements IEnumerator.Current
             Get
                 Return m_Source.Current
             End Get

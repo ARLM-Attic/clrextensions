@@ -15,7 +15,7 @@ Public Module ColorExtension
     ''' <param name="lightness">0 to 1</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> Public Function FromHsl(ByVal hue As Single, ByVal saturation As Single, ByVal lightness As Single) As Drawing.Color
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsl")> <Untested()> Public Function FromHsl(ByVal hue As Single, ByVal saturation As Single, ByVal lightness As Single) As Drawing.Color
         'todo : Check ranges
         Dim q As Single
         If lightness > 1 / 2 Then
@@ -64,6 +64,7 @@ Public Module ColorExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsv")>
     <Untested()> Public Function FromHsv(ByVal hue As Single, ByVal saturation As Single, ByVal value As Single) As Drawing.Color
         'todo : Check ranges
         Dim hi = (hue / 60.0F) Mod 6

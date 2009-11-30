@@ -17,6 +17,8 @@ Public Module ExceptionExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function ToStringDetailed(ByVal exception As Exception) As String
+        If exception Is Nothing Then Throw New ArgumentNullException("exception")
+
         Dim result As New StringBuilder()
 
         Dim localException = exception
@@ -45,6 +47,8 @@ Public Module ExceptionExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()> <Extension()> Public Function SqlExceptionDetails(ByVal sqlException As SqlClient.SqlException) As String
+        If sqlException Is Nothing Then Throw New ArgumentNullException("sqlException")
+
         Dim result As New StringBuilder(sqlException.ToString)
 
         result.AppendLine("SQL Exception Details")

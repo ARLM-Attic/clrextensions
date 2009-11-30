@@ -18,7 +18,7 @@ Public NotInheritable Class UntestedAttribute
     Inherits Attribute
 End Class
 
-#ElseIf CONFIG = "Release" Then
+#ElseIf CONFIG = "Release" Or CONFIG = "Debug-Tested" Then
 
 <Obsolete("Untested code shouldn't be in this release", True)>
 <AttributeUsage(AttributeTargets.Method or AttributeTargets.Property or AttributeTargets.Constructor , AllowMultiple:=False, Inherited:=True)>

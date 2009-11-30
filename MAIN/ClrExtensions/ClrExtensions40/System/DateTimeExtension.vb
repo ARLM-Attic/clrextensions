@@ -2,7 +2,7 @@
 #If IncludeUntested Then
 
 Public Module DateTimeExtension
-    Private s_Calendar As New Globalization.GregorianCalendar
+    'Private s_Calendar As New Globalization.GregorianCalendar
 
     ''' <summary>
     ''' Returns the first day in the month specified
@@ -34,7 +34,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function [Next](ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
+    <Extension()> Public Function [Next](ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim temp = dayofWeek - value.DayOfWeek
         If temp <= 0 Then
             Return value.Date.AddDays(7 + temp)
@@ -51,7 +51,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function Previous(ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
+    <Extension()> Public Function Previous(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim temp = value.DayOfWeek - dayofWeek
         If temp > 0 Then
             Return value.Date.AddDays(-temp)
@@ -68,12 +68,12 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function FirstOfMonth(ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
+    <Extension()> Public Function FirstOfMonth(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim result = value.FirstOfMonth
-        If result.DayOfWeek = dayofWeek Then
+        If result.DayOfWeek = dayOfWeek Then
             Return result
         Else
-            Return result.Next(dayofWeek)
+            Return result.Next(dayOfWeek)
         End If
     End Function
 
@@ -85,12 +85,12 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function LastOfMonth(ByVal value As Date, ByVal dayofWeek As DayOfWeek) As Date
+    <Extension()> Public Function LastOfMonth(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim result = value.LastOfMonth
-        If result.DayOfWeek = dayofWeek Then
+        If result.DayOfWeek = dayOfWeek Then
             Return result
         Else
-            Return result.Previous(dayofWeek)
+            Return result.Previous(dayOfWeek)
         End If
     End Function
 
@@ -149,9 +149,9 @@ Public Module DateTimeExtension
     End Function
 
     ''' Returns a QuarterYear object for the indicated date
-	<Untested()> <Extension()> Public Function ToQuarterYear(ByVal this As DateTime) As QuarterYear
-		Return New QuarterYear(this)
-	End Function
+    <Untested()> <Extension()> Public Function ToQuarterYear(ByVal this As DateTime) As QuarterYear
+        Return New QuarterYear(this)
+    End Function
 
 #End If
 
@@ -200,6 +200,7 @@ Public Module DateTimeExtension
         Return start <= value And value <= [end]
     End Function
 
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="unix")>
     <Untested()>
     Public Function FromUnixTime(ByVal unixTime As Long) As Date
         Return UnixEpoch + TimeSpan.FromSeconds(unixTime)

@@ -18,6 +18,9 @@
 ''' </summary>
 ''' <remarks></remarks>
 Public Structure FlexDate
+    Implements IEquatable(Of FlexDate)
+    Implements IComparable(Of FlexDate)
+
     Private m_DateMode As FlexDateParts
 
     Private m_Year As Integer?
@@ -26,6 +29,80 @@ Public Structure FlexDate
     Private m_WeekOfMonth As Integer?
     Private m_WeekOfYear As Integer?
     Private m_Day As Integer?
+
+    <Untested()>
+    Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        If TypeOf obj Is FlexDate Then
+            Return Equals(DirectCast(obj, FlexDate))
+        Else
+            Return False
+        End If
+    End Function
+
+    <Untested()>
+    Public Overrides Function GetHashCode() As Integer
+        Return m_DateMode Xor
+            m_Year.GetHashCode Xor
+            m_WeekOfYear.GetHashCode Xor
+            m_WeekOfMonth.GetHashCode Xor
+            m_Month.GetHashCode Xor
+            m_Quarter.GetHashCode Xor
+            m_Day.GetHashCode
+    End Function
+
+    <Untested()>
+    Public Shared Operator =(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
+        Return date1.Equals(date2)
+    End Operator
+
+    <Untested()>
+    Public Shared Operator <>(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
+        Return Not (date1 = date2)
+    End Operator
+
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId:="FlexDate")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")>
+    <Untested()>
+    Public Overloads Function Equals(ByVal other As FlexDate) As Boolean Implements System.IEquatable(Of FlexDate).Equals
+        With other
+            Select Case m_DateMode
+                Case FlexDateParts.Day
+                    Return Day = .Day
+
+                Case FlexDateParts.Month
+                    Return Month = .Month
+
+                Case FlexDateParts.Quarter
+                    Return Quarter = .Quarter
+
+                Case FlexDateParts.WeekOfMonth
+                    Return WeekOfMonth = .WeekOfMonth
+
+                Case FlexDateParts.WeekOfYear
+                    Return WeekOfYear = .WeekOfYear
+
+                Case FlexDateParts.Year
+                    Return Year = .Year
+
+                Case FlexDateParts.YearMonth
+                    Return Year = .Year And Month = .Month
+
+                Case FlexDateParts.YearMonthDay
+                    Return Year = .Year And Month = .Month And Day = .Day
+
+                Case FlexDateParts.YearMonthWeek
+                    Return Year = .Year And Month = .Month And WeekOfMonth = .WeekOfYear
+
+                Case FlexDateParts.YearQuarter
+                    Return Year = .Year And Quarter = .Quarter
+
+                Case FlexDateParts.YearWeekOfYear
+                    Return Year = .Year And WeekOfYear = .WeekOfYear
+
+                Case Else
+                    Throw New InvalidOperationException("This FlexDate is malformed.")
+            End Select
+        End With
+    End Function
 
     <Untested()> Public Sub New(ByVal value As Date)
         m_Year = value.Year
@@ -84,60 +161,143 @@ Public Structure FlexDate
         End Get
     End Property
 
-    <Untested()> Public ReadOnly Property Day() As Integer?
+    <Untested()> Public ReadOnly Property Day() As Integer
         Get
-            Return m_Day
+            If Not m_Day.HasValue Then Throw New InvalidOperationException("This value doesn't not have a day component")
+            Return m_Day.Value
         End Get
     End Property
 
-    <Untested()> Public ReadOnly Property Month() As Integer?
+    <Untested()> Public ReadOnly Property Month() As Integer
         Get
-            Return m_Month
+            If Not m_Month.HasValue Then Throw New InvalidOperationException("This value doesn't not have a month component")
+            Return m_Month.Value
         End Get
     End Property
 
-    <Untested()> Public ReadOnly Property Quarter() As Integer?
+    <Untested()> Public ReadOnly Property Quarter() As Integer
         Get
-            If m_Quarter.HasValue Then Return m_Quarter
-            If m_Month.HasValue Then Return QuarterYear.MonthToQuarter(m_Month.Value)
-            Return Nothing
+            If Not m_Quarter.HasValue And Not m_Month.HasValue Then Throw New InvalidOperationException("This value doesn't not have a quarter component")
+            If m_Quarter.HasValue Then Return m_Quarter.Value
+            Return QuarterYear.MonthToQuarter(m_Month.Value)
         End Get
     End Property
 
-    <Untested()> Public ReadOnly Property WeekOfMonth() As Integer?
+    <Untested()> Public ReadOnly Property WeekOfMonth() As Integer
         Get
-            Return m_WeekOfMonth
+            If Not m_WeekOfMonth.HasValue Then Throw New InvalidOperationException("This value doesn't not have a week of month component")
+            Return m_WeekOfMonth.Value
         End Get
     End Property
 
-    <Untested()> Public ReadOnly Property WeekOfYear() As Integer?
+    <Untested()> Public ReadOnly Property WeekOfYear() As Integer
         Get
-            Return m_WeekOfYear
+            If Not m_WeekOfYear.HasValue Then Throw New InvalidOperationException("This value doesn't not have a week of year component")
+            Return m_WeekOfYear.Value
         End Get
     End Property
 
-    <Untested()> Public ReadOnly Property Year() As Integer?
+    <Untested()> Public ReadOnly Property Year() As Integer
         Get
-            Return m_Year
+            If Not m_Year.HasValue Then Throw New InvalidOperationException("This value doesn't not have a year component")
+            Return m_Year.Value
         End Get
     End Property
+
+    Public Shared Operator >(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
+        Return date1.CompareTo(date2) > 0
+    End Operator
+
+    Public Shared Operator <(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
+        Return date1.CompareTo(date2) < 0
+    End Operator
+
+    Public Shared Operator >=(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
+        Return date1.CompareTo(date2) >= 0
+    End Operator
+
+    Public Shared Operator <=(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
+        Return date1.CompareTo(date2) <= 0
+    End Operator
+
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")> Public Function CompareTo(ByVal other As FlexDate) As Integer Implements System.IComparable(Of FlexDate).CompareTo
+        With other
+            Select Case m_DateMode
+                Case FlexDateParts.Day
+                    Return Day - .Day
+
+                Case FlexDateParts.Month
+                    Return Month - .Month
+
+                Case FlexDateParts.Quarter
+                    Return Quarter - .Quarter
+
+                Case FlexDateParts.WeekOfMonth
+                    Return WeekOfMonth - .WeekOfMonth
+
+                Case FlexDateParts.WeekOfYear
+                    Return WeekOfYear - .WeekOfYear
+
+                Case FlexDateParts.Year
+                    Return Year - .Year
+
+                Case FlexDateParts.YearMonth
+                    If Year = .Year Then Return Month - .Month
+                    Return Year - .Year
+
+                Case FlexDateParts.YearMonthDay
+                    If Year = .Year Then
+                        If Month = .Month Then Return Day - .Day
+                        Return Month - .Month
+                    End If
+                    Return Year - .Year
+
+                Case FlexDateParts.YearMonthWeek
+                    If Year = .Year Then
+                        If Month = .Month Then Return WeekOfMonth - .WeekOfMonth
+                        Return Month - .Month
+                    End If
+                    Return Year - .Year
+
+                Case FlexDateParts.YearQuarter
+                    If Year = .Year Then Return Quarter - .Quarter
+                    Return Year - .Year
+
+                Case FlexDateParts.YearWeekOfYear
+                    If Year = .Year Then Return WeekOfYear - .WeekOfYear
+                    Return Year - .Year
+
+                Case Else
+                    Throw New InvalidOperationException
+            End Select
+        End With
+
+    End Function
+
+    Public Shared Function Comparable(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
+        Return Comparable(date1.DateParts, date2.DateParts)
+    End Function
+
+    Public Shared Function Comparable(ByVal datePart1 As FlexDateParts, ByVal datePart2 As FlexDateParts) As Boolean
+        Return datePart1 = datePart2
+    End Function
 
 End Structure
 
 <Flags()> Public Enum FlexDateParts
-	None = 0
-	Year = 1
-	WeekOfYear = 2
-	Quarter = 4
-	Month = 8
-	WeekOfMonth = 16
-	Day = 32
+    None = 0
+    Year = 1
+    WeekOfYear = 2
+    Quarter = 4
+    Month = 8
+    WeekOfMonth = 16
+    Day = 32
 
-	YearWeek = Year Or WeekOfYear
-	YearQuarter = Year Or Quarter
-	YearMonth = Year Or Quarter Or Month
-	YearMonthWeek = Year Or Quarter Or Month Or WeekOfMonth
-	YearMonthDay = Year Or Quarter Or Month Or Day
+    YearWeekOfYear = Year Or WeekOfYear
+    YearQuarter = Year Or Quarter
+    YearMonth = Year Or Quarter Or Month
+    YearMonthWeek = Year Or Quarter Or Month Or WeekOfMonth
+    YearMonthDay = Year Or Quarter Or Month Or Day
 End Enum
 
 #End If

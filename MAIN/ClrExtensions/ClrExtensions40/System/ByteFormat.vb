@@ -15,11 +15,11 @@ Public Enum ByteFormat
 	''' Two-digit hexadecimal using lowercase letters
 	''' </summary>
 	''' <remarks></remarks>
-	UpperCaseHex = 1
+    UppercaseHex = 1
 	''' <summary>
 	''' Two-digit hexadecimal using uppercase letters
 	''' </summary>
 	''' <remarks></remarks>
-	LowerCaseHex = 2
+    LowercaseHex = 2
 End Enum
 #End If

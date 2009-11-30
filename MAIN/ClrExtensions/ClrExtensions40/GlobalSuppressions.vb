@@ -10,5 +10,10 @@
 ' "In Project Suppression File". 
 ' You do not need to add suppressions to this file manually. 
 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope:="namespace", Target:="ClrExtensions.Text")> 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str", Scope:="member", Target:="ClrExtensions.VBLanguageExtension.#CStr2`1(System.Nullable`1<!!0>,System.String)")> 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Str", Scope:="member", Target:="ClrExtensions.VBLanguageExtension.#CStr2`1(System.Nullable`1<!!0>)")> 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Scope:="member", Target:="ClrExtensions.TupleExtension.#Add`2(System.Collections.Generic.List`1<System.Tuple`2<!!0,!!1>>,!!0,!!1)")> 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Scope:="member", Target:="ClrExtensions.ListExtension.#Chunk`1(System.Collections.Generic.IList`1<!!0>,System.Int32)")> 
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope:="namespace", Target:="ClrExtensions")> 
 

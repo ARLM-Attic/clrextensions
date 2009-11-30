@@ -9,14 +9,19 @@ Namespace Collections
     Friend Class ObjectEnumerator
         Implements IEnumerator(Of Object)
 
-        Private m_Source As IEnumerator
+        Private ReadOnly m_Source As IEnumerator
 
         <Untested()>
+        <Pure()>
         Public Sub New(ByVal source As IEnumerator)
+            If source Is Nothing Then Throw New ArgumentNullException("source")
+            Contract.EndContractBlock()
+
             m_Source = source
         End Sub
 
         <Untested()>
+        <Pure()>
         Public ReadOnly Property Current() As Object Implements IEnumerator(Of Object).Current
             Get
                 Return m_Source.Current
@@ -24,6 +29,7 @@ Namespace Collections
         End Property
 
         <Untested()>
+        <Pure()>
         Private ReadOnly Property IEnumerator_Current() As Object Implements IEnumerator.Current
             Get
                 Return m_Source.Current
