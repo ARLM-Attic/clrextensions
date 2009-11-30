@@ -10,10 +10,10 @@ Namespace Collections
         Private ReadOnly m_List As New LinkedList(Of T)
 
         ''' <summary>
-        ''' Adds a single item to the queue
+        ''' Adds a single item to the end of the queue
         ''' </summary>
-        ''' <param name="value"></param>
-        ''' <remarks></remarks>
+        ''' <param name="value">Value to be enqueued</param>
+        ''' <remarks>The value can be null.</remarks>
         Public Sub Enqueue(ByVal value As T)
             Contract.Ensures(Count = Contract.OldValue(Count) + 1)
 
@@ -22,6 +22,11 @@ Namespace Collections
             End SyncLock
         End Sub
 
+        ''' <summary>
+        ''' Adds a single item to the beginning of the queue
+        ''' </summary>
+        ''' <param name="value">Value to be enqueued</param>
+        ''' <remarks>The value can be null</remarks>
         Public Sub EnqueueFirst(ByVal value As T)
             Contract.Ensures(Count = Contract.OldValue(Count) + 1)
 
@@ -31,10 +36,10 @@ Namespace Collections
         End Sub
 
         ''' <summary>
-        ''' Adds a list of items to the queue
+        ''' Adds a list of items to the end of the queue
         ''' </summary>
         ''' <param name="list"></param>
-        ''' <remarks></remarks>
+        ''' <remarks>The list cannot be null, but it can contain nulls</remarks>
         Public Sub Enqueue(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
             Contract.EndContractBlock()
@@ -46,6 +51,11 @@ Namespace Collections
             End SyncLock
         End Sub
 
+        ''' <summary>
+        ''' Adds a list of items to the beginning of the queue
+        ''' </summary>
+        ''' <param name="list"></param>
+        ''' <remarks>The list cannot be null, but it can contain nulls</remarks>
         Public Sub EnqueueFirst(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
             Contract.EndContractBlock()
@@ -57,6 +67,10 @@ Namespace Collections
             End SyncLock
         End Sub
 
+        ''' <summary>
+        ''' Clears the contents of the queue.
+        ''' </summary>
+        ''' <remarks></remarks>
         Public Sub Clear()
             Contract.Ensures(Count = 0)
 
@@ -128,7 +142,7 @@ Namespace Collections
         ''' <value></value>
         ''' <returns></returns>
         ''' <remarks></remarks>
-     <Pure()> Public ReadOnly Property Count() As Integer
+        <Pure()> Public ReadOnly Property Count() As Integer
             Get
                 SyncLock m_Lock
                     Return m_List.Count
@@ -140,6 +154,7 @@ Namespace Collections
             Contract.Ensures(Count = Contract.OldValue(Count) + 1)
             m_List.AddLast(value)
         End Sub
+
     End Class
 End Namespace
 #End If
