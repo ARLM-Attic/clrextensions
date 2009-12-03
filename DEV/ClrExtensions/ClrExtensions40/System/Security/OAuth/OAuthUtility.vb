@@ -1,10 +1,10 @@
 Imports System.Text
 Imports System.Security.Cryptography
 Imports System.Runtime.InteropServices
-Imports ClrExtensions.Net.Rest
 
 'Copyright (c) 2008, Jonathan Allen
 #If Subset <> "Client" Then
+Imports ClrExtensions.Net.Rest
 
 Namespace Security
     Namespace OAuth
