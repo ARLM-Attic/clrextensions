@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
 
-#If CONFIG = "Release-Untested" Then
+#If CONFIG = "Release-Untested" Or CONFIG = "Debug-Untested" Then
 
 <AttributeUsage(AttributeTargets.Method Or AttributeTargets.Property Or AttributeTargets.Constructor, AllowMultiple:=False, Inherited:=True)>
 NotInheritable Public Class UntestedAttribute

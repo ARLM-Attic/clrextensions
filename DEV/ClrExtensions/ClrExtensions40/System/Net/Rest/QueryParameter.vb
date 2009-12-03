@@ -31,12 +31,13 @@ Namespace Net.Rest
         End Sub
 
 
+#If ClrVersion > 0 Then
         <Untested()>
         Public Sub New(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod)
             m_Name = name
             m_Value = UrlEncode(value, encoding)
         End Sub
-
+#End If
 
         <Untested()>
         Public ReadOnly Property Name() As String

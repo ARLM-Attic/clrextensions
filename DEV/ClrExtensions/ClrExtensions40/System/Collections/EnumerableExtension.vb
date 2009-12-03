@@ -1,9 +1,13 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
+#If IncludeUntested Then
+
+#If ClrVersion > 0 Then
 Imports System.data
+#End If
+
 Imports ClrExtensions.Collections
 
-#If IncludeUntested Then
 
 
 Public Module EnumerableExtension

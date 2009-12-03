@@ -19,11 +19,11 @@ Public Module DirectoryInfo
         If target Is Nothing Then Throw New ArgumentNullException("target")
         target.Create()
 
-        For Each file In source.GetFiles
+        For Each file In source.EnumerateFiles
             file.CopyTo(System.IO.Path.Combine(target.FullName, file.Name), overwrite)
         Next
         If recursive Then
-            For Each directory In source.GetDirectories
+            For Each directory In source.EnumerateDirectories
                 Dim childTarget As New System.IO.DirectoryInfo(System.IO.Path.Combine(target.FullName, directory.Name))
                 childTarget.Create()
                 childTarget.CopyTo(childTarget, recursive, overwrite)

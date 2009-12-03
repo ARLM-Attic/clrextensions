@@ -4,6 +4,7 @@
 
 Public Module FileInfoExtension
 
+#If ClrVersion > 0 Then
     ''' <summary>
     ''' This prints a file using the defaults set by the operating system
     ''' </summary>
@@ -15,6 +16,7 @@ Public Module FileInfoExtension
         If Not file.Exists Then Throw New System.IO.IOException("The file does not exist.")
         Return IOExtension.PrintFile(file.FullName)
     End Function
+#End If
 
 End Module
 #End If

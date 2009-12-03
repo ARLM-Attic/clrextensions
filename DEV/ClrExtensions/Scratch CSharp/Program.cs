@@ -10,7 +10,7 @@ namespace Scratch_CSharp
 {
     class Program
     {
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
             var theLock = new  ReaderWriterLockSlim();
             IDisposable obj = null;

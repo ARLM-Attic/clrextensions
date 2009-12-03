@@ -13,6 +13,7 @@ Public Module ReaderWriterLockSlimExtension
 
     <Extension()> Public Function UpgradeableReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
         If lock Is Nothing Then Throw New ArgumentNullException("lock")
+        Contract.Ensures(Contract.Result(Of IDisposable)() IsNot Nothing)
         Contract.EndContractBlock()
 
         Return New LockToken(lock, LockMode.Upgradable)
@@ -28,7 +29,7 @@ Public Module ReaderWriterLockSlimExtension
     Private NotInheritable Class LockToken
         Implements IDisposable
         Private ReadOnly m_Mode As LockMode
-        Private m_Lock As Global.System.Threading.ReaderWriterLockSlim
+        Private ReadOnly m_Lock As Global.System.Threading.ReaderWriterLockSlim
         Private m_Disposed As Boolean = False
 
         '<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")>
@@ -57,6 +58,8 @@ Public Module ReaderWriterLockSlimExtension
         End Sub
 
         Private Sub Dispose(ByVal disposing As Boolean)
+            Contract.Requires(m_Lock IsNot Nothing)
+
             If Not Me.m_Disposed Then
                 If disposing Then
                     Select Case m_Mode
@@ -68,7 +71,6 @@ Public Module ReaderWriterLockSlimExtension
                             m_Lock.ExitWriteLock()
                     End Select
                 End If
-                m_Lock = Nothing
             End If
             Me.m_Disposed = True
         End Sub

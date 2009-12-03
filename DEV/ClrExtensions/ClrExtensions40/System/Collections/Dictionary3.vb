@@ -25,10 +25,12 @@ Namespace Collections
 
         End Sub
 
+#If ClrVersion > 0 Then
         <Pure()>
         Protected Sub New(ByVal info As System.Runtime.Serialization.SerializationInfo, ByVal context As System.Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
         End Sub
+#End If
 
         ''' <summary>
         ''' Creates a new instance with a suggested starting capacity
@@ -74,7 +76,7 @@ Namespace Collections
         ''' <remarks></remarks>
         <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1023:IndexersShouldNotBeMultidimensional")> <Untested()>
         Default Public Overloads Property Item(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal key3 As TKey3) As TValue
-            <Pure>
+            <Pure()>
             Get
                 Return MyBase.Item(MakeKey(key1, key2, key3))
             End Get

@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{2E876DEF-308E-4C58-A322-36B55916BFBB}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ClrExtensions</RootNamespace>
+    <AssemblyName>SilverlightExtensions40</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <MyType>Empty</MyType>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DocumentationFile>SilverlightExtensions40.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>SILVERLIGHT=1,SilverlightVersion=40</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DocumentationFile>SilverlightExtensions40.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>SILVERLIGHT=1</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Untested|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug-Untested\</OutputPath>
+    <DefineConstants>SILVERLIGHT=1,SilverlightVersion=40,IncludeUntested</DefineConstants>
+    <DocumentationFile>SilverlightExtensions40.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>Bin\Debug\SilverlightExtensions40.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisInputAssembly>bin\Debug-Untested\SilverlightExtensions40.dll</CodeAnalysisInputAssembly>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Untested|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release-Untested\</OutputPath>
+    <DefineConstants>SILVERLIGHT=1;SilverlightVersion=40;IncludeUntested</DefineConstants>
+    <DocumentationFile>SilverlightExtensions40.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>Bin\Release\SilverlightExtensions40.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisInputAssembly>bin\Release-Untested\SilverlightExtensions40.dll</CodeAnalysisInputAssembly>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Diagnostics.Contracts" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Net" />
+    <Import Include="System.Runtime.CompilerServices" />
+    <Import Include="System.Xml" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Ink" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Animation" />
+    <Import Include="System.Windows.Shapes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\ClrExtensions40\Attributes.vb">
+      <Link>Attributes.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ActionExtensions.vb">
+      <Link>System\ActionExtensions.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ArrayExtension.vb">
+      <Link>System\ArrayExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ByteExtension.vb">
+      <Link>System\ByteExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ByteFormat.vb">
+      <Link>System\ByteFormat.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\BatchQueue.vb">
+      <Link>System\Collections\BatchQueue.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\CollectionExtension.vb">
+      <Link>System\Collections\CollectionExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\ComparerExtension.vb">
+      <Link>System\Collections\ComparerExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\Dictionary2.vb">
+      <Link>System\Collections\Dictionary2.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\Dictionary3.vb">
+      <Link>System\Collections\Dictionary3.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\DictionaryExtension.vb">
+      <Link>System\Collections\DictionaryExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\EnumerableExtension.vb">
+      <Link>System\Collections\EnumerableExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\ListExtension.vb">
+      <Link>System\Collections\ListExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\ObjectEnumerable.vb">
+      <Link>System\Collections\ObjectEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\ObjectEnumerator.vb">
+      <Link>System\Collections\ObjectEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\QuickEqualityComparer.vb">
+      <Link>System\Collections\QuickEqualityComparer.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\SortedList.vb">
+      <Link>System\Collections\SortedList.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\Tuple2.vb">
+      <Link>System\Collections\Tuple2.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\Tuple3.vb">
+      <Link>System\Collections\Tuple3.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\TwoWayDictionary.vb">
+      <Link>System\Collections\TwoWayDictionary.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\TypeEnumerable.vb">
+      <Link>System\Collections\TypeEnumerable.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\TypeEnumerator.vb">
+      <Link>System\Collections\TypeEnumerator.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\Collections\UniqueQueue.vb">
+      <Link>System\Collections\UniqueQueue.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ComparableExtension.vb">
+      <Link>System\ComparableExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DateTimeExtension.vb">
+      <Link>System\DateTimeExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DBNullExtension.vb">
+      <Link>System\DBNullExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DecimalExtension.vb">
+      <Link>System\DecimalExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\DoubleExtension.vb">
+      <Link>System\DoubleExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\drawing\ColorExtension.vb">
+      <Link>System\Drawing\ColorExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\EnumExtension.vb">
+      <Link>System\EnumExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\ExceptionExtension.vb">
+      <Link>System\ExceptionExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\FlexDate.vb">
+      <Link>System\FlexDate.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\FuncExtension.vb">
+      <Link>System\FuncExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\Int32Extension.vb">
+      <Link>System\Int32Extension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\IntPtrExtension.vb">
+      <Link>System\IntPtrExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\DirectoryInfo.vb">
+      <Link>System\IO\DirectoryInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\FileInfoExtension.vb">
+      <Link>System\IO\FileInfoExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\IOExtension.vb">
+      <Link>System\IO\IOExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\StreamExtension.vb">
+      <Link>System\IO\StreamExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\io\StreamReaderExtension.vb">
+      <Link>System\IO\StreamReaderExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\LineBreakMode.vb">
+      <Link>System\LineBreakMode.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\LongExtension.vb">
+      <Link>System\LongExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\MathExtension.vb">
+      <Link>System\MathExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\QueryParameter.vb">
+      <Link>System\Net\Rest\QueryParameter.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\QueryParameterCollection.vb">
+      <Link>System\Net\Rest\QueryParameterCollection.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestCall.vb">
+      <Link>System\Net\Rest\RestCall.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestExtension.vb">
+      <Link>System\Net\Rest\RestExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestScheme.vb">
+      <Link>System\Net\Rest\RestScheme.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\net\rest\RestVerb.vb">
+      <Link>System\Net\Rest\RestVerb.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\System\ObjectExtension.vb">
+      <Link>System\ObjectExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\QuarterYear.vb">
+      <Link>System\QuarterYear.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\Range.vb">
+      <Link>System\Range.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\StringExtension.vb">
+      <Link>System\StringExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\text\StringBuilderExtension.vb">
+      <Link>System\Text\StringBuilderExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\threading\ReaderWriterLockSlimExtension.vb">
+      <Link>System\Threading\ReaderWriterLockSlimExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\threading\ThreadingExtension.vb">
+      <Link>System\Threading\ThreadingExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\TimeSpanExtension.vb">
+      <Link>System\TimeSpanExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\TupleExtension.vb">
+      <Link>System\TupleExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\TypeExtension.vb">
+      <Link>System\TypeExtension.vb</Link>
+    </Compile>
+    <Compile Include="..\clrextensions40\system\UrlEncodingMethod.vb">
+      <Link>System\UrlEncodingMethod.vb</Link>
+    </Compile>
+    <Compile Include="..\ClrExtensions40\VB\VBLanguageExtensions.vb">
+      <Link>VB\VBLanguageExtensions.vb</Link>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="System\Collections\SerializableAttribute.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\Security\AccessControl\" />
+    <Folder Include="System\Security\OAuth\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.VisualBasic.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

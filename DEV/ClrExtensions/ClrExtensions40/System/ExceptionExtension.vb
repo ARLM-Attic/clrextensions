@@ -1,5 +1,7 @@
 Imports System.Text
+#If ClrVersion > 0 Then
 Imports System.Data
+#End If
 
 'Copyright (c) 2008, Jonathan Allen
 
@@ -25,10 +27,13 @@ Public Module ExceptionExtension
 
         Do Until localException Is Nothing
             result.AppendLine(exception.ToString)
+
+#If ClrVersion > 0 Then
             If TypeOf exception Is SqlClient.SqlException Then
                 result.AppendLine()
                 result.AppendLine(SqlExceptionDetails(DirectCast(exception, SqlClient.SqlException)))
             End If
+#End If
 
             'TODO - Add any other 'tricky' exceptions here
 
@@ -39,6 +44,8 @@ Public Module ExceptionExtension
         Return result.ToString
 
     End Function
+
+#If ClrVersion > 0 Then
 
     ''' <summary>
     ''' Returns the detailed exception information from a SqlException, including its error collection
@@ -79,6 +86,7 @@ Public Module ExceptionExtension
 
         Return result.ToString
     End Function
+#End If
 
 End Module
 #End If

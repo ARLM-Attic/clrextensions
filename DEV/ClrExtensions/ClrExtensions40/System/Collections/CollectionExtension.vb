@@ -3,11 +3,8 @@
 Imports System.Runtime.InteropServices
 Imports ClrExtensions.Collections
 
-#If IncludeUntested Then
 
 Public Module CollectionExtension
-
-
 
     ''' <summary>
     ''' This creates an AddRange method on all strongly typed collections that don't already have one.
@@ -16,9 +13,8 @@ Public Module CollectionExtension
     ''' <param name="target">The list that will be updated</param>
     ''' <param name="source">The list that will be copied into the target list</param>
     ''' <remarks></remarks>
-    <Untested()>
     <Extension()>
-    Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As IEnumerable(Of T))
+    Public Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As IEnumerable(Of T))
         If target Is Nothing Then Throw New ArgumentNullException("target")
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If target.IsReadOnly Then Throw New ArgumentException("target cannot be a read-only collection")
@@ -29,6 +25,17 @@ Public Module CollectionExtension
         Next
     End Sub
 
+    <Extension()>
+    Public Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As ICollection(Of T))
+        If target Is Nothing Then Throw New ArgumentNullException("target")
+        If source Is Nothing Then Throw New ArgumentNullException("source")
+        If target.IsReadOnly Then Throw New ArgumentException("target cannot be a read-only collection")
+        Contract.Ensures(target.Count = Contract.OldValue(target.Count) + source.Count)
+
+        For Each item In source
+            target.Add(item)
+        Next
+    End Sub
+
 
 End Module
-#End If

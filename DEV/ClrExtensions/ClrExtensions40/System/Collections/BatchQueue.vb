@@ -1,4 +1,4 @@
-#If ClrVersion >= 35 Then
+#If ClrVersion >= 35 Or SilverlightVersion >= 40 Then
 Namespace Collections
     ''' <summary>
     ''' This is a queue which is thread-safe and can be dequeued in batches

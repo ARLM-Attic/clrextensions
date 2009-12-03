@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BatchQueueTest.vb" />
+    <Compile Include="CollectionExtensionTest.vb" />
     <Compile Include="EnumExtensionTest.vb" />
     <Compile Include="FSharpInteropTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

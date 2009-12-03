@@ -1,6 +1,8 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
+#If ClrVersion > 0 Then
 Imports System.Net.Mail
+#End If
 Imports System.Text
 Imports System.Text.RegularExpressions
 
@@ -249,6 +251,7 @@ Public Module StringExtension
         Return If(value = "", [default], value)
     End Function
 
+#If ClrVersion > 0 Then
 
     ''' <summary>
     ''' Checks to see if the string is an email address as per the System.Net.Mail definition. Note that a string may be the combination of a display name and an address. TO just get the address part, use ToMailAddress.Address
@@ -281,6 +284,8 @@ Public Module StringExtension
 
         Return New MailAddress(value)
     End Function
+
+#End If
 
 
     ''' <summary>
@@ -470,6 +475,8 @@ Public Module StringExtension
     End Function
 #End If
 
+#If ClrVersion > 0 Then
+
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")>
     <Untested()> <Extension()>
     Public Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
@@ -484,6 +491,9 @@ Public Module StringExtension
         Return result
     End Function
 #End If
+#End If
+
+#If ClrVersion > 0 Then
 
     <Untested()> <Extension()> Public Function MD5Hash(ByVal value As String) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
@@ -493,6 +503,7 @@ Public Module StringExtension
             Return hasher.ComputeHash(Encoding.UTF8.GetBytes(value)).ToString("x2")
         End Using
     End Function
+#End If
 
 
     <Untested()> <Extension()> Public Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
@@ -519,10 +530,11 @@ Public Module StringExtension
         Return "..." & value.Right(maxLength - 3)
     End Function
 
-
+#If ClrVersion > 0 Then
     <Untested()> <Extension()> Public Function IsNumeric(ByVal value As String) As Boolean
         Return Microsoft.VisualBasic.IsNumeric(value)
     End Function
+#End If
 
 
     ''' <summary>
@@ -561,7 +573,7 @@ Public Module StringExtension
         Return CType([Enum].Parse(GetType(T), value, True), T)
     End Function
 
-#If Subset <> "Client" Then
+#If Subset <> "Client" And ClrVersion > 0 Then
     <Untested()> <Extension()> Public Function HtmlEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlEncode(this)
     End Function
@@ -602,11 +614,12 @@ Public Module StringExtension
 
 
 
-#If Subset <> "Client" Then
+#If Subset <> "Client" And ClrVersion > 0 Then
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Extension()> Public Function UrlEncode(ByVal this As String) As String
         Return UrlEncode(this, UrlEncodingMethod.Clr)
     End Function
+
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Untested()>
     <Extension()> Public Function UrlEncode(ByVal value As String, ByVal method As UrlEncodingMethod) As String
@@ -623,9 +636,10 @@ Public Module StringExtension
                 Return Security.OAuth.UrlEncode(value)
 
             Case Else
-                Throw New ArgumentOutOfRangeException("method", method, "Encoding method not specified")
+                Throw New ArgumentOutOfRangeException("method", "Encoding method not specified")
         End Select
     End Function
+
 #End If
 
 

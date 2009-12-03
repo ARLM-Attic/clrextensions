@@ -135,6 +135,7 @@ Namespace Net.Rest
             result.m_Query.Add(parameter)
             Return result
         End Function
+#If ClrVersion > 0 Then
 
         <Untested()>
         Public Function AddParameter(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod) As RestCall
@@ -142,6 +143,7 @@ Namespace Net.Rest
             result.m_Query.Add(New QueryParameter(name, value.UrlEncode(encoding)))
             Return result
         End Function
+#End If
 
         'TODO: RemoveParameter(name)
         'TODO: ChangePath(path)

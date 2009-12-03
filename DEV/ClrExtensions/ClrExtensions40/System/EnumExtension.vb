@@ -30,7 +30,7 @@ Public Module EnumExtension
         If value Is Nothing Then Throw New ArgumentNullException("value")
         Contract.EndContractBlock()
 
-        Return CType([Enum].Parse(GetType(T), value), T)
+        Return CType([Enum].Parse(GetType(T), value, True), T)
     End Function
 
     ''' <summary>
@@ -43,7 +43,7 @@ Public Module EnumExtension
     <Untested()> Public Function EnumTryParse(Of T As Structure)(ByVal value As String) As T?
         If value Is Nothing Then Return Nothing
         Try
-            Return CType([Enum].Parse(GetType(T), value), T)
+            Return CType([Enum].Parse(GetType(T), value, True), T)
         Catch ex As ArgumentException
             Return Nothing
         End Try

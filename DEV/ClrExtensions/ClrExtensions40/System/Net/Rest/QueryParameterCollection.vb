@@ -17,6 +17,7 @@ Namespace Net.Rest
             AddByParsing(queryString)
         End Sub
 
+#If ClrVersion > 0 Then
         <Untested()>
         Public Sub AddRange(ByVal values As System.Collections.Specialized.NameValueCollection)
             If values Is Nothing Then Throw New ArgumentNullException("values")
@@ -26,6 +27,7 @@ Namespace Net.Rest
                 Me.Add(New QueryParameter(key, values(key)))
             Next
         End Sub
+#End If
 
         <Untested()>
         Public Sub AddByParsing(ByVal queryString As String)
@@ -46,7 +48,7 @@ Namespace Net.Rest
         Private Shared Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
             If queryString Is Nothing Then Throw New ArgumentNullException("queryString")
             Contract.EndContractBlock()
-            
+
             Dim result As New ObjectModel.Collection(Of QueryParameter)
             Dim rows = queryString.Split("&"c) 'removed , StringSplitOptions.RemoveEmptyEntries because CF does not seem to understand
             Dim values() As String

@@ -1,6 +1,7 @@
 'Copyright (c) 2008, Jonathan Allen
-
+#If ClrVersion > 0 Then
 Imports System.Drawing
+#End If
 
 #If IncludeUntested Then
 Public Module ColorExtension
@@ -15,7 +16,7 @@ Public Module ColorExtension
     ''' <param name="lightness">0 to 1</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsl")> <Untested()> Public Function FromHsl(ByVal hue As Single, ByVal saturation As Single, ByVal lightness As Single) As Drawing.Color
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsl")> <Untested()> Public Function FromHsl(ByVal hue As Single, ByVal saturation As Single, ByVal lightness As Single) As Color
         'todo : Check ranges
         Dim q As Single
         If lightness > 1 / 2 Then
@@ -35,9 +36,11 @@ Public Module ColorExtension
         Dim g = C(p, q, tG)
         Dim b = C(p, q, tB)
 
-        Return Color.FromArgb(CInt(256 * r), CInt(256 * g), CInt(256 * b))
+        Return Color.FromArgb(Opaque, CInt(256 * r), CInt(256 * g), CInt(256 * b))
 
     End Function
+
+    Public Const Opaque As Byte = 255
 
     Private Function Tc(ByVal t As Single) As Single
         Select Case t
@@ -65,7 +68,7 @@ Public Module ColorExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsv")>
-    <Untested()> Public Function FromHsv(ByVal hue As Single, ByVal saturation As Single, ByVal value As Single) As Drawing.Color
+    <Untested()> Public Function FromHsv(ByVal hue As Single, ByVal saturation As Single, ByVal value As Single) As Color
         'todo : Check ranges
         Dim hi = (hue / 60.0F) Mod 6
         Dim f = (hue / 60.0F) - CSng(Math.Floor(hue / 60.0F))
@@ -101,7 +104,7 @@ Public Module ColorExtension
                 b = q
         End Select
 
-        Return Color.FromArgb(CInt(256 * r), CInt(256 * g), CInt(256 * b))
+        Return Color.FromArgb(Opaque, CInt(256 * r), CInt(256 * g), CInt(256 * b))
 
     End Function
 

@@ -3,6 +3,7 @@ Imports System.IO
 #If IncludeUntested Then
 
 Public Module IOExtension
+#If ClrVersion > 0 Then
 
 
     ''' <summary>
@@ -31,7 +32,9 @@ Public Module IOExtension
 
         oNetWork.MapNetworkDrive(driveLetter, fixedUncName, True)
     End Sub
+#End If
 
+#If ClrVersion > 0 Then
 
     ''' <summary>
     ''' This prints a file using the defaults set by the operating system
@@ -61,6 +64,7 @@ Public Module IOExtension
 
         Return printJob
     End Function
+#End If
 
     <Untested()>
     Public Function ToFileName(ByVal text As String) As String
