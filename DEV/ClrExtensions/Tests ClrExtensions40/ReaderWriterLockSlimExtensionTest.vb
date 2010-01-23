@@ -16,7 +16,7 @@ Public Class ReaderWriterLockSlimExtensionTest
     '''Gets or sets the test context which provides
     '''information about and functionality for the current test run.
     '''</summary>
-    Public Property TestContext() As TestContext
+    Property TestContext() As TestContext
         Get
             Return testContextInstance
         End Get
@@ -31,22 +31,22 @@ Public Class ReaderWriterLockSlimExtensionTest
     '
     'Use ClassInitialize to run code before running the first test in the class
     '<ClassInitialize()>  _
-    'Public Shared Sub MyClassInitialize(ByVal testContext As TestContext)
+    ' Shared Sub MyClassInitialize(ByVal testContext As TestContext)
     'End Sub
     '
     'Use ClassCleanup to run code after all tests in a class have run
     '<ClassCleanup()>  _
-    'Public Shared Sub MyClassCleanup()
+    ' Shared Sub MyClassCleanup()
     'End Sub
     '
     'Use TestInitialize to run code before running each test
     '<TestInitialize()>  _
-    'Public Sub MyTestInitialize()
+    ' Sub MyTestInitialize()
     'End Sub
     '
     'Use TestCleanup to run code after each test has run
     '<TestCleanup()>  _
-    'Public Sub MyTestCleanup()
+    ' Sub MyTestCleanup()
     'End Sub
     '
 #End Region
@@ -55,7 +55,7 @@ Public Class ReaderWriterLockSlimExtensionTest
     '''A test for ReadSection
     '''</summary>
     <TestMethod()> _
-    Public Sub ReadSectionTest()
+    Sub ReadSectionTest()
 
         Dim lock As New ReaderWriterLockSlim
         Using lock.ReadSection
@@ -75,7 +75,7 @@ Public Class ReaderWriterLockSlimExtensionTest
     '''A test for UpgradeableReadSection
     '''</summary>
     <TestMethod()> _
-    Public Sub UpgradeableReadSectionTest()
+    Sub UpgradeableReadSectionTest()
 
         Dim lock As New ReaderWriterLockSlim
         Using lock.UpgradeableReadSection
@@ -107,7 +107,7 @@ Public Class ReaderWriterLockSlimExtensionTest
     '''A test for WriteSection
     '''</summary>
     <TestMethod()> _
-    Public Sub WriteSectionTest()
+    Sub WriteSectionTest()
         Dim lock As New ReaderWriterLockSlim
 
         Using lock.WriteSection
@@ -128,7 +128,7 @@ Public Class ReaderWriterLockSlimExtensionTest
     '''</summary>
     <ExpectedException(GetType(ArgumentNullException))>
     <TestMethod()> _
-    Public Sub ReadSectionTest1()
+    Sub ReadSectionTest1()
         Dim lock As ReaderWriterLockSlim = Nothing
         ReaderWriterLockSlimExtension.ReadSection(lock)
     End Sub
@@ -138,7 +138,7 @@ Public Class ReaderWriterLockSlimExtensionTest
     '''</summary>
     <ExpectedException(GetType(ArgumentNullException))>
     <TestMethod()> _
-    Public Sub WriteSectionTest1()
+    Sub WriteSectionTest1()
         Dim lock As ReaderWriterLockSlim = Nothing
         ReaderWriterLockSlimExtension.WriteSection(lock)
     End Sub
@@ -148,7 +148,7 @@ Public Class ReaderWriterLockSlimExtensionTest
     '''</summary>
     <ExpectedException(GetType(ArgumentNullException))>
     <TestMethod()> _
-    Public Sub UpgradeableReadSectionTest1()
+    Sub UpgradeableReadSectionTest1()
         Dim lock As ReaderWriterLockSlim = Nothing
         ReaderWriterLockSlimExtension.UpgradeableReadSection(lock)
     End Sub

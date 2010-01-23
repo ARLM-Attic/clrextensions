@@ -6,7 +6,7 @@ Imports ClrExtensions.Net.Rest
 
 Public Module RestExtension
     <Untested()>
- <Extension()> Public Function ToMethodString(ByVal value As RestVerb) As String
+ <Extension()>  Function ToMethodString(ByVal value As RestVerb) As String
         Select Case value
             Case RestVerb.Delete : Return "DELETE"
             Case RestVerb.Get : Return "GET"
@@ -17,7 +17,7 @@ Public Module RestExtension
     End Function
 
     <Untested()>
- <Extension()> Public Function ToSchemeString(ByVal value As RestScheme) As String
+ <Extension()>  Function ToSchemeString(ByVal value As RestScheme) As String
         Select Case value
             Case RestScheme.Http : Return "http://"
             Case RestScheme.Https : Return "https://"

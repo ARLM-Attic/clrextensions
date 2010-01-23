@@ -12,17 +12,14 @@ Namespace Data
         Private ReadOnly m_Source As IDataReader
 
         <Untested()>
-        <Pure()>
-        Public Sub New(ByVal source As IDataReader)
+                 Sub New(ByVal source As IDataReader)
             If source Is Nothing Then Throw New ArgumentNullException("source")
-            Contract.EndContractBlock()
 
             m_Source = source
         End Sub
 
         <Untested()>
-        <Pure()>
-        Public ReadOnly Property Current() As Global.System.Data.IDataRecord Implements IEnumerator(Of IDataRecord).Current
+                 ReadOnly Property Current() As Global.System.Data.IDataRecord Implements IEnumerator(Of IDataRecord).Current
             Get
                 Return m_Source
             End Get
@@ -30,14 +27,13 @@ Namespace Data
 
         <Untested()>
         Private ReadOnly Property IEnumerator_Current() As Object Implements IEnumerator.Current
-            <Pure()>
-            Get
+                        Get
                 Return m_Source
             End Get
         End Property
 
         <Untested()>
-        Public Function MoveNext() As Boolean Implements IEnumerator.MoveNext
+         Function MoveNext() As Boolean Implements IEnumerator.MoveNext
             Return m_Source.Read
         End Function
 
@@ -59,7 +55,7 @@ Namespace Data
         End Sub
 
         <Untested()>
-        Public Sub Dispose() Implements IDisposable.Dispose
+         Sub Dispose() Implements IDisposable.Dispose
             Dispose(True)
             GC.SuppressFinalize(Me)
         End Sub

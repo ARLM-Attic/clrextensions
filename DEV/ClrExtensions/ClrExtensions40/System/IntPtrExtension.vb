@@ -14,7 +14,7 @@ Public Module IntPtrExtension
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId:="pointer")>
     <Untested()>
-    <Extension()> Public Function ToStruct(Of T As Structure)(ByVal pointer As IntPtr) As T
+    <Extension()>  Function ToStruct(Of T As Structure)(ByVal pointer As IntPtr) As T
         Return DirectCast(Marshal.PtrToStructure(pointer, GetType(T)), T)
     End Function
 

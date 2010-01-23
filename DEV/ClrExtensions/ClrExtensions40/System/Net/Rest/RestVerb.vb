@@ -2,7 +2,7 @@
 #If IncludeUntested Then
 
 Namespace Net.Rest
-	Public Enum RestVerb
+	 Enum RestVerb
 		[Get] = 0
 		Post
 		Put

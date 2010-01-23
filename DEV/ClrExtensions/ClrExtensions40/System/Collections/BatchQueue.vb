@@ -14,8 +14,7 @@ Namespace Collections
         ''' </summary>
         ''' <param name="value">Value to be enqueued</param>
         ''' <remarks>The value can be null.</remarks>
-        Public Sub Enqueue(ByVal value As T)
-            Contract.Ensures(Count = Contract.OldValue(Count) + 1)
+        Sub Enqueue(ByVal value As T)
 
             SyncLock m_Lock
                 AddInternal(value)
@@ -27,8 +26,7 @@ Namespace Collections
         ''' </summary>
         ''' <param name="value">Value to be enqueued</param>
         ''' <remarks>The value can be null</remarks>
-        Public Sub EnqueueFirst(ByVal value As T)
-            Contract.Ensures(Count = Contract.OldValue(Count) + 1)
+        Sub EnqueueFirst(ByVal value As T)
 
             SyncLock m_Lock
                 m_List.AddFirst(value)
@@ -40,9 +38,8 @@ Namespace Collections
         ''' </summary>
         ''' <param name="list"></param>
         ''' <remarks>The list cannot be null, but it can contain nulls</remarks>
-        Public Sub Enqueue(ByVal list As IEnumerable(Of T))
+        Sub Enqueue(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
-            Contract.EndContractBlock()
 
             SyncLock m_Lock
                 For Each item In list
@@ -56,9 +53,8 @@ Namespace Collections
         ''' </summary>
         ''' <param name="list"></param>
         ''' <remarks>The list cannot be null, but it can contain nulls</remarks>
-        Public Sub EnqueueFirst(ByVal list As IEnumerable(Of T))
+        Sub EnqueueFirst(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
-            Contract.EndContractBlock()
 
             SyncLock m_Lock
                 For Each item In list.Reverse
@@ -71,8 +67,7 @@ Namespace Collections
         ''' Clears the contents of the queue.
         ''' </summary>
         ''' <remarks></remarks>
-        Public Sub Clear()
-            Contract.Ensures(Count = 0)
+        Sub Clear()
 
             SyncLock m_Lock
                 m_List.Clear()
@@ -86,10 +81,7 @@ Namespace Collections
         ''' <returns>True if the queue contained items, False otherwise</returns>
         ''' <remarks></remarks>
         <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")>
-        Public Function TryDequeue(ByRef value As T) As Boolean
-            Contract.Ensures(Contract.OldValue(Count) > 0 And Contract.Result(Of Boolean)() = True)
-            Contract.Ensures(Contract.OldValue(Count) = 0 And Contract.Result(Of Boolean)() = False)
-            Contract.Ensures(Contract.OldValue(Count) = 0 Or Contract.OldValue(Count) = Count + 1)
+        Function TryDequeue(ByRef value As T) As Boolean
 
             SyncLock m_Lock
                 If m_List.Count > 0 Then
@@ -111,9 +103,7 @@ Namespace Collections
         ''' <param name="maxBatchSize">Maximum number of items to remove from the queue</param>
         ''' <returns>A list containing minBatchSize &lt;= count &lt;= MaxBatchSize items or an empty list if there aren't at least minBatchSize items</returns>
         ''' <remarks></remarks>
-        Public Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As List(Of T)
-            Contract.Ensures(Contract.Result(Of List(Of T)).Count <= maxBatchSize)
-            Contract.Ensures(Contract.Result(Of List(Of T)).Count = 0 Or Contract.Result(Of List(Of T)).Count >= minBatchSize)
+        Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As List(Of T)
 
             SyncLock m_Lock
 
@@ -142,7 +132,7 @@ Namespace Collections
         ''' <value></value>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        <Pure()> Public ReadOnly Property Count() As Integer
+        ReadOnly Property Count() As Integer
             Get
                 SyncLock m_Lock
                     Return m_List.Count
@@ -151,7 +141,6 @@ Namespace Collections
         End Property
 
         Private Sub AddInternal(ByVal value As T)
-            Contract.Ensures(Count = Contract.OldValue(Count) + 1)
             m_List.AddLast(value)
         End Sub
 

@@ -18,7 +18,7 @@ Public Module LongExtension
     ''' <remarks>1 KB=1024 Bytes, 1 MB=1024 KB, 1 GB = 1024 MB
     ''' The return format is "##0.## XX" where XX is B, KB, MB, or GB as appropriate</remarks>
     <Untested()>
-    <Extension()> Public Function ToByteSize(ByVal bytes As Long) As String
+    <Extension()>  Function ToByteSize(ByVal bytes As Long) As String
         Select Case CDbl(bytes)
             Case Is >= GB
                 Return (bytes / (GB)).ToString("##0.##") & " GB"
@@ -38,7 +38,7 @@ Public Module LongExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function ParseByteSize(ByVal value As String) As Long
+    <Extension()>  Function ParseByteSize(ByVal value As String) As Long
         If value Is Nothing Then Throw New ArgumentNullException("value")
 
 

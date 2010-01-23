@@ -20,7 +20,7 @@ Public Class BatchQueueTest
     '''Gets or sets the test context which provides
     '''information about and functionality for the current test run.
     '''</summary>
-    Public Property TestContext() As TestContext
+    Property TestContext() As TestContext
         Get
             Return testContextInstance
         End Get
@@ -35,28 +35,28 @@ Public Class BatchQueueTest
     '
     'Use ClassInitialize to run code before running the first test in the class
     '<ClassInitialize()> 
-    'Public Shared Sub MyClassInitialize(ByVal testContext As TestContext)
+    ' Shared Sub MyClassInitialize(ByVal testContext As TestContext)
     'End Sub
     '
     'Use ClassCleanup to run code after all tests in a class have run
     '<ClassCleanup()> 
-    'Public Shared Sub MyClassCleanup()
+    ' Shared Sub MyClassCleanup()
     'End Sub
     '
     'Use TestInitialize to run code before running each test
     '<TestInitialize()> 
-    'Public Sub MyTestInitialize()
+    ' Sub MyTestInitialize()
     'End Sub
     '
     'Use TestCleanup to run code after each test has run
     '<TestCleanup()> 
-    'Public Sub MyTestCleanup()
+    ' Sub MyTestCleanup()
     'End Sub
     '
 #End Region
 
     <TestMethod()>
-    Public Sub ClearTest()
+    Sub ClearTest()
         Dim x = New BatchQueue(Of Integer)
         x.Enqueue({1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
         Assert.AreEqual(10, x.Count)
@@ -68,7 +68,7 @@ Public Class BatchQueueTest
     '''<summary>
     '''A test for DequeueBatch
     '''</summary>
-    Public Sub DequeueBatchTestHelper(Of T)()
+    Sub DequeueBatchTestHelper(Of T)()
         Dim target As BatchQueue(Of T) = New BatchQueue(Of T)() ' TODO: Initialize to an appropriate value
         Dim minBatchSize As Integer = 0 ' TODO: Initialize to an appropriate value
         Dim maxBatchSize As Integer = 0 ' TODO: Initialize to an appropriate value
@@ -80,7 +80,7 @@ Public Class BatchQueueTest
     End Sub
 
     <TestMethod()>
-    Public Sub DequeueBatchTest()
+    Sub DequeueBatchTest()
         Dim x = New BatchQueue(Of Integer)
 
         Dim batch1 = x.DequeueBatch(4, 8)
@@ -125,7 +125,7 @@ Public Class BatchQueueTest
     '''<summary>
     '''A test for EnqueueFirst
     '''</summary>
-    Public Sub EnqueueFirstTestHelper(Of T)()
+    Sub EnqueueFirstTestHelper(Of T)()
         Dim target As BatchQueue(Of T) = New BatchQueue(Of T)() ' TODO: Initialize to an appropriate value
         Dim list As IEnumerable(Of T) = Nothing ' TODO: Initialize to an appropriate value
         target.EnqueueFirst(list)
@@ -133,7 +133,7 @@ Public Class BatchQueueTest
     End Sub
 
     <TestMethod()>
-    Public Sub EnqueueFirstTest()
+    Sub EnqueueFirstTest()
         Dim x As New BatchQueue(Of Integer)
         x.Enqueue(1)
         x.Enqueue(2)
@@ -156,7 +156,7 @@ Public Class BatchQueueTest
 
     <ExpectedException(GetType(ArgumentNullException))>
     <TestMethod()>
-    Public Sub EnqueueTest1()
+    Sub EnqueueTest1()
         Dim x As New BatchQueue(Of Integer)
         Dim y As List(Of Integer) = Nothing
         x.Enqueue(y)
@@ -164,7 +164,7 @@ Public Class BatchQueueTest
 
     <ExpectedException(GetType(ArgumentNullException))>
     <TestMethod()>
-    Public Sub EnqueueFirstTest1()
+    Sub EnqueueFirstTest1()
         Dim x As New BatchQueue(Of Integer)
         Dim y As List(Of Integer) = Nothing
         x.EnqueueFirst(y)

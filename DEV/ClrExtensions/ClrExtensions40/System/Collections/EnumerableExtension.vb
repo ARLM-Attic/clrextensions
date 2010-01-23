@@ -10,7 +10,7 @@ Imports ClrExtensions.Collections
 
 
 
-Public Module EnumerableExtension
+public  Module EnumerableExtension
 
     ''' <summary>
     ''' This converts an IEnumerable to an IEnumerable(Of Object)
@@ -18,9 +18,8 @@ Public Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()> Public Function ToIEnumerable(ByVal this As IEnumerable) As IEnumerable(Of Object)
-        Contract.Ensures(Contract.Result(Of IEnumerable(Of Object))() IsNot Nothing)
-        Return New ObjectEnumerable(this)
+    <Pure()> <Untested()> <Extension()>  Function ToIEnumerable(ByVal this As IEnumerable) As IEnumerable(Of Object)
+                Return New ObjectEnumerable(this)
     End Function
 
     ''' <summary>
@@ -30,9 +29,8 @@ Public Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <returns></returns>
     ''' <remarks>This will throw an exception if one the values cannot be case into the correct type</remarks>
-    <Pure()> <Untested()> <Extension()> Public Function ToIEnumerable(Of T)(ByVal this As IEnumerable) As IEnumerable(Of T)
-        Contract.Ensures(Contract.Result(Of IEnumerable(Of T))() IsNot Nothing)
-        Return New TypeEnumerable(Of T)(this)
+    <Pure()> <Untested()> <Extension()>  Function ToIEnumerable(Of T)(ByVal this As IEnumerable) As IEnumerable(Of T)
+                Return New TypeEnumerable(Of T)(this)
     End Function
 
 #If ClrVersion >= 35 Then
@@ -47,10 +45,8 @@ Public Module EnumerableExtension
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")>
     <Untested()>
     <Extension()>
-    <Pure()>
-    Public Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T)) As DataTable
+         Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T)) As DataTable
         If this Is Nothing Then Throw New ArgumentNullException("this")
-        Contract.Ensures(Contract.Result(Of DataTable)() IsNot Nothing)
 
         Dim result As New DataTable
 
@@ -86,11 +82,9 @@ Public Module EnumerableExtension
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")>
-    <Pure()>
-    <Untested()> <Extension()> Public Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T), ByVal ParamArray properties() As String) As DataTable
+        <Untested()> <Extension()>  Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T), ByVal ParamArray properties() As String) As DataTable
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If properties Is Nothing Then Throw New ArgumentNullException("properties")
-        Contract.Ensures(Contract.Result(Of DataTable)() IsNot Nothing)
 
         Dim result As New DataTable
 
@@ -132,10 +126,9 @@ Public Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <param name="action"></param>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Sub ForEach(Of T)(ByVal this As IEnumerable(Of T), ByVal action As Action(Of T))
+    <Untested()> <Extension()>  Sub ForEach(Of T)(ByVal this As IEnumerable(Of T), ByVal action As Action(Of T))
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If action Is Nothing Then Throw New ArgumentNullException("action")
-        Contract.EndContractBlock()
 
         For Each item In this
             action(item)
@@ -148,10 +141,9 @@ Public Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <param name="action"></param>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Sub ForEach(ByVal this As IEnumerable, ByVal action As Action(Of Object))
+    <Untested()> <Extension()>  Sub ForEach(ByVal this As IEnumerable, ByVal action As Action(Of Object))
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If action Is Nothing Then Throw New ArgumentNullException("action")
-        Contract.EndContractBlock()
 
         For Each item In this
             action(item)
@@ -168,10 +160,9 @@ Public Module EnumerableExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Pure()> <Untested()> <Extension()>
-    Public Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Func(Of T, Boolean)) As Boolean
+     Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Func(Of T, Boolean)) As Boolean
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If predicate Is Nothing Then Throw New ArgumentNullException("predicate")
-        Contract.EndContractBlock()
 
         For Each item In source
             If Not predicate.Invoke(item) Then Return False
@@ -187,10 +178,9 @@ Public Module EnumerableExtension
     ''' <param name="predicate"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()> Public Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Predicate(Of T)) As Boolean
+    <Pure()> <Untested()> <Extension()>  Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Predicate(Of T)) As Boolean
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If predicate Is Nothing Then Throw New ArgumentNullException("predicate")
-        Contract.EndContractBlock()
 
         For Each item In source
             If Not predicate.Invoke(item) Then Return False

@@ -21,7 +21,7 @@ Public Class VBLanguageExtensionTest
     '''Gets or sets the test context which provides
     '''information about and functionality for the current test run.
     '''</summary>
-    Public Property TestContext() As TestContext
+    Property TestContext() As TestContext
         Get
             Return testContextInstance
         End Get
@@ -36,22 +36,22 @@ Public Class VBLanguageExtensionTest
     '
     'Use ClassInitialize to run code before running the first test in the class
     '<ClassInitialize()>  _
-    'Public Shared Sub MyClassInitialize(ByVal testContext As TestContext)
+    ' Shared Sub MyClassInitialize(ByVal testContext As TestContext)
     'End Sub
     '
     'Use ClassCleanup to run code after all tests in a class have run
     '<ClassCleanup()>  _
-    'Public Shared Sub MyClassCleanup()
+    ' Shared Sub MyClassCleanup()
     'End Sub
     '
     'Use TestInitialize to run code before running each test
     '<TestInitialize()>  _
-    'Public Sub MyTestInitialize()
+    ' Sub MyTestInitialize()
     'End Sub
     '
     'Use TestCleanup to run code after each test has run
     '<TestCleanup()>  _
-    'Public Sub MyTestCleanup()
+    ' Sub MyTestCleanup()
     'End Sub
     '
 #End Region
@@ -61,7 +61,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CStr2
     '''</summary>
     <TestMethod()> _
-    Public Sub CStr2Test2()
+    Sub CStr2Test2()
         Dim valueA As Object = Nothing
         Dim valueB As Object = DBNull.Value
         Dim valueC_ As Nullable(Of Integer) = Nothing
@@ -103,7 +103,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CStr2
     '''</summary>
     <TestMethod()> _
-    Public Sub CStr2Test1()
+    Sub CStr2Test1()
         Dim valueA As Object = Nothing
         Dim valueB As Object = DBNull.Value
         Dim valueC_ As Nullable(Of Integer) = Nothing
@@ -142,7 +142,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CBool2
     '''</summary>
     <TestMethod()> _
-    Public Sub CBool2Test()
+    Sub CBool2Test()
         Dim defaultValue = True
         Dim values As New List(Of Tuple(Of Object, Boolean?)) From {
             {Nothing, True},
@@ -158,7 +158,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CBool2
     '''</summary>
     <TestMethod()> _
-    Public Sub CBool2Test1()
+    Sub CBool2Test1()
 
         Dim values As New List(Of Tuple(Of Object, Boolean?)) From {
             {Nothing, Nothing},
@@ -175,7 +175,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CByte2
     '''</summary>
     <TestMethod()> _
-    Public Sub CByte2Test()
+    Sub CByte2Test()
         Dim defaultValue = 5
         Dim values As New List(Of Tuple(Of Object, Byte?)) From {
             {Nothing, 5},
@@ -191,7 +191,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CByte2
     '''</summary>
     <TestMethod()> _
-    Public Sub CByte2Test1()
+    Sub CByte2Test1()
         Dim values As New List(Of Tuple(Of Object, Byte?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},
@@ -206,7 +206,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CChar2
     '''</summary>
     <TestMethod()> _
-    Public Sub CChar2Test()
+    Sub CChar2Test()
         Dim values As New List(Of Tuple(Of Object, Char?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},
@@ -221,7 +221,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CChar2
     '''</summary>
     <TestMethod()> _
-    Public Sub CChar2Test1()
+    Sub CChar2Test1()
         Dim defaultValue = "5"c
         Dim values As New List(Of Tuple(Of Object, Char?)) From {
             {Nothing, defaultValue},
@@ -237,7 +237,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CDate2
     '''</summary>
     <TestMethod()> _
-    Public Sub CDate2Test()
+    Sub CDate2Test()
         Dim defaultValue = #1/1/2008#
         Dim values As New List(Of Tuple(Of Object, Date?)) From {
             {Nothing, defaultValue},
@@ -253,7 +253,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CDate2
     '''</summary>
     <TestMethod()> _
-    Public Sub CDate2Test1()
+    Sub CDate2Test1()
         Dim values As New List(Of Tuple(Of Object, Date?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},
@@ -268,7 +268,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CDbl2
     '''</summary>
     <TestMethod()> _
-    Public Sub CDbl2Test()
+    Sub CDbl2Test()
 
         Dim values As New List(Of Tuple(Of Object, Double?)) From {
             {Nothing, Nothing},
@@ -284,7 +284,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CDbl2
     '''</summary>
     <TestMethod()> _
-    Public Sub CDbl2Test1()
+    Sub CDbl2Test1()
         Dim defaultValue As Double = 5
         Dim values As New List(Of Tuple(Of Object, Double?)) From {
             {Nothing, defaultValue},
@@ -300,7 +300,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CDec2
     '''</summary>
     <TestMethod()> _
-    Public Sub CDec2Test()
+    Sub CDec2Test()
 
         Dim values As New List(Of Tuple(Of Object, Decimal?)) From {
             {Nothing, Nothing},
@@ -316,7 +316,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CDec2
     '''</summary>
     <TestMethod()> _
-    Public Sub CDec2Test1()
+    Sub CDec2Test1()
         Dim defaultValue As Decimal = 5
         Dim values As New List(Of Tuple(Of Object, Decimal?)) From {
             {Nothing, defaultValue},
@@ -332,7 +332,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CInt2
     '''</summary>
     <TestMethod()> _
-    Public Sub CInt2Test()
+    Sub CInt2Test()
         Dim defaultValue = 5
         Dim values As New List(Of Tuple(Of Object, Integer?)) From {
             {Nothing, defaultValue},
@@ -348,7 +348,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CInt2
     '''</summary>
     <TestMethod()> _
-    Public Sub CInt2Test1()
+    Sub CInt2Test1()
 
         Dim values As New List(Of Tuple(Of Object, Integer?)) From {
             {Nothing, Nothing},
@@ -364,7 +364,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CLng2
     '''</summary>
     <TestMethod()> _
-    Public Sub CLng2Test()
+    Sub CLng2Test()
         Dim values As New List(Of Tuple(Of Object, Long?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},
@@ -379,7 +379,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CLng2
     '''</summary>
     <TestMethod()> _
-    Public Sub CLng2Test1()
+    Sub CLng2Test1()
         Dim defaultValue As Long = 5
         Dim values As New List(Of Tuple(Of Object, Long?)) From {
             {Nothing, defaultValue},
@@ -395,7 +395,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CSByte2
     '''</summary>
     <TestMethod()> _
-    Public Sub CSByte2Test()
+    Sub CSByte2Test()
         Dim values As New List(Of Tuple(Of Object, SByte?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},
@@ -410,7 +410,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CSByte2
     '''</summary>
     <TestMethod()> _
-    Public Sub CSByte2Test1()
+    Sub CSByte2Test1()
         Dim defaultValue As SByte = -15
         Dim values As New List(Of Tuple(Of Object, SByte?)) From {
             {Nothing, defaultValue},
@@ -426,7 +426,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CShort2
     '''</summary>
     <TestMethod()> _
-    Public Sub CShort2Test()
+    Sub CShort2Test()
         Dim defaultValue As Short = -15
         Dim values As New List(Of Tuple(Of Object, Short?)) From {
             {Nothing, defaultValue},
@@ -442,7 +442,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CShort2
     '''</summary>
     <TestMethod()> _
-    Public Sub CShort2Test1()
+    Sub CShort2Test1()
 
         Dim values As New List(Of Tuple(Of Object, Short?)) From {
             {Nothing, Nothing},
@@ -458,7 +458,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CSng2
     '''</summary>
     <TestMethod()> _
-    Public Sub CSng2Test()
+    Sub CSng2Test()
         Dim defaultValue As Single = -15
         Dim values As New List(Of Tuple(Of Object, Single?)) From {
             {Nothing, defaultValue},
@@ -474,7 +474,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CSng2
     '''</summary>
     <TestMethod()> _
-    Public Sub CSng2Test1()
+    Sub CSng2Test1()
         Dim values As New List(Of Tuple(Of Object, Single?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},
@@ -490,7 +490,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CUInt2
     '''</summary>
     <TestMethod()> _
-    Public Sub CUInt2Test()
+    Sub CUInt2Test()
 
         Dim values As New List(Of Tuple(Of Object, UInt32?)) From {
             {Nothing, Nothing},
@@ -506,7 +506,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CUInt2
     '''</summary>
     <TestMethod()> _
-    Public Sub CUInt2Test1()
+    Sub CUInt2Test1()
         Dim defaultValue = 5
         Dim values As New List(Of Tuple(Of Object, UInt32?)) From {
             {Nothing, defaultValue},
@@ -522,7 +522,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CULng2
     '''</summary>
     <TestMethod()> _
-    Public Sub CULng2Test()
+    Sub CULng2Test()
         Dim defaultValue = 5
         Dim values As New List(Of Tuple(Of Object, UInt64?)) From {
             {Nothing, defaultValue},
@@ -538,7 +538,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CULng2
     '''</summary>
     <TestMethod()> _
-    Public Sub CULng2Test1()
+    Sub CULng2Test1()
         Dim defaultValue = 5
         Dim values As New List(Of Tuple(Of Object, UInt64?)) From {
             {Nothing, defaultValue},
@@ -554,7 +554,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CUShort2
     '''</summary>
     <TestMethod()> _
-    Public Sub CUShort2Test()
+    Sub CUShort2Test()
         Dim values As New List(Of Tuple(Of Object, UShort?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},
@@ -569,7 +569,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CUShort2
     '''</summary>
     <TestMethod()> _
-    Public Sub CUShort2Test1()
+    Sub CUShort2Test1()
         Dim values As New List(Of Tuple(Of Object, UShort?)) From {
             {Nothing, Nothing},
             {DBNull.Value, Nothing},

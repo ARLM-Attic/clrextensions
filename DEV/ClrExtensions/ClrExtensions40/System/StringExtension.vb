@@ -20,7 +20,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String) As String
+    <Extension()>  Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String) As String
         If source Is Nothing Then Return ""
         Return String.Join(separator, source.ToArray)
     End Function
@@ -35,7 +35,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function Repeat(ByVal value As String, ByVal count As Integer) As String
+ <Extension()>  Function Repeat(ByVal value As String, ByVal count As Integer) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
         If value = "" Then Throw New ArgumentException("value cannot be empty", "value")
         If count < 0 Then Throw New ArgumentOutOfRangeException("count")
@@ -58,7 +58,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String, ByVal options As StringSplitOptions) As String
+ <Extension()>  Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String, ByVal options As StringSplitOptions) As String
         If source Is Nothing Then Return ""
         Select Case options
             Case StringSplitOptions.None
@@ -80,7 +80,7 @@ Public Module StringExtension
     ''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function Split(ByVal source As String, ByVal separator As String) As String()
+    <Extension()>  Function Split(ByVal source As String, ByVal separator As String) As String()
         If source Is Nothing Then Return New String() {}
         Return source.Split(New String() {separator}, StringSplitOptions.None)
     End Function
@@ -95,7 +95,7 @@ Public Module StringExtension
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
     <Untested()>
-    <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal options As StringSplitOptions) As String()
+    <Extension()>  Function Split(ByVal source As String, ByVal separator As String, ByVal options As StringSplitOptions) As String()
         If source Is Nothing Then Return New String() {}
         Return source.Split(New String() {separator}, options)
     End Function
@@ -111,10 +111,9 @@ Public Module StringExtension
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
     <Untested()>
- <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer) As String()
+ <Extension()>  Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer) As String()
         If separator = "" Then Throw New ArgumentException("separator cannot be empty", "separator")
         If count < 2 Then Throw New ArgumentOutOfRangeException("count")
-        Contract.EndContractBlock()
 
         If source Is Nothing Then Return New String() {}
         Return Split(source, separator, count, StringSplitOptions.None)
@@ -132,10 +131,9 @@ Public Module StringExtension
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
     <Untested()>
- <Extension()> Public Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
+ <Extension()>  Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
         If separator = "" Then Throw New ArgumentException("seperator cannot be empty", "separator")
         If count < 2 Then Throw New ArgumentOutOfRangeException("count")
-        Contract.EndContractBlock()
 
 
         If source Is Nothing Then Return New String() {}
@@ -176,12 +174,11 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function FirstToLower(ByVal value As String) As String
+ <Extension()>  Function FirstToLower(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToLower
-        Contract.Assume(value.Length > 1)
-        Return value.Substring(0, 1).ToLower & value.Substring(1)
+                Return value.Substring(0, 1).ToLower & value.Substring(1)
     End Function
 
     ''' <summary>
@@ -192,12 +189,11 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function FirstToUpper(ByVal value As String) As String
+ <Extension()>  Function FirstToUpper(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToUpper
-        Contract.Assume(value.Length > 1)
-        Return value.Substring(0, 1).ToUpper & value.Substring(1)
+                Return value.Substring(0, 1).ToUpper & value.Substring(1)
     End Function
 
     ''' <summary>
@@ -208,12 +204,11 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function Capitalize(ByVal value As String) As String
+ <Extension()>  Function Capitalize(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToUpper
-        Contract.Assume(value.Length > 1)
-        Return value.Substring(0, 1).ToUpper & value.Substring(1).ToLower
+                Return value.Substring(0, 1).ToUpper & value.Substring(1).ToLower
     End Function
 
     ''' <summary>
@@ -223,7 +218,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function DefaultIfNull(ByVal value As String) As String
+ <Extension()>  Function DefaultIfNull(ByVal value As String) As String
         Return If(value Is Nothing, "", value)
     End Function
 
@@ -235,7 +230,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function DefaultIfNull(ByVal value As String, ByVal [default] As String) As String
+ <Extension()>  Function DefaultIfNull(ByVal value As String, ByVal [default] As String) As String
         Return If(value Is Nothing, [default], value)
     End Function
 
@@ -247,7 +242,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
+ <Extension()>  Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
         Return If(value = "", [default], value)
     End Function
 
@@ -260,7 +255,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId:="temp")> <Untested()>
-    <Extension()> Public Function IsEmailAddress(ByVal value As String) As Boolean
+    <Extension()>  Function IsEmailAddress(ByVal value As String) As Boolean
         If value = "" Then Return False
         Try
             Dim temp = New MailAddress(value)
@@ -277,10 +272,9 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function ToMailAddress(ByVal value As String) As MailAddress
+    <Extension()>  Function ToMailAddress(ByVal value As String) As MailAddress
         If value Is Nothing Then Throw New ArgumentNullException("value")
         If value = "" Then Throw New ArgumentException("value cannot be empty", "value")
-        Contract.EndContractBlock()
 
         Return New MailAddress(value)
     End Function
@@ -297,9 +291,8 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function Left(ByVal value As String, ByVal length As Integer) As String
+    <Extension()>  Function Left(ByVal value As String, ByVal length As Integer) As String
         If length <= 0 Then Throw New ArgumentOutOfRangeException("length")
-        Contract.EndContractBlock()
 
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
@@ -315,9 +308,8 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function Right(ByVal value As String, ByVal length As Integer) As String
+    <Extension()>  Function Right(ByVal value As String, ByVal length As Integer) As String
         If length <= 0 Then Throw New ArgumentOutOfRangeException("length")
-        Contract.EndContractBlock()
 
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
@@ -330,15 +322,15 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()>
-    <Extension()> Public Function NormalizeLineBreaks(ByVal value As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()>
+    <Extension()>  Function NormalizeLineBreaks(ByVal value As String) As String
         If value = "" Then Return value
         Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr).Replace(vbCr, vbCrLf)
     End Function
 
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()>
-    <Extension()> Public Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()>
+    <Extension()>  Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
         If value = "" Then Return value
 
         Select Case mode
@@ -354,8 +346,8 @@ Public Module StringExtension
     End Function
 
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()>
-    <Extension()> Public Function HtmlLineBreaks(ByVal value As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()>
+    <Extension()>  Function HtmlLineBreaks(ByVal value As String) As String
         If value = "" Then Return value
         Return value.Replace(vbCrLf, "<br/>").Replace(vbLf, "<br/>").Replace(vbCr, "<br/>")
     End Function
@@ -381,7 +373,7 @@ Public Module StringExtension
     '''' <param name="value"></param>
     '''' <returns></returns>
     '''' <remarks>I'm not sure the semantics of this is right. We may end up rolling our own version, hopefully one more useful.</remarks>
-    '<Extension()> Public Function ToTitleCase(ByVal value As String) As String
+    '<Extension()>  Function ToTitleCase(ByVal value As String) As String
     '	If value Is Nothing Then Return Nothing
     '	If value = "" Then Return ""
     '	Return Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value)
@@ -394,7 +386,7 @@ Public Module StringExtension
     ''' <returns></returns>
     ''' <remarks>Not really needed for VB, but C# programmers seem to like it</remarks>
     <Untested()>
-    <Extension()> Public Function IsNullOrEmpty(ByVal value As String) As Boolean
+    <Extension()>  Function IsNullOrEmpty(ByVal value As String) As Boolean
         Return value = ""
         'Side note, String.IsNullOrEmpty has bug in .NET 2.0. It should be fixed in 2.0 SP 1.
     End Function
@@ -412,12 +404,11 @@ Public Module StringExtension
     ''' <param name="dictionary"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function PatternReplace(ByVal value As String, ByVal searchPattern As String, ByVal dictionary As Dictionary(Of String, String)) As String
+    <Untested()> <Extension()>  Function PatternReplace(ByVal value As String, ByVal searchPattern As String, ByVal dictionary As Dictionary(Of String, String)) As String
         If searchPattern Is Nothing Then Throw New ArgumentNullException("searchPattern")
         If searchPattern = "" Then Throw New ArgumentException("searchPattern cannot be empty", "searchPattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
         If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
-        Contract.EndContractBlock()
 
         If value = "" Then Return value
 
@@ -437,14 +428,13 @@ Public Module StringExtension
     ''' <param name="dictionary"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function PatternReplace(Of T)(ByVal value As String, ByVal searchPattern As String, ByVal replacementPattern As String, ByVal dictionary As Dictionary(Of String, T)) As String
+    <Untested()> <Extension()>  Function PatternReplace(Of T)(ByVal value As String, ByVal searchPattern As String, ByVal replacementPattern As String, ByVal dictionary As Dictionary(Of String, T)) As String
         If searchPattern Is Nothing Then Throw New ArgumentNullException("searchPattern")
         If searchPattern = "" Then Throw New ArgumentException("searchPattern cannot be empty", "searchPattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
         If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
         If replacementPattern Is Nothing Then Throw New ArgumentNullException("replacementPattern")
         If replacementPattern = "" Then Throw New ArgumentException("replacementPattern cannot be empty", "replacementPattern")
-        Contract.EndContractBlock()
 
         If value = "" Then Return value
 
@@ -457,9 +447,8 @@ Public Module StringExtension
 
 #If ClrVersion >= 35 Then
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <Untested()> <Extension()>
-    Public Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+     Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         If source Is Nothing Then Throw New ArgumentNullException("source")
-        Contract.EndContractBlock()
 
 
         If rowSeparator = columnSeparator Then Return ToKeyValueCollection(source, rowSeparator)
@@ -479,7 +468,7 @@ Public Module StringExtension
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")>
     <Untested()> <Extension()>
-    Public Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+     Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim rows = source.Split(separator)
 
@@ -495,9 +484,8 @@ Public Module StringExtension
 
 #If ClrVersion > 0 Then
 
-    <Untested()> <Extension()> Public Function MD5Hash(ByVal value As String) As String
+    <Untested()> <Extension()>  Function MD5Hash(ByVal value As String) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
-        Contract.EndContractBlock()
 
         Using hasher = System.Security.Cryptography.MD5CryptoServiceProvider.Create()
             Return hasher.ComputeHash(Encoding.UTF8.GetBytes(value)).ToString("x2")
@@ -506,15 +494,14 @@ Public Module StringExtension
 #End If
 
 
-    <Untested()> <Extension()> Public Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
+    <Untested()> <Extension()>  Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
         If args Is Nothing Then Throw New ArgumentNullException("args")
-        Contract.EndContractBlock()
 
         Return String.Format(value, args)
     End Function
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()> <Extension()> Public Function Truncate(ByVal value As String, ByVal maxLength As Integer) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()> <Extension()>  Function Truncate(ByVal value As String, ByVal maxLength As Integer) As String
         If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
 
         If value = "" Then Return ""
@@ -522,7 +509,7 @@ Public Module StringExtension
         Return value.Substring(0, maxLength - 3) & "..."
     End Function
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <Untested()> <Extension()> Public Function TruncateStart(ByVal value As String, ByVal maxLength As Integer) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()> <Extension()>  Function TruncateStart(ByVal value As String, ByVal maxLength As Integer) As String
         If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
 
         If value = "" Then Return ""
@@ -531,7 +518,7 @@ Public Module StringExtension
     End Function
 
 #If ClrVersion > 0 Then
-    <Untested()> <Extension()> Public Function IsNumeric(ByVal value As String) As Boolean
+    <Untested()> <Extension()>  Function IsNumeric(ByVal value As String) As Boolean
         Return Microsoft.VisualBasic.IsNumeric(value)
     End Function
 #End If
@@ -544,7 +531,7 @@ Public Module StringExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function IsMatch(ByVal value As String, ByVal pattern As String) As Boolean
+    <Untested()> <Extension()>  Function IsMatch(ByVal value As String, ByVal pattern As String) As Boolean
         Return RegularExpressions.Regex.IsMatch(value, pattern)
     End Function
 
@@ -556,50 +543,48 @@ Public Module StringExtension
     ''' <param name="options"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Extension()> Public Function IsMatch(ByVal value As String, ByVal pattern As String, ByVal options As RegexOptions) As Boolean
+    <Extension()>  Function IsMatch(ByVal value As String, ByVal pattern As String, ByVal options As RegexOptions) As Boolean
         Return Regex.IsMatch(value, pattern, options)
     End Function
 
     'Would this actually be useful to anyone?
-    '<Extension()> Public Function ToMemoryStream(ByVal this As String, ByVal encoding As Text.Encoding) As IO.MemoryStream
+    '<Extension()>  Function ToMemoryStream(ByVal this As String, ByVal encoding As Text.Encoding) As IO.MemoryStream
     '	Return New IO.MemoryStream(this.ToByteArray(encoding))
     'End Function
 
 
-    <Untested()> <Extension()> Public Function ToEnum(Of T As Structure)(ByVal value As String) As T
+    <Untested()> <Extension()>  Function ToEnum(Of T As Structure)(ByVal value As String) As T
         If value Is Nothing Then Throw New ArgumentNullException("value")
-        Contract.EndContractBlock()
 
         Return CType([Enum].Parse(GetType(T), value, True), T)
     End Function
 
 #If Subset <> "Client" And ClrVersion > 0 Then
-    <Untested()> <Extension()> Public Function HtmlEncode(ByVal this As String) As String
+    <Untested()> <Extension()>  Function HtmlEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlEncode(this)
     End Function
 
-    <Untested()> <Extension()> Public Function HtmlDecode(ByVal this As String) As String
+    <Untested()> <Extension()>  Function HtmlDecode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlDecode(this)
     End Function
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")>
- <Untested()> <Extension()> Public Function UrlDecode(ByVal this As String) As String
+ <Untested()> <Extension()>  Function UrlDecode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.UrlDecode(this)
     End Function
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")>
-<Untested()> <Extension()> Public Function UrlPathEncode(ByVal this As String) As String
+<Untested()> <Extension()>  Function UrlPathEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.UrlPathEncode(this)
     End Function
 
-    <Untested()> <Extension()> Public Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
+    <Untested()> <Extension()>  Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
         If this Is Nothing Then Throw New ArgumentNullException("this")
-        Contract.EndContractBlock()
-        Return Global.System.Web.HttpUtility.ParseQueryString(this)
+                Return Global.System.Web.HttpUtility.ParseQueryString(this)
     End Function
 #End If
 
-    <Untested()> <Extension()> Public Function RemoveNonnumeric(ByVal value As String) As String
+    <Untested()> <Extension()>  Function RemoveNonnumeric(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
 
         Dim sb As New StringBuilder(value.Length)
@@ -616,15 +601,14 @@ Public Module StringExtension
 
 #If Subset <> "Client" And ClrVersion > 0 Then
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Extension()> Public Function UrlEncode(ByVal this As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Extension()>  Function UrlEncode(ByVal this As String) As String
         Return UrlEncode(this, UrlEncodingMethod.Clr)
     End Function
 
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Untested()>
-    <Extension()> Public Function UrlEncode(ByVal value As String, ByVal method As UrlEncodingMethod) As String
+    <Extension()>  Function UrlEncode(ByVal value As String, ByVal method As UrlEncodingMethod) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
-        Contract.EndContractBlock()
 
         Select Case method
             Case UrlEncodingMethod.DoNoEncode

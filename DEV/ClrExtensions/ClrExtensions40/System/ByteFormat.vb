@@ -5,7 +5,7 @@
 ''' The format used to convert bytes to strings
 ''' </summary>
 ''' <remarks></remarks>
-Public Enum ByteFormat
+ Enum ByteFormat
 	''' <summary>
 	''' Bits
 	''' </summary>

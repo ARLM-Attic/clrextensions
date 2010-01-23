@@ -11,7 +11,7 @@ Public Module DoubleExtension
     ''' <returns></returns>
     ''' <remarks>Not needed in VB, but C# doesn't have an exponent operator</remarks>
     <Untested()>
-    <Extension()> Public Function Pow(ByVal value As Double, ByVal exponent As Double) As Double
+    <Extension()>  Function Pow(ByVal value As Double, ByVal exponent As Double) As Double
         Return value ^ exponent
     End Function
 
@@ -23,7 +23,7 @@ Public Module DoubleExtension
     ''' <returns></returns>
     ''' <remarks>Not needed in VB, but C# doesn't have an exponent operator</remarks>
     <Untested()>
-    <Extension()> Public Function Pow(ByVal value As Double, ByVal exponent As Integer) As Double
+    <Extension()>  Function Pow(ByVal value As Double, ByVal exponent As Integer) As Double
         Return value ^ exponent
     End Function
 

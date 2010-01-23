@@ -4,24 +4,20 @@
 #If ClrVersion >= 35 Then
 Public Module ReaderWriterLockSlimExtension
 
-    <Extension()> Public Function ReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
+    <Extension()> Function ReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
         If lock Is Nothing Then Throw New ArgumentNullException("lock")
-        Contract.EndContractBlock()
 
         Return New LockToken(lock, LockMode.Read)
     End Function
 
-    <Extension()> Public Function UpgradeableReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
+    <Extension()> Function UpgradeableReadSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
         If lock Is Nothing Then Throw New ArgumentNullException("lock")
-        Contract.Ensures(Contract.Result(Of IDisposable)() IsNot Nothing)
-        Contract.EndContractBlock()
 
         Return New LockToken(lock, LockMode.Upgradable)
     End Function
 
-    <Extension()> Public Function WriteSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
+    <Extension()> Function WriteSection(ByVal lock As Global.System.Threading.ReaderWriterLockSlim) As IDisposable
         If lock Is Nothing Then Throw New ArgumentNullException("lock")
-        Contract.EndContractBlock()
 
         Return New LockToken(lock, LockMode.Write)
     End Function
@@ -34,16 +30,13 @@ Public Module ReaderWriterLockSlimExtension
 
         '<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")>
         '<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>
-        '<ContractInvariantMethod()> _
-        'Private Sub ObjectInvariant()
-        'Contract.Invariant(m_Lock IsNot Nothing)
-        'End Sub
+        '<        'Private Sub ObjectInvariant()
+        '        'End Sub
 
 
         Friend Sub New(ByVal lock As Global.System.Threading.ReaderWriterLockSlim, ByVal mode As LockMode)
             If lock Is Nothing Then Throw New ArgumentNullException("lock")
             If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode")
-            Contract.EndContractBlock()
 
             m_Lock = lock
             m_Mode = mode
@@ -58,7 +51,6 @@ Public Module ReaderWriterLockSlimExtension
         End Sub
 
         Private Sub Dispose(ByVal disposing As Boolean)
-            Contract.Requires(m_Lock IsNot Nothing)
 
             If Not Me.m_Disposed Then
                 If disposing Then

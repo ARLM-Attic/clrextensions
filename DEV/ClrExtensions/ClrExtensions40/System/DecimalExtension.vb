@@ -11,7 +11,7 @@ Public Module DecimalExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    Public Function Pow10(ByVal exponent As Integer) As Decimal
+     Function Pow10(ByVal exponent As Integer) As Decimal
         Dim result As Decimal = 1
         If exponent > 0 Then
             For i = 1 To exponent
@@ -33,7 +33,7 @@ Public Module DecimalExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function TruncatePrecision(ByVal value As Decimal, ByVal precision As Integer) As Decimal
+    <Extension()>  Function TruncatePrecision(ByVal value As Decimal, ByVal precision As Integer) As Decimal
         'TODO - determine if the "slow" method is actually slower 
         Try
             Dim precisionPower = Pow10(precision)
@@ -67,7 +67,6 @@ Public Module DecimalExtension
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
         If source Is Nothing Then Throw New ArgumentNullException("source")
-        Contract.EndContractBlock()
 
         Return CDec(Math.Sqrt((Aggregate item In source Into Sum(item * item)) / CDec(source.Count)))
     End Function
@@ -82,7 +81,6 @@ Public Module DecimalExtension
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
     <Untested()> <Extension()> Function Mode(ByVal source As IList(Of Decimal)) As List(Of Decimal)
         If source Is Nothing Then Throw New ArgumentNullException("source")
-        Contract.EndContractBlock()
 
         Dim counts = (From Value In source Group By Value Into Elements = Count()).ToList
         Dim maxCount = counts.Max(Function(x) x.Elements)
@@ -97,7 +95,6 @@ Public Module DecimalExtension
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function StandardDeviation(ByVal source As IList(Of Decimal)) As Decimal
         If source Is Nothing Then Throw New ArgumentNullException("source")
-        Contract.EndContractBlock()
 
         Dim step1 = source.Average 'mean
         Dim step2 = From item In source Select item - step1 'deviation from mean

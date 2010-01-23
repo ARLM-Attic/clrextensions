@@ -210,7 +210,7 @@ Public Module VBLanguageExtension
     End Function
 
 
- 
+
 
     ''' <summary>
     ''' Duplicates the functionality of CShort, but with support for nullable types
@@ -232,7 +232,8 @@ Public Module VBLanguageExtension
     ''' <param name="default">Default value to be returned in the case of nulls</param>
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId:="short")> Public Function CShort2(ByVal value As Object, ByVal [default] As Short) As Short
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId:="short")>
+    Public Function CShort2(ByVal value As Object, ByVal [default] As Short) As Short
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -262,7 +263,8 @@ Public Module VBLanguageExtension
     ''' <param name="default">Default value to be returned in the case of nulls</param>
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId:="int")> Public Function CInt2(ByVal value As Object, ByVal [default] As Integer) As Integer
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId:="int")>
+    Public Function CInt2(ByVal value As Object, ByVal [default] As Integer) As Integer
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -310,7 +312,8 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Sng")> Public Function CSng2(ByVal value As Object) As Single?
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Sng")>
+    Public Function CSng2(ByVal value As Object) As Single?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -324,7 +327,8 @@ Public Module VBLanguageExtension
     ''' <param name="default">Default value to be returned in the case of nulls</param>
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Sng")> Public Function CSng2(ByVal value As Object, ByVal [default] As Single) As Single
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Sng")>
+    Public Function CSng2(ByVal value As Object, ByVal [default] As Single) As Single
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -382,7 +386,7 @@ Public Module VBLanguageExtension
     End Function
 
 
- 
+
 
 
     ''' <summary>
@@ -422,9 +426,6 @@ Public Module VBLanguageExtension
         Return ObjectExtension.ToStringSafe(value)
     End Function
 
-#If IncludeUntested Then
-
-
 
     '''' <summary>
     '''' Duplicates the functionality of CStr, but with better handling for nullable value types
@@ -433,7 +434,6 @@ Public Module VBLanguageExtension
     '''' <param name="value">Value being checked</param>
     '''' <returns>This returns Nothing or the result of calling ToString.</returns>
     '''' <remarks></remarks>
-    <Untested()>
     Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T)) As String
         If value.HasValue Then Return value.ToString Else Return Nothing
     End Function
@@ -446,7 +446,6 @@ Public Module VBLanguageExtension
     '''' <param name="default">Default value to be returned in the case of nulls</param>
     '''' <returns>This returns Nothing or the result of calling ToString.</returns>
     '''' <remarks></remarks>
-    <Untested()>
     Public Function CStr2(Of T As Structure)(ByVal value As Nullable(Of T), ByVal [default] As String) As String
         If value.HasValue Then Return value.ToString Else Return [default]
     End Function
@@ -457,7 +456,6 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
     Public Function TryCByte(ByVal value As Object) As Byte?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -471,13 +469,12 @@ Public Module VBLanguageExtension
         End Try
     End Function
 
-        ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CDate, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
     Public Function TryCDate(ByVal value As Object) As Date?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -492,13 +489,12 @@ Public Module VBLanguageExtension
     End Function
 
 
-        ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CDec, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
     Public Function TryCDec(ByVal value As Object) As Decimal?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -513,13 +509,12 @@ Public Module VBLanguageExtension
     End Function
 
 
-        ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CShort, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
     Public Function TryCShort(ByVal value As Object) As Short?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
@@ -533,14 +528,13 @@ Public Module VBLanguageExtension
         End Try
     End Function
 
-        ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CLng, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
-    Public Function TryCLng(ByVal value As Object) As Long?
+    Function TryCLng(ByVal value As Object) As Long?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -561,8 +555,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <CLSCompliant(False)>
-    <Untested()>
-    Public Function TryCUInt(ByVal value As Object) As UInteger?
+    Function TryCUInt(ByVal value As Object) As UInteger?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -576,7 +569,7 @@ Public Module VBLanguageExtension
     End Function
 
 
-        ''' <summary>Nothing
+    ''' <summary>Nothing
     ''' Duplicates the functionality of CUShort, but with support for nullable types
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
@@ -584,8 +577,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns the default value if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId:="short")> <CLSCompliant(False)>
-    <Untested()>
-    Public Function CUShort2(ByVal value As Object, ByVal [default] As UShort) As UShort
+    Function CUShort2(ByVal value As Object, ByVal [default] As UShort) As UShort
         If value Is Nothing Then Return [default]
         If value Is DBNull.Value Then Return [default]
         If value.ToString = "" Then Return [default]
@@ -598,8 +590,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
-    Public Function TryCBool(ByVal value As Object) As Boolean?
+    Function TryCBool(ByVal value As Object) As Boolean?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -612,14 +603,13 @@ Public Module VBLanguageExtension
         End Try
     End Function
 
-        ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CDbl, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
-    Public Function TryCDbl(ByVal value As Object) As Double?
+    Function TryCDbl(ByVal value As Object) As Double?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -638,8 +628,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
-    Public Function TryCInt(ByVal value As Object) As Integer?
+    Function TryCInt(ByVal value As Object) As Integer?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -652,15 +641,14 @@ Public Module VBLanguageExtension
         End Try
     End Function
 
-        ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CULng, but with support for nullable types
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will throw the appropriate exception if the conversion fails</remarks>
     <CLSCompliant(False)>
-    <Untested()>
-    Public Function CULng2(ByVal value As Object) As ULong?
+    Function CULng2(ByVal value As Object) As ULong?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -674,8 +662,7 @@ Public Module VBLanguageExtension
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <CLSCompliant(False)>
-    <Untested()>
-    Public Function TryCUShort(ByVal value As Object) As UShort?
+    Function TryCUShort(ByVal value As Object) As UShort?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -694,8 +681,7 @@ Public Module VBLanguageExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
-    <Untested()>
-    Public Function TryCChar(ByVal value As Object) As Char?
+    Function TryCChar(ByVal value As Object) As Char?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -708,15 +694,14 @@ Public Module VBLanguageExtension
         End Try
     End Function
 
-        ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CSng, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Sng")>
-    <Untested()>
-    Public Function TryCSng(ByVal value As Object) As Single?
+    Function TryCSng(ByVal value As Object) As Single?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -729,15 +714,14 @@ Public Module VBLanguageExtension
         End Try
     End Function
 
-       ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CSByte, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <CLSCompliant(False)>
-    <Untested()>
-    Public Function TryCSByte(ByVal value As Object) As SByte?
+    Function TryCSByte(ByVal value As Object) As SByte?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -750,15 +734,14 @@ Public Module VBLanguageExtension
         End Try
     End Function
 
-       ''' <summary>
+    ''' <summary>
     ''' Duplicates the functionality of CULng, but with the semantics of TryCast
     ''' </summary>
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is Nothing, DBNull, or an empty string</returns>
     ''' <remarks>This will return nothing if the conversion fails</remarks>
     <CLSCompliant(False)>
-    <Untested()>
-    Public Function TryCULng(ByVal value As Object) As ULong?
+    Function TryCULng(ByVal value As Object) As ULong?
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         If value.ToString = "" Then Return Nothing
@@ -770,6 +753,5 @@ Public Module VBLanguageExtension
             Return Nothing
         End Try
     End Function
-#End If
 
 End Module

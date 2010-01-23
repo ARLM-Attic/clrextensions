@@ -12,12 +12,11 @@ Public Module IOExtension
     ''' <param name="driveLetter"></param>
     ''' <param name="uncName"></param>
     ''' <remarks>This was hand tested. We cannot automate because it messes with the OS</remarks>
-    Public Sub MapDrive(ByVal driveLetter As Char, ByVal uncName As String)
+     Sub MapDrive(ByVal driveLetter As Char, ByVal uncName As String)
         Dim driveLetterFixed = Char.ToLower(driveLetter)
         If driveLetterFixed < "a"c OrElse driveLetterFixed > "z"c Then Throw New ArgumentOutOfRangeException("driveLetter")
         If uncName Is Nothing Then Throw New ArgumentNullException("uncName")
         If uncName = "" Then Throw New ArgumentException("uncName cannot be empty", "uncName")
-        Contract.EndContractBlock()
 
         Dim fixedUncName As String = uncName
         'This won't work if the unc name ends with a \
@@ -43,10 +42,9 @@ Public Module IOExtension
     ''' <returns></returns>
     ''' <remarks>This was hand tested because it is so heavily dependent on OS settings</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")> <Untested()>
-    Public Function PrintFile(ByVal fileName As String) As Process
+     Function PrintFile(ByVal fileName As String) As Process
         If fileName Is Nothing Then Throw New ArgumentNullException("fileName")
         If fileName = "" Then Throw New ArgumentException("fileName cannot be empty")
-        Contract.EndContractBlock()
 
         If Not System.IO.File.Exists(filename) Then Throw New IOException("File " & filename & " does not exist.")
 
@@ -67,7 +65,7 @@ Public Module IOExtension
 #End If
 
     <Untested()>
-    Public Function ToFileName(ByVal text As String) As String
+     Function ToFileName(ByVal text As String) As String
         Dim temp As New System.Text.StringBuilder(text)
         For Each c In Path.GetInvalidPathChars
             temp.Replace(c, "_")

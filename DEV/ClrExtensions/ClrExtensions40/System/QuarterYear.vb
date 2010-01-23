@@ -7,7 +7,7 @@
 ''' This represents quarter-year pair such as "Q2 2008"
 ''' </summary>
 ''' <remarks></remarks>
-Public Structure QuarterYear
+ Structure QuarterYear
 	Implements IEquatable(Of QuarterYear)
 	Implements IComparable(Of QuarterYear)
 
@@ -20,7 +20,7 @@ Public Structure QuarterYear
 	''' <param name="value"></param>
 	''' <remarks></remarks>
     <Untested()>
-    Public Sub New(ByVal value As Date)
+     Sub New(ByVal value As Date)
         Me.New(value.Year, value.Quarter)
     End Sub
 
@@ -31,7 +31,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Function AddQuarter(ByVal quarters As Integer) As QuarterYear
+     Function AddQuarter(ByVal quarters As Integer) As QuarterYear
         Return New QuarterYear(FirstOfQuarter.AddMonths(quarters * 3))
     End Function
 
@@ -42,7 +42,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Function AddYear(ByVal years As Integer) As QuarterYear
+     Function AddYear(ByVal years As Integer) As QuarterYear
         Return New QuarterYear(FirstOfQuarter.AddYears(years))
     End Function
 
@@ -53,7 +53,7 @@ Public Structure QuarterYear
 	''' <param name="quarter"></param>
 	''' <remarks></remarks>
     <Untested()>
-    Public Sub New(ByVal year As Integer, ByVal quarter As Integer)
+     Sub New(ByVal year As Integer, ByVal quarter As Integer)
         If quarter < 0 OrElse quarter > 4 Then Throw New ArgumentOutOfRangeException("quarter")
         m_Year = year
         m_Quarter = quarter
@@ -66,7 +66,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public ReadOnly Property Quarter() As Integer
+     ReadOnly Property Quarter() As Integer
         Get
             Return m_Quarter
         End Get
@@ -79,7 +79,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public ReadOnly Property Year() As Integer
+     ReadOnly Property Year() As Integer
         Get
             Return m_Year
         End Get
@@ -91,7 +91,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Overrides Function ToString() As String
+     Overrides Function ToString() As String
         Return "Q" & m_Quarter & " " & m_Year
     End Function
 
@@ -101,7 +101,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Function FirstOfQuarter() As Date
+     Function FirstOfQuarter() As Date
         Return FirstOfQuarter(Quarter, Year)
     End Function
 
@@ -111,7 +111,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Shared Function FirstOfQuarter(ByVal quarter As Integer, ByVal year As Integer) As Date
+     Shared Function FirstOfQuarter(ByVal quarter As Integer, ByVal year As Integer) As Date
         Select Case quarter
             Case 1 : Return New Date(year, 1, 1)
             Case 2 : Return New Date(year, 4, 1)
@@ -127,7 +127,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Shared Function Now() As QuarterYear
+     Shared Function Now() As QuarterYear
         Return New QuarterYear(Date.Now)
     End Function
 
@@ -139,7 +139,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Shared Function Range(ByVal start As QuarterYear, ByVal count As Integer) As List(Of QuarterYear)
+     Shared Function Range(ByVal start As QuarterYear, ByVal count As Integer) As List(Of QuarterYear)
         Dim result As New List(Of QuarterYear)
         result.Add(start)
 
@@ -158,7 +158,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Shared Function Range(ByVal start As QuarterYear, ByVal [end] As QuarterYear) As List(Of QuarterYear)
+     Shared Function Range(ByVal start As QuarterYear, ByVal [end] As QuarterYear) As List(Of QuarterYear)
         If start < [end] Then Return New List(Of QuarterYear)
 
         Dim result As New List(Of QuarterYear)
@@ -171,12 +171,12 @@ Public Structure QuarterYear
     End Function
 
     <Untested()>
-    Public Overrides Function GetHashCode() As Integer
+     Overrides Function GetHashCode() As Integer
         Return m_Year.GetHashCode Xor m_Quarter.GetHashCode
     End Function
 
     <Untested()>
-    Public Shared Operator >(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
+     Shared Operator >(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year > right.Year Then Return True
         If left.Year < right.Year Then Return False
 
@@ -185,7 +185,7 @@ Public Structure QuarterYear
     End Operator
 
     <Untested()>
-    Public Shared Operator <(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
+     Shared Operator <(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year < right.Year Then Return True
         If left.Year > right.Year Then Return False
 
@@ -195,7 +195,7 @@ Public Structure QuarterYear
 
 
     <Untested()>
-    Public Shared Operator >=(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
+     Shared Operator >=(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year > right.Year Then Return True
         If left.Year < right.Year Then Return False
 
@@ -204,7 +204,7 @@ Public Structure QuarterYear
     End Operator
 
     <Untested()>
-    Public Shared Operator <=(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
+     Shared Operator <=(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year < right.Year Then Return True
         If left.Year > right.Year Then Return False
 
@@ -214,27 +214,27 @@ Public Structure QuarterYear
 
 
     <Untested()>
-    Public Shared Operator =(ByVal quarter1 As QuarterYear, ByVal quarter2 As QuarterYear) As Boolean
+     Shared Operator =(ByVal quarter1 As QuarterYear, ByVal quarter2 As QuarterYear) As Boolean
         Return quarter1.Equals(quarter2)
     End Operator
 
     <Untested()>
-    Public Shared Operator <>(ByVal quarter1 As QuarterYear, ByVal quarter2 As QuarterYear) As Boolean
+     Shared Operator <>(ByVal quarter1 As QuarterYear, ByVal quarter2 As QuarterYear) As Boolean
         Return Not (quarter1 = quarter2)
     End Operator
 
     <Untested()>
-    Public Overloads Function Equals(ByVal other As QuarterYear) As Boolean Implements Global.System.IEquatable(Of QuarterYear).Equals
+     Overloads Function Equals(ByVal other As QuarterYear) As Boolean Implements Global.System.IEquatable(Of QuarterYear).Equals
         Return Quarter = other.Quarter AndAlso Year = other.Year
     End Function
 
     <Untested()>
-    Public Overrides Function Equals(ByVal obj As Object) As Boolean
+     Overrides Function Equals(ByVal obj As Object) As Boolean
         If TypeOf obj Is QuarterYear Then Return CType(obj, QuarterYear) = Me Else Return False
     End Function
 
     <Untested()>
-    Public Function CompareTo(ByVal other As QuarterYear) As Integer Implements Global.System.IComparable(Of QuarterYear).CompareTo
+     Function CompareTo(ByVal other As QuarterYear) As Integer Implements Global.System.IComparable(Of QuarterYear).CompareTo
         If Me > other Then Return 1
         If Me < other Then Return -1
         Return 0
@@ -247,7 +247,7 @@ Public Structure QuarterYear
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Shared Function MonthToQuarter(ByVal month As Integer) As Integer
+     Shared Function MonthToQuarter(ByVal month As Integer) As Integer
         Select Case month
             Case 1 To 3 : Return 1
             Case 4 To 6 : Return 2

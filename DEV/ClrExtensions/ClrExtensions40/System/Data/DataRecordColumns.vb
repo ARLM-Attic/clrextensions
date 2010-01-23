@@ -13,10 +13,8 @@ Namespace Data
         Private ReadOnly m_Types As New List(Of Type)
 
         <Untested()>
-        <Pure()>
-        Public Sub New(ByVal source As IDataRecord)
+                 Sub New(ByVal source As IDataRecord)
             If source Is Nothing Then Throw New ArgumentNullException("source")
-            Contract.EndContractBlock()
 
             For i = 0 To source.FieldCount - 1
                 m_Names.Add(source.GetName(i))
@@ -26,8 +24,7 @@ Namespace Data
         End Sub
 
         <Untested()>
-        <Pure()>
-        Friend Function GetOrdinal(ByVal name As String) As Integer
+                Friend Function GetOrdinal(ByVal name As String) As Integer
             For i As Integer = 0 To m_Names.Count - 1
                 If m_Names(i).Equals(name, StringComparison.InvariantCultureIgnoreCase) Then Return i
             Next
@@ -35,28 +32,22 @@ Namespace Data
         End Function
 
         <Untested()>
-        <Pure()>
-        Friend Function GetDataTypeName(ByVal i As Integer) As String
+                Friend Function GetDataTypeName(ByVal i As Integer) As String
             If i <= 0 Then Throw New ArgumentOutOfRangeException("i")
-            Contract.EndContractBlock()
 
             Return m_TypeNames(i)
         End Function
 
         <Untested()>
-        <Pure()>
-        Friend Function GetFieldType(ByVal i As Integer) As Type
+                Friend Function GetFieldType(ByVal i As Integer) As Type
             If i <= 0 Then Throw New ArgumentOutOfRangeException("i")
-            Contract.EndContractBlock()
 
             Return m_Types(i)
         End Function
 
         <Untested()>
-        <Pure()>
-        Friend Function GetName(ByVal i As Integer) As String
+                Friend Function GetName(ByVal i As Integer) As String
             If i <= 0 Then Throw New ArgumentOutOfRangeException("i")
-            Contract.EndContractBlock()
 
             Return m_Names(i)
         End Function

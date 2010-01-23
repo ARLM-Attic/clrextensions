@@ -14,11 +14,10 @@ Public Module CollectionExtension
     ''' <param name="source">The list that will be copied into the target list</param>
     ''' <remarks></remarks>
     <Extension()>
-    Public Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As IEnumerable(Of T))
+    Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As IEnumerable(Of T))
         If target Is Nothing Then Throw New ArgumentNullException("target")
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If target.IsReadOnly Then Throw New ArgumentException("target cannot be a read-only collection")
-        Contract.EndContractBlock()
 
         For Each item In source
             target.Add(item)
@@ -26,11 +25,10 @@ Public Module CollectionExtension
     End Sub
 
     <Extension()>
-    Public Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As ICollection(Of T))
+    Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As ICollection(Of T))
         If target Is Nothing Then Throw New ArgumentNullException("target")
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If target.IsReadOnly Then Throw New ArgumentException("target cannot be a read-only collection")
-        Contract.Ensures(target.Count = Contract.OldValue(target.Count) + source.Count)
 
         For Each item In source
             target.Add(item)

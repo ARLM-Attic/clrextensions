@@ -14,7 +14,7 @@ Public Module PredicateExtension
     ''' <param name="predicate"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function ToFunction(Of T)(ByVal predicate As Predicate(Of T)) As Func(Of T, Boolean)
+    <Untested()> <Extension()>  Function ToFunction(Of T)(ByVal predicate As Predicate(Of T)) As Func(Of T, Boolean)
         Dim result As Func(Of T, Boolean) = Function(item) predicate.Invoke(item)
         Return result
     End Function

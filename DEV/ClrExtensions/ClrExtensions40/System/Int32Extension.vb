@@ -15,7 +15,7 @@ Public Module Int32Extension
     ''' <param name="highValue"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function IsBetween(ByVal value As Integer, ByVal lowValue As Integer, ByVal highValue As Integer) As Boolean
+    <Untested()> <Extension()>  Function IsBetween(ByVal value As Integer, ByVal lowValue As Integer, ByVal highValue As Integer) As Boolean
         Return lowValue <= value And value <= highValue
     End Function
 
@@ -28,7 +28,7 @@ Public Module Int32Extension
     ''' <param name="flag">Flag to check for</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId:="Flag")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId:="flag")> <Untested()> <Extension()> Public Function IsFlagSet(ByVal value As Integer, ByVal flag As Integer) As Boolean
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId:="Flag")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId:="flag")> <Untested()> <Extension()>  Function IsFlagSet(ByVal value As Integer, ByVal flag As Integer) As Boolean
         'TODO: Rewrite this if Microsoft ever decides to support Enumerations with generics
         Return CBool(value And flag)
     End Function
@@ -40,7 +40,7 @@ Public Module Int32Extension
     ''' <param name="value"></param>
     ''' <returns>1st, 2nd, 3rd, 4th, etc.</returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function EnglishSuffix(ByVal value As Integer) As String
+    <Untested()> <Extension()>  Function EnglishSuffix(ByVal value As Integer) As String
         If value <= 0 Then Throw New ArgumentOutOfRangeException("value")
 
         If (value Mod 100).IsBetween(10, 19) Then
@@ -65,7 +65,7 @@ Public Module Int32Extension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function IsEven(ByVal value As Integer) As Boolean
+    <Untested()> <Extension()>  Function IsEven(ByVal value As Integer) As Boolean
         Return value Mod 2 = 0
     End Function
 
@@ -75,7 +75,7 @@ Public Module Int32Extension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function IsOdd(ByVal value As Integer) As Boolean
+    <Untested()> <Extension()>  Function IsOdd(ByVal value As Integer) As Boolean
         Return value Mod 2 = 1
     End Function
 
@@ -86,7 +86,7 @@ Public Module Int32Extension
     ''' <param name="factor"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function IsMultipleOf(ByVal value As Integer, ByVal factor As Integer) As Boolean
+    <Untested()> <Extension()>  Function IsMultipleOf(ByVal value As Integer, ByVal factor As Integer) As Boolean
         If factor = 0 Then Throw New ArgumentOutOfRangeException("factor")
         Return value Mod factor = 0
     End Function
@@ -98,7 +98,7 @@ Public Module Int32Extension
     ''' <param name="multiple"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function IsFactorOf(ByVal value As Integer, ByVal multiple As Integer) As Boolean
+    <Untested()> <Extension()>  Function IsFactorOf(ByVal value As Integer, ByVal multiple As Integer) As Boolean
         If value = 0 Then Throw New ArgumentOutOfRangeException("value")
         Return multiple Mod value = 0
     End Function
@@ -115,7 +115,7 @@ Public Module Int32Extension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function IsBitSet(ByVal value As Integer, ByVal bit As Integer) As Boolean
+ <Extension()>  Function IsBitSet(ByVal value As Integer, ByVal bit As Integer) As Boolean
         Dim bitMask As Integer = 1 << bit
 
         Return CBool(value And bitMask)
@@ -128,7 +128,7 @@ Public Module Int32Extension
     ''' <param name="bit"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Extension()> Public Function SetBit(ByVal value As Integer, ByVal bit As Integer) As Integer
+    <Extension()>  Function SetBit(ByVal value As Integer, ByVal bit As Integer) As Integer
         Dim bitMask As Integer = 1 << bit
 
         Return value Or bitMask
@@ -142,7 +142,7 @@ Public Module Int32Extension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function ClearBit(ByVal value As Integer, ByVal bit As Integer) As Integer
+ <Extension()>  Function ClearBit(ByVal value As Integer, ByVal bit As Integer) As Integer
         Dim bitMask As Integer = Not (1 << bit)
 
         Return value And bitMask
@@ -157,7 +157,7 @@ Public Module Int32Extension
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")>
     <Untested()>
-    <Extension()> Public Function ToBitString(ByVal value As Integer, ByVal groupSize As Integer) As String
+    <Extension()>  Function ToBitString(ByVal value As Integer, ByVal groupSize As Integer) As String
 
         Select Case groupSize
             Case 0, 32
@@ -186,7 +186,7 @@ Public Module Int32Extension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function ToBitString(ByVal value As Integer) As String
+ <Extension()>  Function ToBitString(ByVal value As Integer) As String
         Return ToBitString(value, 8)
     End Function
 
@@ -198,7 +198,7 @@ Public Module Int32Extension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
- <Extension()> Public Function Pow(ByVal base As Integer, ByVal exponent As Integer) As Integer
+ <Extension()>  Function Pow(ByVal base As Integer, ByVal exponent As Integer) As Integer
         If base = 0 And exponent < 0 Then Throw New ArgumentException("Not a number")
         Return CInt(base ^ exponent)
     End Function

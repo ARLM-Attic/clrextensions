@@ -5,7 +5,7 @@
 ''' This is used to indicate which URL Encoding algorythm should be used.
 ''' </summary>
 ''' <remarks></remarks>
-Public Enum UrlEncodingMethod
+ Enum UrlEncodingMethod
 
 	''' <summary>
 	''' Use this to signify the value was already encoded. The operation thus becomes a no-op.

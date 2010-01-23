@@ -3,7 +3,7 @@
 #If IncludeUntested Then
 Imports System.Text
 
-Public Module ByteExtension
+public  Module ByteExtension
 
 
     ''' <summary>
@@ -15,7 +15,7 @@ Public Module ByteExtension
     ''' <remarks></remarks>
     ''' <exception cref="FormatException">Thrown if the format string is malformed.</exception>
     <Untested()>
-    <Extension()> Public Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As String) As String
+    <Extension()>  Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As String) As String
         Return ToString(source, format, 0)
     End Function
 
@@ -59,7 +59,7 @@ Public Module ByteExtension
     ''' <remarks>The grouping size is 0, except for Bits which is 1</remarks>
     ''' <exception cref="ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
     <Untested()>
-    Public Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As ByteFormat) As String
+     Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As ByteFormat) As String
         Dim groupingSize = 0
         If format = ByteFormat.Bits Then groupingSize = 1
 
@@ -159,7 +159,7 @@ Public Module ByteExtension
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentOutOfRangeException">Thrown if bit is outside 0 to 7</exception>
     <Untested()>
-    <Extension()> Public Function IsBitSet(ByVal value As Byte, ByVal bit As Integer) As Boolean
+    <Extension()>  Function IsBitSet(ByVal value As Byte, ByVal bit As Integer) As Boolean
         If Not bit.IsBetween(0, 7) Then Throw New ArgumentOutOfRangeException("bit")
         Dim bitMask As Integer = 1 << bit
         Return CBool(value And bitMask)
@@ -198,7 +198,7 @@ Public Module ByteExtension
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentNullException">Thrown is encoding is null</exception>
     <Untested()>
-    <Extension()> Public Function ToByteArray(ByVal source As String, ByVal encoding As Encoding) As Byte()
+    <Extension()>  Function ToByteArray(ByVal source As String, ByVal encoding As Encoding) As Byte()
         If encoding Is Nothing Then Throw New ArgumentNullException("encoding")
         If source = "" Then Return New Byte() {}
         Return encoding.GetBytes(source)

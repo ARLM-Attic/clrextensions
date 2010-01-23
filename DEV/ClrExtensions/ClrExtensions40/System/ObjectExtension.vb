@@ -15,7 +15,7 @@ Public Module ObjectExtension
     ''' If the value is Some(x), x.ToString is returned.
     ''' For all other values, ToString is called.</returns>
     ''' <remarks></remarks>
-    <Extension()> Public Function ToStringSafe(ByVal value As Object, ByVal [default] As String) As String
+    <Extension()> Function ToStringSafe(ByVal value As Object, ByVal [default] As String) As String
         Dim temp = ObjectExtension.ToStringSafe(value)
         Return If(temp <> "", temp, [default])
     End Function
@@ -26,7 +26,7 @@ Public Module ObjectExtension
     ''' <param name="value">Value to be converted into an integer</param>
     ''' <returns>This returns Nothing if the value is None, Nothing or DBNull</returns>
     ''' <remarks></remarks>
-    <Extension()> Public Function ToStringSafe(ByVal value As Object) As String
+    <Extension()> Function ToStringSafe(ByVal value As Object) As String
         If value Is Nothing Then Return Nothing
         If value Is DBNull.Value Then Return Nothing
         Dim temp As Object
@@ -50,7 +50,7 @@ Public Module ObjectExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function IsIn(Of T)(ByVal value As T, ByVal ParamArray list() As T) As Boolean
+    <Extension()>  Function IsIn(Of T)(ByVal value As T, ByVal ParamArray list() As T) As Boolean
         Return list.Contains(value)
     End Function
 
@@ -63,7 +63,7 @@ Public Module ObjectExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function IsIn(Of T)(ByVal value As T, ByVal list As IList(Of T)) As Boolean
+    <Extension()>  Function IsIn(Of T)(ByVal value As T, ByVal list As IList(Of T)) As Boolean
         Return list.Contains(value)
     End Function
 
@@ -90,7 +90,7 @@ Public Module ObjectExtension
 
         'TODO: Add support for Collections and Dictionaries
         'TODO: Add support formatting for well known types
-        'TODO: Add support for public variables
+        'TODO: Add support for  variables
 
         Dim header As String = If(propertyName = "", "", vbTab.Repeat(depth) & propertyName & ": ")
 
@@ -177,7 +177,7 @@ Public Module ObjectExtension
     End Sub
 
 
-    <Untested()> <Extension()> Public Function DeepCopy(Of T)(ByVal this As T) As T
+    <Untested()> <Extension()>  Function DeepCopy(Of T)(ByVal this As T) As T
         If Not this.GetType.IsSerializable Then Throw New ArgumentException("Only serializable types can be copied")
 
         Dim memoryStream = New MemoryStream()
@@ -191,7 +191,7 @@ Public Module ObjectExtension
 
 
     'TODO - Convert the object to XML using an XML Serializer
-    '<Extension()> Public Function ToXDocument(ByVal this As Object) As XDocument
+    '<Extension()>  Function ToXDocument(ByVal this As Object) As XDocument
 
     ''' <summary>
     ''' Allows for dot-notation casting e.g. "X.Cast(Of T)" or "x.Cast&lt;T&gt;"
@@ -200,7 +200,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function Cast(Of T)(ByVal value As Object) As T
+    <Untested()> <Extension()>  Function Cast(Of T)(ByVal value As Object) As T
         Return CType(value, T)
     End Function
 
@@ -211,7 +211,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function [TryCast](Of T As Class)(ByVal value As Object) As T
+    <Untested()> <Extension()>  Function [TryCast](Of T As Class)(ByVal value As Object) As T
         Return TryCast(value, T)
     End Function
 
@@ -223,7 +223,7 @@ Public Module ObjectExtension
     ''' <param name="default"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function [TryCast](Of T As Class)(ByVal value As Object, ByVal [default] As T) As T
+    <Untested()> <Extension()>  Function [TryCast](Of T As Class)(ByVal value As Object, ByVal [default] As T) As T
         Dim result = TryCast(value, T)
         Return If(result, [default])
     End Function
@@ -235,7 +235,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal value As Object) As Nullable(Of T)
+    <Untested()> <Extension()>  Function [TryCastNullable](Of T As Structure)(ByVal value As Object) As Nullable(Of T)
         If value Is Nothing Then Return Nothing
 
         'todo, find a way to do this that won't throw an exception or require a double cast
@@ -254,7 +254,7 @@ Public Module ObjectExtension
     ''' <param name="default"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function [TryCastNullable](Of T As Structure)(ByVal value As Object, ByVal [default] As T) As Nullable(Of T)
+    <Untested()> <Extension()>  Function [TryCastNullable](Of T As Structure)(ByVal value As Object, ByVal [default] As T) As Nullable(Of T)
         If value Is Nothing Then Return [default]
 
         'todo, find a way to do this that won't throw an exception or require a double cast
@@ -272,7 +272,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks>This is a work around to the fact that ToString can throw an exception if the nullable object has no value</remarks>
-    <Untested()> Public Function ToNullableString(Of T As Structure)(ByVal value As Nullable(Of T)) As String
+    <Untested()>  Function ToNullableString(Of T As Structure)(ByVal value As Nullable(Of T)) As String
         Return If(value.HasValue, value.ToString, "")
     End Function
 #End If

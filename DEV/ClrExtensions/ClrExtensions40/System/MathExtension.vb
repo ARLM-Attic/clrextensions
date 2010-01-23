@@ -10,7 +10,7 @@ Public Module MathExtension
 	''' <returns></returns>
 	''' <remarks></remarks>
     <Untested()>
-    Public Function Primes() As IEnumerable(Of Integer)
+     Function Primes() As IEnumerable(Of Integer)
         Return New PrimeGenerator
     End Function
 
@@ -18,12 +18,12 @@ Public Module MathExtension
 		Implements IEnumerable(Of Integer)
 
         <Untested()>
-            Public Function GetEnumerator() As Global.System.Collections.Generic.IEnumerator(Of Integer) Implements Global.System.Collections.Generic.IEnumerable(Of Integer).GetEnumerator
+             Function GetEnumerator() As Global.System.Collections.Generic.IEnumerator(Of Integer) Implements Global.System.Collections.Generic.IEnumerable(Of Integer).GetEnumerator
             Return New PrimeEnumerator
         End Function
 
         <Untested()>
-            Public Function GetEnumerator1() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
+             Function GetEnumerator1() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
             Return New PrimeEnumerator
         End Function
 	End Class
@@ -41,7 +41,7 @@ Public Module MathExtension
         End Sub
 
         <Untested()>
-        Public ReadOnly Property Current() As Integer Implements Global.System.Collections.Generic.IEnumerator(Of Integer).Current
+         ReadOnly Property Current() As Integer Implements Global.System.Collections.Generic.IEnumerator(Of Integer).Current
             Get
                 Return m_List(m_CurrentIndex)
             End Get
@@ -55,7 +55,7 @@ Public Module MathExtension
         End Property
 
         <Untested()>
-            Public Function MoveNext() As Boolean Implements Global.System.Collections.IEnumerator.MoveNext
+             Function MoveNext() As Boolean Implements Global.System.Collections.IEnumerator.MoveNext
             m_CurrentIndex += 1
 
             If m_CurrentIndex = m_List.Count Then 'find next prime
@@ -77,7 +77,7 @@ NextCanidate:
         End Function
 
         <Untested()>
-            Public Sub Reset() Implements Global.System.Collections.IEnumerator.Reset
+             Sub Reset() Implements Global.System.Collections.IEnumerator.Reset
             m_CurrentIndex = 0
         End Sub
 

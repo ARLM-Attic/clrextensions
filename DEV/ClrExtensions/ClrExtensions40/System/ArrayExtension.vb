@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 #If IncludeUntested Then
 
-Public Module ArrayExtension
+public  Module ArrayExtension
 
 #If ClrVersion >= 35 Then
     ''' <summary>
@@ -17,7 +17,6 @@ Public Module ArrayExtension
     <Untested()>
     <Extension()> Function SortByColumn(Of T)(ByVal array As T(,), ByVal sortColumn As Integer) As T(,)
         If array Is Nothing Then Throw New ArgumentNullException("array")
-        Contract.EndContractBlock()
 
         Dim fragments = array.ToJagged
 
@@ -35,12 +34,10 @@ Public Module ArrayExtension
     ''' <param name="array"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId:="0#")>
     <Untested()> <Extension()> Function ToJagged(Of T)(ByVal array As T(,)) As T()()
         If array Is Nothing Then Throw New ArgumentNullException("array")
-        Contract.Ensures(Contract.Result(Of T()())() IsNot Nothing)
-        Contract.EndContractBlock()
 
         Dim xMax As Integer = array.GetUpperBound(0)
         Dim yMax As Integer = array.GetUpperBound(1)
@@ -73,11 +70,9 @@ Public Module ArrayExtension
         If array.Length = 0 Then Throw New ArgumentException("array length must be non-zero")
         'If array.GetUpperBound(0) < 0 Then Throw New ArgumentException("array length must be greater than 0")
         'If array(0) Is Nothing Then Throw New ArgumentException("array cannot contain nulls")
-        Contract.EndContractBlock()
 
         Dim xMax As Integer = array.GetUpperBound(0)
-        Contract.Assume(array(0) IsNot Nothing)
-        Dim yMax As Integer = array(0).GetUpperBound(0)
+                Dim yMax As Integer = array(0).GetUpperBound(0)
 
         For i = 1 To xMax
             If array(i) Is Nothing Then Throw New ArgumentException("array cannot contain null sub-arrays")

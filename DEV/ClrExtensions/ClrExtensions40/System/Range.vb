@@ -1,33 +1,33 @@
 ﻿#If IncludeUntested Then
-Public Class Range(Of T)
+ Class Range(Of T)
     Private ReadOnly m_Start As T
     Private ReadOnly m_End As T
     Private ReadOnly m_Options As RangeOption
     Private ReadOnly m_Comparer As IComparer(Of T)
 
     <Untested()>
-    Public ReadOnly Property Options() As RangeOption
+     ReadOnly Property Options() As RangeOption
         Get
             Return m_Options
         End Get
     End Property
 
     <Untested()>
-    Public ReadOnly Property [End]() As T
+     ReadOnly Property [End]() As T
         Get
             Return m_End
         End Get
     End Property
 
     <Untested()>
-    Public ReadOnly Property Start() As T
+     ReadOnly Property Start() As T
         Get
             Return m_Start
         End Get
     End Property
 
     <Untested()>
-    Public Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal options As RangeOption)
+     Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal options As RangeOption)
         m_Start = start
         m_End = [end]
         m_Options = options
@@ -35,7 +35,7 @@ Public Class Range(Of T)
     End Sub
 
     <Untested()>
-    Public Sub New(ByVal start As T, ByVal [end] As T, ByVal options As RangeOption)
+     Sub New(ByVal start As T, ByVal [end] As T, ByVal options As RangeOption)
         If Not GetType(IComparable(Of T)).IsAssignableFrom(GetType(T)) Then
             Throw New ArgumentException("T doesn't implement IComparable and a IComparer wasn't supplied")
         End If
@@ -46,7 +46,7 @@ Public Class Range(Of T)
     End Sub
 
     <Untested()>
-    Public Function Contains(ByVal testValue As T) As Boolean
+     Function Contains(ByVal testValue As T) As Boolean
         Select Case m_Options
             Case RangeOption.IncludeBoth
                 Return m_Comparer.Compare(m_Start, testValue) >= 0 AndAlso m_Comparer.Compare(testValue, m_End) <= 0
@@ -62,34 +62,34 @@ Public Class Range(Of T)
     End Function
 
     <Untested()>
-    Public ReadOnly Property IncludesStart() As Boolean
+     ReadOnly Property IncludesStart() As Boolean
         Get
             Return CBool(Not (m_Options And RangeOption.ExcludeStart))
         End Get
     End Property
 
     <Untested()>
-    Public ReadOnly Property IncludesEnd() As Boolean
+     ReadOnly Property IncludesEnd() As Boolean
         Get
             Return CBool(Not (m_Options And RangeOption.ExcludeEnd))
         End Get
     End Property
 
     <Untested()>
-    Public Function FromStart(ByVal stepFunction As Func(Of T, T)) As IEnumerator(Of T)
+     Function FromStart(ByVal stepFunction As Func(Of T, T)) As IEnumerator(Of T)
         Return New RangeEnumerator(m_Start, m_End, m_Comparer, stepFunction)
     End Function
 
     <Untested()>
-    Public Function FromEnd(ByVal stepFunction As Func(Of T, T)) As IEnumerator(Of T)
+     Function FromEnd(ByVal stepFunction As Func(Of T, T)) As IEnumerator(Of T)
         Return New RangeEnumerator(m_End, m_Start, m_Comparer.Reverse, stepFunction)
     End Function
 
     'TODO - Impement Operator.Add
-    'Public Function FromStart(ByVal [step] As T) As IEnumerator(Of T)
+    ' Function FromStart(ByVal [step] As T) As IEnumerator(Of T)
     '	Return New RangeEnumerator(m_Start, m_End, m_Comparer, Function(base) Operator.Add(base, [step]))
     'End Function
-    'Public Function FromStart(ByVal [step] As T) As IEnumerator(Of T)
+    ' Function FromStart(ByVal [step] As T) As IEnumerator(Of T)
     '	Return New RangeEnumerator(m_Start, m_End, m_Comparer, Function(base) Operator.Add(base, [step]))
     'End Function
 
@@ -109,7 +109,7 @@ Public Class Range(Of T)
         Private m_Reset As Boolean = True
 
         <Untested()>
-            Public Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal stepFunction As Func(Of T, T))
+             Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal stepFunction As Func(Of T, T))
             m_Start = start
             m_End = [end]
             m_Comparer = comparer
@@ -138,7 +138,7 @@ Public Class Range(Of T)
         End Function
 
         <Untested()>
-            Public Sub Reset() Implements Global.System.Collections.IEnumerator.Reset
+             Sub Reset() Implements Global.System.Collections.IEnumerator.Reset
             m_Reset = True
         End Sub
 
@@ -150,7 +150,7 @@ Public Class Range(Of T)
 
 End Class
 
-Public Enum RangeOption
+ Enum RangeOption
     IncludeBoth = 0
     ExcludeStart = 1
     ExcludeEnd = 2

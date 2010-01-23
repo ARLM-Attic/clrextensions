@@ -39,7 +39,6 @@ Public Module StreamExtension
     ''' <remarks></remarks>
     <Untested()> <Extension()> Function ToStreamWriter(ByVal source As Stream) As StreamWriter
         If source Is Nothing Then Throw New ArgumentNullException("source")
-        Contract.EndContractBlock()
 
         Return New StreamWriter(source)
     End Function
@@ -66,7 +65,6 @@ Public Module StreamExtension
     <Untested()> <Extension()> Sub CopyTo(ByVal source As Stream, ByVal target As Stream, ByVal bufferSize As Integer)
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If target Is Nothing Then Throw New ArgumentNullException("target")
-        Contract.EndContractBlock()
 
         Dim buffer(bufferSize - 1) As Byte
 
@@ -85,7 +83,7 @@ Public Module StreamExtension
     ''' <param name="target"></param>
     ''' <remarks></remarks>
     <Untested(), Extension()>
-    Public Sub CopyTo(ByVal source As Stream, ByVal target As Stream)
+     Sub CopyTo(ByVal source As Stream, ByVal target As Stream)
         CopyTo(source, target, DefaultBufferSize)
     End Sub
 #End If

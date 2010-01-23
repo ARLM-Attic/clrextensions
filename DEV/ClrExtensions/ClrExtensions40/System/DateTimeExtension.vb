@@ -11,7 +11,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function FirstOfMonth(ByVal value As Date) As Date
+    <Extension()>  Function FirstOfMonth(ByVal value As Date) As Date
         Return New Date(value.Year, value.Month, 1)
     End Function
 
@@ -22,7 +22,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function LastOfMonth(ByVal value As Date) As Date
+    <Extension()>  Function LastOfMonth(ByVal value As Date) As Date
         Return New Date(value.Year, value.Month, Date.DaysInMonth(value.Year, value.Month))
     End Function
 
@@ -34,7 +34,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function [Next](ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
+    <Extension()>  Function [Next](ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim temp = dayofWeek - value.DayOfWeek
         If temp <= 0 Then
             Return value.Date.AddDays(7 + temp)
@@ -51,7 +51,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function Previous(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
+    <Extension()>  Function Previous(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim temp = value.DayOfWeek - dayofWeek
         If temp > 0 Then
             Return value.Date.AddDays(-temp)
@@ -68,7 +68,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function FirstOfMonth(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
+    <Extension()>  Function FirstOfMonth(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim result = value.FirstOfMonth
         If result.DayOfWeek = dayOfWeek Then
             Return result
@@ -85,7 +85,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function LastOfMonth(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
+    <Extension()>  Function LastOfMonth(ByVal value As Date, ByVal dayOfWeek As DayOfWeek) As Date
         Dim result = value.LastOfMonth
         If result.DayOfWeek = dayOfWeek Then
             Return result
@@ -106,7 +106,7 @@ Public Module DateTimeExtension
     ''' <param name="milliseconds">0 to 999</param>
     ''' <returns></returns>
     ''' <remarks>Technically speaking there are 61 seconds in a minute every few years, but it looks like the .NET framework doesn't support it</remarks>
-    <Untested()> <Extension()> Public Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer, ByVal milliseconds As Integer) As Date
+    <Untested()> <Extension()>  Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer, ByVal milliseconds As Integer) As Date
         If hours < 0 Or hours > 23 Then Throw New ArgumentOutOfRangeException("hours")
         If minutes < 0 Or minutes > 59 Then Throw New ArgumentOutOfRangeException("minutes")
         If seconds < 0 Or seconds > 59 Then Throw New ArgumentOutOfRangeException("seconds")
@@ -124,7 +124,7 @@ Public Module DateTimeExtension
     ''' <param name="seconds">0 to 59</param>
     ''' <returns></returns>
     ''' <remarks>Technically speaking there are 61 seconds in a minute every few years, but it looks like the .NET framework doesn't support it</remarks>
-    <Untested()> <Extension()> Public Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As Date
+    <Untested()> <Extension()>  Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As Date
         If hours < 0 Or hours > 23 Then Throw New ArgumentOutOfRangeException("hours")
         If minutes < 0 Or minutes > 59 Then Throw New ArgumentOutOfRangeException("minutes")
         If seconds < 0 Or seconds > 59 Then Throw New ArgumentOutOfRangeException("seconds")
@@ -138,7 +138,7 @@ Public Module DateTimeExtension
     ''' <param name="this"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Public Function Quarter(ByVal this As DateTime) As Integer
+    <Untested()> <Extension()>  Function Quarter(ByVal this As DateTime) As Integer
         Select Case this.Month
             Case 1 To 3 : Return 1
             Case 4 To 6 : Return 2
@@ -149,7 +149,7 @@ Public Module DateTimeExtension
     End Function
 
     ''' Returns a QuarterYear object for the indicated date
-    <Untested()> <Extension()> Public Function ToQuarterYear(ByVal this As DateTime) As QuarterYear
+    <Untested()> <Extension()>  Function ToQuarterYear(ByVal this As DateTime) As QuarterYear
         Return New QuarterYear(this)
     End Function
 
@@ -164,7 +164,7 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer) As Date
+    <Extension()>  Function SetTime(ByVal value As Date, ByVal hours As Integer, ByVal minutes As Integer) As Date
         If hours < 0 Or hours > 23 Then Throw New ArgumentOutOfRangeException("hours")
         If minutes < 0 Or minutes > 59 Then Throw New ArgumentOutOfRangeException("minutes")
 
@@ -179,13 +179,13 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function SetTime(ByVal value As Date, ByVal time As TimeSpan) As Date
+    <Extension()>  Function SetTime(ByVal value As Date, ByVal time As TimeSpan) As Date
         If time.Days > 0 Then Throw New ArgumentOutOfRangeException("time", "Time exceeds one day. Use this.Date.Add(time) instead.")
         Return value.Date.Add(time)
     End Function
 
     'Todo: Look up how to create this date string. It is used for RSS feeds
-    '<Extension()> Public Function ToRfc822DateString(ByVal this As Date) As String
+    '<Extension()>  Function ToRfc822DateString(ByVal this As Date) As String
 
     ''' <summary>
     ''' Returns true is the indicated date is between the start and end dates. This is an inclusive check.
@@ -196,23 +196,23 @@ Public Module DateTimeExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Untested()>
-    <Extension()> Public Function IsBetween(ByVal value As Date, ByVal start As Date, ByVal [end] As Date) As Boolean
+    <Extension()>  Function IsBetween(ByVal value As Date, ByVal start As Date, ByVal [end] As Date) As Boolean
         Return start <= value And value <= [end]
     End Function
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="unix")>
     <Untested()>
-    Public Function FromUnixTime(ByVal unixTime As Long) As Date
+     Function FromUnixTime(ByVal unixTime As Long) As Date
         Return UnixEpoch + TimeSpan.FromSeconds(unixTime)
     End Function
 
     <Untested()>
-    <Extension()> Public Function ToUnixTime(ByVal value As Date) As Long
+    <Extension()>  Function ToUnixTime(ByVal value As Date) As Long
         Dim ts = (value.ToUniversalTime - UnixEpoch)
         Return CLng(ts.TotalSeconds)
     End Function
 
-    Public ReadOnly UnixEpoch As Date = New Date(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+     ReadOnly UnixEpoch As Date = New Date(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
 
 End Module
 

@@ -7,7 +7,7 @@ Namespace Text
         ''' </summary>
         ''' <param name="value"></param>
         ''' <remarks></remarks>
-        <Extension()> Public Sub Clear(ByVal value As StringBuilder)
+        <Extension()> Sub Clear(ByVal value As StringBuilder)
             If value Is Nothing Then Throw New ArgumentNullException("value")
             value.Length = 0
         End Sub

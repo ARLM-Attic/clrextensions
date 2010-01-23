@@ -15,7 +15,7 @@ Namespace Security
         ''' </summary>
         ''' <remarks>See http://oauth.net/ for information on this standard.
         ''' This class is currently being hand-tested. Some testing is also done via the WrapNetflix project.</remarks>
-        Public Module OAuthUtility
+Public Module OAuthUtility
 
             ''' <summary>
             ''' Custom URL encoding for the OAuth spec
@@ -24,9 +24,8 @@ Namespace Security
             ''' <returns></returns>
             ''' <remarks></remarks>
             <Untested()>
-            Public Function UrlEncode(ByVal value As String) As String
+             Function UrlEncode(ByVal value As String) As String
                 If value Is Nothing Then Throw New ArgumentNullException("value")
-                Contract.EndContractBlock()
 
                 Const unreservedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~"
 
@@ -45,16 +44,15 @@ Namespace Security
             Private ReadOnly s_Random As New ThreadsafeRandom
 
             <Untested()>
-            <Extension()> Public Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String) As RestCall
+            <Extension()>  Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String) As RestCall
                 Return SignRestCall(url, consumerKey, consumerSecret, Nothing, Nothing)
             End Function
 
             <Untested()>
-            <Extension()> Public Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String) As RestCall
+            <Extension()>  Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String) As RestCall
                 If url Is Nothing Then Throw New ArgumentNullException("url")
                 If consumerKey Is Nothing Then Throw New ArgumentNullException("consumerKey")
                 If consumerSecret Is Nothing Then Throw New ArgumentNullException("consumerSecret")
-                Contract.EndContractBlock()
 
 
                 Dim httpMethod As String = url.Verb.ToMethodString
@@ -63,7 +61,7 @@ Namespace Security
             End Function
 
             <Untested()>
-            Public Function GenerateRequest(ByVal uri As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String) As String
+             Function GenerateRequest(ByVal uri As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String) As String
 
                 'step 1
                 Dim timeStamp = OAuth.GenerateTimestamp
@@ -101,17 +99,17 @@ Namespace Security
             End Function
 
             <Untested()>
-            Public Function GenerateNonce() As String
+             Function GenerateNonce() As String
                 Return s_Random.Next(&H1E208, &H98967F).ToString
             End Function
 
             <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="8#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <Untested()>
-            Public Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
+             Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 Return GenerateSignature(url, consumerKey, consumerSecret, token, tokenSecret, httpMethod, timestamp, nonce, SignatureType.HMACSHA1, normalizedUrl, normalizedRequestParameters)
             End Function
 
             <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="10#")> <Untested()>
-            Public Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, ByVal signatureType As SignatureType, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
+             Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, ByVal signatureType As SignatureType, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 normalizedUrl = Nothing
                 normalizedRequestParameters = Nothing
                 Select Case signatureType
@@ -133,13 +131,12 @@ Namespace Security
                 Throw New ArgumentException("Unknown signature type", "signatureType")
             End Function
 
-            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="0")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId:="4")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="8#")> <Untested()>
-            Public Function GenerateSignatureBase(ByVal url As Uri, ByVal consumerKey As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, ByVal signatureType As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
+            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="4")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="8#")> <Untested()>
+             Function GenerateSignatureBase(ByVal url As Uri, ByVal consumerKey As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, ByVal signatureType As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 If url Is Nothing Then Throw New ArgumentNullException("url")
                 If consumerKey = "" Then Throw New ArgumentNullException("consumerKey")
                 If httpMethod = "" Then Throw New ArgumentNullException("httpMethod")
                 If signatureType = "" Then Throw New ArgumentNullException("signatureType")
-                Contract.EndContractBlock()
 
                 If token Is Nothing Then token = ""
                 If tokenSecret Is Nothing Then tokenSecret = ""
@@ -170,12 +167,12 @@ Namespace Security
             End Function
 
             <Untested()>
-            Public Function GenerateSignatureUsingHash(ByVal signatureBase As String, ByVal hash As HashAlgorithm) As String
+             Function GenerateSignatureUsingHash(ByVal signatureBase As String, ByVal hash As HashAlgorithm) As String
                 Return ComputeHash(hash, signatureBase)
             End Function
 
             <Untested()>
-            Public Function GenerateTimestamp() As String
+             Function GenerateTimestamp() As String
                 Dim ts = (DateTime.UtcNow - New DateTime(1970, 1, 1, 0, 0, 0, 0))
                 Return Convert.ToInt64(ts.TotalSeconds).ToString
             End Function
@@ -183,7 +180,6 @@ Namespace Security
             <Untested()>
             Private Function GetQueryParameters(ByVal parameters As String) As List(Of QueryParameter)
                 If parameters Is Nothing Then Throw New ArgumentNullException("parameters")
-                Contract.EndContractBlock()
 
                 If parameters.StartsWith("?") Then
                     parameters = parameters.Remove(0, 1)
@@ -209,7 +205,6 @@ Namespace Security
             <Untested()>
             Private Function NormalizeRequestParameters(ByVal parameters As IList(Of QueryParameter)) As String
                 If parameters Is Nothing Then Throw New ArgumentNullException("parameters")
-                Contract.EndContractBlock()
 
                 Dim sb As New StringBuilder
                 Dim p As QueryParameter = Nothing
@@ -226,21 +221,21 @@ Namespace Security
 
 
             ' Fields
-            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="HMACSHA")> Public Const HMACSHA1SignatureType As String = "HMAC-SHA1"
-            Public Const OAuthCallbackKey As String = "oauth_callback"
-            Public Const OAuthConsumerKeyKey As String = "oauth_consumer_key"
-            Public Const OAuthNonceKey As String = "oauth_nonce"
-            Public Const OAuthParameterPrefix As String = "oauth_"
-            Public Const OAuthSignatureKey As String = "oauth_signature"
-            Public Const OAuthSignatureMethodKey As String = "oauth_signature_method"
-            Public Const OAuthTimestampKey As String = "oauth_timestamp"
-            Public Const OAuthTokenKey As String = "oauth_token"
-            Public Const OAuthTokenSecretKey As String = "oauth_token_secret"
-            Public Const OAuthVersion As String = "1.0"
-            Public Const OAuthVersionKey As String = "oauth_version"
-            Public Const PlaintextSignatureType As String = "PLAINTEXT"
-            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="RSASHA")> Public Const RSASHA1SignatureType As String = "RSA-SHA1"
-            'Public Const unreservedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~"
+            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="HMACSHA")>  Const HMACSHA1SignatureType As String = "HMAC-SHA1"
+             Const OAuthCallbackKey As String = "oauth_callback"
+             Const OAuthConsumerKeyKey As String = "oauth_consumer_key"
+             Const OAuthNonceKey As String = "oauth_nonce"
+             Const OAuthParameterPrefix As String = "oauth_"
+             Const OAuthSignatureKey As String = "oauth_signature"
+             Const OAuthSignatureMethodKey As String = "oauth_signature_method"
+             Const OAuthTimestampKey As String = "oauth_timestamp"
+             Const OAuthTokenKey As String = "oauth_token"
+             Const OAuthTokenSecretKey As String = "oauth_token_secret"
+             Const OAuthVersion As String = "1.0"
+             Const OAuthVersionKey As String = "oauth_version"
+             Const PlaintextSignatureType As String = "PLAINTEXT"
+            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="RSASHA")>  Const RSASHA1SignatureType As String = "RSA-SHA1"
+            ' Const unreservedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~"
 
 
 
@@ -248,10 +243,9 @@ Namespace Security
                 Implements IComparer(Of QueryParameter)
                 ' Methods
                 <Untested()>
-                Public Function [Compare](ByVal x As QueryParameter, ByVal y As QueryParameter) As Integer Implements IComparer(Of QueryParameter).Compare
+                 Function [Compare](ByVal x As QueryParameter, ByVal y As QueryParameter) As Integer Implements IComparer(Of QueryParameter).Compare
                     If x Is Nothing Then Throw New ArgumentNullException("x")
                     If y Is Nothing Then Throw New ArgumentNullException("y")
-                    Contract.EndContractBlock()
 
                     If (x.Name = y.Name) Then
                         Return String.Compare(x.Value, y.Value)
@@ -269,31 +263,31 @@ Namespace Security
 
                 Private ReadOnly m_SyncRoot As New Object
                 <Untested()>
-                Public Overrides Function [Next]() As Integer
+                 Overrides Function [Next]() As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next]()
                     End SyncLock
                 End Function
                 <Untested()>
-                Public Overrides Function [Next](ByVal minValue As Integer, ByVal maxValue As Integer) As Integer
+                 Overrides Function [Next](ByVal minValue As Integer, ByVal maxValue As Integer) As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next](minValue, maxValue)
                     End SyncLock
                 End Function
                 <Untested()>
-                Public Overrides Function [Next](ByVal maxValue As Integer) As Integer
+                 Overrides Function [Next](ByVal maxValue As Integer) As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next](maxValue)
                     End SyncLock
                 End Function
                 <Untested()>
-                Public Overrides Sub NextBytes(ByVal buffer() As Byte)
+                 Overrides Sub NextBytes(ByVal buffer() As Byte)
                     SyncLock m_SyncRoot
                         MyBase.NextBytes(buffer)
                     End SyncLock
                 End Sub
                 <Untested()>
-                Public Overrides Function NextDouble() As Double
+                 Overrides Function NextDouble() As Double
                     SyncLock m_SyncRoot
                         Return MyBase.NextDouble()
                     End SyncLock
@@ -303,7 +297,7 @@ Namespace Security
         End Module
 
 
-        Public Enum SignatureType
+         Enum SignatureType
             ' Fields
             <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="HMACSHA")> HMACSHA1 = 0
             <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="PLAINTEXT")> PLAINTEXT = 1

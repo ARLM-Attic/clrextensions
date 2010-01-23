@@ -9,34 +9,31 @@ Namespace Collections
         Private ReadOnly m_Source As IEnumerator
 
         <Untested()>
-        <Pure()>
-        Public Sub New(ByVal souce As IEnumerator)
+                 Sub New(ByVal souce As IEnumerator)
             m_Source = souce
         End Sub
 
         <Untested()>
-        <Pure()>
-        Public ReadOnly Property Current() As T Implements IEnumerator(Of T).Current
+                 ReadOnly Property Current() As T Implements IEnumerator(Of T).Current
             Get
                 Return CType(m_Source.Current, T)
             End Get
         End Property
 
         <Untested()>
-        <Pure()>
-        Private ReadOnly Property IEnumerator_Current() As Object Implements IEnumerator.Current
+                Private ReadOnly Property IEnumerator_Current() As Object Implements IEnumerator.Current
             Get
                 Return m_Source.Current
             End Get
         End Property
 
         <Untested()>
-        Public Function MoveNext() As Boolean Implements IEnumerator.MoveNext
+         Function MoveNext() As Boolean Implements IEnumerator.MoveNext
             Return m_Source.MoveNext
         End Function
 
         <Untested()>
-        Public Sub Reset() Implements IEnumerator.Reset
+         Sub Reset() Implements IEnumerator.Reset
             m_Source.Reset()
         End Sub
 
@@ -55,7 +52,7 @@ Namespace Collections
         End Sub
 
         <Untested()>
-        Public Sub Dispose() Implements IDisposable.Dispose
+         Sub Dispose() Implements IDisposable.Dispose
             Dispose(True)
             GC.SuppressFinalize(Me)
         End Sub

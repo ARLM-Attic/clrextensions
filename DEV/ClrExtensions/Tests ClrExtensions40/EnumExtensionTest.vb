@@ -18,12 +18,12 @@ Public Class EnumExtensionTest
     '''Gets or sets the test context which provides
     '''information about and functionality for the current test run.
     '''</summary>
-    Public Property TestContext() As TestContext
+    Property TestContext() As TestContext
         Get
             Return testContextInstance
         End Get
         Set(ByVal value As TestContext)
-            testContextInstance = Value
+            testContextInstance = value
         End Set
     End Property
 
@@ -33,22 +33,22 @@ Public Class EnumExtensionTest
     '
     'Use ClassInitialize to run code before running the first test in the class
     '<ClassInitialize()>  _
-    'Public Shared Sub MyClassInitialize(ByVal testContext As TestContext)
+    ' Shared Sub MyClassInitialize(ByVal testContext As TestContext)
     'End Sub
     '
     'Use ClassCleanup to run code after all tests in a class have run
     '<ClassCleanup()>  _
-    'Public Shared Sub MyClassCleanup()
+    ' Shared Sub MyClassCleanup()
     'End Sub
     '
     'Use TestInitialize to run code before running each test
     '<TestInitialize()>  _
-    'Public Sub MyTestInitialize()
+    ' Sub MyTestInitialize()
     'End Sub
     '
     'Use TestCleanup to run code after each test has run
     '<TestCleanup()>  _
-    'Public Sub MyTestCleanup()
+    ' Sub MyTestCleanup()
     'End Sub
     '
 #End Region
@@ -57,7 +57,7 @@ Public Class EnumExtensionTest
     '''<summary>
     '''A test for EnumIsDefined
     '''</summary>
-    Public Sub EnumIsDefinedTestHelper(Of T As Structure)()
+    Sub EnumIsDefinedTestHelper(Of T As Structure)()
         Dim value As T = New T() ' TODO: Initialize to an appropriate value
         Dim expected As Boolean = False ' TODO: Initialize to an appropriate value
         Dim actual As Boolean
@@ -68,7 +68,7 @@ Public Class EnumExtensionTest
 
     <ExpectedException(GetType(ArgumentException))>
     <TestMethod()> _
-    Public Sub EnumIsDefinedTest()
+    Sub EnumIsDefinedTest()
         EnumIsDefined(Of Integer)(0)
     End Sub
 End Class

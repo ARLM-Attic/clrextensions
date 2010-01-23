@@ -12,7 +12,7 @@ Namespace Collections
     ''' <typeparam name="T2"></typeparam>
     ''' <typeparam name="T3"></typeparam>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")> Public Class Tuple(Of T1, T2, T3)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>  Class Tuple(Of T1, T2, T3)
         Implements IEquatable(Of Tuple(Of T1, T2, T3))
 
         Private m_Item1 As T1
@@ -20,14 +20,14 @@ Namespace Collections
         Private m_Item3 As T3
 
         <Untested()>
-        Public ReadOnly Property Item3() As T3
+         ReadOnly Property Item3() As T3
             Get
                 Return m_Item3
             End Get
         End Property
 
         <Untested()>
-        Public ReadOnly Property Item2() As T2
+         ReadOnly Property Item2() As T2
             Get
                 Return m_Item2
             End Get
@@ -41,21 +41,21 @@ Namespace Collections
         End Property
 
         <Untested()>
-        Public Sub New(ByVal item1 As T1, ByVal item2 As T2, ByVal item3 As T3)
+         Sub New(ByVal item1 As T1, ByVal item2 As T2, ByVal item3 As T3)
             m_Item1 = item1
             m_Item2 = item2
             m_Item3 = item3
         End Sub
 
         <Untested()>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+         Overrides Function Equals(ByVal obj As Object) As Boolean
             If Not TypeOf obj Is Tuple(Of T1, T2, T3) Then Return False
             Return Me.Equals(DirectCast(obj, Tuple(Of T1, T2, T3)))
         End Function
 
 
         <Untested()>
-        Public Overrides Function GetHashCode() As Integer
+         Overrides Function GetHashCode() As Integer
             Dim result = 0
 
             If m_Item1 IsNot Nothing Then result = result Xor m_Item1.GetHashCode
@@ -66,7 +66,7 @@ Namespace Collections
         End Function
 
         <Untested()>
-        Public Overloads Function Equals(ByVal other As Tuple(Of T1, T2, T3)) As Boolean Implements IEquatable(Of Tuple(Of T1, T2, T3)).Equals
+         Overloads Function Equals(ByVal other As Tuple(Of T1, T2, T3)) As Boolean Implements IEquatable(Of Tuple(Of T1, T2, T3)).Equals
             If other Is Nothing Then Return False
             Return Object.Equals(Item1, other.Item1) AndAlso Object.Equals(Item2, other.Item2) AndAlso Object.Equals(Item3, other.Item3)
         End Function
