@@ -5,7 +5,7 @@
 ''' This is used to indicate which operating systems line break mode is desired
 ''' </summary>
 ''' <remarks></remarks>
- Enum LineBreakMode
+Public Enum LineBreakMode
     Windows = 0
     Macintosh = 1
     Unix = 2

@@ -2,11 +2,11 @@
 #If IncludeUntested Then
 
 Namespace Net.Rest
-	 Enum RestVerb
-		[Get] = 0
-		Post
-		Put
-		Delete
-	End Enum
+    Public Enum RestVerb
+        [Get] = 0
+        Post
+        Put
+        Delete
+    End Enum
 End Namespace
 #End If

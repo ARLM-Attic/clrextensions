@@ -12,7 +12,7 @@ Namespace Net.Rest
     ''' This is a strongly typed representation of a Verb/URL used in REST-style calls.
     ''' </summary>
     ''' <remarks>This was partially created in resonse to the total lameness of the System.Uri class</remarks>
-     Class RestCall
+    Public Class RestCall
         Private ReadOnly m_Verb As RestVerb
         Private ReadOnly m_Scheme As RestScheme
         Private ReadOnly m_Root As String
@@ -20,42 +20,42 @@ Namespace Net.Rest
         Private ReadOnly m_Query As New QueryParameterCollection
 
         <Untested()>
-         ReadOnly Property Path() As String
+        ReadOnly Property Path() As String
             Get
                 Return m_Path
             End Get
         End Property
 
         <Untested()>
-         ReadOnly Property Root() As String
+        ReadOnly Property Root() As String
             Get
                 Return m_Root
             End Get
         End Property
 
         <Untested()>
-         ReadOnly Property Scheme() As RestScheme
+        ReadOnly Property Scheme() As RestScheme
             Get
                 Return m_Scheme
             End Get
         End Property
 
         <Untested()>
-         ReadOnly Property HttpMethod() As String
+        ReadOnly Property HttpMethod() As String
             Get
                 Return Verb.ToMethodString
             End Get
         End Property
 
         <Untested()>
-         ReadOnly Property Verb() As RestVerb
+        ReadOnly Property Verb() As RestVerb
             Get
                 Return m_Verb
             End Get
         End Property
 
         <Untested()>
-         Sub New(ByVal verb As RestVerb, ByVal scheme As RestScheme, ByVal root As String, ByVal path As String, ByVal query As IList(Of QueryParameter))
+        Sub New(ByVal verb As RestVerb, ByVal scheme As RestScheme, ByVal root As String, ByVal path As String, ByVal query As IList(Of QueryParameter))
             m_Verb = verb
             m_Scheme = scheme
             m_Root = root
@@ -64,7 +64,7 @@ Namespace Net.Rest
         End Sub
 
         <Untested()>
-         Sub New(ByVal verb As RestVerb, ByVal url As String)
+        Sub New(ByVal verb As RestVerb, ByVal url As String)
             If url Is Nothing Then Throw New ArgumentNullException("url")
 
             Dim remainder As String = url
@@ -111,7 +111,7 @@ Namespace Net.Rest
         End Sub
 
         <Untested()>
-         Function ToUrlString() As String
+        Function ToUrlString() As String
             Dim result As New StringBuilder
             result.Append(Scheme.ToSchemeString)
             result.Append(Root)
@@ -127,7 +127,7 @@ Namespace Net.Rest
 
 
         <Untested()>
-         Function AddParameter(ByVal parameter As QueryParameter) As RestCall
+        Function AddParameter(ByVal parameter As QueryParameter) As RestCall
             If parameter Is Nothing Then Return Me
 
             Dim result As New RestCall(Verb, Scheme, Root, Path, m_Query)
@@ -137,7 +137,7 @@ Namespace Net.Rest
 #If ClrVersion > 0 Then
 
         <Untested()>
-         Function AddParameter(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod) As RestCall
+        Function AddParameter(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod) As RestCall
             Dim result As New RestCall(Verb, Scheme, Root, Path, m_Query)
             result.m_Query.Add(New QueryParameter(name, value.UrlEncode(encoding)))
             Return result
@@ -151,17 +151,17 @@ Namespace Net.Rest
         'TODO: ChangeVerb(verb)
 
         <Untested()>
-         Function ToUri() As Uri
+        Function ToUri() As Uri
             Return New Uri(ToUrlString)
         End Function
 
         <Untested()>
-         Overrides Function ToString() As String
+        Overrides Function ToString() As String
             Return HttpMethod & " " & ToUrlString()
         End Function
 
         <Untested()>
-         Function CreateHttpWebRequest() As System.Net.HttpWebRequest
+        Function CreateHttpWebRequest() As System.Net.HttpWebRequest
             Dim result = DirectCast(System.Net.WebRequest.Create(ToUri), System.Net.HttpWebRequest)
             result.Method = HttpMethod
             Return result

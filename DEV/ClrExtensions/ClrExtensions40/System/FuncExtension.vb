@@ -6,28 +6,28 @@ Imports ClrExtensions.Collections
 #If ClrVersion < 35 Then
  Delegate Function Func(Of TResult)() As TResult
 
- Delegate Function Func(Of T1, TResult)(ByVal arg1 As T1) As TResult
+Public Delegate Function Func(Of T1, TResult)(ByVal arg1 As T1) As TResult
 
 <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
- Delegate Function Func(Of T1, T2, TResult)(ByVal arg1 As T1, ByVal arg2 As T2) As TResult
+Public Delegate Function Func(Of T1, T2, TResult)(ByVal arg1 As T1, ByVal arg2 As T2) As TResult
 
 <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
- Delegate Function Func(Of T1, T2, T3, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3) As TResult
+Public Delegate Function Func(Of T1, T2, T3, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3) As TResult
 
 <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
- Delegate Function Func(Of T1, T2, T3, T4, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4) As TResult
+Public Delegate Function Func(Of T1, T2, T3, T4, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4) As TResult
 
 <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
- Delegate Function Func(Of T1, T2, T3, T4, T5, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5) As TResult
+Public Delegate Function Func(Of T1, T2, T3, T4, T5, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5) As TResult
 
 <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
- Delegate Function Func(Of T1, T2, T3, T4, T5, T6, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6) As TResult
+Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6) As TResult
 
 <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
- Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6, ByVal arg7 As T7) As TResult
+Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6, ByVal arg7 As T7) As TResult
 
 <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
- Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, T8, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6, ByVal arg7 As T7, ByVal arg8 As T8) As TResult
+Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, T8, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6, ByVal arg7 As T7, ByVal arg8 As T8) As TResult
 #End If
 
 #If IncludeUntested Then

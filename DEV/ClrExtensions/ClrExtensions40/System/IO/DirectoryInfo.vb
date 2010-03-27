@@ -5,6 +5,7 @@ Imports ClrExtensions.Collections
 
 Public Module DirectoryInfo
 
+#If ClrVersion >= 40 Then
 
     ''' <summary>
     ''' Copies the contents of one folder to another
@@ -30,7 +31,7 @@ Public Module DirectoryInfo
             Next
         End If
     End Sub
-
+#End If
 
 End Module
 

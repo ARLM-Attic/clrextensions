@@ -150,7 +150,7 @@
 
 End Class
 
- Enum RangeOption
+Public Enum RangeOption
     IncludeBoth = 0
     ExcludeStart = 1
     ExcludeEnd = 2

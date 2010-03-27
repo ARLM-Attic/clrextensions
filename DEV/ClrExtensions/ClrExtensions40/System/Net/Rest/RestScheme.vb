@@ -2,9 +2,9 @@
 #If IncludeUntested Then
 
 Namespace Net.Rest
-	 Enum RestScheme
-		Http = 0
+    Public Enum RestScheme
+        Http = 0
         Https = 1
-	End Enum
+    End Enum
 End Namespace
 #End If

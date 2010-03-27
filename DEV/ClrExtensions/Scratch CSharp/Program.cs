@@ -12,6 +12,11 @@ namespace Scratch_CSharp
     {
          static void Main(string[] args)
         {
+  
+
+
+
+             /*
             var theLock = new  ReaderWriterLockSlim();
             IDisposable obj = null;
 
@@ -52,6 +57,7 @@ namespace Scratch_CSharp
             {
                 //code
             }
+              * */
         }
     }
 }

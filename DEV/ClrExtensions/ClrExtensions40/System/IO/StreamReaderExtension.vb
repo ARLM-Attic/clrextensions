@@ -73,45 +73,45 @@ Namespace IO
 	''' </summary>
 	''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix")>
-     Class StreamProtector
+    Public Class StreamProtector
         Inherits Global.System.IO.Stream
         Private m_BaseStream As Global.System.IO.Stream
 
         <Untested()>
-         Overrides ReadOnly Property CanRead() As Boolean
+        Overrides ReadOnly Property CanRead() As Boolean
             Get
                 Return m_BaseStream.CanRead
             End Get
         End Property
 
         <Untested()>
-         Overrides ReadOnly Property CanSeek() As Boolean
+        Overrides ReadOnly Property CanSeek() As Boolean
             Get
                 Return m_BaseStream.CanRead
             End Get
         End Property
 
         <Untested()>
-         Overrides ReadOnly Property CanWrite() As Boolean
+        Overrides ReadOnly Property CanWrite() As Boolean
             Get
                 Return m_BaseStream.CanWrite
             End Get
         End Property
 
         <Untested()>
-         Overrides Sub Flush()
+        Overrides Sub Flush()
             m_BaseStream.Flush()
         End Sub
 
         <Untested()>
-         Overrides ReadOnly Property Length() As Long
+        Overrides ReadOnly Property Length() As Long
             Get
                 Return m_BaseStream.Length
             End Get
         End Property
 
         <Untested()>
-         Overrides Property Position() As Long
+        Overrides Property Position() As Long
             Get
                 Return m_BaseStream.Position
             End Get
@@ -121,44 +121,44 @@ Namespace IO
         End Property
 
         <Untested()>
-         Overrides Function Read(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer) As Integer
+        Overrides Function Read(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer) As Integer
             Return m_BaseStream.Read(buffer, offset, count)
         End Function
 
         <Untested()>
-         Overrides Function Seek(ByVal offset As Long, ByVal origin As Global.System.IO.SeekOrigin) As Long
+        Overrides Function Seek(ByVal offset As Long, ByVal origin As Global.System.IO.SeekOrigin) As Long
             Return m_BaseStream.Seek(offset, origin)
         End Function
 
         <Untested()>
-         Overrides Sub SetLength(ByVal value As Long)
+        Overrides Sub SetLength(ByVal value As Long)
             m_BaseStream.SetLength(value)
         End Sub
 
         <Untested()>
-         Overrides Sub Write(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer)
+        Overrides Sub Write(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer)
             m_BaseStream.Write(buffer, offset, count)
         End Sub
 
         <Untested()>
-         Overrides Function BeginRead(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
+        Overrides Function BeginRead(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
             Return m_BaseStream.BeginRead(buffer, offset, count, callback, state)
         End Function
 
         <Untested()>
-         Overrides Function BeginWrite(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
+        Overrides Function BeginWrite(ByVal buffer() As Byte, ByVal offset As Integer, ByVal count As Integer, ByVal callback As Global.System.AsyncCallback, ByVal state As Object) As Global.System.IAsyncResult
             Return m_BaseStream.BeginWrite(buffer, offset, count, callback, state)
         End Function
 
         <Untested()>
-         Overrides ReadOnly Property CanTimeout() As Boolean
+        Overrides ReadOnly Property CanTimeout() As Boolean
             Get
                 Return m_BaseStream.CanTimeout
             End Get
         End Property
 
         <Untested()>
-         Overrides Sub Close()
+        Overrides Sub Close()
             'NOP
         End Sub
 
@@ -170,22 +170,22 @@ Namespace IO
 #End If
 
         <Untested()>
-         Overrides Function EndRead(ByVal asyncResult As Global.System.IAsyncResult) As Integer
+        Overrides Function EndRead(ByVal asyncResult As Global.System.IAsyncResult) As Integer
             Return m_BaseStream.EndRead(asyncResult)
         End Function
 
         <Untested()>
-         Overrides Sub EndWrite(ByVal asyncResult As Global.System.IAsyncResult)
+        Overrides Sub EndWrite(ByVal asyncResult As Global.System.IAsyncResult)
             m_BaseStream.EndWrite(asyncResult)
         End Sub
 
         <Untested()>
-         Overrides Function ReadByte() As Integer
+        Overrides Function ReadByte() As Integer
             Return m_BaseStream.ReadByte()
         End Function
 
         <Untested()>
-         Overrides Property ReadTimeout() As Integer
+        Overrides Property ReadTimeout() As Integer
             Get
                 Return m_BaseStream.ReadTimeout
             End Get
@@ -196,12 +196,12 @@ Namespace IO
 
 
         <Untested()>
-         Overrides Sub WriteByte(ByVal value As Byte)
+        Overrides Sub WriteByte(ByVal value As Byte)
             m_BaseStream.WriteByte(value)
         End Sub
 
         <Untested()>
-         Overrides Property WriteTimeout() As Integer
+        Overrides Property WriteTimeout() As Integer
             Get
                 Return m_BaseStream.WriteTimeout
             End Get

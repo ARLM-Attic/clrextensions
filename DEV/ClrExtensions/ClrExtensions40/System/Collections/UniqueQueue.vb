@@ -9,7 +9,7 @@ Namespace Collections
 	''' </summary>
 	''' <remarks>All methods are threadsafe</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")>
-     Class UniqueQueue(Of T)
+    Public Class UniqueQueue(Of T)
         Private ReadOnly m_Lock As New Object
         Private ReadOnly m_List As New LinkedList(Of T)
         Private ReadOnly m_comparer As IEqualityComparer(Of T)
@@ -20,7 +20,7 @@ Namespace Collections
         ''' </summary>
         ''' <remarks></remarks>
         <Untested()>
-                 Sub New(ByVal mode As UniqueQueueMode)
+        Sub New(ByVal mode As UniqueQueueMode)
             If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode", mode, "Mode isn't defined")
 
             m_Mode = mode
@@ -32,7 +32,7 @@ Namespace Collections
         ''' <param name="comparer"></param>
         ''' <remarks></remarks>
         <Untested()>
-                 Sub New(ByVal mode As UniqueQueueMode, ByVal comparer As IEqualityComparer(Of T))
+        Sub New(ByVal mode As UniqueQueueMode, ByVal comparer As IEqualityComparer(Of T))
             If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode", mode, "Mode isn't defined")
 
             m_Mode = mode
@@ -45,7 +45,7 @@ Namespace Collections
         ''' <param name="value"></param>
         ''' <remarks></remarks>
         <Untested()>
-         Sub Enqueue(ByVal value As T)
+        Sub Enqueue(ByVal value As T)
             SyncLock m_Lock
                 AddInternal(value)
             End SyncLock
@@ -57,7 +57,7 @@ Namespace Collections
         ''' <param name="list"></param>
         ''' <remarks></remarks>
         <Untested()>
-         Sub Enqueue(ByVal list As IEnumerable(Of T))
+        Sub Enqueue(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
             SyncLock m_Lock
                 For Each item In list
@@ -73,7 +73,7 @@ Namespace Collections
         ''' <returns>True if the queue contained items, False otherwise</returns>
         ''' <remarks></remarks>
         <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> <Untested()>
-         Function TryDequeue(ByRef value As T) As Boolean
+        Function TryDequeue(ByRef value As T) As Boolean
             SyncLock m_Lock
                 If m_List.Count > 0 Then
                     value = m_List.First.Value
@@ -95,7 +95,7 @@ Namespace Collections
         ''' <returns>A list containing minBatchSize &lt;= count &lt;= MaxBatchSize items or an empty list if there aren't at least minBatchSize items</returns>
         ''' <remarks></remarks>
         <Untested()>
-         Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As IList(Of T)
+        Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As IList(Of T)
             SyncLock m_Lock
                 If m_List.Count >= minBatchSize Then
 
@@ -122,7 +122,7 @@ Namespace Collections
         ''' <returns></returns>
         ''' <remarks></remarks>
         <Untested()>
-         ReadOnly Property Count() As Integer
+        ReadOnly Property Count() As Integer
             Get
                 SyncLock m_Lock
                     Return m_List.Count
@@ -177,7 +177,7 @@ Namespace Collections
 	''' Operation modes for a Unique Queue
 	''' </summary>
 	''' <remarks></remarks>
-	 Enum UniqueQueueMode
+	 Public Enum UniqueQueueMode
 		''' <summary>
 		''' Adding a duplicate item replaces the original item
 		''' </summary>
