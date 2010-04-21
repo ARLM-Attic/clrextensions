@@ -1,6 +1,7 @@
 Imports System.Text
 Imports System.Security.Cryptography
 Imports System.Runtime.InteropServices
+Imports System.Web
 
 'Copyright (c) 2008, Jonathan Allen
 #If Subset <> "Client" Then
@@ -123,7 +124,7 @@ Public Module OAuthUtility
                         End Using
 
                     Case signatureType.PLAINTEXT
-                        Return Web.HttpUtility.UrlEncode(String.Format("{0}&{1}", consumerSecret, tokenSecret))
+                        Return HttpUtility.UrlEncode(String.Format("{0}&{1}", consumerSecret, tokenSecret))
 
                     Case signatureType.RSASHA1
                         Throw New NotImplementedException

@@ -69,4 +69,43 @@ Public Class CollectionExtensionTest
             Assert.IsTrue(target.Contains(item))
         Next
     End Sub
+
+    <TestMethod()> _
+    Sub AddRangeTest2()
+        Dim source As New MailAddressCollection From {{"a@test.com"}, {"b@test.com"}, {"c@test.com"}}
+        Dim target As New MailAddressCollection From {{"x@test.com"}, {"y@test.com"}}
+        CollectionExtension.AddRange(CType(target, ICollection(Of MailAddress)), CType(source, IEnumerable(Of MailAddress)))
+
+        Assert.AreEqual(5, target.Count)
+        For Each item In source
+            Assert.IsTrue(target.Contains(item))
+        Next
+    End Sub
+
+    <TestMethod()>
+    <ExpectedException(GetType(ArgumentNullException))>
+    Sub AddRangeTest5()
+        Dim source As New MailAddressCollection From {{"a@test.com"}, {"b@test.com"}, {"c@test.com"}}
+        Dim target As New MailAddressCollection From {{"x@test.com"}, {"y@test.com"}}
+        CollectionExtension.AddRange(CType(Nothing, ICollection(Of MailAddress)), CType(source, IEnumerable(Of MailAddress)))
+    End Sub
+
+    <TestMethod()>
+    <ExpectedException(GetType(ArgumentNullException))>
+    Sub AddRangeTest3()
+        Dim source As New MailAddressCollection From {{"a@test.com"}, {"b@test.com"}, {"c@test.com"}}
+        Dim target As New MailAddressCollection From {{"x@test.com"}, {"y@test.com"}}
+        CollectionExtension.AddRange(CType(target, ICollection(Of MailAddress)), CType(Nothing, IEnumerable(Of MailAddress)))
+    End Sub
+
+    <TestMethod()>
+    <ExpectedException(GetType(ArgumentException))>
+    Sub AddRangeTest4()
+        Dim source As New MailAddressCollection From {{"a@test.com"}, {"b@test.com"}, {"c@test.com"}}
+        Dim target As New ObjectModel.ReadOnlyCollection(Of MailAddress)(New MailAddressCollection From {{"x@test.com"}, {"y@test.com"}})
+        CollectionExtension.AddRange(CType(target, ICollection(Of MailAddress)), CType(source, IEnumerable(Of MailAddress)))
+    End Sub
+
+
+
 End Class

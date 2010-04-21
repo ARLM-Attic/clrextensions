@@ -18,7 +18,7 @@ public  Module ArrayExtension
     <Extension()> Function SortByColumn(Of T)(ByVal array As T(,), ByVal sortColumn As Integer) As T(,)
         If array Is Nothing Then Throw New ArgumentNullException("array")
 
-        Dim fragments = array.ToJagged
+        Dim fragments = ToJagged(array)
 
         Dim sorted = (From fragment In fragments Order By fragment(sortColumn)).ToArray
 

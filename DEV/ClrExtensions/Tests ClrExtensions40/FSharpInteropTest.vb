@@ -87,4 +87,6 @@ Public Class FSharpInteropTest
         Assert.AreEqual(5, OptionGetUnderlyingValue(valueG))
 
     End Sub
+
+
 End Class

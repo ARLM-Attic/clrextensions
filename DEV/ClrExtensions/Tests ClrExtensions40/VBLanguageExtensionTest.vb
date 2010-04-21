@@ -61,7 +61,7 @@ Public Class VBLanguageExtensionTest
     '''A test for CStr2
     '''</summary>
     <TestMethod()> _
-    Sub CStr2Test2()
+    Sub CStr2Test3()
         Dim valueA As Object = Nothing
         Dim valueB As Object = DBNull.Value
         Dim valueC_ As Nullable(Of Integer) = Nothing
@@ -580,4 +580,224 @@ Public Class VBLanguageExtensionTest
         values.ForEach(Sub(a) Assert.AreEqual(a.Item2, CUShort2(a.Item1)))
     End Sub
 
+    <TestMethod()> _
+    Public Sub CStr2Test()
+
+        Dim a As New Integer?
+        Dim b As Integer? = 1
+
+        Assert.AreEqual(Nothing, CStr2(a))
+        Assert.AreEqual("1", CStr2(b))
+    End Sub
+
+    <TestMethod()> _
+    Public Sub CStr2Test2()
+
+        Dim a As New Integer?
+        Dim b As Integer? = 1
+
+        Assert.AreEqual("2", CStr2(a, "2"))
+        Assert.AreEqual("1", CStr2(b))
+    End Sub
+
+
+
+    '''<summary>
+    '''A test for TryCULng
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCULngTest()
+        Dim a = "asd"
+        Dim b = "-5"
+        Dim c = "5"
+        Dim d = ""
+
+        Dim outA As ULong?
+        Dim outB As ULong?
+        Dim outC As ULong?
+        Dim outD As ULong?
+
+
+        outA = TryCULng(a)
+        outB = TryCULng(b)
+        outC = TryCULng(c)
+        outD = TryCULng(d)
+
+        Assert.AreEqual(Nothing, outA)
+        Assert.AreEqual(Nothing, outB)
+        Assert.AreEqual(CULng(5), outC)
+        Assert.AreEqual(Nothing, outD)
+
+
+
+    End Sub
+
+    '''<summary>
+    '''A test for TryCUShort
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCUShortTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of UShort) = New Nullable(Of UShort)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of UShort)
+        actual = VBLanguageExtension.TryCUShort(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCUInt
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCUIntTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of UInteger) = New Nullable(Of UInteger)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of UInteger)
+        actual = VBLanguageExtension.TryCUInt(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCSng
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCSngTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Single) = New Nullable(Of Single)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Single)
+        actual = VBLanguageExtension.TryCSng(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCShort
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCShortTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Short) = New Nullable(Of Short)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Short)
+        actual = VBLanguageExtension.TryCShort(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCSByte
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCSByteTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of SByte) = New Nullable(Of SByte)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of SByte)
+        actual = VBLanguageExtension.TryCSByte(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCLng
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCLngTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Long) = New Nullable(Of Long)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Long)
+        actual = VBLanguageExtension.TryCLng(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCInt
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCIntTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Integer) = New Nullable(Of Integer)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Integer)
+        actual = VBLanguageExtension.TryCInt(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCDec
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCDecTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of [Decimal]) = New Nullable(Of [Decimal])() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of [Decimal])
+        actual = VBLanguageExtension.TryCDec(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCDbl
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCDblTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Double) = New Nullable(Of Double)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Double)
+        actual = VBLanguageExtension.TryCDbl(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCDate
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCDateTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of DateTime) = New Nullable(Of DateTime)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of DateTime)
+        actual = VBLanguageExtension.TryCDate(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCChar
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCCharTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Char) = New Nullable(Of Char)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Char)
+        actual = VBLanguageExtension.TryCChar(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCByte
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCByteTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Byte) = New Nullable(Of Byte)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Byte)
+        actual = VBLanguageExtension.TryCByte(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for TryCBool
+    '''</summary>
+    <TestMethod()> _
+    Public Sub TryCBoolTest()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of Boolean) = New Nullable(Of Boolean)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of Boolean)
+        actual = VBLanguageExtension.TryCBool(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
 End Class

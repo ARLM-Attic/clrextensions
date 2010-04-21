@@ -466,6 +466,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -484,6 +486,8 @@ Public Module VBLanguageExtension
         Catch ex As FormatException
             Return Nothing
         Catch ex As InvalidCastException
+            Return Nothing
+        Catch ex As OverflowException
             Return Nothing
         End Try
     End Function
@@ -505,6 +509,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -525,6 +531,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -543,6 +551,8 @@ Public Module VBLanguageExtension
         Catch ex As FormatException
             Return Nothing
         Catch ex As InvalidCastException
+            Return Nothing
+        Catch ex As OverflowException
             Return Nothing
         End Try
     End Function
@@ -564,6 +574,8 @@ Public Module VBLanguageExtension
         Catch ex As FormatException
             Return Nothing
         Catch ex As InvalidCastException
+            Return Nothing
+        Catch ex As OverflowException
             Return Nothing
         End Try
     End Function
@@ -600,6 +612,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -619,6 +633,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -637,6 +653,8 @@ Public Module VBLanguageExtension
         Catch ex As FormatException
             Return Nothing
         Catch ex As InvalidCastException
+            Return Nothing
+        Catch ex As OverflowException
             Return Nothing
         End Try
     End Function
@@ -672,6 +690,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -690,6 +710,8 @@ Public Module VBLanguageExtension
         Catch ex As FormatException
             Return Nothing
         Catch ex As InvalidCastException
+            Return Nothing
+        Catch ex As OverflowException
             Return Nothing
         End Try
     End Function
@@ -711,6 +733,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -731,6 +755,8 @@ Public Module VBLanguageExtension
             Return Nothing
         Catch ex As InvalidCastException
             Return Nothing
+        Catch ex As OverflowException
+            Return Nothing
         End Try
     End Function
 
@@ -750,6 +776,8 @@ Public Module VBLanguageExtension
         Catch ex As FormatException
             Return Nothing
         Catch ex As InvalidCastException
+            Return Nothing
+        Catch ex As OverflowException
             Return Nothing
         End Try
     End Function

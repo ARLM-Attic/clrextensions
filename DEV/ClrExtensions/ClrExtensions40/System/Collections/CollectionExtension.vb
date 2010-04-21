@@ -24,16 +24,7 @@ Public Module CollectionExtension
         Next
     End Sub
 
-    <Extension()>
-    Sub AddRange(Of T)(ByVal target As ICollection(Of T), ByVal source As ICollection(Of T))
-        If target Is Nothing Then Throw New ArgumentNullException("target")
-        If source Is Nothing Then Throw New ArgumentNullException("source")
-        If target.IsReadOnly Then Throw New ArgumentException("target cannot be a read-only collection")
 
-        For Each item In source
-            target.Add(item)
-        Next
-    End Sub
 
 
 End Module
