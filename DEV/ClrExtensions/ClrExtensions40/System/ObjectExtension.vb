@@ -40,32 +40,33 @@ Public Module ObjectExtension
     End Function
 
 
-#If IncludeUntested And Exclude Then
-    ''' <summary>
-    ''' Returns true if the object is contained in the indicated list
-    ''' </summary>
-    ''' <typeparam name="T"></typeparam>
-    ''' <param name="value"></param>
-    ''' <param name="list"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    <Untested()>
-    <Extension()>  Function IsIn(Of T)(ByVal value As T, ByVal ParamArray list() As T) As Boolean
-        Return list.Contains(value)
-    End Function
+#If ClrVersion >= 40 Then
+	''' <summary>
+	''' Returns true if the object is contained in the indicated list
+	''' </summary>
+	''' <typeparam name="T"></typeparam>
+	''' <param name="value"></param>
+	''' <param name="source"></param>
+	''' <returns></returns>
+	''' <remarks></remarks>
+	<Extension()> Function IsIn(Of T)(ByVal value As T, ByVal ParamArray source() As T) As Boolean
+		Return source.Contains(value)
+	End Function
+#End If
 
-    ''' <summary>
-    ''' Returns true if the object is contained in the indicated list
-    ''' </summary>
-    ''' <typeparam name="T"></typeparam>
-    ''' <param name="value"></param>
-    ''' <param name="list"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    <Untested()>
-    <Extension()>  Function IsIn(Of T)(ByVal value As T, ByVal list As IList(Of T)) As Boolean
-        Return list.Contains(value)
-    End Function
+
+
+	''' <summary>
+	''' Returns true if the object is contained in the indicated list
+	''' </summary>
+	''' <typeparam name="T"></typeparam>
+	''' <param name="value"></param>
+	''' <param name="source"></param>
+	''' <returns></returns>
+	''' <remarks></remarks>
+	<Extension()> Function IsIn(Of T)(ByVal value As T, ByVal source As IList(Of T)) As Boolean
+		Return source.Contains(value)
+	End Function
 
 
 #If IncludeUntested Then
@@ -277,6 +278,5 @@ Public Module ObjectExtension
     End Function
 #End If
 
-#End If
 
 End Module

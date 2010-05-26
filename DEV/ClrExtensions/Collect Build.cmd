@@ -1,6 +1,6 @@
 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
 
-set build-root=C:\CodePlex\tfs02\ClrExtensions\DEV\ClrExtensions
+set build-root=C:\CodePlex\ClrExtensions\DEV\ClrExtensions
 
 cd %build-root%
 
