@@ -11,7 +11,8 @@ Namespace Collections
 	''' <typeparam name="TValue">The data being stored</typeparam>
 	''' <remarks></remarks>
 	<Serializable()>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")> Class Dictionary(Of TKey1, TKey2, TValue)
+	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")>
+	Public Class Dictionary(Of TKey1, TKey2, TValue)
 		Inherits Dictionary(Of Tuple(Of TKey1, TKey2), TValue)
 
 		''' <summary>

@@ -11,7 +11,7 @@ Namespace Collections
 	''' <typeparam name="T1"></typeparam>
 	''' <typeparam name="T2"></typeparam>
 	''' <remarks></remarks>
-	Class Tuple(Of T1, T2)
+	Public Class Tuple(Of T1, T2)
 		Implements IEquatable(Of Tuple(Of T1, T2))
 
 		Private m_Item1 As T1
