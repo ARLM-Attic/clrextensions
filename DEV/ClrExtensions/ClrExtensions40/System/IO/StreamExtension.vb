@@ -82,8 +82,8 @@ Public Module StreamExtension
     ''' <param name="source"></param>
     ''' <param name="target"></param>
     ''' <remarks></remarks>
-    <Untested(), Extension()>
-     Sub CopyTo(ByVal source As Stream, ByVal target As Stream)
+    <Extension()>
+    Sub CopyTo(ByVal source As Stream, ByVal target As Stream)
         CopyTo(source, target, DefaultBufferSize)
     End Sub
 #End If
