@@ -73,7 +73,7 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <CodeAnalysisRuleSet>..\CLR Extenstions Rule Set.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <DefineConstants>ClrVersion=40,Subset=Client</DefineConstants>
+    <DefineConstants>ClrVersion=40,Subset="Client"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Untested|AnyCPU'">
     <DefineTrace>true</DefineTrace>
