@@ -219,6 +219,7 @@
     <Compile Include="System\Data\DataRecord.vb" />
     <Compile Include="System\Data\DataRecordColumns.vb" />
     <Compile Include="System\Data\IDataReaderExtensions.vb" />
+    <Compile Include="System\Data\SqlClientExtension.vb" />
     <Compile Include="System\DateTimeExtension.vb" />
     <Compile Include="System\DBNullExtension.vb" />
     <Compile Include="System\DecimalExtension.vb" />

@@ -5,6 +5,17 @@ Namespace Collections
 
 #If ClrVersion < 40 Then
 
+	Public NotInheritable Class Tuple
+
+		Public Shared Function Create(Of T1, T2)(ByVal item1 As T1, ByVal item2 As T2) As Tuple(Of T1, T2)
+			Return New Tuple(Of T1, T2)(item1, item2)
+		End Function
+
+
+	End Class
+
+
+
 	''' <summary>
 	''' This repesents a pair of values
 	''' </summary>
