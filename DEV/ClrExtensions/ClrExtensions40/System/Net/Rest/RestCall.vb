@@ -7,7 +7,7 @@ Imports System.Text
 Namespace Net.Rest
 
 
-#If IncludeUntested Then
+#If 1 = 1 Then
     ''' <summary>
     ''' This is a strongly typed representation of a Verb/URL used in REST-style calls.
     ''' </summary>
@@ -19,42 +19,42 @@ Namespace Net.Rest
         Private ReadOnly m_Path As String
         Private ReadOnly m_Query As New QueryParameterCollection
 
-        <Untested()>
+        
         ReadOnly Property Path() As String
             Get
                 Return m_Path
             End Get
         End Property
 
-        <Untested()>
+        
         ReadOnly Property Root() As String
             Get
                 Return m_Root
             End Get
         End Property
 
-        <Untested()>
+        
         ReadOnly Property Scheme() As RestScheme
             Get
                 Return m_Scheme
             End Get
         End Property
 
-        <Untested()>
+        
         ReadOnly Property HttpMethod() As String
             Get
                 Return Verb.ToMethodString
             End Get
         End Property
 
-        <Untested()>
+        
         ReadOnly Property Verb() As RestVerb
             Get
                 Return m_Verb
             End Get
         End Property
 
-        <Untested()>
+        
         Sub New(ByVal verb As RestVerb, ByVal scheme As RestScheme, ByVal root As String, ByVal path As String, ByVal query As IList(Of QueryParameter))
             m_Verb = verb
             m_Scheme = scheme
@@ -63,7 +63,7 @@ Namespace Net.Rest
             m_Query.AddRange(query)
         End Sub
 
-        <Untested()>
+        
         Sub New(ByVal verb As RestVerb, ByVal url As String)
             If url Is Nothing Then Throw New ArgumentNullException("url")
 
@@ -110,7 +110,7 @@ Namespace Net.Rest
 
         End Sub
 
-        <Untested()>
+        
         Function ToUrlString() As String
             Dim result As New StringBuilder
             result.Append(Scheme.ToSchemeString)
@@ -126,7 +126,7 @@ Namespace Net.Rest
         End Function
 
 
-        <Untested()>
+        
         Function AddParameter(ByVal parameter As QueryParameter) As RestCall
             If parameter Is Nothing Then Return Me
 
@@ -136,7 +136,7 @@ Namespace Net.Rest
         End Function
 #If ClrVersion > 0 Then
 
-        <Untested()>
+        
         Function AddParameter(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod) As RestCall
             Dim result As New RestCall(Verb, Scheme, Root, Path, m_Query)
             result.m_Query.Add(New QueryParameter(name, value.UrlEncode(encoding)))
@@ -150,17 +150,17 @@ Namespace Net.Rest
         'TODO: ChangeScheme(scheme)
         'TODO: ChangeVerb(verb)
 
-        <Untested()>
+        
         Function ToUri() As Uri
             Return New Uri(ToUrlString)
         End Function
 
-        <Untested()>
+        
         Overrides Function ToString() As String
             Return HttpMethod & " " & ToUrlString()
         End Function
 
-        <Untested()>
+        
         Function CreateHttpWebRequest() As System.Net.HttpWebRequest
             Dim result = DirectCast(System.Net.WebRequest.Create(ToUri), System.Net.HttpWebRequest)
             result.Method = HttpMethod

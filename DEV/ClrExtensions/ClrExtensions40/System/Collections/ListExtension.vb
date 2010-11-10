@@ -1,6 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 public  Module ListExtension
 
@@ -12,7 +12,7 @@ public  Module ListExtension
     ''' <param name="size"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> 
     <Extension()>      Function Chunk(Of T)(ByVal source As IList(Of T), ByVal size As Integer) As List(Of List(Of T))
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
@@ -32,7 +32,7 @@ public  Module ListExtension
     ''' <param name="count">The Maximum number of items to return</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()> 
          Function GetRange(Of T)(ByVal this As IList(Of T), ByVal index As Integer, ByVal count As Integer) As List(Of T)
         If this Is Nothing Then Throw New ArgumentNullException("this")
@@ -58,7 +58,7 @@ public  Module ListExtension
     ''' <param name="combiner">The function that combines a left item with a right item</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-        <Untested()>
+        
     <Extension()>
      Function Join(Of TLeft, TRight, TResult)(ByVal left As IList(Of TLeft), ByVal right As IEnumerable(Of TRight), ByVal combiner As Func(Of TLeft, TRight, TResult)) As List(Of TResult)
         If left Is Nothing Then Throw New ArgumentNullException("left")
@@ -85,7 +85,7 @@ public  Module ListExtension
     ''' <param name="this"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function ToList(Of T)(ByVal this As IList) As List(Of T)
+    <Pure()>  <Extension()>  Function ToList(Of T)(ByVal this As IList) As List(Of T)
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Return (From item As Object In this Select CType(item, T)).ToList
@@ -99,7 +99,7 @@ public  Module ListExtension
     ''' <param name="separator"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String) As String
+    <Pure()>  <Extension()>  Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String) As String
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Dim temp As New List(Of String)(this.Count)
@@ -120,7 +120,7 @@ public  Module ListExtension
     ''' <param name="formatter"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String, ByVal formatter As Func(Of T, String)) As String
+    <Pure()>  <Extension()>  Function StringJoin(Of T)(ByVal this As IList(Of T), ByVal separator As String, ByVal formatter As Func(Of T, String)) As String
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If formatter Is Nothing Then Throw New ArgumentNullException("formatter")
 
@@ -142,7 +142,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Integer
+    <Pure()>  <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Integer
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -171,7 +171,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Integer
+    <Pure()>  <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Integer
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If pattern.Length = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
 
@@ -187,7 +187,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Integer
+    <Pure()>  <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Integer
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If this Is Nothing Then Return -1
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -219,7 +219,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns>The starting index of the pattern in the list, or -1 if not found</returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Integer
+    <Pure()>  <Extension()>  Function IndexOfSequence(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Integer
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If this Is Nothing Then Return -1
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -237,7 +237,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
+    <Pure()>  <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -261,7 +261,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
+    <Pure()>  <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -285,7 +285,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function EndsWith(Of T)(ByVal source As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
+    <Pure()>  <Extension()>  Function EndsWith(Of T)(ByVal source As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal pattern As IList(Of T)) As Boolean
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
@@ -310,7 +310,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
+    <Pure()>  <Extension()>  Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal pattern As IList(Of T)) As Boolean
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If pattern Is Nothing Then Throw New ArgumentNullException("pattern")
         If pattern.Count = 0 Then Throw New ArgumentException("pattern cannot be empty", "pattern")
@@ -334,7 +334,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
+    <Pure()>  <Extension()>  Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Return EndsWith(this, CType(pattern, IList(Of T)))
@@ -349,7 +349,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
+    <Pure()>  <Extension()>  Function EndsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Return EndsWith(this, comparer, CType(pattern, IList(Of T)))
@@ -363,7 +363,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
+    <Pure()>  <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal ParamArray pattern() As T) As Boolean
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Return StartsWith(this, CType(pattern, IList(Of T)))
@@ -378,7 +378,7 @@ public  Module ListExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
+    <Pure()>  <Extension()>  Function StartsWith(Of T)(ByVal this As IList(Of T), ByVal comparer As IEqualityComparer(Of T), ByVal ParamArray pattern() As T) As Boolean
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Return StartsWith(this, comparer, CType(pattern, IList(Of T)))
@@ -392,7 +392,7 @@ public  Module ListExtension
     ''' <param name="where">Predicate to execute on each method</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function IndexesWhere(Of T)(ByVal source As IList(Of T), ByVal where As Func(Of T, Boolean)) As List(Of Integer)
+    <Pure()>  <Extension()>  Function IndexesWhere(Of T)(ByVal source As IList(Of T), ByVal where As Func(Of T, Boolean)) As List(Of Integer)
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If where Is Nothing Then Throw New ArgumentNullException("where")
 
@@ -412,7 +412,7 @@ public  Module ListExtension
     ''' <param name="skip"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function TakeEvery(Of T)(ByVal source As IList(Of T), ByVal startIndex As Integer, ByVal skip As Integer) As List(Of T)
+    <Pure()>  <Extension()>  Function TakeEvery(Of T)(ByVal source As IList(Of T), ByVal startIndex As Integer, ByVal skip As Integer) As List(Of T)
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If skip < 1 Then Throw New ArgumentOutOfRangeException("skip")
 
@@ -431,7 +431,7 @@ public  Module ListExtension
     ''' <param name="index"></param>
     ''' <param name="source"></param>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Sub InsertRange(Of T)(ByVal target As IList(Of T), ByVal index As Integer, ByVal source As IEnumerable(Of T))
+     <Extension()> Sub InsertRange(Of T)(ByVal target As IList(Of T), ByVal index As Integer, ByVal source As IEnumerable(Of T))
         If target Is Nothing Then Throw New ArgumentNullException("target")
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If index < 0 Then Throw New ArgumentOutOfRangeException("index")

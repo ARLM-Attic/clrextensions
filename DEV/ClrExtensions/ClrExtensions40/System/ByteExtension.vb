@@ -1,6 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 Imports System.Text
 
 public  Module ByteExtension
@@ -14,7 +14,7 @@ public  Module ByteExtension
     ''' <returns>An empty string if source is empty/null</returns>
     ''' <remarks></remarks>
     ''' <exception cref="FormatException">Thrown if the format string is malformed.</exception>
-    <Untested()>
+    
     <Extension()>  Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As String) As String
         Return ToString(source, format, 0)
     End Function
@@ -29,7 +29,7 @@ public  Module ByteExtension
     ''' <remarks></remarks>
     ''' <exception cref="FormatException">Thrown if the format string is malformed.</exception>
     ''' <exception cref="ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
-    <Untested()>
+    
     <Extension()> Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As String, ByVal groupingSize As Integer) As String
         If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
         If format Is Nothing Then Throw New ArgumentNullException("format")
@@ -58,7 +58,7 @@ public  Module ByteExtension
     ''' <returns>An empty string if source is empty/null</returns>
     ''' <remarks>The grouping size is 0, except for Bits which is 1</remarks>
     ''' <exception cref="ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
-    <Untested()>
+    
      Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As ByteFormat) As String
         Dim groupingSize = 0
         If format = ByteFormat.Bits Then groupingSize = 1
@@ -77,7 +77,7 @@ public  Module ByteExtension
     ''' <exception cref="ArgumentOutOfRangeException">Thrown is format isn't a named value</exception>
     ''' <exception cref="ArgumentOutOfRangeException ">Thrown is groupingSize &lt; 0.</exception>
     ''' <exception cref="ArgumentOutOfRangeException ">Thrown is format is Bit and groupingSize &gt; 1.</exception>
-    <Untested()>
+    
     <Extension()> Function ToString(ByVal source As IEnumerable(Of Byte), ByVal format As ByteFormat, ByVal groupingSize As Integer) As String
         If groupingSize < 0 Then Throw New ArgumentOutOfRangeException("groupingSize")
         If groupingSize > 1 And format = ByteFormat.Bits Then Throw New ArgumentOutOfRangeException("groupingSize", "The group size cannot be greater than 1 for the format mode Bit")
@@ -115,7 +115,7 @@ public  Module ByteExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()> Function ToBitString(ByVal value As Byte) As String
         Dim result As New StringBuilder(7)
         For i = 7 To 0 Step -1
@@ -133,7 +133,7 @@ public  Module ByteExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentOutOfRangeException">Thrown is format isn't a defined value</exception>
-    <Untested()>
+    
     <Extension()> Function ToString(ByVal value As Byte, ByVal format As ByteFormat) As String
         Select Case format
             Case ByteFormat.Bits
@@ -158,7 +158,7 @@ public  Module ByteExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentOutOfRangeException">Thrown if bit is outside 0 to 7</exception>
-    <Untested()>
+    
     <Extension()>  Function IsBitSet(ByVal value As Byte, ByVal bit As Integer) As Boolean
         If Not bit.IsBetween(0, 7) Then Throw New ArgumentOutOfRangeException("bit")
         Dim bitMask As Integer = 1 << bit
@@ -197,7 +197,7 @@ public  Module ByteExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentNullException">Thrown is encoding is null</exception>
-    <Untested()>
+    
     <Extension()>  Function ToByteArray(ByVal source As String, ByVal encoding As Encoding) As Byte()
         If encoding Is Nothing Then Throw New ArgumentNullException("encoding")
         If source = "" Then Return New Byte() {}

@@ -87,7 +87,7 @@ Namespace Win32.Http
 						Dim output As New HTTP_SERVICE_CONFIG_URLACL_SET
 						HttpQueryServiceConfiguration(IntPtr.Zero, HTTP_SERVICE_CONFIG_ID.HttpServiceConfigUrlAclInfo, input, Marshal.SizeOf(input), buffer.Pointer, returnLength, returnLength, IntPtr.Zero).ThrowOnError()
 
-						output = buffer.Structure
+                        output = buffer.ToStructure
 						result.Add(output.KeyDesc.pUrlPrefix, New UrlAcl(output.ParamDesc.pStringSecurityDescriptor))
 					End Using
 				End If
@@ -97,8 +97,8 @@ Namespace Win32.Http
 			Return result
 		End Function
 
-#If IncludeUntested Then
-		<Untested()> Public Function QueryUrlAcl(ByVal url As String) As Dictionary(Of String, UrlAcl)
+#If 1 = 1 Then
+		 Public Function QueryUrlAcl(ByVal url As String) As Dictionary(Of String, UrlAcl)
 			Throw New NotImplementedException
 
 			'use HttpServiceConfigQueryExact

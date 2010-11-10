@@ -3,7 +3,7 @@
 Imports System.Runtime.InteropServices
 Imports ClrExtensions.Collections
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module PredicateExtension
 
@@ -14,7 +14,7 @@ Public Module PredicateExtension
     ''' <param name="predicate"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function ToFunction(Of T)(ByVal predicate As Predicate(Of T)) As Func(Of T, Boolean)
+     <Extension()>  Function ToFunction(Of T)(ByVal predicate As Predicate(Of T)) As Func(Of T, Boolean)
         Dim result As Func(Of T, Boolean) = Function(item) predicate.Invoke(item)
         Return result
     End Function

@@ -30,7 +30,7 @@ Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, TResult)(ByVal arg1
 Public Delegate Function Func(Of T1, T2, T3, T4, T5, T6, T7, T8, TResult)(ByVal arg1 As T1, ByVal arg2 As T2, ByVal arg3 As T3, ByVal arg4 As T4, ByVal arg5 As T5, ByVal arg6 As T6, ByVal arg7 As T7, ByVal arg8 As T8) As TResult
 #End If
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module FuncExtension
 
@@ -41,7 +41,7 @@ Public Module FuncExtension
     ''' <param name="func"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function ToPredicate(Of T)(ByVal func As Func(Of T, Boolean)) As Predicate(Of T)
+    <Extension()> Function ToPredicate(Of T)(ByVal func As Func(Of T, Boolean)) As Predicate(Of T)
         Dim result As Predicate(Of T) = Function(item) func.Invoke(item)
         Return result
     End Function
@@ -56,8 +56,7 @@ Public Module FuncExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
-    <Untested()>
-    <Extension()> Function CreateList(Of T)(ByVal func As Func(Of T, T), ByVal count As Integer, ByVal firstElement As T) As List(Of T)
+        <Extension()> Function CreateList(Of T)(ByVal func As Func(Of T, T), ByVal count As Integer, ByVal firstElement As T) As List(Of T)
         If func Is Nothing Then Throw New ArgumentNullException("func")
 
         Dim result As New List(Of T)(count)
@@ -77,7 +76,7 @@ Public Module FuncExtension
     ''' <param name="func">The function to be called when the result isn't already known</param>
     ''' <returns>A function with the memorization wrapper around it</returns>
     ''' <remarks>The dictionary lookups are not cheap, so this may be slower than the mathematical operations you are memorizing</remarks>
-    <Untested()> <Extension()>  Function Memorize(Of T, TResult)(ByVal func As Func(Of T, TResult)) As Func(Of T, TResult)
+    <Extension()> Function Memorize(Of T, TResult)(ByVal func As Func(Of T, TResult)) As Func(Of T, TResult)
         Dim dataStore As New Dictionary(Of T, TResult)
 
         Dim result As Func(Of T, TResult) = Function(a) If(dataStore.ContainsKey(a), dataStore(a), dataStore.StoreAndReturn(a, func(a)))
@@ -93,7 +92,7 @@ Public Module FuncExtension
     ''' <param name="func">The function to be called when the result isn't already known</param>
     ''' <returns>A function with the memorization wrapper around it</returns>
     ''' <remarks>The dictionary lookups are not cheap, so this may be slower than the mathematical operations you are memorizing</remarks>
-    <Untested()> <Extension()>  Function Memorize(Of T1, T2, TResult)(ByVal func As Func(Of T1, T2, TResult)) As Func(Of T1, T2, TResult)
+    <Extension()> Function Memorize(Of T1, T2, TResult)(ByVal func As Func(Of T1, T2, TResult)) As Func(Of T1, T2, TResult)
         Dim dataStore As New Dictionary(Of T1, T2, TResult)
 
         Dim result As Func(Of T1, T2, TResult) = Function(a, b) If(dataStore.ContainsKey(a, b), dataStore(a, b), dataStore.StoreAndReturn(a, b, func(a, b)))
@@ -110,7 +109,7 @@ Public Module FuncExtension
     ''' <param name="func">The function to be called when the result isn't already known</param>
     ''' <returns>A function with the memorization wrapper around it</returns>
     ''' <remarks>The dictionary lookups are not cheap, so this may be slower than the mathematical operations you are memorizing</remarks>
-    <Untested()> <Extension()>  Function Memorize(Of T1, T2, T3, TResult)(ByVal func As Func(Of T1, T2, T3, TResult)) As Func(Of T1, T2, T3, TResult)
+    <Extension()> Function Memorize(Of T1, T2, T3, TResult)(ByVal func As Func(Of T1, T2, T3, TResult)) As Func(Of T1, T2, T3, TResult)
         Dim dataStore As New Dictionary(Of T1, T2, T3, TResult)
 
         Dim result As Func(Of T1, T2, T3, TResult) = Function(a, b, c) If(dataStore.ContainsKey(a, b, c), dataStore(a, b, c), dataStore.StoreAndReturn(a, b, c, func(a, b, c)))

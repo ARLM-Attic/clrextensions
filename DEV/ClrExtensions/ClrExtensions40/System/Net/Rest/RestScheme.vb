@@ -1,5 +1,5 @@
 'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Namespace Net.Rest
     Public Enum RestScheme

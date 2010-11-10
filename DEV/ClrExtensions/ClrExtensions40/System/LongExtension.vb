@@ -1,5 +1,5 @@
 'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module LongExtension
 
@@ -17,7 +17,7 @@ Public Module LongExtension
     ''' <returns></returns>
     ''' <remarks>1 KB=1024 Bytes, 1 MB=1024 KB, 1 GB = 1024 MB
     ''' The return format is "##0.## XX" where XX is B, KB, MB, or GB as appropriate</remarks>
-    <Untested()>
+    
     <Extension()>  Function ToByteSize(ByVal bytes As Long) As String
         Select Case CDbl(bytes)
             Case Is >= GB
@@ -37,7 +37,7 @@ Public Module LongExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()>  Function ParseByteSize(ByVal value As String) As Long
         If value Is Nothing Then Throw New ArgumentNullException("value")
 

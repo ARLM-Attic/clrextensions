@@ -1,6 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 
 Public Module TypeExtension
@@ -12,7 +12,7 @@ Public Module TypeExtension
     ''' <param name="attribute"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function HasAttribute(ByVal type As Reflection.MemberInfo, ByVal attribute As Type) As Boolean
+     <Extension()>  Function HasAttribute(ByVal type As Reflection.MemberInfo, ByVal attribute As Type) As Boolean
         If type Is Nothing Then Throw New ArgumentNullException("type")
         If attribute Is Nothing Then Throw New ArgumentNullException("attribute")
 
@@ -25,7 +25,7 @@ Public Module TypeExtension
     ''' <param name="type"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function NameVBFormat(ByVal type As Reflection.MemberInfo) As String
+     <Extension()>  Function NameVBFormat(ByVal type As Reflection.MemberInfo) As String
         If type Is Nothing Then Throw New ArgumentNullException("type")
 
         'TODO - handle VB-sepcific names such as Integer, String, and Date

@@ -7,7 +7,7 @@ Imports System.Reflection
 Imports System.Runtime.InteropServices
 Imports ClrExtensions.Collections
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Namespace Collections
 
@@ -30,18 +30,18 @@ Namespace Collections
             Implements IComparer(Of T)
             Private ReadOnly m_ComparisonFunction As Func(Of T, T, Integer)
 
-            <Untested()>
+            
              Sub New(ByVal comparisonFunction As Func(Of T, T, Integer))
                 m_ComparisonFunction = comparisonFunction
             End Sub
 
-            <Untested()>
+            
             <Pure()>  Function Compare(ByVal x As T, ByVal y As T) As Integer Implements IComparer(Of T).Compare
                 Return m_ComparisonFunction(x, y)
             End Function
         End Class
 
-        <Untested()>
+        
                  Sub New()
             'TODO - verify this type check logic
             If Not GetType(IComparable(Of T)).IsAssignableFrom(GetType(T)) Then Throw New ArgumentException("Type " & GetType(T).Name & " does not implement IComparable of T")
@@ -49,21 +49,21 @@ Namespace Collections
             m_Comparer = New ComparerWrapper(Function(x, y) DirectCast(x, IComparable(Of T)).CompareTo(y))
         End Sub
 
-                <Untested()>
+                
          Sub New(ByVal comparer As IComparer(Of T))
             If comparer Is Nothing Then Throw New ArgumentNullException("comparer")
 
             m_Comparer = comparer
         End Sub
 
-                <Untested()>
+                
          Sub New(ByVal comparisonFunction As Func(Of T, T, Integer))
             If comparisonFunction Is Nothing Then Throw New ArgumentNullException("comparisonFunction")
 
             m_Comparer = New ComparerWrapper(comparisonFunction)
         End Sub
 
-        <Untested()>
+        
          Sub Add(ByVal item As T) Implements Generic.ICollection(Of T).Add
 
             If m_Comparer IsNot Nothing Then
@@ -86,13 +86,13 @@ Namespace Collections
             m_Values.Add(item)
         End Sub
 
-        <Untested()>
+        
          Sub Clear() Implements ICollection(Of T).Clear, IList.Clear
 
             m_Values.Clear()
         End Sub
 
-        <Untested()>
+        
                  Function Contains(ByVal item As T) As Boolean Implements ICollection(Of T).Contains
             For i = 0 To Count - 1
                 If item.Equals(m_Values(i)) Then Return True
@@ -102,7 +102,7 @@ Namespace Collections
             'Return m_Values.BinarySearch(item, m_Comparer) >= 0
         End Function
 
-        <Untested()>
+        
          Sub CopyTo(ByVal array() As T, ByVal arrayIndex As Integer) Implements ICollection(Of T).CopyTo
             If array Is Nothing Then Throw New ArgumentNullException("array")
             If arrayIndex < 0 Then Throw New ArgumentOutOfRangeException("arrayIndex")
@@ -110,41 +110,41 @@ Namespace Collections
             m_Values.CopyTo(array, arrayIndex)
         End Sub
 
-        <Untested()>
+        
                  ReadOnly Property Count() As Integer Implements ICollection(Of T).Count
             Get
                 Return m_Values.Count
             End Get
         End Property
 
-        <Untested()>
+        
                  ReadOnly Property IsReadOnly() As Boolean Implements ICollection(Of T).IsReadOnly
             Get
                 Return False
             End Get
         End Property
 
-        <Untested()>
+        
          Function Remove(ByVal item As T) As Boolean Implements ICollection(Of T).Remove
                         Return m_Values.Remove(item)
         End Function
 
-        <Untested()>
+        
                  Function GetEnumerator() As IEnumerator(Of T) Implements IEnumerable(Of T).GetEnumerator
             Return m_Values.GetEnumerator
         End Function
 
-        <Untested()>
+        
                  Function IndexOf(ByVal item As T) As Integer Implements IList(Of T).IndexOf
             Return m_Values.IndexOf(item)
         End Function
 
-        <Untested()>
+        
         Private Sub Insert(ByVal index As Integer, ByVal item As T) Implements IList(Of T).Insert
             Throw New NotSupportedException
         End Sub
 
-        <Untested()>
+        
         Default  ReadOnly Property Item(ByVal index As Integer) As T
                         Get
                 If index <= 0 Then Throw New ArgumentOutOfRangeException("index")
@@ -153,7 +153,7 @@ Namespace Collections
             End Get
         End Property
 
-        <Untested()>
+        
         Private Property IListOfT_Item(ByVal index As Integer) As T Implements IList(Of T).Item
                         Get
                 If index < 0 Then Throw New ArgumentOutOfRangeException("index")
@@ -166,7 +166,7 @@ Namespace Collections
             End Set
         End Property
 
-        <Untested()>
+        
          Sub RemoveAt(ByVal index As Integer) Implements Generic.IList(Of T).RemoveAt
             If index < 0 Then Throw New ArgumentOutOfRangeException("index")
             If index >= Count Then Throw New ArgumentOutOfRangeException("index")
@@ -174,12 +174,12 @@ Namespace Collections
             m_Values.RemoveAt(index)
         End Sub
 
-        <Untested()>
+        
                 Private Function IEnumerable_GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
             Return m_Values.GetEnumerator
         End Function
 
-        <Untested()>
+        
         Private Sub ICollection_CopyTo(ByVal array As Global.System.Array, ByVal index As Integer) Implements ICollection.CopyTo
             If array Is Nothing Then Throw New ArgumentNullException("array")
             If index < 0 Then Throw New ArgumentOutOfRangeException("index")
@@ -187,28 +187,28 @@ Namespace Collections
             CType(m_Values, IList).CopyTo(array, index)
         End Sub
 
-        <Untested()>
+        
         Private ReadOnly Property ICollection_Count() As Integer Implements ICollection.Count
                         Get
                 Return Me.Count
             End Get
         End Property
 
-        <Untested()>
+        
         Private ReadOnly Property IList_IsSynchronized() As Boolean Implements ICollection.IsSynchronized
                         Get
                 Return False
             End Get
         End Property
 
-        <Untested()>
+        
         Private ReadOnly Property IList_SyncRoot() As Object Implements ICollection.SyncRoot
                         Get
                 Return Me
             End Get
         End Property
 
-        <Untested()>
+        
         Private Function IList_Add(ByVal value As Object) As Integer Implements IList.Add
 
             Dim temp = CType(value, T)
@@ -216,36 +216,36 @@ Namespace Collections
             Return Me.IndexOf(temp)
         End Function
 
-        <Untested()>
+        
                 Private Function IList_Contains(ByVal value As Object) As Boolean Implements IList.Contains
             Return Me.Contains(CType(value, T))
         End Function
 
-        <Untested()>
+        
                 Private Function IList_IndexOf(ByVal value As Object) As Integer Implements IList.IndexOf
             Return Me.IndexOf(CType(value, T))
         End Function
 
-        <Untested()>
+        
         Private Sub IList_Insert(ByVal index As Integer, ByVal value As Object) Implements IList.Insert
             Throw New NotSupportedException
         End Sub
 
-        <Untested()>
+        
                 Private ReadOnly Property IList_IsFixedSize() As Boolean Implements IList.IsFixedSize
             Get
                 Return False
             End Get
         End Property
 
-        <Untested()>
+        
                 Private ReadOnly Property IList_IsReadOnly() As Boolean Implements IList.IsReadOnly
             Get
                 Return False
             End Get
         End Property
 
-        <Untested()>
+        
         Private Property IList_Item(ByVal index As Integer) As Object Implements IList.Item
                         Get
                 If index < 0 Then Throw New ArgumentOutOfRangeException("index")
@@ -258,13 +258,13 @@ Namespace Collections
             End Set
         End Property
 
-        <Untested()>
+        
         Private Sub IList_Remove(ByVal value As Object) Implements IList.Remove
 
             Me.Remove(CType(value, T))
         End Sub
 
-        <Untested()>
+        
         Private Sub IList_RemoveAt(ByVal index As Integer) Implements IList.RemoveAt
             If index < 0 Then Throw New ArgumentOutOfRangeException("index")
             If index >= Count Then Throw New ArgumentOutOfRangeException("index")

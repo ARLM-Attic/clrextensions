@@ -1,6 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 
-
+Imports System.Text
 Imports System.IO
 
 
@@ -56,20 +56,7 @@ Public Module ObjectExtension
 
 
 
-	''' <summary>
-	''' Returns true if the object is contained in the indicated list
-	''' </summary>
-	''' <typeparam name="T"></typeparam>
-	''' <param name="value"></param>
-	''' <param name="source"></param>
-	''' <returns></returns>
-	''' <remarks></remarks>
-	<Extension()> Function IsIn(Of T)(ByVal value As T, ByVal source As IList(Of T)) As Boolean
-		Return source.Contains(value)
-	End Function
-
-
-#If IncludeUntested Then
+#If 1 = 1 Then
 
     ''' <summary>
     ''' Creates a text dump of the object and its properties to an unlimited depth.
@@ -77,8 +64,8 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks>This tracks the object graph to prevent circular references</remarks>
-    <Untested()> <Extension()> Function ToDebugString(ByVal value As Object) As String
-        Dim result As New Text.StringBuilder
+     <Extension()> Function ToDebugString(ByVal value As Object) As String
+        Dim result As New StringBuilder
         Dim graph As New List(Of Object)
 
         DebugString(Nothing, value, result, 0, graph)
@@ -86,8 +73,8 @@ Public Module ObjectExtension
 
     End Function
 
-    <Untested()>
-    Private Sub DebugString(ByVal propertyName As String, ByVal current As Object, ByVal result As Text.StringBuilder, ByVal depth As Integer, ByVal graph As List(Of Object))
+    
+    Private Sub DebugString(ByVal propertyName As String, ByVal current As Object, ByVal result As StringBuilder, ByVal depth As Integer, ByVal graph As List(Of Object))
 
         'TODO: Add support for Collections and Dictionaries
         'TODO: Add support formatting for well known types
@@ -163,7 +150,7 @@ Public Module ObjectExtension
 
     End Sub
 
-    Private Sub DebugStringProperties(ByVal propertyName As String, ByVal current As Object, ByVal result As Text.StringBuilder, ByVal depth As Integer, ByVal graph As List(Of Object))
+    Private Sub DebugStringProperties(ByVal propertyName As String, ByVal current As Object, ByVal result As StringBuilder, ByVal depth As Integer, ByVal graph As List(Of Object))
         For Each prop In current.GetType.GetProperties.OrderBy(Function(p) p.Name)
             If prop.CanRead AndAlso prop.GetGetMethod.GetParameters.Count = 0 Then
                 Try
@@ -178,7 +165,7 @@ Public Module ObjectExtension
     End Sub
 
 
-    <Untested()> <Extension()>  Function DeepCopy(Of T)(ByVal this As T) As T
+     <Extension()>  Function DeepCopy(Of T)(ByVal this As T) As T
         If Not this.GetType.IsSerializable Then Throw New ArgumentException("Only serializable types can be copied")
 
         Dim memoryStream = New MemoryStream()
@@ -201,7 +188,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function Cast(Of T)(ByVal value As Object) As T
+     <Extension()>  Function Cast(Of T)(ByVal value As Object) As T
         Return CType(value, T)
     End Function
 
@@ -212,7 +199,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function [TryCast](Of T As Class)(ByVal value As Object) As T
+     <Extension()>  Function [TryCast](Of T As Class)(ByVal value As Object) As T
         Return TryCast(value, T)
     End Function
 
@@ -224,7 +211,7 @@ Public Module ObjectExtension
     ''' <param name="default"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function [TryCast](Of T As Class)(ByVal value As Object, ByVal [default] As T) As T
+     <Extension()>  Function [TryCast](Of T As Class)(ByVal value As Object, ByVal [default] As T) As T
         Dim result = TryCast(value, T)
         Return If(result, [default])
     End Function
@@ -236,7 +223,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function [TryCastNullable](Of T As Structure)(ByVal value As Object) As Nullable(Of T)
+     <Extension()>  Function [TryCastNullable](Of T As Structure)(ByVal value As Object) As Nullable(Of T)
         If value Is Nothing Then Return Nothing
 
         'todo, find a way to do this that won't throw an exception or require a double cast
@@ -255,7 +242,7 @@ Public Module ObjectExtension
     ''' <param name="default"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function [TryCastNullable](Of T As Structure)(ByVal value As Object, ByVal [default] As T) As Nullable(Of T)
+     <Extension()>  Function [TryCastNullable](Of T As Structure)(ByVal value As Object, ByVal [default] As T) As Nullable(Of T)
         If value Is Nothing Then Return [default]
 
         'todo, find a way to do this that won't throw an exception or require a double cast
@@ -273,7 +260,7 @@ Public Module ObjectExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks>This is a work around to the fact that ToString can throw an exception if the nullable object has no value</remarks>
-    <Untested()>  Function ToNullableString(Of T As Structure)(ByVal value As Nullable(Of T)) As String
+      Function ToNullableString(Of T As Structure)(ByVal value As Nullable(Of T)) As String
         Return If(value.HasValue, value.ToString, "")
     End Function
 #End If

@@ -1,5 +1,5 @@
 'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 
 Public Module DecimalExtension
@@ -10,7 +10,7 @@ Public Module DecimalExtension
     ''' <param name="exponent"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
      Function Pow10(ByVal exponent As Integer) As Decimal
         Dim result As Decimal = 1
         If exponent > 0 Then
@@ -32,7 +32,7 @@ Public Module DecimalExtension
     ''' <param name="precision">Number of decimal places to retain. If negative, number of zeros to the left of the decimal place.</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()>  Function TruncatePrecision(ByVal value As Decimal, ByVal precision As Integer) As Decimal
         'TODO - determine if the "slow" method is actually slower 
         Try
@@ -55,7 +55,7 @@ Public Module DecimalExtension
         End Try
     End Function
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 
 #If ClrVersion >= 35 Then
@@ -65,7 +65,7 @@ Public Module DecimalExtension
     ''' <param name="source"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
+     <Extension()> Function RootMeanSquare(ByVal source As IList(Of Decimal)) As Decimal
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
         Return CDec(Math.Sqrt((Aggregate item In source Into Sum(item * item)) / CDec(source.Count)))
@@ -79,7 +79,7 @@ Public Module DecimalExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")>
-    <Untested()> <Extension()> Function Mode(ByVal source As IList(Of Decimal)) As List(Of Decimal)
+     <Extension()> Function Mode(ByVal source As IList(Of Decimal)) As List(Of Decimal)
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
         Dim counts = (From Value In source Group By Value Into Elements = Count()).ToList
@@ -93,7 +93,7 @@ Public Module DecimalExtension
     ''' <param name="source"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function StandardDeviation(ByVal source As IList(Of Decimal)) As Decimal
+     <Extension()> Function StandardDeviation(ByVal source As IList(Of Decimal)) As Decimal
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
         Dim step1 = source.Average 'mean
@@ -113,7 +113,7 @@ Public Module DecimalExtension
     ''' <param name="actualList"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function MeanAbsoluteError(ByVal predictedList As IList(Of Decimal), ByVal actualList As IList(Of Decimal)) As Decimal
+     <Extension()> Function MeanAbsoluteError(ByVal predictedList As IList(Of Decimal), ByVal actualList As IList(Of Decimal)) As Decimal
         If predictedList Is Nothing Then Throw New ArgumentNullException("predictedList")
         If actualList Is Nothing Then Throw New ArgumentNullException("actualList")
         If predictedList.Count <> actualList.Count Then Throw New ArgumentException("Lists are of unequal length")

@@ -793,7 +793,7 @@ Public Module VBLanguageExtension
 		If value Is DBNull.Value Then Return [default]
 		If value.ToString = "" Then Return [default]
 
-		Return CType(value, TimeSpan)
+        Return CTimeSpan(value)
 	End Function
 
 	Public Function CTimeSpan2(ByVal value As Object) As TimeSpan?

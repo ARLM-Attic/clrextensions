@@ -9,7 +9,7 @@ Imports ClrExtensions.Net.Rest
 
 Namespace Security
     Namespace OAuth
-#If IncludeUntested Then
+#If 1 = 1 Then
 
         ''' <summary>
         ''' Utilities for generating and signing web requests using the OAuth specification
@@ -24,7 +24,7 @@ Public Module OAuthUtility
             ''' <param name="value"></param>
             ''' <returns></returns>
             ''' <remarks></remarks>
-            <Untested()>
+            
              Function UrlEncode(ByVal value As String) As String
                 If value Is Nothing Then Throw New ArgumentNullException("value")
 
@@ -44,12 +44,12 @@ Public Module OAuthUtility
 
             Private ReadOnly s_Random As New ThreadsafeRandom
 
-            <Untested()>
+            
             <Extension()>  Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String) As RestCall
                 Return SignRestCall(url, consumerKey, consumerSecret, Nothing, Nothing)
             End Function
 
-            <Untested()>
+            
             <Extension()>  Function SignRestCall(ByVal url As RestCall, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String) As RestCall
                 If url Is Nothing Then Throw New ArgumentNullException("url")
                 If consumerKey Is Nothing Then Throw New ArgumentNullException("consumerKey")
@@ -61,7 +61,7 @@ Public Module OAuthUtility
                 Return New RestCall(url.Verb, GenerateRequest(url.ToUri, consumerKey, consumerSecret, token, tokenSecret, httpMethod))
             End Function
 
-            <Untested()>
+            
              Function GenerateRequest(ByVal uri As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String) As String
 
                 'step 1
@@ -87,7 +87,7 @@ Public Module OAuthUtility
                 Return fullRequest
             End Function
 
-            <Untested()>
+            
             Private Function ComputeHash(ByVal hashAlgorithm As HashAlgorithm, ByVal data As String) As String
                 If (hashAlgorithm Is Nothing) Then
                     Throw New ArgumentNullException("hashAlgorithm")
@@ -99,17 +99,17 @@ Public Module OAuthUtility
                 Return Convert.ToBase64String(hashAlgorithm.ComputeHash(dataBuffer))
             End Function
 
-            <Untested()>
+            
              Function GenerateNonce() As String
                 Return s_Random.Next(&H1E208, &H98967F).ToString
             End Function
 
-            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="8#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <Untested()>
+            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="8#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> 
              Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 Return GenerateSignature(url, consumerKey, consumerSecret, token, tokenSecret, httpMethod, timestamp, nonce, SignatureType.HMACSHA1, normalizedUrl, normalizedRequestParameters)
             End Function
 
-            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="10#")> <Untested()>
+            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="10#")> 
              Function GenerateSignature(ByVal url As Uri, ByVal consumerKey As String, ByVal consumerSecret As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, ByVal signatureType As SignatureType, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 normalizedUrl = Nothing
                 normalizedRequestParameters = Nothing
@@ -132,7 +132,7 @@ Public Module OAuthUtility
                 Throw New ArgumentException("Unknown signature type", "signatureType")
             End Function
 
-            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="4")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="8#")> <Untested()>
+            <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="4")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="9#")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId:="8#")> 
              Function GenerateSignatureBase(ByVal url As Uri, ByVal consumerKey As String, ByVal token As String, ByVal tokenSecret As String, ByVal httpMethod As String, ByVal timestamp As String, ByVal nonce As String, ByVal signatureType As String, <Out()> ByRef normalizedUrl As String, <Out()> ByRef normalizedRequestParameters As String) As String
                 If url Is Nothing Then Throw New ArgumentNullException("url")
                 If consumerKey = "" Then Throw New ArgumentNullException("consumerKey")
@@ -167,18 +167,18 @@ Public Module OAuthUtility
                 Return signatureBase.ToString
             End Function
 
-            <Untested()>
+            
              Function GenerateSignatureUsingHash(ByVal signatureBase As String, ByVal hash As HashAlgorithm) As String
                 Return ComputeHash(hash, signatureBase)
             End Function
 
-            <Untested()>
+            
              Function GenerateTimestamp() As String
                 Dim ts = (DateTime.UtcNow - New DateTime(1970, 1, 1, 0, 0, 0, 0))
                 Return Convert.ToInt64(ts.TotalSeconds).ToString
             End Function
 
-            <Untested()>
+            
             Private Function GetQueryParameters(ByVal parameters As String) As List(Of QueryParameter)
                 If parameters Is Nothing Then Throw New ArgumentNullException("parameters")
 
@@ -203,7 +203,7 @@ Public Module OAuthUtility
                 Return result
             End Function
 
-            <Untested()>
+            
             Private Function NormalizeRequestParameters(ByVal parameters As IList(Of QueryParameter)) As String
                 If parameters Is Nothing Then Throw New ArgumentNullException("parameters")
 
@@ -243,7 +243,7 @@ Public Module OAuthUtility
             Private Class QueryParameterComparer
                 Implements IComparer(Of QueryParameter)
                 ' Methods
-                <Untested()>
+                
                  Function [Compare](ByVal x As QueryParameter, ByVal y As QueryParameter) As Integer Implements IComparer(Of QueryParameter).Compare
                     If x Is Nothing Then Throw New ArgumentNullException("x")
                     If y Is Nothing Then Throw New ArgumentNullException("y")
@@ -263,31 +263,31 @@ Public Module OAuthUtility
                 'TODO - This should be moved once a test harness has been created
 
                 Private ReadOnly m_SyncRoot As New Object
-                <Untested()>
+                
                  Overrides Function [Next]() As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next]()
                     End SyncLock
                 End Function
-                <Untested()>
+                
                  Overrides Function [Next](ByVal minValue As Integer, ByVal maxValue As Integer) As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next](minValue, maxValue)
                     End SyncLock
                 End Function
-                <Untested()>
+                
                  Overrides Function [Next](ByVal maxValue As Integer) As Integer
                     SyncLock m_SyncRoot
                         Return MyBase.[Next](maxValue)
                     End SyncLock
                 End Function
-                <Untested()>
+                
                  Overrides Sub NextBytes(ByVal buffer() As Byte)
                     SyncLock m_SyncRoot
                         MyBase.NextBytes(buffer)
                     End SyncLock
                 End Sub
-                <Untested()>
+                
                  Overrides Function NextDouble() As Double
                     SyncLock m_SyncRoot
                         Return MyBase.NextDouble()

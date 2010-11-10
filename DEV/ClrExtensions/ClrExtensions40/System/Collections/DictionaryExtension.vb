@@ -1,10 +1,10 @@
 'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 public  Module DictionaryExtension
 
-    <Untested()>
+    
     <Extension()>  Function GetOrCreate(Of TKey, TValue)(ByVal dictionary As Dictionary(Of TKey, TValue), ByVal key As TKey, ByVal valueFunction As Func(Of TKey, TValue)) As TValue
         If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
         If valueFunction Is Nothing Then Throw New ArgumentNullException("valueFunction")
@@ -16,7 +16,7 @@ public  Module DictionaryExtension
         End If
     End Function
 
-    <Untested()>
+    
    <Extension()>  Function GetOrCreate(Of TKey, TValue)(ByVal dictionary As Dictionary(Of TKey, TValue), ByVal key As TKey, ByVal defaultValue As TValue) As TValue
         If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
 
@@ -34,14 +34,14 @@ public  Module DictionaryExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks>This was created to support anonymous functions in VB that need to do more than one thing with a value in a single line. See the Memorize function for an example of its use</remarks>
-    <Untested()> <Extension()>  Function StoreAndReturn(Of TKey, TValue)(ByVal dictionary As Dictionary(Of TKey, TValue), ByVal key As TKey, ByVal value As TValue) As TValue
+     <Extension()>  Function StoreAndReturn(Of TKey, TValue)(ByVal dictionary As Dictionary(Of TKey, TValue), ByVal key As TKey, ByVal value As TValue) As TValue
         If dictionary Is Nothing Then Throw New ArgumentNullException("dictionary")
 
         dictionary(key) = value
         Return value
     End Function
 
-    <Untested()>
+    
    <Extension()> Sub ForEach(Of TKey, TValue)(ByVal source As IDictionary(Of TKey, TValue), ByVal action As Action(Of TKey, TValue))
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If action Is Nothing Then Throw New ArgumentNullException("action")
@@ -51,7 +51,7 @@ public  Module DictionaryExtension
         Next
     End Sub
 
-    <Untested()>
+    
         <Extension()> Function Keys(ByVal this As IDictionaryEnumerator) As ObjectModel.Collection(Of Object)
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
@@ -62,7 +62,7 @@ public  Module DictionaryExtension
         Return result
     End Function
 
-    <Untested()>
+    
         <Extension()> Function Values(ByVal this As IDictionaryEnumerator) As ObjectModel.Collection(Of Object)
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
@@ -73,7 +73,7 @@ public  Module DictionaryExtension
         Return result
     End Function
 
-        <Untested()> <Extension()> Function Entries(ByVal this As IDictionaryEnumerator) As ObjectModel.Collection(Of DictionaryEntry)
+         <Extension()> Function Entries(ByVal this As IDictionaryEnumerator) As ObjectModel.Collection(Of DictionaryEntry)
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Dim result As New ObjectModel.Collection(Of DictionaryEntry)
@@ -84,7 +84,7 @@ public  Module DictionaryExtension
     End Function
 
 
-        <Untested()> <Extension()> Function Keys(Of T)(ByVal this As IDictionaryEnumerator) As ObjectModel.Collection(Of T)
+         <Extension()> Function Keys(Of T)(ByVal this As IDictionaryEnumerator) As ObjectModel.Collection(Of T)
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Dim result As New ObjectModel.Collection(Of T)
@@ -97,13 +97,13 @@ public  Module DictionaryExtension
 #If ClrVersion >= 35 Then
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")>
-        <Untested()> <Extension()> Function ToDictionary(Of TKey, TValue)(ByVal this As IEnumerable(Of KeyValuePair(Of TKey, TValue))) As Dictionary(Of TKey, TValue)
+         <Extension()> Function ToDictionary(Of TKey, TValue)(ByVal this As IEnumerable(Of KeyValuePair(Of TKey, TValue))) As Dictionary(Of TKey, TValue)
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Return this.ToDictionary(Function(item) item.Key, Function(item) item.Value)
     End Function
 
-    <Pure()> <Untested()> <Extension()>  Function StringJoin(ByVal this As IDictionary(Of String, String), ByVal rowSeparator As String, ByVal columnSeparator As String) As String
+    <Pure()>  <Extension()>  Function StringJoin(ByVal this As IDictionary(Of String, String), ByVal rowSeparator As String, ByVal columnSeparator As String) As String
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Dim temp As New List(Of String)(this.Count)
@@ -115,7 +115,7 @@ public  Module DictionaryExtension
     End Function
 
 
-    <Pure()> <Untested()> <Extension()>  Function StringJoin(ByVal this As IDictionary(Of String, String), ByVal separator As String) As String
+    <Pure()>  <Extension()>  Function StringJoin(ByVal this As IDictionary(Of String, String), ByVal separator As String) As String
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Dim temp As New List(Of String)(this.Count * 2)
@@ -130,7 +130,7 @@ public  Module DictionaryExtension
 #End If
 
 
-    <Pure()> <Untested()> <Extension()>  Function GetValue(Of T)(ByVal this As IDictionary, ByVal key As Object) As T
+    <Pure()>  <Extension()>  Function GetValue(Of T)(ByVal this As IDictionary, ByVal key As Object) As T
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If key Is Nothing Then Throw New ArgumentNullException("key")
 
@@ -138,7 +138,7 @@ public  Module DictionaryExtension
         Return If(temp IsNot Nothing, CType(temp, T), Nothing)
     End Function
 
-    <Pure()> <Untested()> <Extension()>  Function GetValue(Of T)(ByVal this As IDictionary, ByVal key As Object, ByVal [default] As T) As T
+    <Pure()>  <Extension()>  Function GetValue(Of T)(ByVal this As IDictionary, ByVal key As Object, ByVal [default] As T) As T
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If key Is Nothing Then Throw New ArgumentNullException("key")
 
@@ -148,7 +148,7 @@ public  Module DictionaryExtension
 
 #If ClrVersion >= 35 Then
 
-    <Pure()> <Untested()> <Extension()>  Function ToDictionary(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As Dictionary(Of String, String)
+    <Pure()>  <Extension()>  Function ToDictionary(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As Dictionary(Of String, String)
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
         If rowSeparator = columnSeparator Then Return ToDictionary(source, rowSeparator)
@@ -164,7 +164,7 @@ public  Module DictionaryExtension
     End Function
 
 
-    <Pure()> <Untested()> <Extension()>  Function ToDictionary(ByVal source As String, ByVal separator As String) As Dictionary(Of String, String)
+    <Pure()>  <Extension()>  Function ToDictionary(ByVal source As String, ByVal separator As String) As Dictionary(Of String, String)
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
         Dim result As New Dictionary(Of String, String)

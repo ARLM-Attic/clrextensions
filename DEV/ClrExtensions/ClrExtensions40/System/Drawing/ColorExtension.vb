@@ -3,7 +3,7 @@
 Imports System.Drawing
 #End If
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 Public Module ColorExtension
     'Reference: http://en.wikipedia.org/wiki/HSL_color_space
 
@@ -16,7 +16,7 @@ Public Module ColorExtension
     ''' <param name="lightness">0 to 1</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsl")> <Untested()>  Function FromHsl(ByVal hue As Single, ByVal saturation As Single, ByVal lightness As Single) As Color
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsl")>   Function FromHsl(ByVal hue As Single, ByVal saturation As Single, ByVal lightness As Single) As Color
         'todo : Check ranges
         Dim q As Single
         If lightness > 1 / 2 Then
@@ -68,7 +68,7 @@ Public Module ColorExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId:="Hsv")>
-    <Untested()>  Function FromHsv(ByVal hue As Single, ByVal saturation As Single, ByVal value As Single) As Color
+      Function FromHsv(ByVal hue As Single, ByVal saturation As Single, ByVal value As Single) As Color
         'todo : Check ranges
         Dim hi = (hue / 60.0F) Mod 6
         Dim f = (hue / 60.0F) - CSng(Math.Floor(hue / 60.0F))

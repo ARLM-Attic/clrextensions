@@ -1,16 +1,16 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 #If ClrVersion > 0 Then
-Imports System.data
+Imports System.Data
 #End If
 
 Imports ClrExtensions.Collections
 
 
 
-public  Module EnumerableExtension
+Public Module EnumerableExtension
 
     ''' <summary>
     ''' This converts an IEnumerable to an IEnumerable(Of Object)
@@ -18,8 +18,8 @@ public  Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function ToIEnumerable(ByVal this As IEnumerable) As IEnumerable(Of Object)
-                Return New ObjectEnumerable(this)
+    <Pure()> <Extension()> Function ToIEnumerable(ByVal this As IEnumerable) As IEnumerable(Of Object)
+        Return New ObjectEnumerable(this)
     End Function
 
     ''' <summary>
@@ -29,8 +29,8 @@ public  Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <returns></returns>
     ''' <remarks>This will throw an exception if one the values cannot be case into the correct type</remarks>
-    <Pure()> <Untested()> <Extension()>  Function ToIEnumerable(Of T)(ByVal this As IEnumerable) As IEnumerable(Of T)
-                Return New TypeEnumerable(Of T)(this)
+    <Pure()> <Extension()> Function ToIEnumerable(Of T)(ByVal this As IEnumerable) As IEnumerable(Of T)
+        Return New TypeEnumerable(Of T)(this)
     End Function
 
 #If ClrVersion >= 35 Then
@@ -43,9 +43,8 @@ public  Module EnumerableExtension
     ''' <remarks>Properties that only exist in subtypes will not be saved</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")>
-    <Untested()>
-    <Extension()>
-         Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T)) As DataTable
+        <Extension()>
+    Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T)) As DataTable
         If this Is Nothing Then Throw New ArgumentNullException("this")
 
         Dim result As New DataTable
@@ -82,7 +81,7 @@ public  Module EnumerableExtension
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")>
-        <Untested()> <Extension()>  Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T), ByVal ParamArray properties() As String) As DataTable
+         <Extension()> Function ToDataTable(Of T)(ByVal this As IEnumerable(Of T), ByVal ParamArray properties() As String) As DataTable
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If properties Is Nothing Then Throw New ArgumentNullException("properties")
 
@@ -126,7 +125,7 @@ public  Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <param name="action"></param>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Sub ForEach(Of T)(ByVal this As IEnumerable(Of T), ByVal action As Action(Of T))
+    <Extension()> Sub ForEach(Of T)(ByVal this As IEnumerable(Of T), ByVal action As Action(Of T))
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If action Is Nothing Then Throw New ArgumentNullException("action")
 
@@ -141,7 +140,7 @@ public  Module EnumerableExtension
     ''' <param name="this"></param>
     ''' <param name="action"></param>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Sub ForEach(ByVal this As IEnumerable, ByVal action As Action(Of Object))
+    <Extension()> Sub ForEach(ByVal this As IEnumerable, ByVal action As Action(Of Object))
         If this Is Nothing Then Throw New ArgumentNullException("this")
         If action Is Nothing Then Throw New ArgumentNullException("action")
 
@@ -159,8 +158,8 @@ public  Module EnumerableExtension
     ''' <param name="predicate">The predicate in the form of a Function(Of T, Boolean)</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>
-     Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Func(Of T, Boolean)) As Boolean
+    <Pure()> <Extension()>
+    Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Func(Of T, Boolean)) As Boolean
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If predicate Is Nothing Then Throw New ArgumentNullException("predicate")
 
@@ -178,7 +177,7 @@ public  Module EnumerableExtension
     ''' <param name="predicate"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Pure()> <Untested()> <Extension()>  Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Predicate(Of T)) As Boolean
+    <Pure()> <Extension()> Function TrueForAll(Of T)(ByVal source As IEnumerable(Of T), ByVal predicate As Predicate(Of T)) As Boolean
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If predicate Is Nothing Then Throw New ArgumentNullException("predicate")
 
@@ -189,6 +188,16 @@ public  Module EnumerableExtension
     End Function
 
 
+    <Extension()> Public Function OrderBy(Of T)(ByVal source As IEnumerable(Of T), ByVal sortExpression As String) As IEnumerable(Of T)
+        If sortExpression = "" Then Return source
+        Dim parts = Split(sortExpression, " ")
+        Dim prop = GetType(T).GetProperty(parts(0), Reflection.BindingFlags.IgnoreCase)
+        If parts.Count > 1 And parts(1).StartsWith("desc", StringComparison.InvariantCultureIgnoreCase) Then
+            Return source.OrderByDescending(Function(a) prop.GetValue(a, Nothing))
+        Else
+            Return source.OrderBy(Function(a) prop.GetValue(a, Nothing))
+        End If
+    End Function
 
 End Module
 

@@ -1,4 +1,4 @@
-﻿#If IncludeUntested Then
+﻿#If 1 = 1 Then
 ' Module ComparableExtension
 
 '''' <summary>
@@ -8,7 +8,7 @@
 '''' <param name="sampleObject">This may be null</param>
 '''' <returns></returns>
 '''' <remarks></remarks>
-'<Untested()> <Extension()>  Function ToComparer(Of T As IComparable(Of T))(ByVal sampleObject As T) As IComparer(Of T)
+' <Extension()>  Function ToComparer(Of T As IComparable(Of T))(ByVal sampleObject As T) As IComparer(Of T)
 'Return New ComparerComparable(Of T)
 'End Function
 
@@ -22,7 +22,7 @@
  Class ComparerComparable(Of T)
     Implements IComparer(Of T)
 
-    <Untested()>
+    
  Function Compare(ByVal x As T, ByVal y As T) As Integer Implements Global.System.Collections.Generic.IComparer(Of T).Compare
         Return CType(x, IComparable(Of T)).CompareTo(y)
     End Function

@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 'TODO: Look up the new Java RFC on partial dates, it could be very useful here
 
@@ -30,7 +30,7 @@ Public Structure FlexDate
     Private m_WeekOfYear As Integer?
     Private m_Day As Integer?
 
-    <Untested()>
+
     Overrides Function Equals(ByVal obj As Object) As Boolean
         If TypeOf obj Is FlexDate Then
             Return Equals(DirectCast(obj, FlexDate))
@@ -39,7 +39,7 @@ Public Structure FlexDate
         End If
     End Function
 
-    <Untested()>
+
     Overrides Function GetHashCode() As Integer
         Return m_DateMode Xor
             m_Year.GetHashCode Xor
@@ -50,18 +50,17 @@ Public Structure FlexDate
             m_Day.GetHashCode
     End Function
 
-    <Untested()>
+
     Shared Operator =(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
         Return date1.Equals(date2)
     End Operator
 
-    <Untested()>
+
     Shared Operator <>(ByVal date1 As FlexDate, ByVal date2 As FlexDate) As Boolean
         Return Not (date1 = date2)
     End Operator
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId:="FlexDate")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations")> <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")>
-    <Untested()>
     Overloads Function Equals(ByVal other As FlexDate) As Boolean Implements System.IEquatable(Of FlexDate).Equals
         With other
             Select Case m_DateMode
@@ -104,17 +103,17 @@ Public Structure FlexDate
         End With
     End Function
 
-    <Untested()> Sub New(ByVal value As Date)
+    Sub New(ByVal value As Date)
         m_Year = value.Year
         m_Month = value.Month
         m_Day = value.Day
     End Sub
 
-    <Untested()> Sub New(ByVal year As Integer)
+    Sub New(ByVal year As Integer)
         m_Year = year
     End Sub
 
-    <Untested()> Shared Function FromYearMonthDay(ByVal year As Integer, ByVal month As Integer, ByVal day As Integer) As FlexDate
+    Shared Function FromYearMonthDay(ByVal year As Integer, ByVal month As Integer, ByVal day As Integer) As FlexDate
         Dim result As New FlexDate
         result.m_Year = year
         result.m_Month = month
@@ -123,7 +122,7 @@ Public Structure FlexDate
         Return result
     End Function
 
-    <Untested()> Shared Function FromYearMonthWeek(ByVal year As Integer, ByVal month As Integer, ByVal week As Integer) As FlexDate
+    Shared Function FromYearMonthWeek(ByVal year As Integer, ByVal month As Integer, ByVal week As Integer) As FlexDate
         Dim result As New FlexDate
         result.m_Year = year
         result.m_Month = month
@@ -132,7 +131,7 @@ Public Structure FlexDate
         Return result
     End Function
 
-    <Untested()> Shared Function FromYearMonth(ByVal year As Integer, ByVal month As Integer) As FlexDate
+    Shared Function FromYearMonth(ByVal year As Integer, ByVal month As Integer) As FlexDate
         Dim result As New FlexDate
         result.m_Year = year
         result.m_Month = month
@@ -140,7 +139,7 @@ Public Structure FlexDate
         Return result
     End Function
 
-    <Untested()> Shared Function FromYearQuarter(ByVal year As Integer, ByVal quarter As Integer) As FlexDate
+    Shared Function FromYearQuarter(ByVal year As Integer, ByVal quarter As Integer) As FlexDate
         Dim result As New FlexDate
         result.m_Year = year
         result.m_Quarter = quarter
@@ -148,34 +147,34 @@ Public Structure FlexDate
         Return result
     End Function
 
-    <Untested()> Shared Function FromYear(ByVal year As Integer) As FlexDate
+    Shared Function FromYear(ByVal year As Integer) As FlexDate
         Dim result As New FlexDate
         result.m_Year = year
         result.m_DateMode = FlexDateParts.Year
         Return result
     End Function
 
-    <Untested()> ReadOnly Property DateParts() As FlexDateParts
+    ReadOnly Property DateParts() As FlexDateParts
         Get
             Return m_DateMode
         End Get
     End Property
 
-    <Untested()> ReadOnly Property Day() As Integer
+    ReadOnly Property Day() As Integer
         Get
             If Not m_Day.HasValue Then Throw New InvalidOperationException("This value doesn't not have a day component")
             Return m_Day.Value
         End Get
     End Property
 
-    <Untested()> ReadOnly Property Month() As Integer
+    ReadOnly Property Month() As Integer
         Get
             If Not m_Month.HasValue Then Throw New InvalidOperationException("This value doesn't not have a month component")
             Return m_Month.Value
         End Get
     End Property
 
-    <Untested()> ReadOnly Property Quarter() As Integer
+    ReadOnly Property Quarter() As Integer
         Get
             If Not m_Quarter.HasValue And Not m_Month.HasValue Then Throw New InvalidOperationException("This value doesn't not have a quarter component")
             If m_Quarter.HasValue Then Return m_Quarter.Value
@@ -183,21 +182,21 @@ Public Structure FlexDate
         End Get
     End Property
 
-    <Untested()> ReadOnly Property WeekOfMonth() As Integer
+    ReadOnly Property WeekOfMonth() As Integer
         Get
             If Not m_WeekOfMonth.HasValue Then Throw New InvalidOperationException("This value doesn't not have a week of month component")
             Return m_WeekOfMonth.Value
         End Get
     End Property
 
-    <Untested()> ReadOnly Property WeekOfYear() As Integer
+    ReadOnly Property WeekOfYear() As Integer
         Get
             If Not m_WeekOfYear.HasValue Then Throw New InvalidOperationException("This value doesn't not have a week of year component")
             Return m_WeekOfYear.Value
         End Get
     End Property
 
-    <Untested()> ReadOnly Property Year() As Integer
+    ReadOnly Property Year() As Integer
         Get
             If Not m_Year.HasValue Then Throw New InvalidOperationException("This value doesn't not have a year component")
             Return m_Year.Value

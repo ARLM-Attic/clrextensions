@@ -15,7 +15,7 @@ Public Module EnumExtension
         Return [Enum].IsDefined(GetType(T), value)
     End Function
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 
     ''' <summary>
@@ -25,7 +25,7 @@ Public Module EnumExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function EnumParse(Of T As Structure)(ByVal value As String) As T
+      Function EnumParse(Of T As Structure)(ByVal value As String) As T
         If value Is Nothing Then Throw New ArgumentNullException("value")
 
         Return CType([Enum].Parse(GetType(T), value, True), T)
@@ -38,7 +38,7 @@ Public Module EnumExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function EnumTryParse(Of T As Structure)(ByVal value As String) As T?
+      Function EnumTryParse(Of T As Structure)(ByVal value As String) As T?
         If value Is Nothing Then Return Nothing
         Try
             Return CType([Enum].Parse(GetType(T), value, True), T)
@@ -56,7 +56,7 @@ Public Module EnumExtension
     ''' <param name="ignoreCase"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function EnumParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T
+      Function EnumParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T
         If value Is Nothing Then Throw New ArgumentNullException("value")
 
         Return CType([Enum].Parse(GetType(T), value, ignoreCase), T)
@@ -70,7 +70,7 @@ Public Module EnumExtension
     ''' <param name="ignoreCase"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function EnumTryParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T?
+      Function EnumTryParse(Of T As Structure)(ByVal value As String, ByVal ignoreCase As Boolean) As T?
         If value Is Nothing Then Return Nothing
 
         Try

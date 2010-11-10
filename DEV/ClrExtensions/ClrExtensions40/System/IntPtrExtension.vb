@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
 Imports System.Runtime.InteropServices
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module IntPtrExtension
 
@@ -13,8 +13,7 @@ Public Module IntPtrExtension
     ''' <returns></returns>
     ''' <remarks></remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId:="pointer")>
-    <Untested()>
-    <Extension()>  Function ToStruct(Of T As Structure)(ByVal pointer As IntPtr) As T
+        <Extension()> Function ToStruct(Of T As Structure)(ByVal pointer As IntPtr) As T
         Return DirectCast(Marshal.PtrToStructure(pointer, GetType(T)), T)
     End Function
 

@@ -1,24 +1,24 @@
 'Copyright (c) 2008, Jonathan Allen
 Imports System.Collections.Specialized
 #If Subset <> "Client" Then
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Namespace Net.Rest
 
      Class QueryParameterCollection
         Inherits ObjectModel.Collection(Of QueryParameter)
 
-        <Untested()>
+        
          Sub New()
 
         End Sub
-        <Untested()>
+        
          Sub New(ByVal queryString As String)
             AddByParsing(queryString)
         End Sub
 
 #If ClrVersion > 0 Then
-        <Untested()>
+        
          Sub AddRange(ByVal values As System.Collections.Specialized.NameValueCollection)
             If values Is Nothing Then Throw New ArgumentNullException("values")
 
@@ -28,12 +28,12 @@ Namespace Net.Rest
         End Sub
 #End If
 
-        <Untested()>
+        
          Sub AddByParsing(ByVal queryString As String)
             Me.AddRange(ParseQueryString(queryString))
         End Sub
 
-        <Untested()>
+        
         Default  Overloads ReadOnly Property Item(ByVal key As String) As String
             Get
                 For Each param In Me
@@ -43,7 +43,7 @@ Namespace Net.Rest
             End Get
         End Property
 
-        <Untested()>
+        
         Private Shared Function ParseQueryString(ByVal queryString As String) As ObjectModel.Collection(Of QueryParameter)
             If queryString Is Nothing Then Throw New ArgumentNullException("queryString")
 

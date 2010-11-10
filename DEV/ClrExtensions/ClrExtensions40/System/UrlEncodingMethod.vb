@@ -1,5 +1,5 @@
 'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 ''' <summary>
 ''' This is used to indicate which URL Encoding algorythm should be used.

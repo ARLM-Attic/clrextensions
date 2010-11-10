@@ -1,6 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Imports ClrExtensions.Collections
 Imports System.Data
@@ -12,7 +12,7 @@ Namespace Data
         Private ReadOnly m_TypeNames As New List(Of String)
         Private ReadOnly m_Types As New List(Of Type)
 
-        <Untested()>
+        
                  Sub New(ByVal source As IDataRecord)
             If source Is Nothing Then Throw New ArgumentNullException("source")
 
@@ -23,7 +23,7 @@ Namespace Data
             Next
         End Sub
 
-        <Untested()>
+        
                 Friend Function GetOrdinal(ByVal name As String) As Integer
             For i As Integer = 0 To m_Names.Count - 1
                 If m_Names(i).Equals(name, StringComparison.InvariantCultureIgnoreCase) Then Return i
@@ -31,21 +31,21 @@ Namespace Data
             Throw New ArgumentOutOfRangeException("name")
         End Function
 
-        <Untested()>
+        
                 Friend Function GetDataTypeName(ByVal i As Integer) As String
             If i <= 0 Then Throw New ArgumentOutOfRangeException("i")
 
             Return m_TypeNames(i)
         End Function
 
-        <Untested()>
+        
                 Friend Function GetFieldType(ByVal i As Integer) As Type
             If i <= 0 Then Throw New ArgumentOutOfRangeException("i")
 
             Return m_Types(i)
         End Function
 
-        <Untested()>
+        
                 Friend Function GetName(ByVal i As Integer) As String
             If i <= 0 Then Throw New ArgumentOutOfRangeException("i")
 

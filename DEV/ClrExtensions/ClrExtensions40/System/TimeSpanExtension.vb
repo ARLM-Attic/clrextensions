@@ -1,5 +1,5 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module TimeSpanExtension
 
@@ -10,7 +10,7 @@ Public Module TimeSpanExtension
     ''' <param name="days"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()>  Function AddDays(ByVal value As TimeSpan, ByVal days As Integer) As TimeSpan
         Return value.Add(New TimeSpan(days, 0, 0, 0))
     End Function
@@ -22,7 +22,7 @@ Public Module TimeSpanExtension
     ''' <param name="hours"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()>  Function AddHours(ByVal value As TimeSpan, ByVal hours As Integer) As TimeSpan
         Return value.Add(New TimeSpan(hours, 0, 0))
     End Function
@@ -34,7 +34,7 @@ Public Module TimeSpanExtension
     ''' <param name="minutes"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()>  Function AddMinutes(ByVal value As TimeSpan, ByVal minutes As Integer) As TimeSpan
         Return value.Add(New TimeSpan(0, minutes, 0))
     End Function
@@ -46,7 +46,7 @@ Public Module TimeSpanExtension
     ''' <param name="seconds"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()>  Function AddSeconds(ByVal value As TimeSpan, ByVal seconds As Integer) As TimeSpan
         Return value.Add(New TimeSpan(0, 0, seconds))
     End Function
@@ -58,12 +58,12 @@ Public Module TimeSpanExtension
     ''' <param name="milliseconds"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     <Extension()>  Function AddMilliseconds(ByVal value As TimeSpan, ByVal milliseconds As Integer) As TimeSpan
         Return value.Add(New TimeSpan(0, 0, 0, 0, milliseconds))
     End Function
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
     ''' <summary>
     ''' Returns the greater of two time spans
@@ -72,7 +72,7 @@ Public Module TimeSpanExtension
     ''' <param name="valueB"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function Max(ByVal valueA As TimeSpan, ByVal valueB As TimeSpan) As TimeSpan
+      Function Max(ByVal valueA As TimeSpan, ByVal valueB As TimeSpan) As TimeSpan
         If valueA >= valueB Then Return valueA Else Return valueB
     End Function
 
@@ -84,7 +84,7 @@ Public Module TimeSpanExtension
     ''' <param name="values"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function Max(ByVal ParamArray values() As TimeSpan) As TimeSpan
+      Function Max(ByVal ParamArray values() As TimeSpan) As TimeSpan
         Return values.Max
     End Function
 #End If
@@ -96,7 +96,7 @@ Public Module TimeSpanExtension
     ''' <param name="valueB"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function Min(ByVal valueA As TimeSpan, ByVal valueB As TimeSpan) As TimeSpan
+      Function Min(ByVal valueA As TimeSpan, ByVal valueB As TimeSpan) As TimeSpan
         If valueA >= valueB Then Return valueA Else Return valueB
     End Function
 
@@ -108,7 +108,7 @@ Public Module TimeSpanExtension
     ''' <param name="values"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>  Function Min(ByVal ParamArray values() As TimeSpan) As TimeSpan
+      Function Min(ByVal ParamArray values() As TimeSpan) As TimeSpan
         Return values.Max
     End Function
 

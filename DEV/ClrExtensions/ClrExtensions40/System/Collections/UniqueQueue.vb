@@ -1,13 +1,13 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
 #If ClrVersion >= 35 Then
-#If IncludeUntested Then
+#If 1 = 1 Then
 Namespace Collections
 
-	''' <summary>
-	''' This is a queue in which any given item can only appear once.
-	''' </summary>
-	''' <remarks>All methods are threadsafe</remarks>
+    ''' <summary>
+    ''' This is a queue in which any given item can only appear once.
+    ''' </summary>
+    ''' <remarks>All methods are threadsafe</remarks>
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")>
     Public Class UniqueQueue(Of T)
         Private ReadOnly m_Lock As New Object
@@ -19,7 +19,7 @@ Namespace Collections
         ''' Creates a new unique queue using the objects default comparer
         ''' </summary>
         ''' <remarks></remarks>
-        <Untested()>
+
         Sub New(ByVal mode As UniqueQueueMode)
             If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode", mode, "Mode isn't defined")
 
@@ -31,7 +31,7 @@ Namespace Collections
         ''' </summary>
         ''' <param name="comparer"></param>
         ''' <remarks></remarks>
-        <Untested()>
+
         Sub New(ByVal mode As UniqueQueueMode, ByVal comparer As IEqualityComparer(Of T))
             If Not mode.EnumIsDefined Then Throw New ArgumentOutOfRangeException("mode", mode, "Mode isn't defined")
 
@@ -44,7 +44,7 @@ Namespace Collections
         ''' </summary>
         ''' <param name="value"></param>
         ''' <remarks></remarks>
-        <Untested()>
+
         Sub Enqueue(ByVal value As T)
             SyncLock m_Lock
                 AddInternal(value)
@@ -56,7 +56,7 @@ Namespace Collections
         ''' </summary>
         ''' <param name="list"></param>
         ''' <remarks></remarks>
-        <Untested()>
+
         Sub Enqueue(ByVal list As IEnumerable(Of T))
             If list Is Nothing Then Throw New ArgumentNullException("list")
             SyncLock m_Lock
@@ -72,7 +72,7 @@ Namespace Collections
         ''' <param name="value">This is set to the element dequeued or Nothing if the queue is empty</param>
         ''' <returns>True if the queue contained items, False otherwise</returns>
         ''' <remarks></remarks>
-        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> <Untested()>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")>
         Function TryDequeue(ByRef value As T) As Boolean
             SyncLock m_Lock
                 If m_List.Count > 0 Then
@@ -94,7 +94,7 @@ Namespace Collections
         ''' <param name="maxBatchSize">Maximum number of items to remove from the queue</param>
         ''' <returns>A list containing minBatchSize &lt;= count &lt;= MaxBatchSize items or an empty list if there aren't at least minBatchSize items</returns>
         ''' <remarks></remarks>
-        <Untested()>
+
         Function DequeueBatch(ByVal minBatchSize As Integer, ByVal maxBatchSize As Integer) As IList(Of T)
             SyncLock m_Lock
                 If m_List.Count >= minBatchSize Then
@@ -121,7 +121,7 @@ Namespace Collections
         ''' <value></value>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        <Untested()>
+
         ReadOnly Property Count() As Integer
             Get
                 SyncLock m_Lock
@@ -130,7 +130,7 @@ Namespace Collections
             End Get
         End Property
 
-        <Untested()>
+
         Private Sub AddInternal(ByVal value As T)
             Dim node As LinkedListNode(Of T) = Nothing
 
@@ -173,25 +173,25 @@ Namespace Collections
 
     End Class
 
-	''' <summary>
-	''' Operation modes for a Unique Queue
-	''' </summary>
-	''' <remarks></remarks>
-	 Public Enum UniqueQueueMode
-		''' <summary>
-		''' Adding a duplicate item replaces the original item
-		''' </summary>
-		''' <remarks></remarks>
-		Replace = 0
-		''' <summary>
-		''' Adding a duplicate item deletes the original and adds the new version to the end of the list
-		''' </summary>
-		''' <remarks></remarks>
-		MoveToEnd = 1
-		''' <summary>
-		''' Duplicates are not added to the queue, the original version remains
-		''' </summary>
-		''' <remarks></remarks>
+    ''' <summary>
+    ''' Operation modes for a Unique Queue
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Enum UniqueQueueMode
+        ''' <summary>
+        ''' Adding a duplicate item replaces the original item
+        ''' </summary>
+        ''' <remarks></remarks>
+        Replace = 0
+        ''' <summary>
+        ''' Adding a duplicate item deletes the original and adds the new version to the end of the list
+        ''' </summary>
+        ''' <remarks></remarks>
+        MoveToEnd = 1
+        ''' <summary>
+        ''' Duplicates are not added to the queue, the original version remains
+        ''' </summary>
+        ''' <remarks></remarks>
         DuplicatesIgnored = 2
     End Enum
 

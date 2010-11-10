@@ -4,7 +4,7 @@ Imports System.Text
 Imports System.Runtime.InteropServices
 Imports ClrExtensions.Collections
 Imports System.IO
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module StreamExtension
 
@@ -16,7 +16,7 @@ Public Module StreamExtension
     ''' <param name="source"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function ToStreamReader(ByVal source As Stream) As StreamReader
+     <Extension()> Function ToStreamReader(ByVal source As Stream) As StreamReader
         Return New StreamReader(source)
     End Function
 
@@ -27,7 +27,7 @@ Public Module StreamExtension
     ''' <param name="encoding"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function ToStreamReader(ByVal source As Stream, ByVal encoding As Encoding) As StreamReader
+     <Extension()> Function ToStreamReader(ByVal source As Stream, ByVal encoding As Encoding) As StreamReader
         Return New StreamReader(source, encoding)
     End Function
 
@@ -37,7 +37,7 @@ Public Module StreamExtension
     ''' <param name="source"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function ToStreamWriter(ByVal source As Stream) As StreamWriter
+     <Extension()> Function ToStreamWriter(ByVal source As Stream) As StreamWriter
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
         Return New StreamWriter(source)
@@ -49,7 +49,7 @@ Public Module StreamExtension
     ''' <param name="source"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Function ToStreamWriter(ByVal source As Stream, ByVal encoding As Encoding) As StreamWriter
+     <Extension()> Function ToStreamWriter(ByVal source As Stream, ByVal encoding As Encoding) As StreamWriter
         Return New StreamWriter(source, encoding)
     End Function
 
@@ -62,7 +62,7 @@ Public Module StreamExtension
     ''' <param name="target"></param>
     ''' <param name="bufferSize"></param>
     ''' <remarks></remarks>
-    <Untested()> <Extension()> Sub CopyTo(ByVal source As Stream, ByVal target As Stream, ByVal bufferSize As Integer)
+     <Extension()> Sub CopyTo(ByVal source As Stream, ByVal target As Stream, ByVal bufferSize As Integer)
         If source Is Nothing Then Throw New ArgumentNullException("source")
         If target Is Nothing Then Throw New ArgumentNullException("target")
 
@@ -89,11 +89,11 @@ Public Module StreamExtension
 #End If
 
 
-    '<Untested()> <Extension()> Function ReadToEnd(ByVal stream As Stream) As Byte()
+    ' <Extension()> Function ReadToEnd(ByVal stream As Stream) As Byte()
     '	Return ReadToEnd(stream, DefaultBufferSize)
     'End Function
 
-    '<Untested()> <Extension()> Function ReadToEnd(ByVal stream As Stream, ByVal bufferSize As Integer) As Byte()
+    ' <Extension()> Function ReadToEnd(ByVal stream As Stream, ByVal bufferSize As Integer) As Byte()
     '	'TODO - implement this
     'End Function
 
@@ -104,11 +104,11 @@ Public Module StreamExtension
     '''' <param name="length"></param>
     '''' <returns></returns>
     '''' <remarks></remarks>
-    '<Untested()> <Extension()> Function TryRead(ByVal stream As Stream, ByVal length As Integer) As Byte()
+    ' <Extension()> Function TryRead(ByVal stream As Stream, ByVal length As Integer) As Byte()
     '	'TODO - implement this
     'End Function
 
-    '<Untested()> <Extension()> Function TryRead(ByVal stream As Stream, ByVal minLegth As Integer, ByVal maxLength As Integer) As Byte()
+    ' <Extension()> Function TryRead(ByVal stream As Stream, ByVal minLegth As Integer, ByVal maxLength As Integer) As Byte()
     '	'TODO - implement this
 
     'End Function

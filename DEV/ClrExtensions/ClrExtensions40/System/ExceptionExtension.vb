@@ -7,7 +7,7 @@ Imports System.Data
 
 
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module ExceptionExtension
 
@@ -18,7 +18,7 @@ Public Module ExceptionExtension
     ''' <param name="Exception"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function ToStringDetailed(ByVal exception As Exception) As String
+     <Extension()>  Function ToStringDetailed(ByVal exception As Exception) As String
         If exception Is Nothing Then Throw New ArgumentNullException("exception")
 
         Dim result As New StringBuilder()
@@ -53,7 +53,7 @@ Public Module ExceptionExtension
     ''' <param name="sqlException"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function SqlExceptionDetails(ByVal sqlException As SqlClient.SqlException) As String
+     <Extension()>  Function SqlExceptionDetails(ByVal sqlException As SqlClient.SqlException) As String
         If sqlException Is Nothing Then Throw New ArgumentNullException("sqlException")
 
         Dim result As New StringBuilder(sqlException.ToString)

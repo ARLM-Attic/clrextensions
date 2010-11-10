@@ -1,6 +1,6 @@
 'Copyright (c) 2008, Jonathan Allen
 Imports System.Collections.Specialized
-#If IncludeUntested Then
+#If 1 = 1 Then
 #If Subset <> "Client" Then
 
 Namespace Net.Rest
@@ -13,7 +13,7 @@ Namespace Net.Rest
         ''' </summary>
         ''' <param name="name"></param>
         ''' <remarks></remarks>
-        <Untested()>
+        
         Sub New(ByVal name As String)
             MyClass.New(name, Nothing)
         End Sub
@@ -24,7 +24,7 @@ Namespace Net.Rest
         ''' <param name="name"></param>
         ''' <param name="value"></param>
         ''' <remarks>A null value means something different than an empty value</remarks>
-        <Untested()>
+        
         Sub New(ByVal name As String, ByVal value As String)
             m_Name = name
             m_Value = value
@@ -32,21 +32,21 @@ Namespace Net.Rest
 
 
 #If ClrVersion > 0 Then
-        <Untested()>
+        
         Sub New(ByVal name As String, ByVal value As String, ByVal encoding As UrlEncodingMethod)
             m_Name = name
             m_Value = UrlEncode(value, encoding)
         End Sub
 #End If
 
-        <Untested()>
+        
         ReadOnly Property Name() As String
             Get
                 Return m_Name
             End Get
         End Property
 
-        <Untested()>
+        
         ReadOnly Property Value() As String
             Get
                 Return m_Value
@@ -58,7 +58,7 @@ Namespace Net.Rest
         ''' </summary>
         ''' <returns>Returns "name=value" if value isnot nothing, otherwise returns "name"</returns>
         ''' <remarks></remarks>
-        <Untested()>
+        
         Overrides Function ToString() As String
             If Value Is Nothing Then
                 Return Name

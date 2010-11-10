@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 ''' <summary>
 ''' This represents quarter-year pair such as "Q2 2008"
@@ -19,7 +19,7 @@ Public Structure QuarterYear
     ''' </summary>
     ''' <param name="value"></param>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Sub New(ByVal value As Date)
         Me.New(value.Year, value.Quarter)
     End Sub
@@ -30,7 +30,7 @@ Public Structure QuarterYear
     ''' <param name="quarters"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Function AddQuarter(ByVal quarters As Integer) As QuarterYear
         Return New QuarterYear(FirstOfQuarter.AddMonths(quarters * 3))
     End Function
@@ -41,7 +41,7 @@ Public Structure QuarterYear
     ''' <param name="years"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Function AddYear(ByVal years As Integer) As QuarterYear
         Return New QuarterYear(FirstOfQuarter.AddYears(years))
     End Function
@@ -52,7 +52,7 @@ Public Structure QuarterYear
     ''' <param name="year"></param>
     ''' <param name="quarter"></param>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Sub New(ByVal year As Integer, ByVal quarter As Integer)
         If quarter < 0 OrElse quarter > 4 Then Throw New ArgumentOutOfRangeException("quarter")
         m_Year = year
@@ -65,7 +65,7 @@ Public Structure QuarterYear
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     ReadOnly Property Quarter() As Integer
         Get
             Return m_Quarter
@@ -78,7 +78,7 @@ Public Structure QuarterYear
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     ReadOnly Property Year() As Integer
         Get
             Return m_Year
@@ -90,7 +90,7 @@ Public Structure QuarterYear
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Overrides Function ToString() As String
         Return "Q" & m_Quarter & " " & m_Year
     End Function
@@ -100,7 +100,7 @@ Public Structure QuarterYear
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Function FirstOfQuarter() As Date
         Return FirstOfQuarter(Quarter, Year)
     End Function
@@ -110,7 +110,7 @@ Public Structure QuarterYear
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Shared Function FirstOfQuarter(ByVal quarter As Integer, ByVal year As Integer) As Date
         Select Case quarter
             Case 1 : Return New Date(year, 1, 1)
@@ -126,7 +126,7 @@ Public Structure QuarterYear
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Shared Function Now() As QuarterYear
         Return New QuarterYear(Date.Now)
     End Function
@@ -138,7 +138,7 @@ Public Structure QuarterYear
     ''' <param name="count">Number of QuarterYears to return</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Shared Function Range(ByVal start As QuarterYear, ByVal count As Integer) As List(Of QuarterYear)
         Dim result As New List(Of QuarterYear)
         result.Add(start)
@@ -157,7 +157,7 @@ Public Structure QuarterYear
     '''<param name="end">Last quarter to return</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Shared Function Range(ByVal start As QuarterYear, ByVal [end] As QuarterYear) As List(Of QuarterYear)
         If start < [end] Then Return New List(Of QuarterYear)
 
@@ -170,12 +170,12 @@ Public Structure QuarterYear
         Return result
     End Function
 
-    <Untested()>
+    
     Overrides Function GetHashCode() As Integer
         Return m_Year.GetHashCode Xor m_Quarter.GetHashCode
     End Function
 
-    <Untested()>
+    
     Shared Operator >(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year > right.Year Then Return True
         If left.Year < right.Year Then Return False
@@ -184,7 +184,7 @@ Public Structure QuarterYear
         Return False
     End Operator
 
-    <Untested()>
+    
     Shared Operator <(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year < right.Year Then Return True
         If left.Year > right.Year Then Return False
@@ -194,7 +194,7 @@ Public Structure QuarterYear
     End Operator
 
 
-    <Untested()>
+    
     Shared Operator >=(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year > right.Year Then Return True
         If left.Year < right.Year Then Return False
@@ -203,7 +203,7 @@ Public Structure QuarterYear
         Return False
     End Operator
 
-    <Untested()>
+    
     Shared Operator <=(ByVal left As QuarterYear, ByVal right As QuarterYear) As Boolean
         If left.Year < right.Year Then Return True
         If left.Year > right.Year Then Return False
@@ -213,27 +213,27 @@ Public Structure QuarterYear
     End Operator
 
 
-    <Untested()>
+    
     Shared Operator =(ByVal quarter1 As QuarterYear, ByVal quarter2 As QuarterYear) As Boolean
         Return quarter1.Equals(quarter2)
     End Operator
 
-    <Untested()>
+    
     Shared Operator <>(ByVal quarter1 As QuarterYear, ByVal quarter2 As QuarterYear) As Boolean
         Return Not (quarter1 = quarter2)
     End Operator
 
-    <Untested()>
+    
     Overloads Function Equals(ByVal other As QuarterYear) As Boolean Implements Global.System.IEquatable(Of QuarterYear).Equals
         Return Quarter = other.Quarter AndAlso Year = other.Year
     End Function
 
-    <Untested()>
+    
     Overrides Function Equals(ByVal obj As Object) As Boolean
         If TypeOf obj Is QuarterYear Then Return CType(obj, QuarterYear) = Me Else Return False
     End Function
 
-    <Untested()>
+    
     Function CompareTo(ByVal other As QuarterYear) As Integer Implements Global.System.IComparable(Of QuarterYear).CompareTo
         If Me > other Then Return 1
         If Me < other Then Return -1
@@ -246,7 +246,7 @@ Public Structure QuarterYear
     ''' <param name="month"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
+    
     Shared Function MonthToQuarter(ByVal month As Integer) As Integer
         Select Case month
             Case 1 To 3 : Return 1

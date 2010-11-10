@@ -1,6 +1,6 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module ThreadExtension
     'The generic Volatile Read and Write are described in http://www.panopticoncentral.net/archive/2004/09/30/1721.aspx
@@ -13,7 +13,7 @@ Public Module ThreadExtension
     ''' <param name="address"></param>
     ''' <returns></returns>
     ''' <remarks>C# doesn't need this, instead use the volatile keyword</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> <Untested()> Function VolatileRead(Of T)(ByRef address As T) As T
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> Function VolatileRead(Of T)(ByRef address As T) As T
         VolatileRead = address
         System.Threading.Thread.MemoryBarrier()
     End Function
@@ -25,7 +25,7 @@ Public Module ThreadExtension
     ''' <param name="address"></param>
     ''' <param name="value"></param>
     ''' <remarks>C# doesn't need this, instead use the volatile keyword</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> <Untested()> Sub VolatileWrite(Of T)(ByRef address As T, ByVal value As T)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId:="0#")> Sub VolatileWrite(Of T)(ByRef address As T, ByVal value As T)
         System.Threading.Thread.MemoryBarrier()
         address = value
     End Sub
@@ -36,7 +36,7 @@ Public Module ThreadExtension
     ''' <param name="minutes"></param>
     ''' <param name="seconds"></param>
     ''' <remarks></remarks>
-<untested>    Sub Sleep(ByVal minutes As Integer, ByVal seconds As Integer)
+    Sub Sleep(ByVal minutes As Integer, ByVal seconds As Integer)
         System.Threading.Thread.Sleep((minutes * 60 + seconds) * 1000)
     End Sub
 

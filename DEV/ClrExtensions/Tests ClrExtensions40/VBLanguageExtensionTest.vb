@@ -534,247 +534,277 @@ Public Class VBLanguageExtensionTest
 
 	<TestMethod()>
 	Public Sub TryCUShortTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of UShort) = New Nullable(Of UShort)()	' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of UShort)
-		actual = VBLanguageExtension.TryCUShort(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+        Dim value = "1902"
+        Dim expected As UShort? = 1902
+        Assert.AreEqual(expected, TryCUShort(value))
 
-	<TestMethod()>
-	Public Sub TryCUIntTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of UInteger) = New Nullable(Of UInteger)()	' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of UInteger)
-		actual = VBLanguageExtension.TryCUInt(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+        value = "asadsad"
+        Assert.IsNull(TryCUShort(value))
+    End Sub
 
-	<TestMethod()>
-	Public Sub TryCSngTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of Single) = New Nullable(Of Single)()	' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of Single)
-		actual = VBLanguageExtension.TryCSng(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+    <TestMethod()>
+    Public Sub TryCUIntTest()
+        Dim value = "1902"
+        Dim expected As UInteger? = 1902
+        Assert.AreEqual(expected, TryCUInt(value))
 
-	<TestMethod()>
-	Public Sub TryCShortTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of Short) = New Nullable(Of Short)() ' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of Short)
-		actual = VBLanguageExtension.TryCShort(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+        value = "asadsad"
+        Assert.IsNull(TryCUInt(value))
+    End Sub
 
-	<TestMethod()>
-	Public Sub TryCSByteTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of SByte) = New Nullable(Of SByte)() ' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of SByte)
-		actual = VBLanguageExtension.TryCSByte(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+    <TestMethod()>
+    Public Sub TryCSngTest()
+        Dim value = "19.2"
+        Dim expected As Single? = 19.2
+        Assert.AreEqual(expected, TryCSng(value))
 
-	<TestMethod()>
-	Public Sub TryCLngTest()
-		Dim value = 123.456D
-		Dim expected As Long? = 123.456
-		Dim actual As Long?
-		actual = VBLanguageExtension.TryCLng(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
+        value = "asadsad"
+        Assert.IsNull(TryCSng(value))
+    End Sub
 
-	<TestMethod()>
-	Public Sub TryCIntTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of Integer) = New Nullable(Of Integer)() ' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of Integer)
-		actual = VBLanguageExtension.TryCInt(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+    <TestMethod()>
+    Public Sub TryCShortTest()
+        Dim value = "1902"
+        Dim expected As Short? = 1902
+        Assert.AreEqual(expected, TryCShort(value))
 
-	<TestMethod()>
-	Public Sub TryCDecTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of [Decimal]) = New Nullable(Of [Decimal])() ' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of [Decimal])
-		actual = VBLanguageExtension.TryCDec(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+        value = "asadsad"
+        Assert.IsNull(TryCShort(value))
+    End Sub
 
-	<TestMethod()>
-	Public Sub TryCDblTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of Double) = New Nullable(Of Double)()	' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of Double)
-		actual = VBLanguageExtension.TryCDbl(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+    <TestMethod()>
+    Public Sub TryCSByteTest()
+        Dim value = "20"
+        Dim expected As SByte? = CSByte(20)
+        Assert.AreEqual(expected, TryCSByte("20"))
+    End Sub
 
-	<TestMethod()>
-	Public Sub TryCDateTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of DateTime) = New Nullable(Of DateTime)()	' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of DateTime)
-		actual = VBLanguageExtension.TryCDate(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+    <TestMethod()>
+    Public Sub TryCLngTest()
+        Dim value = 123.456D
+        Dim expected As Long? = 123.456
+        Dim actual As Long?
+        actual = VBLanguageExtension.TryCLng(value)
+        Assert.AreEqual(expected, actual)
+    End Sub
 
-	<TestMethod()>
-	Public Sub TryCCharTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of Char) = New Nullable(Of Char)()	' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of Char)
-		actual = VBLanguageExtension.TryCChar(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+    <TestMethod()>
+    Public Sub TryCIntTest()
+        Dim value = "19"
+        Dim expected As Integer? = 19
+        Assert.AreEqual(expected, TryCInt(value))
 
-	<TestMethod()>
-	Public Sub TryCByteTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of Byte) = New Nullable(Of Byte)()	' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of Byte)
-		actual = VBLanguageExtension.TryCByte(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+        value = "asadsad"
+        Assert.IsNull(TryCInt(value))
+    End Sub
 
-	<TestMethod()>
-	Public Sub TryCBoolTest()
-		Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
-		Dim expected As Nullable(Of Boolean) = New Nullable(Of Boolean)() ' TODO: Initialize to an appropriate value
-		Dim actual As Nullable(Of Boolean)
-		actual = VBLanguageExtension.TryCBool(value)
-		Assert.AreEqual(expected, actual)
-		Assert.Inconclusive("Verify the correctness of this test method.")
-	End Sub
+    <TestMethod()>
+    Public Sub TryCDecTest()
+        Dim value = "19.2"
+        Dim expected As Decimal? = 19.2
+        Assert.AreEqual(expected, TryCDec(value))
 
-	<TestMethod()>
-	Public Sub CTimeSpanTest()
-		Dim value As Object = Nothing
-		Dim expected As TimeSpan = Nothing
-		Dim actual As TimeSpan
-		actual = VBLanguageExtension.CTimeSpan(value)
-		Assert.AreEqual(expected, actual)
+        value = "asadsad"
+        Assert.IsNull(TryCDec(value))
 
-	End Sub
+    End Sub
 
+    <TestMethod()>
+    Public Sub TryCDblTest()
+        Dim value = "19.2"
+        Dim expected As Double? = 19.2
+        Assert.AreEqual(expected, TryCDbl(value))
 
-	<TestMethod()>
-	<ExpectedException(GetType(FormatException))>
-	Public Sub CTimeSpanTest2()
-		Dim value = ""
-		Dim expected As TimeSpan = Nothing
-		Dim actual As TimeSpan
-		actual = VBLanguageExtension.CTimeSpan(value)
-	End Sub
+        value = "asadsad"
+        Assert.IsNull(TryCDbl(value))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TryCDateTest()
+        Dim value = "1/1/1902"
+        Dim expected As Date? = #1/1/1902#
+        Assert.AreEqual(expected, TryCDate(value))
+
+        value = "asadsad"
+        Assert.IsNull(TryCDate(value))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TryCCharTest()
+        Dim value As Object = "1"
+        Dim expected As Char? = "1"c
+        Assert.AreEqual(expected, TryCChar(value))
+
+        value = {1, 2, 3}
+        Assert.IsNull(TryCChar(value))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TryCByteTest()
+        Dim value = "1"
+        Dim expected As Byte? = 1
+        Assert.AreEqual(expected, TryCByte(value))
+
+        value = "asdadsad"
+        Assert.IsNull(TryCByte(value))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TryCBoolTest()
+        Dim value = "true"
+        Dim expected As Boolean? = True
+        Assert.AreEqual(expected, TryCBool(value))
+
+        value = "asdadsad"
+        Assert.IsNull(TryCBool(value))
+
+    End Sub
+
+    <TestMethod()>
+    Public Sub CTimeSpanTest()
+        Dim value As Object = Nothing
+        Dim expected As TimeSpan = Nothing
+        Dim actual As TimeSpan
+        actual = VBLanguageExtension.CTimeSpan(value)
+        Assert.AreEqual(expected, actual)
+
+    End Sub
 
 
-	<TestMethod()>
-	Public Sub CTimeSpanTest3()
-		Dim value = "0:10:00"
-		Dim expected As TimeSpan = TimeSpan.FromMinutes(10)
-		Dim actual As TimeSpan
-		actual = VBLanguageExtension.CTimeSpan(value)
-	End Sub
-
-	<TestMethod()>
-	<ExpectedException(GetType(FormatException))>
-	Public Sub CTimeSpanTest4()
-		Dim value = "XXX"
-		Dim expected As TimeSpan = Nothing
-		Dim actual As TimeSpan
-		actual = VBLanguageExtension.CTimeSpan(value)
-	End Sub
-
-	<TestMethod()>
-	<ExpectedException(GetType(InvalidCastException))>
-	Public Sub CTimeSpanTest5()
-		Dim value = 999
-		Dim expected As TimeSpan = Nothing
-		Dim actual As TimeSpan
-		actual = VBLanguageExtension.CTimeSpan(value)
-	End Sub
+    <TestMethod()>
+    <ExpectedException(GetType(FormatException))>
+    Public Sub CTimeSpanTest2()
+        Dim value = ""
+        Dim expected As TimeSpan = Nothing
+        Dim actual As TimeSpan
+        actual = VBLanguageExtension.CTimeSpan(value)
+    End Sub
 
 
-	<TestMethod()>
-	Public Sub CTimeSpan2Test1()
-		Dim value = Nothing	' TODO: Initialize to an appropriate value
-		Dim expected As TimeSpan? = Nothing
-		Dim actual As TimeSpan?
-		actual = VBLanguageExtension.CTimeSpan2(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
+    <TestMethod()>
+    Public Sub CTimeSpanTest3()
+        Dim value = "0:10:00"
+        Dim expected As TimeSpan = TimeSpan.FromMinutes(10)
+        Dim actual As TimeSpan
+        actual = VBLanguageExtension.CTimeSpan(value)
+    End Sub
 
-	<TestMethod()>
-	Public Sub CTimeSpan2Test2()
-		Dim value = DBNull.Value	' TODO: Initialize to an appropriate value
-		Dim expected As TimeSpan? = Nothing
-		Dim actual As TimeSpan?
-		actual = VBLanguageExtension.CTimeSpan2(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
+    <TestMethod()>
+    <ExpectedException(GetType(FormatException))>
+    Public Sub CTimeSpanTest4()
+        Dim value = "XXX"
+        Dim expected As TimeSpan = Nothing
+        Dim actual As TimeSpan
+        actual = VBLanguageExtension.CTimeSpan(value)
+    End Sub
 
-	<TestMethod()>
-	Public Sub CTimeSpan2Test3()
-		Dim value = TimeSpan.FromMinutes(10)
-		Dim expected As TimeSpan? = TimeSpan.FromMinutes(10)
-		Dim actual As TimeSpan?
-		actual = VBLanguageExtension.CTimeSpan2(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
-
-
-	<TestMethod()>
-	Public Sub CTimeSpan2Test4()
-		Dim value = "0:10:00"
-		Dim expected As TimeSpan? = TimeSpan.FromMinutes(10)
-		Dim actual As TimeSpan?
-		actual = VBLanguageExtension.CTimeSpan2(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
+    <TestMethod()>
+    <ExpectedException(GetType(InvalidCastException))>
+    Public Sub CTimeSpanTest5()
+        Dim value = 999
+        Dim expected As TimeSpan = Nothing
+        Dim actual As TimeSpan
+        actual = VBLanguageExtension.CTimeSpan(value)
+    End Sub
 
 
-	<TestMethod()>
-	Public Sub CTimeSpan2Test5()
-		Dim value = ""
-		Dim expected As TimeSpan? = Nothing
-		Dim actual As TimeSpan?
-		actual = VBLanguageExtension.CTimeSpan2(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
-
-	<TestMethod()>
-	<ExpectedException(GetType(FormatException))>
-	Public Sub CTimeSpan2Test6()
-		Dim value = "XXX"
-		Dim expected As TimeSpan? = Nothing
-		Dim actual As TimeSpan?
-		actual = VBLanguageExtension.CTimeSpan2(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
-
-	<TestMethod()>
-	<ExpectedException(GetType(InvalidCastException))>
-	Public Sub CTimeSpan2Test7()
-		Dim value = 999
-		Dim expected As TimeSpan? = Nothing
-		Dim actual As TimeSpan?
-		actual = VBLanguageExtension.CTimeSpan2(value)
-		Assert.AreEqual(expected, actual)
-	End Sub
+    <TestMethod()>
+    Public Sub CTimeSpan2Test3()
+        Dim value = TimeSpan.FromMinutes(10)
+        Dim expected As TimeSpan? = TimeSpan.FromMinutes(10)
+        Dim actual As TimeSpan?
+        actual = VBLanguageExtension.CTimeSpan2(value)
+        Assert.AreEqual(expected, actual)
+    End Sub
 
 
+    <TestMethod()>
+    Public Sub CTimeSpan2Test4()
+        Dim value = "0:10:00"
+        Dim expected As TimeSpan? = TimeSpan.FromMinutes(10)
+        Dim actual As TimeSpan?
+        actual = VBLanguageExtension.CTimeSpan2(value)
+        Assert.AreEqual(expected, actual)
+    End Sub
+
+
+    <TestMethod()>
+    Public Sub CTimeSpan2Test5()
+        Dim value = ""
+        Dim expected As TimeSpan? = Nothing
+        Dim actual As TimeSpan?
+        actual = VBLanguageExtension.CTimeSpan2(value)
+        Assert.AreEqual(expected, actual)
+    End Sub
+
+    <TestMethod()>
+    <ExpectedException(GetType(FormatException))>
+    Public Sub CTimeSpan2Test6()
+        Dim value = "XXX"
+        Dim expected As TimeSpan? = Nothing
+        Dim actual As TimeSpan?
+        actual = VBLanguageExtension.CTimeSpan2(value)
+        Assert.AreEqual(expected, actual)
+    End Sub
+
+    <TestMethod()>
+    <ExpectedException(GetType(InvalidCastException))>
+    Public Sub CTimeSpan2Test7()
+        Dim value = 999
+        Dim expected As TimeSpan? = Nothing
+        Dim actual As TimeSpan?
+        actual = VBLanguageExtension.CTimeSpan2(value)
+        Assert.AreEqual(expected, actual)
+    End Sub
+
+
+
+    '''<summary>
+    '''A test for CTimeSpan2
+    '''</summary>
+    <TestMethod()> _
+    Public Sub CTimeSpan2Test()
+        Dim value As Object = TimeSpan.FromMinutes(10)
+        Dim expected As TimeSpan? = TimeSpan.FromMinutes(10)
+        Dim actual As TimeSpan?
+        Dim defaultValue = TimeSpan.FromDays(1)
+
+        actual = VBLanguageExtension.CTimeSpan2(value, defaultValue)
+        Assert.AreEqual(expected, actual)
+
+        actual = VBLanguageExtension.CTimeSpan2(value.ToString, defaultValue)
+        Assert.AreEqual(expected, actual)
+
+        value = Nothing
+        actual = VBLanguageExtension.CTimeSpan2(value, defaultValue)
+        Assert.AreEqual(defaultValue, actual)
+
+    End Sub
+
+    '''<summary>
+    '''A test for CULng2
+    '''</summary>
+    <TestMethod()> _
+    Public Sub CULng2Test2()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim expected As Nullable(Of ULong) = New Nullable(Of ULong)() ' TODO: Initialize to an appropriate value
+        Dim actual As Nullable(Of ULong)
+        actual = VBLanguageExtension.CULng2(value)
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
+
+    '''<summary>
+    '''A test for CUShort2
+    '''</summary>
+    <TestMethod()> _
+    Public Sub CUShort2Test2()
+        Dim value As Object = Nothing ' TODO: Initialize to an appropriate value
+        Dim [default] As UShort = 0 ' TODO: Initialize to an appropriate value
+        Dim expected As UShort = 0 ' TODO: Initialize to an appropriate value
+        Dim actual As UShort
+        actual = VBLanguageExtension.CUShort2(value, [default])
+        Assert.AreEqual(expected, actual)
+        Assert.Inconclusive("Verify the correctness of this test method.")
+    End Sub
 End Class

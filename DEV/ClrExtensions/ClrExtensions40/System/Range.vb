@@ -1,32 +1,32 @@
-﻿#If IncludeUntested Then
+﻿#If 1 = 1 Then
  Class Range(Of T)
     Private ReadOnly m_Start As T
     Private ReadOnly m_End As T
     Private ReadOnly m_Options As RangeOption
     Private ReadOnly m_Comparer As IComparer(Of T)
 
-    <Untested()>
+    
      ReadOnly Property Options() As RangeOption
         Get
             Return m_Options
         End Get
     End Property
 
-    <Untested()>
+    
      ReadOnly Property [End]() As T
         Get
             Return m_End
         End Get
     End Property
 
-    <Untested()>
+    
      ReadOnly Property Start() As T
         Get
             Return m_Start
         End Get
     End Property
 
-    <Untested()>
+    
      Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal options As RangeOption)
         m_Start = start
         m_End = [end]
@@ -34,7 +34,7 @@
         m_Comparer = comparer
     End Sub
 
-    <Untested()>
+    
      Sub New(ByVal start As T, ByVal [end] As T, ByVal options As RangeOption)
         If Not GetType(IComparable(Of T)).IsAssignableFrom(GetType(T)) Then
             Throw New ArgumentException("T doesn't implement IComparable and a IComparer wasn't supplied")
@@ -45,7 +45,7 @@
         m_Comparer = New ComparerComparable(Of T)
     End Sub
 
-    <Untested()>
+    
      Function Contains(ByVal testValue As T) As Boolean
         Select Case m_Options
             Case RangeOption.IncludeBoth
@@ -61,26 +61,26 @@
         End Select
     End Function
 
-    <Untested()>
+    
      ReadOnly Property IncludesStart() As Boolean
         Get
             Return CBool(Not (m_Options And RangeOption.ExcludeStart))
         End Get
     End Property
 
-    <Untested()>
+    
      ReadOnly Property IncludesEnd() As Boolean
         Get
             Return CBool(Not (m_Options And RangeOption.ExcludeEnd))
         End Get
     End Property
 
-    <Untested()>
+    
      Function FromStart(ByVal stepFunction As Func(Of T, T)) As IEnumerator(Of T)
         Return New RangeEnumerator(m_Start, m_End, m_Comparer, stepFunction)
     End Function
 
-    <Untested()>
+    
      Function FromEnd(ByVal stepFunction As Func(Of T, T)) As IEnumerator(Of T)
         Return New RangeEnumerator(m_End, m_Start, m_Comparer.Reverse, stepFunction)
     End Function
@@ -108,7 +108,7 @@
         Private ReadOnly m_Comparer As IComparer(Of T)
         Private m_Reset As Boolean = True
 
-        <Untested()>
+        
              Sub New(ByVal start As T, ByVal [end] As T, ByVal comparer As IComparer(Of T), ByVal stepFunction As Func(Of T, T))
             m_Start = start
             m_End = [end]
@@ -117,32 +117,32 @@
         End Sub
 
 
-        <Untested()>
+        
         Private ReadOnly Property Current() As T Implements Global.System.Collections.Generic.IEnumerator(Of T).Current
             Get
                 If m_Reset Then Return Nothing Else Return m_Current
             End Get
         End Property
 
-        <Untested()>
+        
         Private ReadOnly Property Current1() As Object Implements Global.System.Collections.IEnumerator.Current
             Get
                 Return Current
             End Get
         End Property
 
-        <Untested()>
+        
             Private Function MoveNext() As Boolean Implements Global.System.Collections.IEnumerator.MoveNext
             If m_Reset Then m_Current = m_Start Else m_Current = m_StepFunction(m_Current)
             Return m_Comparer.Compare(m_Current, m_End) <= 0
         End Function
 
-        <Untested()>
+        
              Sub Reset() Implements Global.System.Collections.IEnumerator.Reset
             m_Reset = True
         End Sub
 
-        <Untested()>
+        
             Private Sub Dispose() Implements IDisposable.Dispose
         End Sub
 

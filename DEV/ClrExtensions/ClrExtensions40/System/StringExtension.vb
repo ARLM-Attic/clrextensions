@@ -1,4 +1,6 @@
-﻿'Copyright (c) 2008, Jonathan Allen
+﻿Imports System.Security.Cryptography
+
+'Copyright (c) 2008, Jonathan Allen
 
 #If ClrVersion > 0 Then
 Imports System.Net.Mail
@@ -6,7 +8,7 @@ Imports System.Net.Mail
 Imports System.Text
 Imports System.Text.RegularExpressions
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module StringExtension
 
@@ -19,8 +21,8 @@ Public Module StringExtension
     ''' <param name="separator"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
-    <Extension()>  Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String) As String
+
+    <Extension()> Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String) As String
         If source Is Nothing Then Return ""
         Return String.Join(separator, source.ToArray)
     End Function
@@ -34,8 +36,8 @@ Public Module StringExtension
     ''' <param name="count"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function Repeat(ByVal value As String, ByVal count As Integer) As String
+
+    <Extension()> Function Repeat(ByVal value As String, ByVal count As Integer) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
         If value = "" Then Throw New ArgumentException("value cannot be empty", "value")
         If count < 0 Then Throw New ArgumentOutOfRangeException("count")
@@ -57,8 +59,8 @@ Public Module StringExtension
     ''' <param name="options">Optionally skip null and empty entries in the enumeration</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String, ByVal options As StringSplitOptions) As String
+
+    <Extension()> Function Join(ByVal source As IEnumerable(Of String), ByVal separator As String, ByVal options As StringSplitOptions) As String
         If source Is Nothing Then Return ""
         Select Case options
             Case StringSplitOptions.None
@@ -79,8 +81,8 @@ Public Module StringExtension
     ''' <param name="separator">A string that delimits the substrings in this string</param>
     ''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
     ''' <remarks></remarks>
-    <Untested()>
-    <Extension()>  Function Split(ByVal source As String, ByVal separator As String) As String()
+
+    <Extension()> Function Split(ByVal source As String, ByVal separator As String) As String()
         If source Is Nothing Then Return New String() {}
         Return source.Split(New String() {separator}, StringSplitOptions.None)
     End Function
@@ -94,8 +96,8 @@ Public Module StringExtension
     ''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
-    <Untested()>
-    <Extension()>  Function Split(ByVal source As String, ByVal separator As String, ByVal options As StringSplitOptions) As String()
+
+    <Extension()> Function Split(ByVal source As String, ByVal separator As String, ByVal options As StringSplitOptions) As String()
         If source Is Nothing Then Return New String() {}
         Return source.Split(New String() {separator}, options)
     End Function
@@ -110,8 +112,8 @@ Public Module StringExtension
     ''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
-    <Untested()>
- <Extension()>  Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer) As String()
+
+    <Extension()> Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer) As String()
         If separator = "" Then Throw New ArgumentException("separator cannot be empty", "separator")
         If count < 2 Then Throw New ArgumentOutOfRangeException("count")
 
@@ -130,8 +132,8 @@ Public Module StringExtension
     ''' <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
     ''' <remarks></remarks>
     ''' <exception cref="ArgumentException">options is not one of the System.StringSplitOptions values.</exception>
-    <Untested()>
- <Extension()>  Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
+
+    <Extension()> Function Split(ByVal source As String, ByVal separator As String, ByVal count As Integer, ByVal options As StringSplitOptions) As String()
         If separator = "" Then Throw New ArgumentException("seperator cannot be empty", "separator")
         If count < 2 Then Throw New ArgumentOutOfRangeException("count")
 
@@ -173,12 +175,12 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function FirstToLower(ByVal value As String) As String
+
+    <Extension()> Function FirstToLower(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToLower
-                Return value.Substring(0, 1).ToLower & value.Substring(1)
+        Return value.Substring(0, 1).ToLower & value.Substring(1)
     End Function
 
     ''' <summary>
@@ -188,12 +190,12 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function FirstToUpper(ByVal value As String) As String
+
+    <Extension()> Function FirstToUpper(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToUpper
-                Return value.Substring(0, 1).ToUpper & value.Substring(1)
+        Return value.Substring(0, 1).ToUpper & value.Substring(1)
     End Function
 
     ''' <summary>
@@ -203,12 +205,12 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function Capitalize(ByVal value As String) As String
+
+    <Extension()> Function Capitalize(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
         If value = "" Then Return ""
         If value.Length = 1 Then Return value.ToUpper
-                Return value.Substring(0, 1).ToUpper & value.Substring(1).ToLower
+        Return value.Substring(0, 1).ToUpper & value.Substring(1).ToLower
     End Function
 
     ''' <summary>
@@ -217,8 +219,8 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function DefaultIfNull(ByVal value As String) As String
+
+    <Extension()> Function DefaultIfNull(ByVal value As String) As String
         Return If(value Is Nothing, "", value)
     End Function
 
@@ -229,8 +231,8 @@ Public Module StringExtension
     ''' <param name="default"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function DefaultIfNull(ByVal value As String, ByVal [default] As String) As String
+
+    <Extension()> Function DefaultIfNull(ByVal value As String, ByVal [default] As String) As String
         Return If(value Is Nothing, [default], value)
     End Function
 
@@ -241,8 +243,8 @@ Public Module StringExtension
     ''' <param name="default"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
- <Extension()>  Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
+
+    <Extension()> Function DefaultIfEmpty(ByVal value As String, ByVal [default] As String) As String
         Return If(value = "", [default], value)
     End Function
 
@@ -254,8 +256,8 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId:="temp")> <Untested()>
-    <Extension()>  Function IsEmailAddress(ByVal value As String) As Boolean
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId:="temp")>
+    <Extension()> Function IsEmailAddress(ByVal value As String) As Boolean
         If value = "" Then Return False
         Try
             Dim temp = New MailAddress(value)
@@ -271,8 +273,8 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
-    <Extension()>  Function ToMailAddress(ByVal value As String) As MailAddress
+
+    <Extension()> Function ToMailAddress(ByVal value As String) As MailAddress
         If value Is Nothing Then Throw New ArgumentNullException("value")
         If value = "" Then Throw New ArgumentException("value cannot be empty", "value")
 
@@ -290,8 +292,8 @@ Public Module StringExtension
     ''' <param name="length"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
-    <Extension()>  Function Left(ByVal value As String, ByVal length As Integer) As String
+
+    <Extension()> Function Left(ByVal value As String, ByVal length As Integer) As String
         If length <= 0 Then Throw New ArgumentOutOfRangeException("length")
 
         If value Is Nothing Then Return Nothing
@@ -307,8 +309,8 @@ Public Module StringExtension
     ''' <param name="length"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()>
-    <Extension()>  Function Right(ByVal value As String, ByVal length As Integer) As String
+
+    <Extension()> Function Right(ByVal value As String, ByVal length As Integer) As String
         If length <= 0 Then Throw New ArgumentOutOfRangeException("length")
 
         If value Is Nothing Then Return Nothing
@@ -322,15 +324,15 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()>
-    <Extension()>  Function NormalizeLineBreaks(ByVal value As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")>
+    <Extension()> Function NormalizeLineBreaks(ByVal value As String) As String
         If value = "" Then Return value
         Return value.Replace(vbCrLf, vbCr).Replace(vbLf, vbCr).Replace(vbCr, vbCrLf)
     End Function
 
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()>
-    <Extension()>  Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")>
+    <Extension()> Function NormalizeLineBreaks(ByVal value As String, ByVal mode As LineBreakMode) As String
         If value = "" Then Return value
 
         Select Case mode
@@ -346,13 +348,13 @@ Public Module StringExtension
     End Function
 
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()>
-    <Extension()>  Function HtmlLineBreaks(ByVal value As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")>
+    <Extension()> Function HtmlLineBreaks(ByVal value As String) As String
         If value = "" Then Return value
         Return value.Replace(vbCrLf, "<br/>").Replace(vbLf, "<br/>").Replace(vbCr, "<br/>")
     End Function
 
-    <Untested()>
+
     <Extension()> Function Reverse(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
 
@@ -385,15 +387,15 @@ Public Module StringExtension
     ''' <param name="value"></param>
     ''' <returns></returns>
     ''' <remarks>Not really needed for VB, but C# programmers seem to like it</remarks>
-    <Untested()>
-    <Extension()>  Function IsNullOrEmpty(ByVal value As String) As Boolean
+
+    <Extension()> Function IsNullOrEmpty(ByVal value As String) As Boolean
         Return value = ""
         'Side note, String.IsNullOrEmpty has bug in .NET 2.0. It should be fixed in 2.0 SP 1.
     End Function
 
 
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 
     ''' <summary>
@@ -404,7 +406,7 @@ Public Module StringExtension
     ''' <param name="dictionary"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function PatternReplace(ByVal value As String, ByVal searchPattern As String, ByVal dictionary As Dictionary(Of String, String)) As String
+    <Extension()> Function PatternReplace(ByVal value As String, ByVal searchPattern As String, ByVal dictionary As Dictionary(Of String, String)) As String
         If searchPattern Is Nothing Then Throw New ArgumentNullException("searchPattern")
         If searchPattern = "" Then Throw New ArgumentException("searchPattern cannot be empty", "searchPattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
@@ -428,7 +430,7 @@ Public Module StringExtension
     ''' <param name="dictionary"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function PatternReplace(Of T)(ByVal value As String, ByVal searchPattern As String, ByVal replacementPattern As String, ByVal dictionary As Dictionary(Of String, T)) As String
+    <Extension()> Function PatternReplace(Of T)(ByVal value As String, ByVal searchPattern As String, ByVal replacementPattern As String, ByVal dictionary As Dictionary(Of String, T)) As String
         If searchPattern Is Nothing Then Throw New ArgumentNullException("searchPattern")
         If searchPattern = "" Then Throw New ArgumentException("searchPattern cannot be empty", "searchPattern")
         If Not searchPattern.Contains("{0}") Then Throw New FormatException("The search pattern doesn't contain the replacement command {0}")
@@ -446,8 +448,8 @@ Public Module StringExtension
     End Function
 
 #If ClrVersion >= 35 Then
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <Untested()> <Extension()>
-     Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")> <Extension()>
+    Function ToKeyValueCollection(ByVal source As String, ByVal rowSeparator As String, ByVal columnSeparator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
 
@@ -467,8 +469,8 @@ Public Module StringExtension
 #If ClrVersion > 0 Then
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")>
-    <Untested()> <Extension()>
-     Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
+     <Extension()>
+    Function ToKeyValueCollection(ByVal source As String, ByVal separator As String) As ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim result As New ObjectModel.Collection(Of KeyValuePair(Of String, String))
         Dim rows = source.Split(separator)
 
@@ -484,7 +486,7 @@ Public Module StringExtension
 
 #If ClrVersion > 0 Then
 
-    <Untested()> <Extension()>  Function MD5Hash(ByVal value As String) As String
+    <Extension()> Function MD5Hash(ByVal value As String) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
 
         Using hasher = System.Security.Cryptography.MD5CryptoServiceProvider.Create()
@@ -494,14 +496,14 @@ Public Module StringExtension
 #End If
 
 
-    <Untested()> <Extension()>  Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
+    <Extension()> Function Format(ByVal value As String, ByVal ParamArray args() As Object) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
         If args Is Nothing Then Throw New ArgumentNullException("args")
 
         Return String.Format(value, args)
     End Function
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()> <Extension()>  Function Truncate(ByVal value As String, ByVal maxLength As Integer) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Extension()> Function Truncate(ByVal value As String, ByVal maxLength As Integer) As String
         If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
 
         If value = "" Then Return ""
@@ -509,7 +511,7 @@ Public Module StringExtension
         Return value.Substring(0, maxLength - 3) & "..."
     End Function
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Untested()> <Extension()>  Function TruncateStart(ByVal value As String, ByVal maxLength As Integer) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of  methods", MessageId:="0")> <Extension()> Function TruncateStart(ByVal value As String, ByVal maxLength As Integer) As String
         If maxLength < 4 Then Throw New ArgumentOutOfRangeException("maxLength")
 
         If value = "" Then Return ""
@@ -518,7 +520,7 @@ Public Module StringExtension
     End Function
 
 #If ClrVersion > 0 Then
-    <Untested()> <Extension()>  Function IsNumeric(ByVal value As String) As Boolean
+    <Extension()> Function IsNumeric(ByVal value As String) As Boolean
         Return Microsoft.VisualBasic.IsNumeric(value)
     End Function
 #End If
@@ -531,7 +533,7 @@ Public Module StringExtension
     ''' <param name="pattern"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Untested()> <Extension()>  Function IsMatch(ByVal value As String, ByVal pattern As String) As Boolean
+    <Extension()> Function IsMatch(ByVal value As String, ByVal pattern As String) As Boolean
         Return RegularExpressions.Regex.IsMatch(value, pattern)
     End Function
 
@@ -543,7 +545,7 @@ Public Module StringExtension
     ''' <param name="options"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <Extension()>  Function IsMatch(ByVal value As String, ByVal pattern As String, ByVal options As RegexOptions) As Boolean
+    <Extension()> Function IsMatch(ByVal value As String, ByVal pattern As String, ByVal options As RegexOptions) As Boolean
         Return Regex.IsMatch(value, pattern, options)
     End Function
 
@@ -553,38 +555,38 @@ Public Module StringExtension
     'End Function
 
 
-    <Untested()> <Extension()>  Function ToEnum(Of T As Structure)(ByVal value As String) As T
+    <Extension()> Function ToEnum(Of T As Structure)(ByVal value As String) As T
         If value Is Nothing Then Throw New ArgumentNullException("value")
 
         Return CType([Enum].Parse(GetType(T), value, True), T)
     End Function
 
 #If Subset <> "Client" And ClrVersion > 0 Then
-    <Untested()> <Extension()>  Function HtmlEncode(ByVal this As String) As String
+    <Extension()> Function HtmlEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlEncode(this)
     End Function
 
-    <Untested()> <Extension()>  Function HtmlDecode(ByVal this As String) As String
+    <Extension()> Function HtmlDecode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.HtmlDecode(this)
     End Function
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")>
- <Untested()> <Extension()>  Function UrlDecode(ByVal this As String) As String
+  <Extension()> Function UrlDecode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.UrlDecode(this)
     End Function
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")>
-<Untested()> <Extension()>  Function UrlPathEncode(ByVal this As String) As String
+ <Extension()> Function UrlPathEncode(ByVal this As String) As String
         Return Global.System.Web.HttpUtility.UrlPathEncode(this)
     End Function
 
-    <Untested()> <Extension()>  Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
+    <Extension()> Function ParseQueryString(ByVal this As String) As Specialized.NameValueCollection
         If this Is Nothing Then Throw New ArgumentNullException("this")
-                Return Global.System.Web.HttpUtility.ParseQueryString(this)
+        Return Global.System.Web.HttpUtility.ParseQueryString(this)
     End Function
 #End If
 
-    <Untested()> <Extension()>  Function RemoveNonnumeric(ByVal value As String) As String
+    <Extension()> Function RemoveNonnumeric(ByVal value As String) As String
         If value Is Nothing Then Return Nothing
 
         Dim sb As New StringBuilder(value.Length)
@@ -601,13 +603,13 @@ Public Module StringExtension
 
 #If Subset <> "Client" And ClrVersion > 0 Then
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Extension()>  Function UrlEncode(ByVal this As String) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Extension()> Function UrlEncode(ByVal this As String) As String
         Return UrlEncode(this, UrlEncodingMethod.Clr)
     End Function
 
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")> <Untested()>
-    <Extension()>  Function UrlEncode(ByVal value As String, ByVal method As UrlEncodingMethod) As String
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings")>
+    <Extension()> Function UrlEncode(ByVal value As String, ByVal method As UrlEncodingMethod) As String
         If value Is Nothing Then Throw New ArgumentNullException("value")
 
         Select Case method
@@ -627,6 +629,38 @@ Public Module StringExtension
 #End If
 
 
+    <Extension()> Public Function Encrypt(ByVal stringToEncrypt As String, ByVal key As String) As String
+        If String.IsNullOrEmpty(stringToEncrypt) Then Throw New ArgumentException("stringToEncrypt is nothing or empty.", "stringToEncrypt")
+        If String.IsNullOrEmpty(key) Then Throw New ArgumentException("key is nothing or empty.", "key")
+
+        Dim cspp = New CspParameters()
+        cspp.KeyContainerName = key
+
+        Dim rsa = New RSACryptoServiceProvider(cspp)
+        rsa.PersistKeyInCsp = True
+
+        Dim bytes = rsa.Encrypt(UTF8Encoding.UTF8.GetBytes(stringToEncrypt), True)
+
+        Return BitConverter.ToString(bytes)
+    End Function
+
+    <Extension()> Public Function Decrypt(ByVal stringToDecrypt As String, ByVal key As String) As String
+        If String.IsNullOrEmpty(stringToDecrypt) Then Throw New ArgumentException("stringToDecrypt is nothing or empty.", "stringToDecrypt")
+        If String.IsNullOrEmpty(key) Then Throw New ArgumentException("key is nothing or empty.", "key")
+
+        Dim cspp = New CspParameters()
+        cspp.KeyContainerName = key
+
+        Dim rsa = New RSACryptoServiceProvider(cspp)
+        rsa.PersistKeyInCsp = True
+
+        Dim decryptArray = stringToDecrypt.Split(New String() {"-"}, StringSplitOptions.None)
+        Dim decryptByteArray = Array.ConvertAll(Of String, Byte)(decryptArray, (Function(s) Convert.ToByte(Byte.Parse(s, System.Globalization.NumberStyles.HexNumber))))
+
+        Dim bytes = rsa.Decrypt(decryptByteArray, True)
+
+        Return UTF8Encoding.UTF8.GetString(bytes)
+    End Function
 
 
 End Module

@@ -125,9 +125,8 @@ Namespace Collections
 			Return value
 		End Function
 
-#If IncludeUntested Then
 
-        <Untested()>  Function GetOrCreate(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal valueFunction As Func(Of TKey1, TKey2, TValue)) As TValue
+        Function GetOrCreate(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal valueFunction As Func(Of TKey1, TKey2, TValue)) As TValue
             If valueFunction Is Nothing Then Throw New ArgumentNullException("valueFunction")
 
             If ContainsKey(key1, key2) Then
@@ -137,7 +136,7 @@ Namespace Collections
             End If
         End Function
 
-        <Untested()>  Function GetOrCreate(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal defaultValue As TValue) As TValue
+        Function GetOrCreate(ByVal key1 As TKey1, ByVal key2 As TKey2, ByVal defaultValue As TValue) As TValue
 
             If ContainsKey(key1, key2) Then
                 Return Item(key1, key2)
@@ -146,7 +145,6 @@ Namespace Collections
             End If
         End Function
 
-#End If
 
 		'TODO - Use the info in the following link to transform the dictionary into a tree
 		'http://blogs.msdn.com/mitsu/archive/2007/12/22/playing-with-linq-grouping-groupbymany.aspx

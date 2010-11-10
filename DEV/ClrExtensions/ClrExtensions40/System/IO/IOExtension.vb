@@ -1,6 +1,6 @@
 ﻿'Copyright (c) 2008, Jonathan Allen
 Imports System.IO
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Public Module IOExtension
 #If ClrVersion > 0 Then
@@ -41,7 +41,7 @@ Public Module IOExtension
     ''' <param name="fileName"></param>
     ''' <returns></returns>
     ''' <remarks>This was hand tested because it is so heavily dependent on OS settings</remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")> <Untested()>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")> 
      Function PrintFile(ByVal fileName As String) As Process
         If fileName Is Nothing Then Throw New ArgumentNullException("fileName")
         If fileName = "" Then Throw New ArgumentException("fileName cannot be empty")
@@ -64,7 +64,7 @@ Public Module IOExtension
     End Function
 #End If
 
-    <Untested()>
+    
      Function ToFileName(ByVal text As String) As String
         Dim temp As New System.Text.StringBuilder(text)
         For Each c In Path.GetInvalidPathChars

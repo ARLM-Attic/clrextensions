@@ -2,11 +2,11 @@
 Imports System.Text
 Imports System.Runtime.CompilerServices
 
-#If IncludeUntested Then
+#If 1 = 1 Then
 
 Namespace Data
 	Module SqlClientExtensions
-		<Untested()>
+		
 		<Extension()>
 		Public Function ToSqlString(ByVal command As SqlCommand) As String
 			If command Is Nothing Then Throw New ArgumentNullException("command", "command is nothing.")
@@ -23,7 +23,7 @@ Namespace Data
 			Return out.ToString
 		End Function
 
-		<Untested()>
+		
 		<Extension()>
 		Public Function ToSqlString(ByVal parameter As SqlParameter) As String
 			If parameter Is Nothing Then Throw New ArgumentNullException("parameter", "parameter is nothing.")
